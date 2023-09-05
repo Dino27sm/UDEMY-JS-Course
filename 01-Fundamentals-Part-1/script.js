@@ -11,6 +11,10 @@
 //   console.log(`John's BMI (${BMIJohn}) is higher than Mark's (${BMIMark})!`);
 // }
 //
-const favourite = prompt("Write your favourite number, please:");
+let favourite = prompt("Write your favourite number, please:");
+console.log(favourite);
+console.log(typeof favourite);
+//
+favourite = Number(favourite); // Converts SRTING to a NUMBER
 console.log(favourite);
 console.log(typeof favourite);

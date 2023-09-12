@@ -45,20 +45,26 @@
 // }
 // *****************************************************
 // The same Exercise with IF statement
-let day = prompt("Enter the current day, please:");
-console.log(day);
+// let day = prompt("Enter the current day, please:");
+// console.log(day);
+// //
+// if (day === "monday") {
+//   console.log("Today is monday.");
+// } else if (day === "tuesday") {
+//   console.log("Today is tuesday.");
+// } else if (day === "wednesday" || day === "thursday") {
+//   console.log("Today is wednesday or thursday.");
+// } else if (day === "friday") {
+//   console.log("Today is friday.");
+// } else if (day === "saturday" || day === "sunday") {
+//   console.log("Today is saturday or sunday.");
+// } else {
+//   console.log("Not a valid day");
+// }
 //
-if (day === "monday") {
-  console.log("Today is monday.");
-} else if (day === "tuesday") {
-  console.log("Today is tuesday.");
-} else if (day === "wednesday" || day === "thursday") {
-  console.log("Today is wednesday or thursday.");
-} else if (day === "friday") {
-  console.log("Today is friday.");
-} else if (day === "saturday" || day === "sunday") {
-  console.log("Today is saturday or sunday.");
-} else {
-  console.log("Not a valid day");
-}
-//
+//******************************************************* */
+//  Ternary operator - returns value as an expression
+let age = prompt("Enter your age, please:");
+console.log(age);
+
+console.log(`I may drink ${age >= 20 ? "beer" : "water"}`);

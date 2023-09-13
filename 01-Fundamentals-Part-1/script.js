@@ -64,7 +64,15 @@
 //
 //******************************************************* */
 //  Ternary operator - returns value as an expression
-let age = prompt("Enter your age, please:");
-console.log(age);
+// let age = prompt("Enter your age, please:");
+// console.log(age);
 
-console.log(`I may drink ${age >= 20 ? "beer" : "water"}`);
+// console.log(`I may drink ${age >= 20 ? "beer" : "water"}`);
+//****************************************************** */
+// Ternary Exercise
+const bill = 275;
+
+let tip = bill >= 50 && bill <= 300 ? 0.15 * bill : 0.2 * bill;
+console.log(
+  `the bill was ${bill}, the tip was ${tip}, and the total value ${bill + tip}.`
+);

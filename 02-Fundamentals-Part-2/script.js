@@ -36,18 +36,22 @@
 //
 //******************************************** */
 //=============  CHALLENGE  =====================
-function checkWinner(avgDolphins, avgKoalas) {
+//
+const calcAverage = (s1, s2, s3) => (s1 + s2 + s3) / 3;
+let scoreDolphins = calcAverage(44, 23, 71);
+let scoreKoalas = calcAverage(65, 54, 49);
+//
+const checkWinner = function (avgDolphins, avgKoalas) {
   if (avgDolphins >= 2 * avgKoalas) {
-    return `Dolphins win (${avgDolphins} vs ${avgKoalas}).`;
+    console.log(`Dolphins win (${avgDolphins} vs. ${avgKoalas}).`);
   } else if (avgKoalas >= 2 * avgDolphins) {
-    return `Koalas win (${avgKoalas} vs ${avgDolphins}).`;
+    console.log(`Koalas win (${avgKoalas} vs. ${avgDolphins}).`);
   } else {
-    return `No team wins.`;
+    console.log(`No team wins ...`);
   }
-}
+};
+checkWinner(scoreDolphins, scoreKoalas);
 //
-const calcAverage = (score1, score2, score3) => (score1 + score2 + score3) / 3;
-const scoreDolphins = calcAverage(85, 54, 41);
-const scoreKoalas = calcAverage(23, 34, 27);
-//
-console.log(checkWinner(scoreDolphins, scoreKoalas));
+scoreDolphins = calcAverage(85, 54, 41);
+scoreKoalas = calcAverage(23, 34, 27);
+checkWinner(scoreDolphins, scoreKoalas);

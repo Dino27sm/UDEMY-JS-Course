@@ -81,12 +81,16 @@
 // }
 //
 //=====================  CHALLENGE #2  ===================
+// const calcTip = function (bill) {
+//   if (bill >= 50 && bill <= 300) {
+//     return 0.15 * bill;
+//   } else {
+//     return 0.2 * bill;
+//   }
+// };
+//========== With TERNARY Operator =======================
 const calcTip = function (bill) {
-  if (bill >= 50 && bill <= 300) {
-    return 0.15 * bill;
-  } else {
-    return 0.2 * bill;
-  }
+  return bill >= 50 && bill <= 300 ? 0.15 * bill : 0.2 * bill;
 };
 const bills = [125, 555, 44];
 const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];

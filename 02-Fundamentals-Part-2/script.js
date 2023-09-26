@@ -59,23 +59,43 @@
 //
 //==============  ARRAYS  =============================
 //   ADD Elements -------------------------------------
-let names = ["Anna", "Emma"];
-names.push("Mary", "Olivia", "Jane", "Sarah");
-console.log(names);
-console.log(`The length of the array "names" is ${names.length}`);
-console.log(names.push("Isabella"));
-names.unshift("Scarlett");
-console.log(names);
+// let names = ["Anna", "Emma"];
+// names.push("Mary", "Olivia", "Jane", "Sarah");
+// console.log(names);
+// console.log(`The length of the array "names" is ${names.length}`);
+// console.log(names.push("Isabella"));
+// names.unshift("Scarlett");
+// console.log(names);
+// //
+// //   REMOVE Elements ----------------------------------
+// names.pop();
+// console.log(names);
+// names.shift();
+// console.log(names);
+// console.log(names.shift());
+// //
+// console.log(names.indexOf("Olivia"));
+// //
+// if (names.includes("Sarah")) {
+//   console.log("Sarah is in the array of names.");
+// }
 //
-//   REMOVE Elements ----------------------------------
-names.pop();
-console.log(names);
-names.shift();
-console.log(names);
-console.log(names.shift());
+//=====================  CHALLENGE #2  ===================
+const calcTip = function (bill) {
+  if (bill >= 50 && bill <= 300) {
+    return 0.15 * bill;
+  } else {
+    return 0.2 * bill;
+  }
+};
+const bills = [125, 555, 44];
+const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
+const totals = [
+  bills[0] + calcTip(bills[0]),
+  bills[1] + calcTip(bills[1]),
+  bills[2] + calcTip(bills[2]),
+];
 //
-console.log(names.indexOf("Olivia"));
-//
-if (names.includes("Sarah")) {
-  console.log("Sarah is in the array of names.");
-}
+console.log(bills);
+console.log(tips);
+console.log(totals);

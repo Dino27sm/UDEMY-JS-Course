@@ -62,3 +62,6 @@ let names = ["Anna", "Emma"];
 names.push("Mary", "Olivia", "Jane", "Sarah");
 console.log(names);
 console.log(`The length of the array "names" is ${names.length}`);
+console.log(names.push("Isabella"));
+names.unshift("Scarlett");
+console.log(names);

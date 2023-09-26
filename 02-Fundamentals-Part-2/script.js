@@ -73,3 +73,9 @@ console.log(names);
 names.shift();
 console.log(names);
 console.log(names.shift());
+//
+console.log(names.indexOf("Olivia"));
+//
+if (names.includes("Sarah")) {
+  console.log("Sarah is in the array of names.");
+}

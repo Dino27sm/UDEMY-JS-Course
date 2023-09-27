@@ -132,3 +132,7 @@ if (myObject[interestedIn]) {
     "You have to choose between: firstName, lastName, age, job, friends"
   );
 }
+//
+myObject.location = "Sofia";
+myObject["email"] = "mail@yahoo.com";
+console.log(myObject);

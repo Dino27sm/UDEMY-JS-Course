@@ -120,3 +120,15 @@ console.log(myObject);
 console.log(myObject.firstName);
 console.log(myObject["firstName"]);
 console.log(myObject["last" + "Name"]);
+//
+const interestedIn = prompt(
+  "What do you require? => Choose between: firstName, lastName, age, job, friends"
+);
+//
+if (myObject[interestedIn]) {
+  console.log(interestedIn, myObject[interestedIn]);
+} else {
+  console.log(
+    "You have to choose between: firstName, lastName, age, job, friends"
+  );
+}

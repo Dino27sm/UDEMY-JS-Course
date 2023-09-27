@@ -136,3 +136,7 @@ if (myObject[interestedIn]) {
 myObject.location = "Sofia";
 myObject["email"] = "mail@yahoo.com";
 console.log(myObject);
+//
+console.log(
+  `${myObject.firstName} has ${myObject.friends.length} friends where the ${myObject.friends[1]} is the best one.`
+);

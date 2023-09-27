@@ -115,3 +115,8 @@ const myObject = {
   job: "teacher",
   friends: ["Ann", "Eva", "Mary"],
 };
+console.log(myObject);
+//
+console.log(myObject.firstName);
+console.log(myObject["firstName"]);
+console.log(myObject["last" + "Name"]);

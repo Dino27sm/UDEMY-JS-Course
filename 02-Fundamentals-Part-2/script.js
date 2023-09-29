@@ -157,6 +157,13 @@ const myObject = {
   calcAge: function () {
     return 2023 - this.birthYear;
   },
+  getSummary: function () {
+    return `${
+      this.firstName
+    } is ${this.calcAge()} years old teacher and he has ${
+      this.haveDriversLicense ? "a" : "no"
+    } drivers license.`;
+  },
 };
 //
 // console.log(myObject.calcAge());
@@ -172,3 +179,4 @@ console.log(
     myObject.haveDriversLicense ? "a" : "no"
   } drivers license.`
 );
+console.log(myObject.getSummary());

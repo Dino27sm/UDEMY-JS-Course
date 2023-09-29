@@ -150,15 +150,13 @@
 const myObject = {
   firstName: "Ivan",
   lastName: "Nikolov",
-  birthYear: 1983,
+  birthYear: 1957,
   job: "teacher",
   friends: ["Ann", "Eva", "Mary"],
   haveDriversLicense: true,
-  calcAge: function (birthYear) {
-    return 2023 - birthYear;
+  calcAge: function () {
+    return 2023 - this.birthYear;
   },
 };
 //
-console.log(myObject.calcAge(1957));
-console.log(myObject["calcAge"](1984));
-console.log(myObject["calcAge"](1997));
+console.log(myObject.calcAge());

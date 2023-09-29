@@ -153,10 +153,22 @@ const myObject = {
   birthYear: 1957,
   job: "teacher",
   friends: ["Ann", "Eva", "Mary"],
-  haveDriversLicense: true,
+  haveDriversLicense: false,
   calcAge: function () {
     return 2023 - this.birthYear;
   },
 };
 //
+// console.log(myObject.calcAge());
 console.log(myObject.calcAge());
+//
+//==========  Challange  ==============================
+//
+// "Ivan is 66 years old teacher and he has a/no drivers license."
+console.log(
+  `${
+    myObject.firstName
+  } is ${myObject.calcAge()} years old teacher and he has ${
+    myObject.haveDriversLicense ? "a" : "no"
+  } drivers license.`
+);

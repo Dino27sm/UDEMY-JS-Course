@@ -108,39 +108,57 @@
 //
 //========== OBJECT in JS =================================
 //
+// const myObject = {
+//   firstName: "Ivan",
+//   lastName: "Nikolov",
+//   age: 2023 - 1983,
+//   job: "teacher",
+//   friends: ["Ann", "Eva", "Mary"],
+// };
+// console.log(myObject);
+// //
+// console.log(myObject.firstName);
+// console.log(myObject["firstName"]);
+// console.log(myObject["last" + "Name"]);
+// //
+// const interestedIn = prompt(
+//   "What do you require? => Choose between: firstName, lastName, age, job, friends"
+// );
+// //
+// if (myObject[interestedIn]) {
+//   console.log(interestedIn, myObject[interestedIn]);
+// } else {
+//   console.log(
+//     "You have to choose between: firstName, lastName, age, job, friends"
+//   );
+// }
+// //
+// myObject.location = "Sofia";
+// myObject["email"] = "mail@yahoo.com";
+// console.log(myObject);
+// //================ Using dot (.) operator  ================
+// console.log(
+//   `${myObject.firstName} has ${myObject.friends.length} friends where the ${myObject.friends[1]} is the best one.`
+// );
+// //================ Using brackets []  ================
+// console.log(
+//   `${myObject["firstName"]} has ${myObject["friends"].length} friends where the ${myObject["friends"][1]} is the best one.`
+// );
+//
+//==============  OBJECT Methods  ====================
+//
 const myObject = {
   firstName: "Ivan",
   lastName: "Nikolov",
-  age: 2023 - 1983,
+  birthYear: 1983,
   job: "teacher",
   friends: ["Ann", "Eva", "Mary"],
+  haveDriversLicense: true,
+  calcAge: function (birthYear) {
+    return 2023 - birthYear;
+  },
 };
-console.log(myObject);
 //
-console.log(myObject.firstName);
-console.log(myObject["firstName"]);
-console.log(myObject["last" + "Name"]);
-//
-const interestedIn = prompt(
-  "What do you require? => Choose between: firstName, lastName, age, job, friends"
-);
-//
-if (myObject[interestedIn]) {
-  console.log(interestedIn, myObject[interestedIn]);
-} else {
-  console.log(
-    "You have to choose between: firstName, lastName, age, job, friends"
-  );
-}
-//
-myObject.location = "Sofia";
-myObject["email"] = "mail@yahoo.com";
-console.log(myObject);
-//================ Using dot (.) operator  ================
-console.log(
-  `${myObject.firstName} has ${myObject.friends.length} friends where the ${myObject.friends[1]} is the best one.`
-);
-//================ Using brackets []  ================
-console.log(
-  `${myObject["firstName"]} has ${myObject["friends"].length} friends where the ${myObject["friends"][1]} is the best one.`
-);
+console.log(myObject.calcAge(1957));
+console.log(myObject["calcAge"](1984));
+console.log(myObject["calcAge"](1997));

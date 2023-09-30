@@ -147,36 +147,63 @@
 //
 //==============  OBJECT Methods  ====================
 //
-const myObject = {
-  firstName: "Ivan",
-  lastName: "Nikolov",
-  birthYear: 1957,
-  job: "teacher",
-  friends: ["Ann", "Eva", "Mary"],
-  haveDriversLicense: false,
-  calcAge: function () {
-    return 2023 - this.birthYear;
+// const myObject = {
+//   firstName: "Ivan",
+//   lastName: "Nikolov",
+//   birthYear: 1957,
+//   job: "teacher",
+//   friends: ["Ann", "Eva", "Mary"],
+//   haveDriversLicense: false,
+//   calcAge: function () {
+//     return 2023 - this.birthYear;
+//   },
+//   getSummary: function () {
+//     return `${
+//       this.firstName
+//     } is ${this.calcAge()} years old teacher and he has ${
+//       this.haveDriversLicense ? "a" : "no"
+//     } drivers license.`;
+//   },
+// };
+// //
+// // console.log(myObject.calcAge());
+// console.log(myObject.calcAge());
+// //
+// //==========  Challange  ==============================
+// //
+// // "Ivan is 66 years old teacher and he has a/no drivers license."
+// console.log(
+//   `${
+//     myObject.firstName
+//   } is ${myObject.calcAge()} years old teacher and he has ${
+//     myObject.haveDriversLicense ? "a" : "no"
+//   } drivers license.`
+// );
+// console.log(myObject.getSummary());
+//
+//====================  CHALLANGE #3  =================
+//
+const mark = {
+  fullName: "Mark Miller",
+  mass: 78,
+  height: 1.69,
+  calcBMI: function () {
+    this.bmi = this.mass / (this.height * this.height);
+    return this.bmi;
   },
-  getSummary: function () {
-    return `${
-      this.firstName
-    } is ${this.calcAge()} years old teacher and he has ${
-      this.haveDriversLicense ? "a" : "no"
-    } drivers license.`;
+};
+const john = {
+  fullName: "John Smith",
+  mass: 92,
+  height: 1.95,
+  calcBMI: function () {
+    this.bmi = this.mass / (this.height * this.height);
+    return this.bmi;
   },
 };
 //
-// console.log(myObject.calcAge());
-console.log(myObject.calcAge());
-//
-//==========  Challange  ==============================
-//
-// "Ivan is 66 years old teacher and he has a/no drivers license."
 console.log(
-  `${
-    myObject.firstName
-  } is ${myObject.calcAge()} years old teacher and he has ${
-    myObject.haveDriversLicense ? "a" : "no"
-  } drivers license.`
+  mark.calcBMI() >= john.calcBMI()
+    ? `${mark.fullName}'s BMI (${mark.bmi}) is higher than ${john.fullName}'s (${john.bmi})!`
+    : `${john.fullName}'s BMI (${john.bmi}) is higher than ${mark.fullName}'s (${mark.bmi})!`
 );
-console.log(myObject.getSummary());

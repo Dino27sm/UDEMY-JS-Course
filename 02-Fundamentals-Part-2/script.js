@@ -212,14 +212,20 @@
 // console.log(john);
 //
 //==================  FOR Loop  ==========================
-for (let rep = 1; rep <= 5; rep++) {
-  console.log(`This is line number: ${rep} from "FOR" loop.`);
-}
+// for (let rep = 1; rep <= 5; rep++) {
+//   console.log(`This is line number: ${rep} from "FOR" loop.`);
+// }
+// //
+// //==================  WHILE Loop  ========================
+// let rep = 1;
+// while (rep <= 5) {
+//   console.log(`This is line number: ${rep} from "WHILE" loop.`);
+//   rep++;
+// }
 //
-//==================  WHILE Loop  ========================
-let rep = 1;
-while (rep <= 5) {
-  console.log(`This is line number: ${rep} from "WHILE" loop.`);
-  rep++;
+//===============  DICE Exercise  ========================
+let dice = Math.trunc(Math.random() * 10);
+while (dice >= 1 && dice <= 6) {
+  console.log(`Dice number is: ${dice}.`);
+  dice = Math.trunc(Math.random() * 10);
 }
-//

@@ -229,3 +229,19 @@ while (dice >= 1 && dice <= 6) {
   console.log(`Dice number is: ${dice}.`);
   dice = Math.trunc(Math.random() * 10);
 }
+//===============  CHALLENGE #4  =========================
+//
+const calcTip = function (bill) {
+  return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+};
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+let tips = [];
+let totals = [];
+for (let i = 0; i < bills.length; i++) {
+  tips.push(calcTip(bills[i]));
+  totals.push(calcTip(bills[i]) + bills[i]);
+}
+//
+console.log(bills);
+console.log(tips);
+console.log(totals);

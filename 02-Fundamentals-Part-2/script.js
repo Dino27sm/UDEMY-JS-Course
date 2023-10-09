@@ -231,6 +231,13 @@ while (dice >= 1 && dice <= 6) {
 }
 //===============  CHALLENGE #4  =========================
 //
+const calcAverage = function (arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum = sum + arr[i];
+  }
+  return sum / arr.length;
+};
 const calcTip = function (bill) {
   return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
 };
@@ -245,3 +252,5 @@ for (let i = 0; i < bills.length; i++) {
 console.log(bills);
 console.log(tips);
 console.log(totals);
+//
+console.log(calcAverage(totals));

@@ -213,5 +213,13 @@
 //
 //==================  FOR Loop  ==========================
 for (let rep = 1; rep <= 5; rep++) {
-  console.log(`This is line number: ${rep}`);
+  console.log(`This is line number: ${rep} from "FOR" loop.`);
 }
+//
+//==================  WHILE Loop  ========================
+let rep = 1;
+while (rep <= 5) {
+  console.log(`This is line number: ${rep} from "WHILE" loop.`);
+  rep++;
+}
+//

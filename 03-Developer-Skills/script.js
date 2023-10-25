@@ -39,8 +39,15 @@
 // }
 //
 //============  Better Solution  =========================
-function descendingOrder(n) {
-  return parseInt(String(n).split("").sort().reverse().join(""));
-}
-//
-console.log(descendingOrder(23987));
+// function descendingOrder(n) {
+//   return parseInt(String(n).split("").sort().reverse().join(""));
+// }
+// //
+// console.log(descendingOrder(23987));
+const arrA = [1, 14, 11, 3, 7, 15];
+const arrB = [1, 14, 11, 3, 7, 15];
+arrA.sort((x, y) => x - y);
+arrB.sort((x, y) => y - x);
+console.log(arrA);
+console.log(arrB);
+console.log(arrB.reverse());

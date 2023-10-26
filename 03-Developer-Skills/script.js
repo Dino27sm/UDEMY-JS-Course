@@ -83,3 +83,11 @@ function digPow(n, p) {
   return n_dig_pow_sum % n === 0 ? n_dig_pow_sum / n : -1;
 }
 console.log(digPow(46288, 3));
+//================ Tha same with modification ==============================
+function digPow(n, p) {
+  const n_dig_pow_sum = String(n)
+    .split("")
+    .reduce((acm, x) => acm + Number(x) ** p++, 0);
+  return n_dig_pow_sum % n === 0 ? n_dig_pow_sum / n : -1;
+}
+console.log(digPow(46288, 3));

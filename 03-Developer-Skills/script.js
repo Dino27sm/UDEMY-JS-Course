@@ -44,10 +44,32 @@
 // }
 // //
 // console.log(descendingOrder(23987));
-const arrA = [1, 14, 11, 3, 7, 15];
-const arrB = [1, 14, 11, 3, 7, 15];
-arrA.sort((x, y) => x - y);
-arrB.sort((x, y) => y - x);
-console.log(arrA);
-console.log(arrB);
-console.log(arrB.reverse());
+// const arrA = [1, 14, 11, 3, 7, 15];
+// const arrB = [1, 14, 11, 3, 7, 15];
+// arrA.sort((x, y) => x - y);
+// arrB.sort((x, y) => y - x);
+// console.log(arrA);
+// console.log(arrB);
+// console.log(arrB.reverse());
+//
+//============ square every digit of a number and concatenate them =========
+// function squareDigits(num) {
+//   const num_str = String(num).split("");
+//   let num_digits_arr = [];
+//   for (let i = 0; i < num_str.length; i++) {
+//     num_digits_arr.push(num_str[i] ** 2);
+//   }
+//   return parseInt(num_digits_arr.join(""));
+// }
+// console.log(squareDigits(9119));
+//
+//=============  By using MAP method of ARRAY ===============================
+function squareDigits(num) {
+  return parseInt(
+    String(num)
+      .split("")
+      .map((x) => Number(x) ** 2)
+      .join("")
+  );
+}
+console.log(squareDigits(9119));

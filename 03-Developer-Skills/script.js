@@ -64,12 +64,22 @@
 // console.log(squareDigits(9119));
 //
 //=============  By using MAP method of ARRAY ===============================
-function squareDigits(num) {
-  return parseInt(
-    String(num)
-      .split("")
-      .map((x) => Number(x) ** 2)
-      .join("")
-  );
+// function squareDigits(num) {
+//   return parseInt(
+//     String(num)
+//       .split("")
+//       .map((x) => Number(x) ** 2)
+//       .join("")
+//   );
+// }
+// console.log(squareDigits(9119));
+//
+//============ Numbers with funny properties ===============================
+function digPow(n, p) {
+  const n_dig_pow_sum = String(n)
+    .split("")
+    .map((x) => Number(x) ** p++)
+    .reduce((acm, x) => acm + x);
+  return n_dig_pow_sum % n === 0 ? n_dig_pow_sum / n : -1;
 }
-console.log(squareDigits(9119));
+console.log(digPow(46288, 3));

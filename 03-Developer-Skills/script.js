@@ -75,19 +75,33 @@
 // console.log(squareDigits(9119));
 //
 //============ Numbers with funny properties ===============================
-function digPow(n, p) {
-  const n_dig_pow_sum = String(n)
-    .split("")
-    .map((x) => Number(x) ** p++)
-    .reduce((acm, x) => acm + x);
-  return n_dig_pow_sum % n === 0 ? n_dig_pow_sum / n : -1;
+// function digPow(n, p) {
+//   const n_dig_pow_sum = String(n)
+//     .split("")
+//     .map((x) => Number(x) ** p++)
+//     .reduce((acm, x) => acm + x);
+//   return n_dig_pow_sum % n === 0 ? n_dig_pow_sum / n : -1;
+// }
+// console.log(digPow(46288, 3));
+// //================ Tha same with modification ==============================
+// function digPow(n, p) {
+//   const n_dig_pow_sum = String(n)
+//     .split("")
+//     .reduce((acm, x) => acm + Number(x) ** p++, 0);
+//   return n_dig_pow_sum % n === 0 ? n_dig_pow_sum / n : -1;
+// }
+// console.log(digPow(46288, 3));
+//
+//============== Challenge #1 fom lesson 62 ===============================
+const arr_1 = [17, 21, 23];
+const arr_2 = [12, 5, -5, 0, 4];
+// "... 17C in 1 days"
+function printForecast(arr_temp) {
+  let out_message = "... ";
+  for (let i = 0; i < arr_temp.length; i++) {
+    out_message += `${arr_temp[i]}°C in ${i + 1} days ... `;
+  }
+  return out_message;
 }
-console.log(digPow(46288, 3));
-//================ Tha same with modification ==============================
-function digPow(n, p) {
-  const n_dig_pow_sum = String(n)
-    .split("")
-    .reduce((acm, x) => acm + Number(x) ** p++, 0);
-  return n_dig_pow_sum % n === 0 ? n_dig_pow_sum / n : -1;
-}
-console.log(digPow(46288, 3));
+console.log(printForecast(arr_1));
+console.log(printForecast(arr_2));

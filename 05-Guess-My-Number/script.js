@@ -19,6 +19,7 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('body').style.backgroundColor = '#60b347';
       document.querySelector('.number').style.width = '30rem';
 
+      //-------- "Highscore" setting
       if (score > highscore) {
         highscore = score;
         document.querySelector('.highscore').textContent = highscore;
@@ -39,7 +40,7 @@ document.querySelector('.check').addEventListener('click', function () {
     }
   }
 });
-//-------------- Button Again programming
+//-------------- Button "Again" programming
 document.querySelector('.again').addEventListener('click', function () {
   secretNumber = Math.trunc(Math.random() * 20 + 1);
   score = 20;

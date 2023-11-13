@@ -25,15 +25,14 @@ document.querySelector('.check').addEventListener('click', function () {
         document.querySelector('.highscore').textContent = highscore;
       }
     } else {
-      if (score > 1) {
-        score--;
+      score--;
+      if (score > 0) {
         document.querySelector('.score').textContent = score;
         //----------- When guess is too HIGH or LOW
         document.querySelector('.message').textContent =
           guess < secretNumber ? '📉 Too low!' : '📈 Too high!';
       } else {
-        score = 0;
-        document.querySelector('.score').textContent = score;
+        document.querySelector('.score').textContent = 0;
         document.querySelector('.message').textContent =
           '💥 You lost the game!';
       }

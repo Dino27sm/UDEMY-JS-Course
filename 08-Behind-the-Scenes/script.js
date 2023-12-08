@@ -25,9 +25,26 @@
 // var addArrow = (a, b) => a + b;
 
 //-------- Example
-var x = 1;
-let y = 2;
-const z = 3;
+// var x = 1;
+// let y = 2;
+// const z = 3;
 
-console.log(x === window.x);
-console.log(y === window.y);
+// console.log(x === window.x);
+// console.log(y === window.y);
+
+//-------- Primitive types
+let lastName = 'Williams';
+let oldLastName = lastName;
+lastName = 'Davis';
+
+//-------- Reference types
+const jessica = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+};
+
+const marriedJessica = jessica;
+marriedJessica.lastName = 'Davis';
+console.log('Before marriage', jessica);
+console.log('After marriage', marriedJessica);

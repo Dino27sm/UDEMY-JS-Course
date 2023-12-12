@@ -27,3 +27,9 @@ const restaurant = {
     },
   },
 };
+
+//----------- ARRAY Destructuring
+const array_1 = [2, 3, 4];
+
+const [x, y, z] = array_1;
+console.log(x, y, z);

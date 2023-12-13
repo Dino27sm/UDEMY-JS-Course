@@ -32,15 +32,19 @@ const restaurant = {
 };
 
 //----------- ARRAY Destructuring
-const array_1 = [2, 3, 4];
+// const array_1 = [2, 3, 4];
 
-const [x, y, z] = array_1;
-console.log(x, y, z);
+// const [x, y, z] = array_1;
+// console.log(x, y, z);
 
-let [main, , secondary] = restaurant.categories;
-console.log(main, secondary);
+// let [main, , secondary] = restaurant.categories;
+// console.log(main, secondary);
 
-[secondary, main] = [main, secondary];
-console.log(main, secondary);
+// [secondary, main] = [main, secondary];
+// console.log(main, secondary);
 
-console.log(restaurant.order(1, 1));
+// console.log(restaurant.order(1, 1));
+
+//----------- OBJECT Destructuring
+const { name, openingHours, categories } = restaurant;
+console.log(name, openingHours, categories);

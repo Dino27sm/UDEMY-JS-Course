@@ -50,12 +50,21 @@ const restaurant = {
 // console.log(name, openingHours, categories);
 
 //--------- SPREAD Operator - used on the right side
-let arr_0 = [21, 22, 23];
-const arr_1 = [1, 3, 5, 7, 9, 11, arr_0];
-const arr_2 = [1, 3, 5, 7, 9, 11, ...arr_0];
-console.log(arr_1);
-console.log(arr_2);
+// let arr_0 = [21, 22, 23];
+// const arr_1 = [1, 3, 5, 7, 9, 11, arr_0];
+// const arr_2 = [1, 3, 5, 7, 9, 11, ...arr_0];
+// console.log(arr_1);
+// console.log(arr_2);
 
-//--------- REST Operator - used on the left side for destructoring
-let [n_1, , n_3, ...otherNumbers] = arr_2;
-console.log(otherNumbers);
+// //--------- REST Operator - used on the left side for destructoring
+// let [n_1, , n_3, ...otherNumbers] = arr_2;
+// console.log(otherNumbers);
+//
+//--------- Logic Operators - using and returning ANY type of data - short circuiting
+console.log(3 || 'Jonas');
+console.log('' || 'Jonas');
+console.log(true || 0);
+console.log(undefined || null);
+
+console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+// OR logic operatorr returns First thruty value. If all are falsy - returns the last one.

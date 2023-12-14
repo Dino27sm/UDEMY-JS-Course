@@ -46,5 +46,13 @@ const restaurant = {
 // console.log(restaurant.order(1, 1));
 
 //----------- OBJECT Destructuring
-const { name, openingHours, categories } = restaurant;
-console.log(name, openingHours, categories);
+// const { name, openingHours, categories } = restaurant;
+// console.log(name, openingHours, categories);
+
+//--------- SPREAD Operator - used on the right side
+const arr_1 = [1, 3, 5, 7, 9, 11, ...[21, 22, 23]];
+console.log(arr_1);
+
+//--------- REST Operator - used on the left side for destructoring
+let [n_1, , n_3, ...otherNumbers] = arr_1;
+console.log(otherNumbers);

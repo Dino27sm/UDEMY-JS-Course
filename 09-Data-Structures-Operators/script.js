@@ -61,10 +61,18 @@ const restaurant = {
 // console.log(otherNumbers);
 //
 //--------- Logic Operators - using and returning ANY type of data - short circuiting
-console.log(3 || 'Jonas');
-console.log('' || 'Jonas');
-console.log(true || 0);
-console.log(undefined || null);
+// // OR logic operatorr returns First thruty value. If all are falsy - returns the last one.
+// console.log(3 || 'Jonas');
+// console.log('' || 'Jonas');
+// console.log(true || 0);
+// console.log(undefined || null);
 
-console.log(undefined || 0 || '' || 'Hello' || 23 || null);
-// OR logic operatorr returns First thruty value. If all are falsy - returns the last one.
+// console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+// //
+// AND logic operatorr returns First falsy value. If all are thruty - returns the last one.
+console.log(0 && 'Jonas');
+console.log('' && 'Jonas');
+console.log(true && null);
+console.log(7 && 88);
+
+console.log(3 && 1 && undefined && 'Hello' && 23 && null);

@@ -143,3 +143,9 @@ const printGoals = function (...players) {
 
 printGoals(...game.scored);
 printGoals('John', 'Gibson', 'Ricard');
+
+// 7.
+team1 < team2 && console.log('Team 1 is likely to win.');
+team1 > team2 && console.log('Team 2 is likely to win.');
+
+3 && 3 < 4 && 5 && console.log('Print this!');

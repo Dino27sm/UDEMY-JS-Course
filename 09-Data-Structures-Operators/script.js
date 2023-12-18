@@ -142,3 +142,4 @@ const printGoals = function (...players) {
 };
 
 printGoals(...game.scored);
+printGoals('John', 'Gibson', 'Ricard');

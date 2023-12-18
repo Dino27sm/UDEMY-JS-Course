@@ -135,3 +135,10 @@ const {
   odds: { team1, x: draw, team2 },
 } = game;
 console.log(team1, draw, team2);
+
+const printGoals = function (...players) {
+  console.log(players);
+  console.log(`${players.length} goals were scored.`);
+};
+
+printGoals(...game.scored);

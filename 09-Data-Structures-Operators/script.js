@@ -118,24 +118,30 @@ const game = {
     team2: 6.5,
   },
 };
-
+//-------- By using destructoring we do this
+// 1.
 const [players1, players2] = game.players;
 console.log(players1, players2);
 
+// 2.
 const [gk, ...fieldPlayers] = players1;
 console.log(gk, fieldPlayers);
 
+// 3.
 const allPlayers = [...players1, ...players2];
 console.log(allPlayers);
 
+// 4.
 const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
 console.log(players1Final);
 
+// 5.
 const {
   odds: { team1, x: draw, team2 },
 } = game;
 console.log(team1, draw, team2);
 
+// 6.
 const printGoals = function (...players) {
   console.log(players);
   console.log(`${players.length} goals were scored.`);

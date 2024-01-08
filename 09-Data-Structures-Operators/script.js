@@ -78,80 +78,86 @@ const restaurant = {
 // console.log(3 && 1 && undefined && 'Hello' && 23 && null);
 // //
 //----------- Coding CHALLENGE #1 ----------------------
-const game = {
-  team1: 'Bayern Munich',
-  team2: 'Borrussia Dortmund',
-  players: [
-    [
-      'Neuer',
-      'Pavard',
-      'Martinez',
-      'Alaba',
-      'Davies',
-      'Kimmich',
-      'Goretzka',
-      'Coman',
-      'Muller',
-      'Gnarby',
-      'Lewandowski',
-    ],
-    [
-      'Burki',
-      'Schulz',
-      'Hummels',
-      'Akanji',
-      'Hakimi',
-      'Weigl',
-      'Witsel',
-      'Hazard',
-      'Brandt',
-      'Sancho',
-      'Gotze',
-    ],
-  ],
-  score: '4:0',
-  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-  date: 'Nov 9th, 2037',
-  odds: {
-    team1: 1.33,
-    x: 3.25,
-    team2: 6.5,
-  },
-};
-//-------- By using destructoring we do this
-// 1.
-const [players1, players2] = game.players;
-console.log(players1, players2);
+// const game = {
+//   team1: 'Bayern Munich',
+//   team2: 'Borrussia Dortmund',
+//   players: [
+//     [
+//       'Neuer',
+//       'Pavard',
+//       'Martinez',
+//       'Alaba',
+//       'Davies',
+//       'Kimmich',
+//       'Goretzka',
+//       'Coman',
+//       'Muller',
+//       'Gnarby',
+//       'Lewandowski',
+//     ],
+//     [
+//       'Burki',
+//       'Schulz',
+//       'Hummels',
+//       'Akanji',
+//       'Hakimi',
+//       'Weigl',
+//       'Witsel',
+//       'Hazard',
+//       'Brandt',
+//       'Sancho',
+//       'Gotze',
+//     ],
+//   ],
+//   score: '4:0',
+//   scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+//   date: 'Nov 9th, 2037',
+//   odds: {
+//     team1: 1.33,
+//     x: 3.25,
+//     team2: 6.5,
+//   },
+// };
+// //-------- By using destructoring we do this
+// // 1.
+// const [players1, players2] = game.players;
+// console.log(players1, players2);
 
-// 2.
-const [gk, ...fieldPlayers] = players1;
-console.log(gk, fieldPlayers);
+// // 2.
+// const [gk, ...fieldPlayers] = players1;
+// console.log(gk, fieldPlayers);
 
-// 3.
-const allPlayers = [...players1, ...players2];
-console.log(allPlayers);
+// // 3.
+// const allPlayers = [...players1, ...players2];
+// console.log(allPlayers);
 
-// 4.
-const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
-console.log(players1Final);
+// // 4.
+// const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
+// console.log(players1Final);
 
-// 5.
-const {
-  odds: { team1, x: draw, team2 },
-} = game;
-console.log(team1, draw, team2);
+// // 5.
+// const {
+//   odds: { team1, x: draw, team2 },
+// } = game;
+// console.log(team1, draw, team2);
 
-// 6.
-const printGoals = function (...players) {
-  console.log(players);
-  console.log(`${players.length} goals were scored.`);
-};
+// // 6.
+// const printGoals = function (...players) {
+//   console.log(players);
+//   console.log(`${players.length} goals were scored.`);
+// };
 
-printGoals(...game.scored);
-printGoals('John', 'Gibson', 'Ricard');
+// printGoals(...game.scored);
+// printGoals('John', 'Gibson', 'Ricard');
 
-// 7.
-team1 < team2 && console.log('Team 1 is likely to win.');
-team1 > team2 && console.log('Team 2 is likely to win.');
+// // 7.
+// team1 < team2 && console.log('Team 1 is likely to win.');
+// team1 > team2 && console.log('Team 2 is likely to win.');
 
-3 && 3 < 4 && 5 && console.log('Print this!');
+// 3 && 3 < 4 && 5 && console.log('Print this!');
+//============================================================
+//
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(menu);
+
+for (const item of menu) console.log(item);

@@ -169,3 +169,8 @@ for (const item of menu) {
 for (const item of menu.entries()) {
   console.log(`${item[0] + 1}: ${item[1]}`);
 }
+
+//----------- By using destructuring
+for (const [i, elm] of menu.entries()) {
+  console.log(`${i + 1}: ${elm}`);
+}

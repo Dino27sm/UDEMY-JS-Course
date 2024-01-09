@@ -33,8 +33,24 @@ const restaurant = {
 };
 //===================================================================
 //--------- A New Way to write objects and methods in another Object
-console.log(restaurant);
+// console.log(restaurant);
 
+//===================================================================
+//----------- Optional Chaining
+// if (restaurant.openingHours && restaurant.openingHours.mon) {
+//   console.log(restaurant.openingHours.mon.open);
+// }
+
+// Using OPTIONAL CHAINING
+// console.log(restaurant.openingHours.mon?.open);
+// console.log(restaurant.openingHours?.mon?.open);
+
+// Example:
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+for (let day of days) {
+  const isItOpen = restaurant.openingHours[day]?.open ?? 'closed';
+  console.log(`${day} is ${isItOpen}`);
+}
 //===================================================================
 //----------- ARRAY Destructuring
 // const array_1 = [2, 3, 4];

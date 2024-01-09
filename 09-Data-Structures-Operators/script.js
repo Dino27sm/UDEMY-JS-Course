@@ -48,8 +48,8 @@ const restaurant = {
 // Example:
 const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 for (let day of days) {
-  const isItOpen = restaurant.openingHours[day]?.open ?? 'closed';
-  console.log(`${day} is ${isItOpen}`);
+  const isItWorking = restaurant.openingHours[day]?.open ?? 'closed';
+  console.log(`${day} is ${isItWorking !== 'closed' ? 'open' : isItWorking}`);
 }
 //===================================================================
 //----------- ARRAY Destructuring

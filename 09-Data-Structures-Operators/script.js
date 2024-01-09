@@ -51,6 +51,19 @@ for (let day of days) {
   const isItWorking = restaurant.openingHours[day]?.open ?? 'closed';
   console.log(`${day} is ${isItWorking !== 'closed' ? 'open' : isItWorking}`);
 }
+
+// In Methods - Optional chaining
+console.log(restaurant.order?.(1, 1) ?? 'NO such function!');
+console.log(restaurant.pastaOrder?.(1, 1) ?? 'NO such function!');
+
+// Arrays
+const users = [
+  { name: 'Anna', age: 37 },
+  { name: 'Mimi', age: 33 },
+];
+console.log(users[0]?.name ?? 'No shuch user!');
+console.log(users[1]?.name ?? 'No shuch user!');
+console.log(users[2]?.name ?? 'No shuch user!');
 //===================================================================
 //----------- ARRAY Destructuring
 // const array_1 = [2, 3, 4];

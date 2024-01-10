@@ -59,6 +59,8 @@ for (const day of properties) {
 }
 console.log(openStr);
 
+console.log(Object.keys(openingHours));
+console.log(Object.values(openingHours));
 //
 //===================================================================
 //--------- A New Way to write objects and methods in another Object

@@ -59,8 +59,18 @@ for (const day of properties) {
 }
 console.log(openStr);
 
-console.log(Object.keys(openingHours));
-console.log(Object.values(openingHours));
+// console.log(Object.keys(openingHours));
+// console.log(Object.values(openingHours));
+
+//------- Entire object
+const objEntries = Object.entries(openingHours);
+console.log(objEntries);
+
+for (const [day, { open, close }] of objEntries) {
+  // Her is used destructuring of obect Entries - keys and values
+  console.log(`On ${day} we open at ${open} and close at ${close}.`);
+}
+
 //
 //===================================================================
 //--------- A New Way to write objects and methods in another Object

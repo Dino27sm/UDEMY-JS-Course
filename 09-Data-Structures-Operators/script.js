@@ -5,6 +5,22 @@ const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 // Data needed for first part of the section
+const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+const openingHours = {
+  [weekdays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekdays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [weekdays[5]]: {
+    open: 0,
+    close: 24,
+  },
+};
 
 const restaurant = {
   name: 'Classico Italiano',
@@ -31,6 +47,19 @@ const restaurant = {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 };
+
+//===================================================================
+//--------- Looping OBJECTS
+const properties = Object.keys(openingHours);
+console.log(properties);
+
+let openStr = `We are open on ${properties.length} days: `;
+for (const day of properties) {
+  openStr += `${day}, `;
+}
+console.log(openStr);
+
+//
 //===================================================================
 //--------- A New Way to write objects and methods in another Object
 // console.log(restaurant);
@@ -45,25 +74,25 @@ const restaurant = {
 // console.log(restaurant.openingHours.mon?.open);
 // console.log(restaurant.openingHours?.mon?.open);
 
-// Example:
-const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
-for (let day of days) {
-  const isItWorking = restaurant.openingHours[day]?.open ?? 'closed';
-  console.log(`${day} is ${isItWorking !== 'closed' ? 'open' : isItWorking}`);
-}
+// // Example:
+// const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+// for (let day of days) {
+//   const isItWorking = restaurant.openingHours[day]?.open ?? 'closed';
+//   console.log(`${day} is ${isItWorking !== 'closed' ? 'open' : isItWorking}`);
+// }
 
-// In Methods - Optional chaining
-console.log(restaurant.order?.(1, 1) ?? 'NO such function!');
-console.log(restaurant.pastaOrder?.(1, 1) ?? 'NO such function!');
+// // In Methods - Optional chaining
+// console.log(restaurant.order?.(1, 1) ?? 'NO such function!');
+// console.log(restaurant.pastaOrder?.(1, 1) ?? 'NO such function!');
 
-// Arrays
-const users = [
-  { name: 'Anna', age: 37 },
-  { name: 'Mimi', age: 33 },
-];
-console.log(users[0]?.name ?? 'No shuch user!');
-console.log(users[1]?.name ?? 'No shuch user!');
-console.log(users[2]?.name ?? 'No shuch user!');
+// // Arrays
+// const users = [
+//   { name: 'Anna', age: 37 },
+//   { name: 'Mimi', age: 33 },
+// ];
+// console.log(users[0]?.name ?? 'No shuch user!');
+// console.log(users[1]?.name ?? 'No shuch user!');
+// console.log(users[2]?.name ?? 'No shuch user!');
 //===================================================================
 //----------- ARRAY Destructuring
 // const array_1 = [2, 3, 4];

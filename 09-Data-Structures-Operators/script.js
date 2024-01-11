@@ -333,7 +333,7 @@ for (const [teamName, odd] of oddsData) {
   console.log(`Odd of ${printStr}: ${odd}`);
 }
 
-const teamText = game['team2'];
+const teamText = game['team2']; // This is a test to get a property without dot
 console.log(teamText);
 // 4. Bonus: Create an object called 'scorers' which contains the names of the
 // players who scored as properties, and the number of goals as the value. In this

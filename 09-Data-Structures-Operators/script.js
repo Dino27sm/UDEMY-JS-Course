@@ -302,6 +302,23 @@ for (const scoredPlayer of game.scored.entries()) {
 
 // 2. Use a loop to calculate the average odd and log it to the console (We already
 // studied how to calculate averages, you can go check if you don't remember)
+let oddsSum = 0;
+let numberOfOdds = 0;
+for (const oddValue of Object.values(game.odds)) {
+  oddsSum += oddValue;
+  numberOfOdds += 1;
+}
+console.log(`The average Odd is: ${oddsSum / numberOfOdds}`);
+
+//----- Other Solution
+console.log(`========== SECOND SOLUTION ============`);
+const oddsArray = Object.values(game.odds);
+oddsSum = 0;
+for (const item of oddsArray) {
+  oddsSum += item;
+}
+console.log(`The average Odd is: ${oddsSum / oddsArray.length}`);
+
 // 3. Print the 3 odds to the console, but in a nice formatted way, exactly like this:
 // Odd of victory Bayern Munich: 1.33
 // Odd of draw: 3.25

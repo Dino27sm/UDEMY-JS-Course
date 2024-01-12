@@ -251,95 +251,118 @@ const restaurant = {
 // }
 //===============================================================
 //
-//----------- Coding CHALLENGE #2 ----------------------
-const game = {
-  team1: 'Bayern Munich',
-  team2: 'Borrussia Dortmund',
-  players: [
-    [
-      'Neuer',
-      'Pavard',
-      'Martinez',
-      'Alaba',
-      'Davies',
-      'Kimmich',
-      'Goretzka',
-      'Coman',
-      'Muller',
-      'Gnarby',
-      'Lewandowski',
-    ],
-    [
-      'Burki',
-      'Schulz',
-      'Hummels',
-      'Akanji',
-      'Hakimi',
-      'Weigl',
-      'Witsel',
-      'Hazard',
-      'Brandt',
-      'Sancho',
-      'Gotze',
-    ],
-  ],
-  score: '4:0',
-  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-  date: 'Nov 9th, 2037',
-  odds: {
-    team1: 1.33,
-    x: 3.25,
-    team2: 6.5,
-  },
-};
-//========= Solution of Callenge #2 ==================================
-// 1. Loop over the game.scored array and print each player name to the console,
-// along with the goal number
-//------ (Example: "Goal 1: Lewandowski")
-for (const scoredPlayer of game.scored.entries()) {
-  console.log(`Goal ${scoredPlayer[0] + 1}: ${scoredPlayer[1]}`);
-}
-
-// 2. Use a loop to calculate the average odd and log it to the console (We already
-// studied how to calculate averages, you can go check if you don't remember)
-let oddsSum = 0;
-let numberOfOdds = 0;
-for (const oddValue of Object.values(game.odds)) {
-  oddsSum += oddValue;
-  numberOfOdds += 1;
-}
-console.log(`The average Odd is: ${oddsSum / numberOfOdds}`);
-
-//----- Other Solution
-console.log(`========== SECOND SOLUTION ============`);
-const oddsArray = Object.values(game.odds);
-oddsSum = 0;
-for (const item of oddsArray) {
-  oddsSum += item;
-}
-console.log(`The average Odd is: ${oddsSum / oddsArray.length}`);
-
-// 3. Print the 3 odds to the console, but in a nice formatted way, exactly like this:
-// Odd of victory Bayern Munich: 1.33
-// Odd of draw: 3.25
-// Odd of victory Borrussia Dortmund: 6.5
-// Get the team names directly from the game object, don't hardcode them
-// (except for "draw"). Hint: Note how the odds and the game objects have the
-// same property names
-const oddsData = Object.entries(game.odds);
-console.log(oddsData);
-for (const [teamName, odd] of oddsData) {
-  let printStr = teamName === 'x' ? 'draw' : `victory ${game[teamName]}`;
-  console.log(`Odd of ${printStr}: ${odd}`);
-}
-
-const teamText = game['team2']; // This is a test to get a property without dot
-console.log(teamText);
-// 4. Bonus: Create an object called 'scorers' which contains the names of the
-// players who scored as properties, and the number of goals as the value. In this
-// game, it will look like this:
-// {
-// Gnarby: 1,
-// Hummels: 1,
-// Lewandowski: 2
+// //----------- Coding CHALLENGE #2 ----------------------
+// const game = {
+//   team1: 'Bayern Munich',
+//   team2: 'Borrussia Dortmund',
+//   players: [
+//     [
+//       'Neuer',
+//       'Pavard',
+//       'Martinez',
+//       'Alaba',
+//       'Davies',
+//       'Kimmich',
+//       'Goretzka',
+//       'Coman',
+//       'Muller',
+//       'Gnarby',
+//       'Lewandowski',
+//     ],
+//     [
+//       'Burki',
+//       'Schulz',
+//       'Hummels',
+//       'Akanji',
+//       'Hakimi',
+//       'Weigl',
+//       'Witsel',
+//       'Hazard',
+//       'Brandt',
+//       'Sancho',
+//       'Gotze',
+//     ],
+//   ],
+//   score: '4:0',
+//   scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+//   date: 'Nov 9th, 2037',
+//   odds: {
+//     team1: 1.33,
+//     x: 3.25,
+//     team2: 6.5,
+//   },
+// };
+// //========= Solution of Callenge #2 ==================================
+// // 1. Loop over the game.scored array and print each player name to the console,
+// // along with the goal number
+// //------ (Example: "Goal 1: Lewandowski")
+// for (const scoredPlayer of game.scored.entries()) {
+//   console.log(`Goal ${scoredPlayer[0] + 1}: ${scoredPlayer[1]}`);
 // }
+
+// // 2. Use a loop to calculate the average odd and log it to the console (We already
+// // studied how to calculate averages, you can go check if you don't remember)
+// let oddsSum = 0;
+// let numberOfOdds = 0;
+// for (const oddValue of Object.values(game.odds)) {
+//   oddsSum += oddValue;
+//   numberOfOdds += 1;
+// }
+// console.log(`The average Odd is: ${oddsSum / numberOfOdds}`);
+
+// //----- Other Solution
+// console.log(`========== SECOND SOLUTION ============`);
+// const oddsArray = Object.values(game.odds);
+// oddsSum = 0;
+// for (const item of oddsArray) {
+//   oddsSum += item;
+// }
+// console.log(`The average Odd is: ${oddsSum / oddsArray.length}`);
+
+// // 3. Print the 3 odds to the console, but in a nice formatted way, exactly like this:
+// // Odd of victory Bayern Munich: 1.33
+// // Odd of draw: 3.25
+// // Odd of victory Borrussia Dortmund: 6.5
+// // Get the team names directly from the game object, don't hardcode them
+// // (except for "draw"). Hint: Note how the odds and the game objects have the
+// // same property names
+// const oddsData = Object.entries(game.odds);
+// console.log(oddsData);
+// for (const [teamName, odd] of oddsData) {
+//   let printStr = teamName === 'x' ? 'draw' : `victory ${game[teamName]}`;
+//   console.log(`Odd of ${printStr}: ${odd}`);
+// }
+
+// const teamText = game['team2']; // This is a test to get a property without dot
+// console.log(teamText);
+// // 4. Bonus: Create an object called 'scorers' which contains the names of the
+// // players who scored as properties, and the number of goals as the value. In this
+// // game, it will look like this:
+// // {
+// // Gnarby: 1,
+// // Hummels: 1,
+// // Lewandowski: 2
+// // }
+//============= SETs in JS ====================================
+const ordersSet = new Set([
+  'Pasta',
+  'Pizza',
+  'Pizza',
+  'Risotto',
+  'Pasta',
+  'Pizza',
+]);
+console.log(ordersSet); // SET does not contain repeated elements
+
+console.log(new Set('Arto')); // SETs are Iterable data structure
+console.log(ordersSet.size); // To get the size of a SET
+
+console.log(ordersSet.has('Pizza')); // To check for containing an element
+console.log(ordersSet.has('Bread'));
+
+ordersSet.add('Garlic bread');
+ordersSet.add('Garlic bread'); // This elemnt is added twice but in SET it is single
+console.log(ordersSet); // Only one "Garlic bread" - SET cannot contain repetitions
+
+ordersSet.delete('Risotto'); // To delete an element from SET
+console.log(ordersSet);

@@ -343,48 +343,71 @@ const restaurant = {
 // // Hummels: 1,
 // // Lewandowski: 2
 // // }
-//============= SETs in JS ====================================
-const ordersSet = new Set([
-  'Pasta',
-  'Pizza',
-  'Pizza',
-  'Risotto',
-  'Pasta',
-  'Pizza',
-]);
-console.log(ordersSet); // SET does not contain repeated elements
+// //============= SETs in JS ====================================
+// const ordersSet = new Set([
+//   'Pasta',
+//   'Pizza',
+//   'Pizza',
+//   'Risotto',
+//   'Pasta',
+//   'Pizza',
+// ]);
+// console.log(ordersSet); // SET does not contain repeated elements
 
-console.log(new Set('Arto')); // SETs are Iterable data structure
-console.log(ordersSet.size); // To get the size of a SET
+// console.log(new Set('Arto')); // SETs are Iterable data structure
+// console.log(ordersSet.size); // To get the size of a SET
 
-console.log(ordersSet.has('Pizza')); // To check for containing an element
-console.log(ordersSet.has('Bread'));
+// console.log(ordersSet.has('Pizza')); // To check for containing an element
+// console.log(ordersSet.has('Bread'));
 
-ordersSet.add('Garlic bread');
-ordersSet.add('Garlic bread'); // This element is added twice but in SET it is single
-console.log(ordersSet); // Only one "Garlic bread" - SET consist of only unique elements
+// ordersSet.add('Garlic bread');
+// ordersSet.add('Garlic bread'); // This element is added twice but in SET it is single
+// console.log(ordersSet); // Only one "Garlic bread" - SET consist of only unique elements
 
-ordersSet.delete('Risotto'); // To delete an element from SET
-console.log(ordersSet);
-
-// ordersSet.clear(); // To delete all elements
+// ordersSet.delete('Risotto'); // To delete an element from SET
 // console.log(ordersSet);
 
-// SET is Iterable
-for (const order of ordersSet) {
-  console.log(order);
-}
+// // ordersSet.clear(); // To delete all elements
+// // console.log(ordersSet);
 
-// Example:  How to check the number of different letters in a word
-const word_1 = 'elements';
-const word_2 = 'structures';
+// // SET is Iterable
+// for (const order of ordersSet) {
+//   console.log(order);
+// }
 
-console.log(word_1);
-console.log(new Set(word_1).size);
+// // Example:  How to check the number of different letters in a word
+// const word_1 = 'elements';
+// const word_2 = 'structures';
 
+// console.log(word_1);
+// console.log(new Set(word_1).size);
+
+// console.log(
+//   `The word "${word_1}" contains ${new Set(word_1).size} different letters.`
+// );
+// console.log(
+//   `The word "${word_2}" contains ${new Set(word_2).size} different letters.`
+// );
+//
+//============ MAPs in JS ============================
+const newRestaurant = new Map(); // To define an empy MAP
+
+newRestaurant.set('name', 'Ropotamo');
+newRestaurant.set(1, '20 tables');
+newRestaurant.set(2, 'Up to 80 guests');
+newRestaurant.set(true, 'The restaurant is open');
+newRestaurant.set(false, 'The restaurant is close');
+
+newRestaurant.set('open', 11).set('close', 22); // Can be used in chain
+
+console.log(newRestaurant);
+console.log(newRestaurant.get(true));
+console.log(newRestaurant.get(2)); // To get certain element
+
+// Example:
+const time = 17;
 console.log(
-  `The word "${word_1}" contains ${new Set(word_1).size} different letters.`
-);
-console.log(
-  `The word "${word_2}" contains ${new Set(word_2).size} different letters.`
+  newRestaurant.get(
+    time > newRestaurant.get('open') && time < newRestaurant.get('close')
+  )
 );

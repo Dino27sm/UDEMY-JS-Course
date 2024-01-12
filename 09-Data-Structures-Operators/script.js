@@ -411,3 +411,6 @@ console.log(
     time > newRestaurant.get('open') && time < newRestaurant.get('close')
   )
 );
+// Objects can be used as keys in MAPs
+newRestaurant.set(document.querySelector('h1'), 'Heading'); // DOM element is used
+console.log(newRestaurant);

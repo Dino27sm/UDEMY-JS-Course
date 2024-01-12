@@ -361,8 +361,30 @@ console.log(ordersSet.has('Pizza')); // To check for containing an element
 console.log(ordersSet.has('Bread'));
 
 ordersSet.add('Garlic bread');
-ordersSet.add('Garlic bread'); // This elemnt is added twice but in SET it is single
-console.log(ordersSet); // Only one "Garlic bread" - SET cannot contain repetitions
+ordersSet.add('Garlic bread'); // This element is added twice but in SET it is single
+console.log(ordersSet); // Only one "Garlic bread" - SET consist of only unique elements
 
 ordersSet.delete('Risotto'); // To delete an element from SET
 console.log(ordersSet);
+
+// ordersSet.clear(); // To delete all elements
+// console.log(ordersSet);
+
+// SET is Iterable
+for (const order of ordersSet) {
+  console.log(order);
+}
+
+// Example:  How to check the number of different letters in a word
+const word_1 = 'elements';
+const word_2 = 'structures';
+
+console.log(word_1);
+console.log(new Set(word_1).size);
+
+console.log(
+  `The word "${word_1}" contains ${new Set(word_1).size} different letters.`
+);
+console.log(
+  `The word "${word_2}" contains ${new Set(word_2).size} different letters.`
+);

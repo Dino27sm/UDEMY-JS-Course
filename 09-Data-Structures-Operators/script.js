@@ -431,8 +431,15 @@ const question = new Map([
 console.log(question);
 
 // ------ Convert an Object to a MAP
-console.log(Object.entries(openingHours));
+// console.log(Object.entries(openingHours));
 // The result of Object.entries - an Array of 2-dimensional arrays, so it is
 // very convenient to convert an Object to a MAP
-const hoursMap = new Map(Object.entries(openingHours));
-console.log(hoursMap);
+// const hoursMap = new Map(Object.entries(openingHours));
+// console.log(hoursMap);
+//
+// MAPs can be iterated using FOR OF
+// Example:
+const answer = Number(prompt(`${question.get('question')}`));
+console.log(answer);
+
+console.log(question.get(question.get('correct') === answer));

@@ -390,27 +390,42 @@ const restaurant = {
 // );
 //
 //============ MAPs in JS ============================
-const newRestaurant = new Map(); // To define an empy MAP
+// //-------- To define an empy MAP using SET Method
+// const newRestaurant = new Map();
 
-newRestaurant.set('name', 'Ropotamo');
-newRestaurant.set(1, '20 tables');
-newRestaurant.set(2, 'Up to 80 guests');
-newRestaurant.set(true, 'The restaurant is open');
-newRestaurant.set(false, 'The restaurant is close');
+// newRestaurant.set('name', 'Ropotamo');
+// newRestaurant.set(1, '20 tables');
+// newRestaurant.set(2, 'Up to 80 guests');
+// newRestaurant.set(true, 'The restaurant is open');
+// newRestaurant.set(false, 'The restaurant is close');
 
-newRestaurant.set('open', 11).set('close', 22); // Can be used in chain
+// newRestaurant.set('open', 11).set('close', 22); // Can be used in chain
 
-console.log(newRestaurant);
-console.log(newRestaurant.get(true));
-console.log(newRestaurant.get(2)); // To get certain element
+// console.log(newRestaurant);
+// console.log(newRestaurant.get(true));
+// console.log(newRestaurant.get(2)); // To get certain element
 
-// Example:
-const time = 17;
-console.log(
-  newRestaurant.get(
-    time > newRestaurant.get('open') && time < newRestaurant.get('close')
-  )
-);
-// Objects can be used as keys in MAPs
-newRestaurant.set(document.querySelector('h1'), 'Heading'); // DOM element is used
-console.log(newRestaurant);
+// // Example:
+// const time = 17;
+// console.log(
+//   newRestaurant.get(
+//     time > newRestaurant.get('open') && time < newRestaurant.get('close')
+//   )
+// );
+// // Objects can be used as keys in MAPs
+// newRestaurant.set(document.querySelector('h1'), 'Heading'); // DOM element is used
+// console.log(newRestaurant);
+
+//-------- To define an empy MAP using ARRAYS
+// Define MAPs by using Arrays of 2-dimensional array,
+// where the first element is the KEY and the second is the VALUE
+const question = new Map([
+  ['question', 'What is the best programming language in the world?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'JavaScript'],
+  ['correct', 3],
+  [true, 'Correct👍!'],
+  [false, 'Try again😒!'],
+]);
+console.log(question);

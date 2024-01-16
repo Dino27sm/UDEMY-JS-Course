@@ -429,3 +429,10 @@ const question = new Map([
   [false, 'Try again😒!'],
 ]);
 console.log(question);
+
+// ------ Convert an Object to a MAP
+console.log(Object.entries(openingHours));
+// The result of Object.entries - an Array of 2-dimensional arrays, so it is
+// very convenient to convert an Object to a MAP
+const hoursMap = new Map(Object.entries(openingHours));
+console.log(hoursMap);

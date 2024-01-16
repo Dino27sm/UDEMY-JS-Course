@@ -438,8 +438,18 @@ console.log(question);
 // console.log(hoursMap);
 //
 // MAPs can be iterated using FOR OF
-// Example:
-const answer = Number(prompt(`${question.get('question')}`));
-console.log(answer);
+// // Example:
+// const answer = Number(prompt(`${question.get('question')}`));
+// console.log(answer);
 
-console.log(question.get(question.get('correct') === answer));
+// console.log(question.get(question.get('correct') === answer));
+// //
+//------- Convert MAP to Array
+const questionArray = [...question];
+console.log(questionArray);
+
+const questionKeys = [...question.keys()]; // To get keys
+console.log(questionKeys);
+
+const questionValues = [...question.values()]; // to get values
+console.log(questionValues);

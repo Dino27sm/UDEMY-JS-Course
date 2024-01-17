@@ -482,7 +482,7 @@ const gameEvents = new Map([
 ]);
 //------- Solution -------
 // 1.
-const events = new Set(gameEvents.values());
+const events = [...new Set(gameEvents.values())]; // Use SET to eliminate repetitions
 console.log(events);
 
 // 2.

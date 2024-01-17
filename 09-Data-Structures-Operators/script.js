@@ -488,6 +488,10 @@ console.log(events);
 // 2.
 console.log(
   gameEvents.delete(64) ? `Element 64 is deleted!` : 'No such element.'
-);
-// Delete() method returns "true" if the elm exist
+); // Delete() method returns "true" if the elm exist
 console.log(gameEvents);
+
+// 3.
+console.log(
+  `An event happened, on average, every ${90 / gameEvents.size} minutes.`
+);

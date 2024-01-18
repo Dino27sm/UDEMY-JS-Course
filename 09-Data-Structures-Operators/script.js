@@ -547,3 +547,11 @@ const correctMessage = dolarMessage.replaceAll('USD', 'EUR');
 
 console.log(euroMessage);
 console.log(correctMessage);
+
+// How to use "includes" and "startsWith"
+console.log(dolarMessage.includes('USD')); // true
+console.log(dolarMessage.includes('EUR')); // false
+
+console.log(dolarMessage.startsWith('The'));
+console.log(dolarMessage.startsWith('Th'));
+console.log(dolarMessage.startsWith('the')); // It is case sensitive

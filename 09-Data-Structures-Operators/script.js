@@ -514,3 +514,6 @@ console.log('Text'[0]); // result -> T
 
 console.log(plane.length); // result -> 4
 console.log('message'.length); // result -> 7
+
+console.log(airline.indexOf('r')); // Returns the position of first occurrence of "r"
+console.log(airline.lastIndexOf('r')); // Returns the last occurance of "r"

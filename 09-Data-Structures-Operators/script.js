@@ -540,6 +540,10 @@ const testMessage = '   Hello World!     ';
 console.log(testMessage.trim()); // To trim whitespaces from both sides of the string
 
 // How to use "replace" metod
-const dolarMessage = 'The price is 257.13 USD';
+const dolarMessage =
+  'There are several prices: 257.13 USD, 348.67 USD 17.19 USD';
 const euroMessage = dolarMessage.replace('USD', 'EUR');
+const correctMessage = dolarMessage.replaceAll('USD', 'EUR');
+
 console.log(euroMessage);
+console.log(correctMessage);

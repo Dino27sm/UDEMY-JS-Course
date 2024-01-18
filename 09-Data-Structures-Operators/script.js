@@ -525,3 +525,13 @@ console.log(airline.slice(4)); // Result - Air Portugal
 console.log(airline.slice(0, 11)); // Result - TAP Air Por
 
 console.log(airline.slice(-3)); // Prints the last 3 symbols
+
+//================= SRINGS Part 1 =========================================
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+console.log('Text message'.toUpperCase());
+
+// Example: how to write the name "niKolOv" in a right way as Nikolov
+const myName = 'niKolOv';
+const myCorrectedName = myName[0].toUpperCase() + myName.slice(1).toLowerCase();
+console.log(`"${myName}" has been corrected to -> ${myCorrectedName}.`);

@@ -466,39 +466,51 @@ const restaurant = {
 
 //   4. Loop over 'gameEvents' and log each element to the console, marking
 //   whether it's in the first half or second half (after 45 min) of the game, like this: [FIRST HALF] 17:  ⚽GOAL
-//
-const gameEvents = new Map([
-  [17, '⚽ GOAL'],
-  [36, '🔁 Substitution'],
-  [47, '⚽ GOAL'],
-  [61, '🔁 Substitution'],
-  [64, '🔶 Yellow card'],
-  [69, '🔴 Red card'],
-  [70, '🔁 Substitution'],
-  [72, '🔁 Substitution'],
-  [76, '⚽ GOAL'],
-  [80, '⚽ GOAL'],
-  [92, '🔶 Yellow card'],
-]);
+// //
+// const gameEvents = new Map([
+//   [17, '⚽ GOAL'],
+//   [36, '🔁 Substitution'],
+//   [47, '⚽ GOAL'],
+//   [61, '🔁 Substitution'],
+//   [64, '🔶 Yellow card'],
+//   [69, '🔴 Red card'],
+//   [70, '🔁 Substitution'],
+//   [72, '🔁 Substitution'],
+//   [76, '⚽ GOAL'],
+//   [80, '⚽ GOAL'],
+//   [92, '🔶 Yellow card'],
+// ]);
 //------- Solution -------
-// 1.
-const events = [...new Set(gameEvents.values())]; // Use SET to eliminate repetitions
-console.log(events);
+// // 1.
+// const events = [...new Set(gameEvents.values())]; // Use SET to eliminate repetitions
+// console.log(events);
 
-// 2.
-console.log(
-  gameEvents.delete(64) ? `Element 64 is deleted!` : 'No such element.'
-); // Delete() method returns "true" if the elm exist
-console.log(gameEvents);
+// // 2.
+// console.log(
+//   gameEvents.delete(64) ? `Element 64 is deleted!` : 'No such element.'
+// ); // Delete() method returns "true" if the elm exist
+// console.log(gameEvents);
 
-// 3.
-console.log(
-  `An event happened, on average, every ${90 / gameEvents.size} minutes.`
-);
+// // 3.
+// console.log(
+//   `An event happened, on average, every ${90 / gameEvents.size} minutes.`
+// );
 
-// 4.
-for (const [time, event] of gameEvents.entries()) {
-  console.log(
-    `${time <= 45 ? '[FIRST HALF]' : '[SECOND HALF]'} ${time}: ${event}`
-  );
-}
+// // 4.
+// for (const [time, event] of gameEvents.entries()) {
+//   console.log(
+//     `${time <= 45 ? '[FIRST HALF]' : '[SECOND HALF]'} ${time}: ${event}`
+//   );
+// }
+//================= SRINGS Part 1 =========================================
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+console.log(plane[0]); // result -> A
+console.log(plane[1]); // result -> 3
+console.log(plane[2]); // result -> 2
+
+console.log('Text'[0]); // result -> T
+
+console.log(plane.length); // result -> 4
+console.log('message'.length); // result -> 7

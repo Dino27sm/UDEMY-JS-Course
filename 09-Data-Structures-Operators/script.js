@@ -535,3 +535,11 @@ console.log('Text message'.toUpperCase());
 const myName = 'niKolOv';
 const myCorrectedName = myName[0].toUpperCase() + myName.slice(1).toLowerCase();
 console.log(`"${myName}" has been corrected to -> ${myCorrectedName}.`);
+
+const testMessage = '   Hello World!     ';
+console.log(testMessage.trim()); // To trim whitespaces from both sides of the string
+
+// How to use "replace" metod
+const dolarMessage = 'The price is 257.13 USD';
+const euroMessage = dolarMessage.replace('USD', 'EUR');
+console.log(euroMessage);

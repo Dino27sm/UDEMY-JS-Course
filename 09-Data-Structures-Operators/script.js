@@ -517,3 +517,11 @@ console.log('message'.length); // result -> 7
 
 console.log(airline.indexOf('r')); // Returns the position of first occurrence of "r"
 console.log(airline.lastIndexOf('r')); // Returns the last occurance of "r"
+
+console.log(airline.indexOf('Portugal')); // It is case sesetive - returns 8
+console.log(airline.indexOf('portugal')); // Not found - returns -1
+
+console.log(airline.slice(4)); // Result - Air Portugal
+console.log(airline.slice(0, 11)); // Result - TAP Air Por
+
+console.log(airline.slice(-3)); // Prints the last 3 symbols

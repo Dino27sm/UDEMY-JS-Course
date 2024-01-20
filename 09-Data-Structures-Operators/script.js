@@ -564,9 +564,13 @@ for (let i = 0; i < text_1.length; i++) {
   text_1[i] = text_1[i].trim();
 }
 console.log(text_1);
-//
+//------------------- SPLIT method ----------------------------------------
 const fullName = 'John Smith';
-const [firsName, secondName] = fullName.split(' ');
+const [firsName, lastName] = fullName.split(' ');
 console.log(fullName);
 console.log(firsName);
-console.log(secondName);
+console.log(lastName);
+
+//------------------- JOIN method -----------------------------------------
+const text_2 = ['Mr.', firsName, lastName.toUpperCase()].join(' ');
+console.log(text_2);

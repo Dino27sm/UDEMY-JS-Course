@@ -559,7 +559,7 @@ const restaurant = {
 //================= SRINGS Part 3 =========================================
 console.log('This is a text message');
 console.log('This' + 'is' + 'a' + 'text' + 'message');
-const text_1 = 'This + is + a + text + message'.split('+'); // Creates an Array
+let text_1 = 'This + is + a + text + message'.split('+'); // Creates an Array
 for (let i = 0; i < text_1.length; i++) {
   text_1[i] = text_1[i].trim();
 }
@@ -573,4 +573,20 @@ console.log(lastName);
 
 //------------------- JOIN method -----------------------------------------
 const text_2 = ['Mr.', firsName, lastName.toUpperCase()].join(' ');
+const text_3 = ['Mr.', firsName, lastName.toUpperCase()].join('---');
 console.log(text_2);
+console.log(text_3);
+
+// Define a function to capitalize first letters of names
+let someNames = 'dino, arto, risa';
+
+function nameCapitalize(names) {
+  let name = names.split(', ');
+  let newName = [];
+  for (const item of name) {
+    newName.push(item.replace(item[0], item[0].toUpperCase()));
+  }
+  return newName.join(', ');
+}
+
+console.log(nameCapitalize(someNames));

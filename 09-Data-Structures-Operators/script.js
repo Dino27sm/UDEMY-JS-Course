@@ -590,3 +590,24 @@ function nameCapitalize(names) {
 }
 
 console.log(nameCapitalize(someNames));
+
+//------------------- PADDING the string ------------------------------------
+const message_1 = 'This is a message';
+
+const padMessage_1 = message_1.padStart(27, '+');
+console.log(padMessage_1);
+
+const padMessage_2 = message_1.padEnd(27, '+');
+console.log(padMessage_2);
+
+const padMessage_3 = message_1.padStart(27, '+').padEnd(37, '#');
+console.log(padMessage_3);
+
+const cardMasking = function (cardNumber) {
+  const card = String(cardNumber);
+  const getLastDigits = card.slice(-4);
+  const maskedNum = getLastDigits.padStart(card.length, '*');
+  return maskedNum;
+};
+
+console.log(cardMasking(4424576683571322));

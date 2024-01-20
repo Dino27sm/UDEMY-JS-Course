@@ -502,56 +502,71 @@ const restaurant = {
 //     `${time <= 45 ? '[FIRST HALF]' : '[SECOND HALF]'} ${time}: ${event}`
 //   );
 // }
-//================= SRINGS Part 1 =========================================
-const airline = 'TAP Air Portugal';
-const plane = 'A320';
+// //================= SRINGS Part 1 =========================================
+// const airline = 'TAP Air Portugal';
+// const plane = 'A320';
 
-console.log(plane[0]); // result -> A
-console.log(plane[1]); // result -> 3
-console.log(plane[2]); // result -> 2
+// console.log(plane[0]); // result -> A
+// console.log(plane[1]); // result -> 3
+// console.log(plane[2]); // result -> 2
 
-console.log('Text'[0]); // result -> T
+// console.log('Text'[0]); // result -> T
 
-console.log(plane.length); // result -> 4
-console.log('message'.length); // result -> 7
+// console.log(plane.length); // result -> 4
+// console.log('message'.length); // result -> 7
 
-console.log(airline.indexOf('r')); // Returns the position of first occurrence of "r"
-console.log(airline.lastIndexOf('r')); // Returns the last occurance of "r"
+// console.log(airline.indexOf('r')); // Returns the position of first occurrence of "r"
+// console.log(airline.lastIndexOf('r')); // Returns the last occurance of "r"
 
-console.log(airline.indexOf('Portugal')); // It is case sesetive - returns 8
-console.log(airline.indexOf('portugal')); // Not found - returns -1
+// console.log(airline.indexOf('Portugal')); // It is case sesetive - returns 8
+// console.log(airline.indexOf('portugal')); // Not found - returns -1
 
-console.log(airline.slice(4)); // Result - Air Portugal
-console.log(airline.slice(0, 11)); // Result - TAP Air Por
+// console.log(airline.slice(4)); // Result - Air Portugal
+// console.log(airline.slice(0, 11)); // Result - TAP Air Por
 
-console.log(airline.slice(-3)); // Prints the last 3 symbols
+// console.log(airline.slice(-3)); // Prints the last 3 symbols
 
-//================= SRINGS Part 1 =========================================
-console.log(airline.toLowerCase());
-console.log(airline.toUpperCase());
-console.log('Text message'.toUpperCase());
+// //================= SRINGS Part 2 =========================================
+// console.log(airline.toLowerCase());
+// console.log(airline.toUpperCase());
+// console.log('Text message'.toUpperCase());
 
-// Example: how to write the name "niKolOv" in a right way as Nikolov
-const myName = 'niKolOv';
-const myCorrectedName = myName[0].toUpperCase() + myName.slice(1).toLowerCase();
-console.log(`"${myName}" has been corrected to -> ${myCorrectedName}.`);
+// // Example: how to write the name "niKolOv" in a right way as Nikolov
+// const myName = 'niKolOv';
+// const myCorrectedName = myName[0].toUpperCase() + myName.slice(1).toLowerCase();
+// console.log(`"${myName}" has been corrected to -> ${myCorrectedName}.`);
 
-const testMessage = '   Hello World!     ';
-console.log(testMessage.trim()); // To trim whitespaces from both sides of the string
+// const testMessage = '   Hello World!     ';
+// console.log(testMessage.trim()); // To trim whitespaces from both sides of the string
 
-// How to use "replace" metod
-const dolarMessage =
-  'There are several prices: 257.13 USD, 348.67 USD 17.19 USD';
-const euroMessage = dolarMessage.replace('USD', 'EUR');
-const correctMessage = dolarMessage.replaceAll('USD', 'EUR');
+// // How to use "replace" metod
+// const dolarMessage =
+//   'There are several prices: 257.13 USD, 348.67 USD 17.19 USD';
+// const euroMessage = dolarMessage.replace('USD', 'EUR');
+// const correctMessage = dolarMessage.replaceAll('USD', 'EUR');
 
-console.log(euroMessage);
-console.log(correctMessage);
+// console.log(euroMessage);
+// console.log(correctMessage);
 
-// How to use "includes" and "startsWith"
-console.log(dolarMessage.includes('USD')); // true
-console.log(dolarMessage.includes('EUR')); // false
+// // How to use "includes" and "startsWith"
+// console.log(dolarMessage.includes('USD')); // true
+// console.log(dolarMessage.includes('EUR')); // false
 
-console.log(dolarMessage.startsWith('The'));
-console.log(dolarMessage.startsWith('Th'));
-console.log(dolarMessage.startsWith('the')); // It is case sensitive
+// console.log(dolarMessage.startsWith('The'));
+// console.log(dolarMessage.startsWith('Th'));
+// console.log(dolarMessage.startsWith('the')); // It is case sensitive
+// //
+//================= SRINGS Part 3 =========================================
+console.log('This is a text message');
+console.log('This' + 'is' + 'a' + 'text' + 'message');
+const text_1 = 'This + is + a + text + message'.split('+'); // Creates an Array
+for (let i = 0; i < text_1.length; i++) {
+  text_1[i] = text_1[i].trim();
+}
+console.log(text_1);
+//
+const fullName = 'John Smith';
+const [firsName, secondName] = fullName.split(' ');
+console.log(fullName);
+console.log(firsName);
+console.log(secondName);

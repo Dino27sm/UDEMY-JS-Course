@@ -611,3 +611,14 @@ const cardMasking = function (cardNumber) {
 };
 
 console.log(cardMasking(4424576683571322));
+
+//--------------------- REPEAT method ---------------------------------------
+console.log('Hello World !'.repeat(5));
+
+const waitingPlanes = function (numOfPlanes) {
+  const numPlanes = Number(numOfPlanes);
+  return '✈️ '.repeat(numPlanes) + 'Planes are waiting !';
+};
+
+console.log(waitingPlanes(3));
+console.log(waitingPlanes(7));

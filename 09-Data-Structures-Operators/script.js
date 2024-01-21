@@ -643,6 +643,10 @@ const restaurant = {
 // calculateAge ✅✅✅✅
 // delayedDeparture ✅✅✅✅✅
 //
+//----------- Create DOM elements --------------------------------
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+//----------- Define a function
 const toCamelCase = function (underscoreText) {
   let arrayWords = [...underscoreText.split('_')];
   for (let i = 0; i < arrayWords.length; i++) {
@@ -657,9 +661,13 @@ const toCamelCase = function (underscoreText) {
   const camelCaseText = arrayWords.join('');
   return camelCaseText;
 };
-
-console.log(toCamelCase('underscore_case'));
-console.log(toCamelCase('first_name'));
-console.log(toCamelCase('Some_Variable'));
-console.log(toCamelCase('calculate_AGE'));
-console.log(toCamelCase('delayed_departure'));
+//
+document.querySelector('button').addEventListener('click', function () {
+  const text = document.querySelector('textarea').value;
+  const arrayText = [...text.split('\n')];
+  const arrayOut = [];
+  for (const item of arrayText) {
+    arrayOut.push(toCamelCase(item));
+  }
+  document.querySelector('textarea').value = arrayOut.join('\n');
+});

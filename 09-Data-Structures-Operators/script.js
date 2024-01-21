@@ -666,9 +666,8 @@ document.querySelector('button').addEventListener('click', function () {
   const text = document.querySelector('textarea').value;
   const arrayText = [...text.split('\n')];
   const arrayOut = [];
-  let counter = 0;
-  for (const item of arrayText) {
-    arrayOut.push(toCamelCase(item).padEnd(20, ' ') + '✅'.repeat(++counter));
+  for (const [index, item] of arrayText.entries()) {
+    arrayOut.push(toCamelCase(item).padEnd(20, ' ') + '✅'.repeat(index + 1));
   }
   document.querySelector('textarea').value = arrayOut.join('\n');
 });

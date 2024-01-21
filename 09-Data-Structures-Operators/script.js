@@ -556,69 +556,110 @@ const restaurant = {
 // console.log(dolarMessage.startsWith('Th'));
 // console.log(dolarMessage.startsWith('the')); // It is case sensitive
 // //
-//================= SRINGS Part 3 =========================================
-console.log('This is a text message');
-console.log('This' + 'is' + 'a' + 'text' + 'message');
-let text_1 = 'This + is + a + text + message'.split('+'); // Creates an Array
-for (let i = 0; i < text_1.length; i++) {
-  text_1[i] = text_1[i].trim();
-}
-console.log(text_1);
-//------------------- SPLIT method ----------------------------------------
-const fullName = 'John Smith';
-const [firsName, lastName] = fullName.split(' ');
-console.log(fullName);
-console.log(firsName);
-console.log(lastName);
+// //================= SRINGS Part 3 =========================================
+// console.log('This is a text message');
+// console.log('This' + 'is' + 'a' + 'text' + 'message');
+// let text_1 = 'This + is + a + text + message'.split('+'); // Creates an Array
+// for (let i = 0; i < text_1.length; i++) {
+//   text_1[i] = text_1[i].trim();
+// }
+// console.log(text_1);
+// //------------------- SPLIT method ----------------------------------------
+// const fullName = 'John Smith';
+// const [firsName, lastName] = fullName.split(' ');
+// console.log(fullName);
+// console.log(firsName);
+// console.log(lastName);
 
-//------------------- JOIN method -----------------------------------------
-const text_2 = ['Mr.', firsName, lastName.toUpperCase()].join(' ');
-const text_3 = ['Mr.', firsName, lastName.toUpperCase()].join('---');
-console.log(text_2);
-console.log(text_3);
+// //------------------- JOIN method -----------------------------------------
+// const text_2 = ['Mr.', firsName, lastName.toUpperCase()].join(' ');
+// const text_3 = ['Mr.', firsName, lastName.toUpperCase()].join('---');
+// console.log(text_2);
+// console.log(text_3);
 
-// Define a function to capitalize first letters of names
-let someNames = 'dino, arto, risa';
+// // Define a function to capitalize first letters of names
+// let someNames = 'dino, arto, risa';
 
-function nameCapitalize(names) {
-  let name = names.split(', ');
-  let newName = [];
-  for (const item of name) {
-    newName.push(item.replace(item[0], item[0].toUpperCase()));
+// function nameCapitalize(names) {
+//   let name = names.split(', ');
+//   let newName = [];
+//   for (const item of name) {
+//     newName.push(item.replace(item[0], item[0].toUpperCase()));
+//   }
+//   return newName.join(', ');
+// }
+
+// console.log(nameCapitalize(someNames));
+
+// //------------------- PADDING the string ------------------------------------
+// const message_1 = 'This is a message';
+
+// const padMessage_1 = message_1.padStart(27, '+');
+// console.log(padMessage_1);
+
+// const padMessage_2 = message_1.padEnd(27, '+');
+// console.log(padMessage_2);
+
+// const padMessage_3 = message_1.padStart(27, '+').padEnd(37, '#');
+// console.log(padMessage_3);
+
+// const cardMasking = function (cardNumber) {
+//   const card = String(cardNumber);
+//   const getLastDigits = card.slice(-4);
+//   const maskedNum = getLastDigits.padStart(card.length, '*');
+//   return maskedNum;
+// };
+
+// console.log(cardMasking(4424576683571322));
+
+// //--------------------- REPEAT method ---------------------------------------
+// console.log('Hello World !'.repeat(5));
+
+// const waitingPlanes = function (numOfPlanes) {
+//   const numPlanes = Number(numOfPlanes);
+//   return '✈️ '.repeat(numPlanes) + 'Planes are waiting !';
+// };
+
+// console.log(waitingPlanes(3));
+// console.log(waitingPlanes(7));
+//
+//========================= Coding CHALLENGE #4 =======================================
+//
+// Write a program that receives a list of variable names written in underscore_case
+// and convert them to camelCase. The input will come from a textarea inserted into the
+//DOM (see code below to insert the elements), and conversion will happen when the
+//button is pressed.
+
+// Test data (pasted to textarea, including spaces):
+// underscore_case
+// first_name
+// Some_Variable
+// calculate_AGE
+// delayed_departure
+// Should produce this output (5 separate console.log outputs):
+// underscoreCase ✅
+// firstName ✅✅
+// someVariable ✅✅✅
+// calculateAge ✅✅✅✅
+// delayedDeparture ✅✅✅✅✅
+//
+const toCamelCase = function (underscoreText) {
+  let arrayWords = [...underscoreText.split('_')];
+  for (let i = 0; i < arrayWords.length; i++) {
+    arrayWords[i] = arrayWords[i].toLowerCase();
+    if (i !== 0) {
+      arrayWords[i] = arrayWords[i].replace(
+        arrayWords[i][0],
+        arrayWords[i][0].toUpperCase()
+      );
+    }
   }
-  return newName.join(', ');
-}
-
-console.log(nameCapitalize(someNames));
-
-//------------------- PADDING the string ------------------------------------
-const message_1 = 'This is a message';
-
-const padMessage_1 = message_1.padStart(27, '+');
-console.log(padMessage_1);
-
-const padMessage_2 = message_1.padEnd(27, '+');
-console.log(padMessage_2);
-
-const padMessage_3 = message_1.padStart(27, '+').padEnd(37, '#');
-console.log(padMessage_3);
-
-const cardMasking = function (cardNumber) {
-  const card = String(cardNumber);
-  const getLastDigits = card.slice(-4);
-  const maskedNum = getLastDigits.padStart(card.length, '*');
-  return maskedNum;
+  const camelCaseText = arrayWords.join('');
+  return camelCaseText;
 };
 
-console.log(cardMasking(4424576683571322));
-
-//--------------------- REPEAT method ---------------------------------------
-console.log('Hello World !'.repeat(5));
-
-const waitingPlanes = function (numOfPlanes) {
-  const numPlanes = Number(numOfPlanes);
-  return '✈️ '.repeat(numPlanes) + 'Planes are waiting !';
-};
-
-console.log(waitingPlanes(3));
-console.log(waitingPlanes(7));
+console.log(toCamelCase('underscore_case'));
+console.log(toCamelCase('first_name'));
+console.log(toCamelCase('Some_Variable'));
+console.log(toCamelCase('calculate_AGE'));
+console.log(toCamelCase('delayed_departure'));

@@ -648,7 +648,7 @@ document.body.append(document.createElement('textarea'));
 document.body.append(document.createElement('button'));
 //----------- Define a function
 const toCamelCase = function (underscoreText) {
-  let arrayWords = [...underscoreText.split('_')];
+  let arrayWords = [...underscoreText.trim().split('_')];
   for (let i = 0; i < arrayWords.length; i++) {
     arrayWords[i] = arrayWords[i].toLowerCase();
     if (i !== 0) {

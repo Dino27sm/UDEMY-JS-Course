@@ -643,31 +643,31 @@ const restaurant = {
 // calculateAge ✅✅✅✅
 // delayedDeparture ✅✅✅✅✅
 //
-//----------- Create DOM elements --------------------------------
-document.body.append(document.createElement('textarea'));
-document.body.append(document.createElement('button'));
-//----------- Define a function
-const toCamelCase = function (underscoreText) {
-  let arrayWords = [...underscoreText.trim().split('_')];
-  for (let i = 0; i < arrayWords.length; i++) {
-    arrayWords[i] = arrayWords[i].toLowerCase();
-    if (i !== 0) {
-      arrayWords[i] = arrayWords[i].replace(
-        arrayWords[i][0],
-        arrayWords[i][0].toUpperCase()
-      );
-    }
-  }
-  const camelCaseText = arrayWords.join('');
-  return camelCaseText;
-};
-//
-document.querySelector('button').addEventListener('click', function () {
-  const text = document.querySelector('textarea').value;
-  const arrayText = [...text.split('\n')];
-  const arrayOut = [];
-  for (const [index, item] of arrayText.entries()) {
-    arrayOut.push(toCamelCase(item).padEnd(20, ' ') + '✅'.repeat(index + 1));
-  }
-  document.querySelector('textarea').value = arrayOut.join('\n');
-});
+// //----------- Create DOM elements --------------------------------
+// document.body.append(document.createElement('textarea'));
+// document.body.append(document.createElement('button'));
+// //----------- Define a function
+// const toCamelCase = function (underscoreText) {
+//   let arrayWords = [...underscoreText.trim().split('_')];
+//   for (let i = 0; i < arrayWords.length; i++) {
+//     arrayWords[i] = arrayWords[i].toLowerCase();
+//     if (i !== 0) {
+//       arrayWords[i] = arrayWords[i].replace(
+//         arrayWords[i][0],
+//         arrayWords[i][0].toUpperCase()
+//       );
+//     }
+//   }
+//   const camelCaseText = arrayWords.join('');
+//   return camelCaseText;
+// };
+// //
+// document.querySelector('button').addEventListener('click', function () {
+//   const text = document.querySelector('textarea').value;
+//   const arrayText = [...text.split('\n')];
+//   const arrayOut = [];
+//   for (const [index, item] of arrayText.entries()) {
+//     arrayOut.push(toCamelCase(item).padEnd(20, ' ') + '✅'.repeat(index + 1));
+//   }
+//   document.querySelector('textarea').value = arrayOut.join('\n');
+// });

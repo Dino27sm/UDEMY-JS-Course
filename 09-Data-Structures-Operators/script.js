@@ -623,7 +623,7 @@ const restaurant = {
 // console.log(waitingPlanes(3));
 // console.log(waitingPlanes(7));
 //
-//========================= Coding CHALLENGE #4 =======================================
+//========================= Coding CHALLENGE #4 =====================================
 //
 // Write a program that receives a list of variable names written in underscore_case
 // and convert them to camelCase. The input will come from a textarea inserted into the

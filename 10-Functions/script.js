@@ -14,4 +14,4 @@ const createBooking = function (flightNum, numPassengers, price) {
   console.log(bookings);
 };
 
-createBooking('FT123');
+createBooking('LH7203');

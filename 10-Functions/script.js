@@ -23,32 +23,43 @@
 // createBooking('LH7207', undefined);
 // //=========================================================
 //
-const flight = 'LH234';
-const jonas = {
-  name: 'Jonas Schmedtmann',
-  passport: 12345678,
-};
+// const flight = 'LH234';
+// const jonas = {
+//   name: 'Jonas Schmedtmann',
+//   passport: 12345678,
+// };
 
-const checkIn = function (flightNum, passenger) {
-  flightNum = 'LH999'; //-- Not changed - it is Primitive variable
-  passenger.name = 'Mr. ' + passenger.name; //-- Name changed - reference variable
+// const checkIn = function (flightNum, passenger) {
+//   flightNum = 'LH999'; //-- Not changed - it is Primitive variable
+//   passenger.name = 'Mr. ' + passenger.name; //-- Name changed - reference variable
 
-  if (passenger.passport === 12345678) {
-    alert('Checked in.');
-  } else {
-    alert('Wrong passport !');
-  }
-};
+//   if (passenger.passport === 12345678) {
+//     alert('Checked in.');
+//   } else {
+//     alert('Wrong passport !');
+//   }
+// };
 
+// // checkIn(flight, jonas);
+// // console.log(flight);
+// // console.log(jonas);
+
+// const newPassport = function (person) {
+//   person.passport = Math.trunc(Math.random() * 100000000);
+// };
+// newPassport(jonas);
 // checkIn(flight, jonas);
-// console.log(flight);
+
 // console.log(jonas);
+// console.log(jonas.name);
 
-const newPassport = function (person) {
-  person.passport = Math.trunc(Math.random() * 100000000);
+//===================== High Order Functions ==========================
+const oneWord = function (str) {
+  return str.replace(/ /g, '').toLowerCase();
 };
-newPassport(jonas);
-checkIn(flight, jonas);
 
-console.log(jonas);
-console.log(jonas.name);
+const upperFirstWord = function (str) {
+  const [first, ...others] = str.split(' ');
+  return [first.toUpperCase(), ...others].join(' ');
+};
+console.log(upperFirstWord('This is not a one word'));

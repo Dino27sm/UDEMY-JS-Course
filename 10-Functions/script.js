@@ -51,3 +51,4 @@ newPassport(jonas);
 checkIn(flight, jonas);
 
 console.log(jonas);
+console.log(jonas.name);

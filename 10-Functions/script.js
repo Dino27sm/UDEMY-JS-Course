@@ -74,3 +74,10 @@ const transformer = function (str, fn) {
 transformer('JavaScript is the best', upperFirstWord);
 console.log('=================================');
 transformer('JavaScript is the best', oneWord);
+
+const high5 = function () {
+  console.log('👋');
+};
+
+document.body.addEventListener('click', high5);
+// "high5" is a callback function

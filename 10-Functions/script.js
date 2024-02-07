@@ -126,8 +126,9 @@ const eurowings = {
   bookings: [],
 };
 
+//--------------- Using "call" method ------------------------------
 const book = lufthansa.book;
-book.call(eurowings, 2233, 'Janet');
+book.call(eurowings, 2233, 'Janet Gibson');
 console.log(eurowings);
 
 book.call(lufthansa, 9977, 'Sarah Cooper');
@@ -143,3 +144,11 @@ const swiss = {
 book.call(swiss, 5678, 'Mary White');
 console.log(swiss);
 // The "call" method defines "this" for "swiss" object --------------
+//
+//--------------- Using "apply" method ------------------------------
+const flightData = [2233, 'Jane Cooper'];
+book.apply(swiss, flightData);
+console.log(swiss);
+
+book.call(eurowings, ...flightData);
+console.log(eurowings);

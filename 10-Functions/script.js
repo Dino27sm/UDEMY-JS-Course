@@ -84,21 +84,36 @@
 //
 //======================== FUNCTION Returns Function ==================
 //
-const greet = function (greeting) {
-  return function (name) {
-    console.log(`${greeting} ${name}`);
-  };
+// const greet = function (greeting) {
+//   return function (name) {
+//     console.log(`${greeting} ${name}`);
+//   };
+// };
+
+// const greeterHey = greet('Hey'); // Function "greet" returns other function
+
+// greeterHey('Mimi');
+// greet('Hello')('Janet');
+// // "Janet" is the parameter of the returned function by greet("Hello")
+
+// //------- The same function, but using Arrow function ---------
+// const greetArrow = greetMessage => nameToGreet =>
+//   console.log(`${greetMessage} ${nameToGreet}`);
+// // Arrow function returns another arrow function
+
+// greetArrow('Hello')('Ann');
+//=======================================================================
+//============= Using "this" keyword ====================================
+const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}.`
+    );
+  },
 };
 
-const greeterHey = greet('Hey'); // Function "greet" returns other function
-
-greeterHey('Mimi');
-greet('Hello')('Janet');
-// "Janet" is the parameter of the returned function by greet("Hello")
-
-//------- The same function, but using Arrow function ---------
-const greetArrow = greetMessage => nameToGreet =>
-  console.log(`${greetMessage} ${nameToGreet}`);
-// Arrow function returns another arrow function
-
-greetArrow('Hello')('Ann');
+lufthansa.book(7205, 'Mimi');
+lufthansa.book(2348, 'John Smith');

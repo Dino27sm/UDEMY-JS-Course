@@ -94,3 +94,11 @@ const greeterHey = greet('Hey'); // Function "greet" returns other function
 
 greeterHey('Mimi');
 greet('Hello')('Janet');
+// "Janet" is the parameter of the returned function by greet("Hello")
+
+//------- The same function, but using Arrow function ---------
+const greetArrow = greetMessage => nameToGreet =>
+  console.log(`${greetMessage} ${nameToGreet}`);
+// Arrow function returns another arrow function
+
+greetArrow('Hello')('Ann');

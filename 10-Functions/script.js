@@ -159,3 +159,8 @@ const bookEW = book.bind(eurowings);
 bookEW(3131, 'Mary Monroe');
 
 book.bind(swiss)(4455, 'Sophia Cooper');
+
+//------- Partial application -------------------
+const swiss5566 = book.bind(swiss, 5566); // First parameter is defined
+swiss5566('Emily Smith'); // Enter the second parameter of the function
+console.log(swiss);

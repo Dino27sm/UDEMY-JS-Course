@@ -181,3 +181,24 @@ lufthansa.buyPlane = function () {
 document
   .querySelector('.buy')
   .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+
+//------------- Partial application --------------------------------------
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.3, 200));
+
+const addVAT = addTax.bind(null, 0.2); // "null" when "this" is not used
+console.log(addVAT(400));
+
+console.log('================================================');
+const addTaxRate = function (rate) {
+  return function (value) {
+    return value + value * rate;
+  };
+};
+
+const addVAT_2 = addTaxRate(0.2);
+console.log(addVAT_2(100));
+
+const addTaxArrow = rate => value => value + value * rate;
+const addVAT_3 = addTaxArrow(0.2);
+console.log(addVAT_3(500));

@@ -132,3 +132,14 @@ console.log(eurowings);
 
 book.call(lufthansa, 9977, 'Sarah Cooper');
 console.log(lufthansa);
+// The "call" method defines "this" for each object -----------------
+
+const swiss = {
+  airline: 'Swiss Airline',
+  iataCode: 'SA',
+  bookings: [],
+};
+
+book.call(swiss, 5678, 'Mary White');
+console.log(swiss);
+// The "call" method defines "this" for "swiss" object --------------

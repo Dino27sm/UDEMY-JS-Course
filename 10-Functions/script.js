@@ -164,3 +164,20 @@ book.bind(swiss)(4455, 'Sophia Cooper');
 const swiss5566 = book.bind(swiss, 5566); // First parameter is defined
 swiss5566('Emily Smith'); // Enter the second parameter of the function
 console.log(swiss);
+
+//--------- Using Ojects with Event Listeners ----------------------------
+lufthansa.planes = 300;
+
+lufthansa.buyPlane = function () {
+  console.log(this);
+  this.planes++;
+  console.log(this.planes);
+};
+
+// document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane);
+// // In this way calling "lufthansa.buyPlane" -> "this" points to the button with class ".buy",
+// // so using "bind(lufthansa)" the "this" now points to "lufthansa" object
+
+document
+  .querySelector('.buy')
+  .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));

@@ -257,5 +257,5 @@ poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
 
 const data_1 = { answers: [1, 2, 7, 8] };
 const data_2 = { answers: [11, 22, 31, 32, 33, 34] };
-poll.displayResults.call(data_1, 'array');
+poll.displayResults.call(data_1);
 poll.displayResults.call(data_2, 'string');

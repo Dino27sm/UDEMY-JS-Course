@@ -203,59 +203,83 @@
 // const addVAT_3 = addTaxArrow(0.2);
 // console.log(addVAT_3(500));
 //====================================================================
-//----------------- Coding CHALLENGE #1 - FUNCTIONS ------------------------
+// //----------------- Coding CHALLENGE #1 - FUNCTIONS ------------------------
 
-const poll = {
-  question: 'What is your favourite programming language?',
-  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
-  // This generates [0, 0, 0, 0]. More in the next section!
-  answers: new Array(4).fill(0),
-  registerNewAnswer: function () {
-    const displayString = [
-      this.question,
-      ...this.options,
-      '(Write option number)',
-    ].join('\n');
-    let choiceStr = '';
-    do {
-      choiceStr = prompt(displayString);
-    } while (
-      !(
-        (choiceStr === '0') |
-        (choiceStr === '1') |
-        (choiceStr === '2') |
-        (choiceStr === '3') |
-        (choiceStr === null)
-      )
-    );
-    if (choiceStr !== null) {
-      this.answers[Number(choiceStr)]++;
-    }
-    this.displayResults();
-  },
-  displayResults: function (type = 'array') {
-    if (type === 'array') {
-      console.log(this.answers);
-    } else if (type === 'string') {
-      console.log(`Poll results are ${this.answers.join(', ')}`);
-    }
-  },
+// const poll = {
+//   question: 'What is your favourite programming language?',
+//   options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+//   // This generates [0, 0, 0, 0]. More in the next section!
+//   answers: new Array(4).fill(0),
+//   registerNewAnswer: function () {
+//     const displayString = [
+//       this.question,
+//       ...this.options,
+//       '(Write option number)',
+//     ].join('\n');
+//     let choiceStr = '';
+//     do {
+//       choiceStr = prompt(displayString);
+//     } while (
+//       !(
+//         (choiceStr === '0') |
+//         (choiceStr === '1') |
+//         (choiceStr === '2') |
+//         (choiceStr === '3') |
+//         (choiceStr === null)
+//       )
+//     );
+//     if (choiceStr !== null) {
+//       this.answers[Number(choiceStr)]++;
+//     }
+//     this.displayResults();
+//   },
+//   displayResults: function (type = 'array') {
+//     if (type === 'array') {
+//       console.log(this.answers);
+//     } else if (type === 'string') {
+//       console.log(`Poll results are ${this.answers.join(', ')}`);
+//     }
+//   },
+// };
+
+// document
+//   .querySelector('.poll')
+//   .addEventListener('click', poll.registerNewAnswer.bind(poll));
+
+// // [5, 2, 3]
+// // [1, 5, 3, 9, 6, 1]
+
+// poll.displayResults.call({ answers: [5, 2, 3] }, 'array');
+// poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
+
+// poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'array');
+// poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
+
+// const data_1 = { answers: [1, 2, 7, 8] };
+// const data_2 = { answers: [11, 22, 31, 32, 33, 34] };
+// poll.displayResults.call(data_1);
+// poll.displayResults.call(data_2, 'string');
+
+//=========================================================================
+//-------------- Functions called only once -------------------------------
+function testPrint_1() {
+  console.log('This comes from ordinary function.');
+}
+
+const testPrint_2 = function (name = 'Dino') {
+  console.log(`${name} is our cat.`);
 };
 
-document
-  .querySelector('.poll')
-  .addEventListener('click', poll.registerNewAnswer.bind(poll));
+//-----------------------------------------------------------------------
+// These functions can be called only once
+(function () {
+  console.log('This message comes from only once called function.');
+})();
+// Another way to use only once called function
+(() => console.log('It comes from an arrow function.'))();
+// There is no way to call the upper functions later on
+//------------------------------------------------------------------------
 
-// [5, 2, 3]
-// [1, 5, 3, 9, 6, 1]
-
-poll.displayResults.call({ answers: [5, 2, 3] }, 'array');
-poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
-
-poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'array');
-poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
-
-const data_1 = { answers: [1, 2, 7, 8] };
-const data_2 = { answers: [11, 22, 31, 32, 33, 34] };
-poll.displayResults.call(data_1);
-poll.displayResults.call(data_2, 'string');
+testPrint_1();
+testPrint_2();
+testPrint_2('Arto');

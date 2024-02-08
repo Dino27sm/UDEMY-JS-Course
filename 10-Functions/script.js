@@ -283,3 +283,11 @@ const testPrint_2 = function (name = 'Dino') {
 testPrint_1();
 testPrint_2();
 testPrint_2('Arto');
+
+//--------- Create a scope by using brackets
+{
+  const isolatedVar = 57; // No access out of this scope
+  var notIsolatedVar = 2712; // Cannot be isolated using "var" - 2712 can be accessed
+}
+// console.log(isolatedVar);  // No access
+console.log(notIsolatedVar); // "var" is used to define this variable - there is access

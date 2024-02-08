@@ -103,102 +103,159 @@
 
 // greetArrow('Hello')('Ann');
 //=======================================================================
-//============= Using "this" keyword ====================================
-const lufthansa = {
-  airline: 'Lufthansa',
-  iataCode: 'LH',
-  bookings: [],
-  book(flightNum, name) {
-    console.log(
-      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}.`
+// //============= Using "this" keyword ====================================
+// const lufthansa = {
+//   airline: 'Lufthansa',
+//   iataCode: 'LH',
+//   bookings: [],
+//   book(flightNum, name) {
+//     console.log(
+//       `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}.`
+//     );
+//     this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+//   },
+// };
+
+// lufthansa.book(7205, 'Mimi');
+// lufthansa.book(2348, 'John Smith');
+// console.log(lufthansa);
+
+// const eurowings = {
+//   airline: 'Eurowings',
+//   iataCode: 'EW',
+//   bookings: [],
+// };
+
+// //--------------- Using "call" method ------------------------------
+// const book = lufthansa.book;
+// book.call(eurowings, 2233, 'Janet Gibson');
+// console.log(eurowings);
+
+// book.call(lufthansa, 9977, 'Sarah Cooper');
+// console.log(lufthansa);
+// // The "call" method defines "this" for each object -----------------
+
+// const swiss = {
+//   airline: 'Swiss Airline',
+//   iataCode: 'SA',
+//   bookings: [],
+// };
+
+// book.call(swiss, 5678, 'Mary White');
+// console.log(swiss);
+// // The "call" method defines "this" for "swiss" object --------------
+// //
+// //--------------- Using "apply" method ------------------------------
+// const flightData = [2233, 'Jane Cooper'];
+// book.apply(swiss, flightData);
+// console.log(swiss);
+
+// book.call(eurowings, ...flightData);
+// console.log(eurowings);
+// //
+// //--------------- Using "bind" method ------------------------------
+// //
+// const bookEW = book.bind(eurowings);
+// bookEW(3131, 'Mary Monroe');
+
+// book.bind(swiss)(4455, 'Sophia Cooper');
+
+// //------- Partial application -------------------
+// const swiss5566 = book.bind(swiss, 5566); // First parameter is defined
+// swiss5566('Emily Smith'); // Enter the second parameter of the function
+// console.log(swiss);
+
+// //--------- Using Ojects with Event Listeners ----------------------------
+// lufthansa.planes = 300;
+
+// lufthansa.buyPlane = function () {
+//   console.log(this);
+//   this.planes++;
+//   console.log(this.planes);
+// };
+
+// // document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane);
+// // // In this way calling "lufthansa.buyPlane" -> "this" points to the button with class ".buy",
+// // // so using "bind(lufthansa)" the "this" now points to "lufthansa" object
+
+// document
+//   .querySelector('.buy')
+//   .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+
+// //------------- Partial application --------------------------------------
+// const addTax = (rate, value) => value + value * rate;
+// console.log(addTax(0.3, 200));
+
+// const addVAT = addTax.bind(null, 0.2); // "null" when "this" is not used
+// console.log(addVAT(400));
+
+// console.log('================================================');
+// const addTaxRate = function (rate) {
+//   return function (value) {
+//     return value + value * rate;
+//   };
+// };
+
+// const addVAT_2 = addTaxRate(0.2);
+// console.log(addVAT_2(100));
+
+// const addTaxArrow = rate => value => value + value * rate;
+// const addVAT_3 = addTaxArrow(0.2);
+// console.log(addVAT_3(500));
+//====================================================================
+//----------------- Coding CHALLENGE #1 - FUNCTIONS ------------------------
+
+const poll = {
+  question: 'What is your favourite programming language?',
+  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+  // This generates [0, 0, 0, 0]. More in the next section!
+  answers: new Array(4).fill(0),
+  registerNewAnswer: function () {
+    const displayString = [
+      this.question,
+      ...this.options,
+      '(Write option number)',
+    ].join('\n');
+    let choiceStr = '';
+    do {
+      choiceStr = prompt(displayString);
+    } while (
+      !(
+        (choiceStr === '0') |
+        (choiceStr === '1') |
+        (choiceStr === '2') |
+        (choiceStr === '3') |
+        (choiceStr === null)
+      )
     );
-    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+    if (choiceStr !== null) {
+      this.answers[Number(choiceStr)]++;
+    }
+    this.displayResults();
+  },
+  displayResults: function (type = 'array') {
+    if (type === 'array') {
+      console.log(this.answers);
+    } else if (type === 'string') {
+      console.log(`Poll results are ${this.answers.join(', ')}`);
+    }
   },
 };
 
-lufthansa.book(7205, 'Mimi');
-lufthansa.book(2348, 'John Smith');
-console.log(lufthansa);
-
-const eurowings = {
-  airline: 'Eurowings',
-  iataCode: 'EW',
-  bookings: [],
-};
-
-//--------------- Using "call" method ------------------------------
-const book = lufthansa.book;
-book.call(eurowings, 2233, 'Janet Gibson');
-console.log(eurowings);
-
-book.call(lufthansa, 9977, 'Sarah Cooper');
-console.log(lufthansa);
-// The "call" method defines "this" for each object -----------------
-
-const swiss = {
-  airline: 'Swiss Airline',
-  iataCode: 'SA',
-  bookings: [],
-};
-
-book.call(swiss, 5678, 'Mary White');
-console.log(swiss);
-// The "call" method defines "this" for "swiss" object --------------
-//
-//--------------- Using "apply" method ------------------------------
-const flightData = [2233, 'Jane Cooper'];
-book.apply(swiss, flightData);
-console.log(swiss);
-
-book.call(eurowings, ...flightData);
-console.log(eurowings);
-//
-//--------------- Using "bind" method ------------------------------
-//
-const bookEW = book.bind(eurowings);
-bookEW(3131, 'Mary Monroe');
-
-book.bind(swiss)(4455, 'Sophia Cooper');
-
-//------- Partial application -------------------
-const swiss5566 = book.bind(swiss, 5566); // First parameter is defined
-swiss5566('Emily Smith'); // Enter the second parameter of the function
-console.log(swiss);
-
-//--------- Using Ojects with Event Listeners ----------------------------
-lufthansa.planes = 300;
-
-lufthansa.buyPlane = function () {
-  console.log(this);
-  this.planes++;
-  console.log(this.planes);
-};
-
-// document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane);
-// // In this way calling "lufthansa.buyPlane" -> "this" points to the button with class ".buy",
-// // so using "bind(lufthansa)" the "this" now points to "lufthansa" object
-
 document
-  .querySelector('.buy')
-  .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+  .querySelector('.poll')
+  .addEventListener('click', poll.registerNewAnswer.bind(poll));
 
-//------------- Partial application --------------------------------------
-const addTax = (rate, value) => value + value * rate;
-console.log(addTax(0.3, 200));
+// [5, 2, 3]
+// [1, 5, 3, 9, 6, 1]
 
-const addVAT = addTax.bind(null, 0.2); // "null" when "this" is not used
-console.log(addVAT(400));
+poll.displayResults.call({ answers: [5, 2, 3] }, 'array');
+poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
 
-console.log('================================================');
-const addTaxRate = function (rate) {
-  return function (value) {
-    return value + value * rate;
-  };
-};
+poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'array');
+poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
 
-const addVAT_2 = addTaxRate(0.2);
-console.log(addVAT_2(100));
-
-const addTaxArrow = rate => value => value + value * rate;
-const addVAT_3 = addTaxArrow(0.2);
-console.log(addVAT_3(500));
+const data_1 = { answers: [1, 2, 7, 8] };
+const data_2 = { answers: [11, 22, 31, 32, 33, 34] };
+poll.displayResults.call(data_1, 'array');
+poll.displayResults.call(data_2, 'string');

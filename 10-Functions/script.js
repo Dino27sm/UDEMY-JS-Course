@@ -261,33 +261,47 @@
 // poll.displayResults.call(data_2, 'string');
 
 //=========================================================================
-//-------------- Functions called only once -------------------------------
-function testPrint_1() {
-  console.log('This comes from ordinary function.');
-}
+// //-------------- Functions called only once -------------------------------
+// function testPrint_1() {
+//   console.log('This comes from ordinary function.');
+// }
 
-const testPrint_2 = function (name = 'Dino') {
-  console.log(`${name} is our cat.`);
+// const testPrint_2 = function (name = 'Dino') {
+//   console.log(`${name} is our cat.`);
+// };
+
+// //-----------------------------------------------------------------------
+// // These functions can be called only once
+// (function () {
+//   console.log('This message comes from only once called function.');
+// })();
+// // Another way to use only once called function
+// (() => console.log('It comes from an arrow function.'))();
+// // There is no way to call the upper functions later on
+// //------------------------------------------------------------------------
+
+// testPrint_1();
+// testPrint_2();
+// testPrint_2('Arto');
+
+// //--------- Create a scope by using brackets
+// {
+//   const isolatedVar = 57; // No access out of this scope
+//   var notIsolatedVar = 2712; // Cannot be isolated using "var" - 2712 can be accessed
+// }
+// // console.log(isolatedVar);  // No access
+// console.log(notIsolatedVar); // "var" is used to define this variable - there is access
+// //
+//======================== CLOSURES =========================================
+const secureBooking = function () {
+  let passengerCount = 0;
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+  };
 };
 
-//-----------------------------------------------------------------------
-// These functions can be called only once
-(function () {
-  console.log('This message comes from only once called function.');
-})();
-// Another way to use only once called function
-(() => console.log('It comes from an arrow function.'))();
-// There is no way to call the upper functions later on
-//------------------------------------------------------------------------
-
-testPrint_1();
-testPrint_2();
-testPrint_2('Arto');
-
-//--------- Create a scope by using brackets
-{
-  const isolatedVar = 57; // No access out of this scope
-  var notIsolatedVar = 2712; // Cannot be isolated using "var" - 2712 can be accessed
-}
-// console.log(isolatedVar);  // No access
-console.log(notIsolatedVar); // "var" is used to define this variable - there is access
+const booker = secureBooking();
+booker();
+booker();
+booker();

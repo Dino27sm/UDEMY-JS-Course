@@ -368,14 +368,16 @@
 
 //=========================== Coding CHALLENGE #2 ================================
 //
+// Only once executed function
 (function () {
-  const header = document.querySelector('h1');
+  const header = document.querySelector('h1'); // Variable in the CLOSURE
   header.style.color = 'orange';
-  document
+
+  document // This Callback function has access to the variable "header" from the CLOSURE
     .querySelector('.btnRed')
     .addEventListener('click', () => (header.style.color = 'red'));
 
-  document
+  document // This Callback function has access to the variable "header" from the CLOSURE
     .querySelector('.btnBlue')
     .addEventListener('click', () => (header.style.color = 'blue'));
 })();

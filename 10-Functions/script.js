@@ -321,47 +321,61 @@
 // console.log(closureVars());
 // console.log(closureVars(10));
 
-//------------ Some other examples of Closures -------------------
-// Example 1
-let f;
+// //------------ Some other examples of Closures -------------------
+// // Example 1
+// let f;
 
-const g = function () {
-  const a = 23;
-  f = function () {
-    console.log(a * 2);
-  };
-};
+// const g = function () {
+//   const a = 23;
+//   f = function () {
+//     console.log(a * 2);
+//   };
+// };
 
-const h = function () {
-  const b = 33;
-  f = function () {
-    console.log(b * 2);
-  };
-};
+// const h = function () {
+//   const b = 33;
+//   f = function () {
+//     console.log(b * 2);
+//   };
+// };
 
-g();
-f();
-console.dir(f);
+// g();
+// f();
+// console.dir(f);
 
-h();
-f(); // Re-assigning "f" function
-console.dir(f);
-//----------------------------------------------
-// Example 2
-// setTimeout(function () {
-//   console.log('Timot of 3 sec.');
-// }, 2000);
-// // This "setTimeout" executes the defined function in 3000 ms = 3 seconds
+// h();
+// f(); // Re-assigning "f" function
+// console.dir(f);
+// //----------------------------------------------
+// // Example 2
+// // setTimeout(function () {
+// //   console.log('Timot of 3 sec.');
+// // }, 2000);
+// // // This "setTimeout" executes the defined function in 3000 ms = 3 seconds
 
-const boardPassengers = function (n, wait) {
-  const perGroup = n / 3;
+// const boardPassengers = function (n, wait) {
+//   const perGroup = n / 3;
 
-  setTimeout(function () {
-    console.log(`We are now boarding all ${n} passengers.`);
-    console.log(`There are 3 groups, each with ${perGroup} passengers.`);
-  }, wait * 1000);
+//   setTimeout(function () {
+//     console.log(`We are now boarding all ${n} passengers.`);
+//     console.log(`There are 3 groups, each with ${perGroup} passengers.`);
+//   }, wait * 1000);
 
-  console.log(`We will start boarding in ${wait} seconds.`);
-};
+//   console.log(`We will start boarding in ${wait} seconds.`);
+// };
 
-boardPassengers(180, 5);
+// boardPassengers(180, 5);
+
+//=========================== Coding CHALLENGE #2 ================================
+//
+(function () {
+  const header = document.querySelector('h1');
+  header.style.color = 'red';
+  document
+    .querySelector('.btnRed')
+    .addEventListener('click', () => (header.style.color = 'red'));
+
+  document
+    .querySelector('.btnBlue')
+    .addEventListener('click', () => (header.style.color = 'blue'));
+})();

@@ -301,9 +301,22 @@ const secureBooking = function () {
   };
 };
 
+function parentClosure() {
+  let var1 = 7;
+  let var2 = 8;
+  return function (param = 0) {
+    return param + var1++;
+  };
+}
+
 const booker = secureBooking();
 booker();
 booker();
 booker();
 
-console.dir(booker); // To display a closure content
+//-----------------------------------------------------------
+// console.dir(booker); // To display a closure content
+
+const closureVars = parentClosure();
+console.log(closureVars());
+console.log(closureVars(10));

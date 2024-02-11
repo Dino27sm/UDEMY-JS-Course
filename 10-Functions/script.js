@@ -293,30 +293,75 @@
 // console.log(notIsolatedVar); // "var" is used to define this variable - there is access
 // //
 //======================== CLOSURES =========================================
-const secureBooking = function () {
-  let passengerCount = 0;
-  return function () {
-    passengerCount++;
-    console.log(`${passengerCount} passengers`);
+// const secureBooking = function () {
+//   let passengerCount = 0;
+//   return function () {
+//     passengerCount++;
+//     console.log(`${passengerCount} passengers`);
+//   };
+// };
+
+// function parentClosure() {
+//   let var1 = 7;
+//   let var2 = 8;
+//   return function (param = 0) {
+//     return param + var1++;
+//   };
+// }
+
+// const booker = secureBooking();
+// booker();
+// booker();
+// booker();
+
+// //-----------------------------------------------------------
+// // console.dir(booker); // To display a closure content
+
+// const closureVars = parentClosure();
+// console.log(closureVars());
+// console.log(closureVars(10));
+
+//------------ Some other examples of Closures -------------------
+// Example 1
+let f;
+
+const g = function () {
+  const a = 23;
+  f = function () {
+    console.log(a * 2);
   };
 };
 
-function parentClosure() {
-  let var1 = 7;
-  let var2 = 8;
-  return function (param = 0) {
-    return param + var1++;
+const h = function () {
+  const b = 33;
+  f = function () {
+    console.log(b * 2);
   };
-}
+};
 
-const booker = secureBooking();
-booker();
-booker();
-booker();
+g();
+f();
+console.dir(f);
 
-//-----------------------------------------------------------
-// console.dir(booker); // To display a closure content
+h();
+f(); // Re-assigning "f" function
+console.dir(f);
+//----------------------------------------------
+// Example 2
+// setTimeout(function () {
+//   console.log('Timot of 3 sec.');
+// }, 2000);
+// // This "setTimeout" executes the defined function in 3000 ms = 3 seconds
 
-const closureVars = parentClosure();
-console.log(closureVars());
-console.log(closureVars(10));
+const boardPassengers = function (n, wait) {
+  const perGroup = n / 3;
+
+  setTimeout(function () {
+    console.log(`We are now boarding all ${n} passengers.`);
+    console.log(`There are 3 groups, each with ${perGroup} passengers.`);
+  }, wait * 1000);
+
+  console.log(`We will start boarding in ${wait} seconds.`);
+};
+
+boardPassengers(180, 5);

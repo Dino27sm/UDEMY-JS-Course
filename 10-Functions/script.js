@@ -370,7 +370,7 @@
 //
 (function () {
   const header = document.querySelector('h1');
-  header.style.color = 'red';
+  header.style.color = 'orange';
   document
     .querySelector('.btnRed')
     .addEventListener('click', () => (header.style.color = 'red'));

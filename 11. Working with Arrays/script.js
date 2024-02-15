@@ -109,3 +109,12 @@ console.log(`The original array is: `, arr2);
 arr2.reverse();
 console.log('After applaying the reverse method:', arr2);
 // Changes the original "arr2" array - reverses the element's order
+
+//============== CONCAT Method ===================================================
+const letters = arr.concat(arr2); // CONCAT does not change the original arrays
+console.log(letters);
+
+console.log([...arr, ...arr2]); // Also no changes in the original arrays, using SPREAD operator
+
+//============== JOIN Method =====================================================
+console.log(letters.join(' - '));

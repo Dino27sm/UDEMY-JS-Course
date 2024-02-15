@@ -74,18 +74,38 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
-//=========== SLICE Method ============================================
+//=========== SLICE Method - Does not change the original  Array ===============
+// SLICE method is used to chain multiple methods ----- !!!
 let arr = ['a', 'b', 'c', 'd', 'e'];
 
 console.log(arr.slice(2));
-console.log(arr.slice(2, 4));
-console.log(arr.slice(-2));
-console.log(arr.slice(-1));
-console.log(arr.slice(1, -2));
+// console.log(arr.slice(2, 4));
+// console.log(arr.slice(-2));
+// console.log(arr.slice(-1));
+// console.log(arr.slice(1, -2));
 
-// Create a Copy of the "arr"
-const arrCopy_1 = arr.slice(); // Use SLICE without arguments
-console.log(arrCopy_1);
+// // Create a Copy of the "arr"
+// const arrCopy_1 = arr.slice(); // Use SLICE without arguments
+// console.log(arrCopy_1);
 
-const arrCopy_2 = [...arr]; // Using SPREAD operator
-console.log(arrCopy_2);
+// // const arrCopy_2 = [...arr]; // Using SPREAD operator
+// // console.log(arrCopy_2);
+
+// //============== SPLICE Method - Changes the original  Array ====================
+// console.log(arr);
+
+// console.log(arr.splice(2)); // Deletes elements from the original "arr" and changes it
+// console.log(arr); // Contains only first 2 elements - others are deleted by SPLICE
+
+// console.log(arrCopy_1.splice(-1)); // Used to delete the last element of an array
+// console.log(arrCopy_1); // Here the last element "e" has been deleted
+
+//============== REVERSE Method ==================================================
+arr = ['a', 'b', 'c', 'd', 'e'];
+console.log(arr);
+
+const arr2 = ['j', 'i', 'h', 'g', 'f'];
+console.log(`The original array is: `, arr2);
+arr2.reverse();
+console.log('After applaying the reverse method:', arr2);
+// Changes the original "arr2" array - reverses the element's order

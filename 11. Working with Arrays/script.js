@@ -136,21 +136,45 @@ const currencies = new Map([
 //============== forEach Loop ====================================================
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-console.log('------------ By using FOROF loop --------------');
-for (const movement of movements) {
+// console.log('------------ By using FOROF loop --------------');
+// for (const movement of movements) {
+//   if (movement < 0) {
+//     console.log(`${Math.abs(movement)} amount of money is withdrawn.`);
+//   } else {
+//     console.log(`${movement} amount of money is deposited.`);
+//   }
+// }
+
+// // By using "forEach" loop
+// console.log('------------ By using FOREACH loop --------------');
+// movements.forEach(function (movement) {
+//   if (movement < 0) {
+//     console.log(`${Math.abs(movement)} amount of money is withdrawn.`);
+//   } else {
+//     console.log(`${movement} amount of money is deposited.`);
+//   }
+// });
+
+// The Use of INDEX Values
+console.log('=== Index value ------------ By using FOROF loop ------------');
+for (const [index, movement] of movements.entries()) {
   if (movement < 0) {
-    console.log(`${Math.abs(movement)} amount of money is withdrawn.`);
+    console.log(
+      `${index + 1}. ${Math.abs(movement)} amount of money is withdrawn.`
+    );
   } else {
-    console.log(`${movement} amount of money is deposited.`);
+    console.log(`${index + 1}. ${movement} amount of money is deposited.`);
   }
 }
 
 // By using "forEach" loop
-console.log('------------ By using FOREACH loop --------------');
-movements.forEach(function (movement) {
+console.log('=== Index value ------------ By using FOREACH loop ------------');
+movements.forEach(function (movement, index, array) {
   if (movement < 0) {
-    console.log(`${Math.abs(movement)} amount of money is withdrawn.`);
+    console.log(
+      `${index + 1}. ${Math.abs(movement)} amount of money is withdrawn.`
+    );
   } else {
-    console.log(`${movement} amount of money is deposited.`);
+    console.log(`${index + 1}. ${movement} amount of money is deposited.`);
   }
 });

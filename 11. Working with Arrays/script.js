@@ -71,18 +71,18 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
-//=========== SLICE Method - Does not change the original  Array ===============
-// SLICE method is used to chain multiple methods ----- !!!
-let arr = ['a', 'b', 'c', 'd', 'e'];
+// //=========== SLICE Method - Does not change the original  Array ===============
+// // SLICE method is used to chain multiple methods ----- !!!
+// let arr = ['a', 'b', 'c', 'd', 'e'];
 
-console.log(arr.slice(2));
-// console.log(arr.slice(2, 4));
-// console.log(arr.slice(-2));
-// console.log(arr.slice(-1));
-// console.log(arr.slice(1, -2));
+// console.log(arr.slice(2));
+// // console.log(arr.slice(2, 4));
+// // console.log(arr.slice(-2));
+// // console.log(arr.slice(-1));
+// // console.log(arr.slice(1, -2));
 
 // // Create a Copy of the "arr"
 // const arrCopy_1 = arr.slice(); // Use SLICE without arguments
@@ -100,35 +100,57 @@ console.log(arr.slice(2));
 // console.log(arrCopy_1.splice(-1)); // Used to delete the last element of an array
 // console.log(arrCopy_1); // Here the last element "e" has been deleted
 
-//============== REVERSE Method ==================================================
-arr = ['a', 'b', 'c', 'd', 'e'];
-console.log(arr);
+// //============== REVERSE Method ==================================================
+// arr = ['a', 'b', 'c', 'd', 'e'];
+// console.log(arr);
 
-const arr2 = ['j', 'i', 'h', 'g', 'f'];
-console.log(`The original array is: `, arr2);
-arr2.reverse();
-console.log('After applaying the reverse method:', arr2);
-// Changes the original "arr2" array - reverses the element's order
+// const arr2 = ['j', 'i', 'h', 'g', 'f'];
+// console.log(`The original array is: `, arr2);
+// arr2.reverse();
+// console.log('After applaying the reverse method:', arr2);
+// // Changes the original "arr2" array - reverses the element's order
 
-//============== CONCAT Method ===================================================
-const letters = arr.concat(arr2); // CONCAT does not change the original arrays
-console.log(letters);
+// //============== CONCAT Method ===================================================
+// const letters = arr.concat(arr2); // CONCAT does not change the original arrays
+// console.log(letters);
 
-console.log([...arr, ...arr2]); // Also no changes in the original arrays, using SPREAD operator
+// console.log([...arr, ...arr2]); // Also no changes in the original arrays, using SPREAD operator
 
-//============== JOIN Method =====================================================
-console.log(letters.join(' - '));
+// //============== JOIN Method =====================================================
+// console.log(letters.join(' - '));
 
-//============== AT Method =======================================================
-const arr3 = [23, 11, 64];
-console.log(arr3[0]);
-console.log(arr3.at(0)); // the same as arr3[0]
+// //============== AT Method =======================================================
+// const arr3 = [23, 11, 64];
+// console.log(arr3[0]);
+// console.log(arr3.at(0)); // the same as arr3[0]
 
-// Getting the last array element
-console.log(arr3[arr3.length - 1]);
-console.log(arr3.slice(-1)[0]);
-console.log(arr3.at(-1));
+// // Getting the last array element
+// console.log(arr3[arr3.length - 1]);
+// console.log(arr3.slice(-1)[0]);
+// console.log(arr3.at(-1));
 
-// "AT" also can be applied on strings
-console.log('Janet Montgomery'.at(-1));
-console.log('Janet Montgomery'.at(8));
+// // "AT" also can be applied on strings
+// console.log('Janet Montgomery'.at(-1));
+// console.log('Janet Montgomery'.at(8));
+
+//============== forEach Loop ====================================================
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+console.log('------------ By using FOROF loop --------------');
+for (const movement of movements) {
+  if (movement < 0) {
+    console.log(`${Math.abs(movement)} amount of money is withdrawn.`);
+  } else {
+    console.log(`${movement} amount of money is deposited.`);
+  }
+}
+
+// By using "forEach" loop
+console.log('------------ By using FOREACH loop --------------');
+movements.forEach(function (movement) {
+  if (movement < 0) {
+    console.log(`${Math.abs(movement)} amount of money is withdrawn.`);
+  } else {
+    console.log(`${movement} amount of money is deposited.`);
+  }
+});

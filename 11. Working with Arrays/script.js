@@ -118,3 +118,17 @@ console.log([...arr, ...arr2]); // Also no changes in the original arrays, using
 
 //============== JOIN Method =====================================================
 console.log(letters.join(' - '));
+
+//============== AT Method =======================================================
+const arr3 = [23, 11, 64];
+console.log(arr3[0]);
+console.log(arr3.at(0)); // the same as arr3[0]
+
+// Getting the last array element
+console.log(arr3[arr3.length - 1]);
+console.log(arr3.slice(-1)[0]);
+console.log(arr3.at(-1));
+
+// "AT" also can be applied on strings
+console.log('Janet Montgomery'.at(-1));
+console.log('Janet Montgomery'.at(8));

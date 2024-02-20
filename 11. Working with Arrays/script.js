@@ -65,11 +65,11 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // LECTURES
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -134,7 +134,7 @@ const currencies = new Map([
 // console.log('Janet Montgomery'.at(8));
 
 //============== forEach Loop ====================================================
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // console.log('------------ By using FOROF loop --------------');
 // for (const movement of movements) {
@@ -155,26 +155,47 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 //   }
 // });
 
-// The Use of INDEX Values
-console.log('=== Index value ------------ By using FOROF loop ------------');
-for (const [index, movement] of movements.entries()) {
-  if (movement < 0) {
-    console.log(
-      `${index + 1}. ${Math.abs(movement)} amount of money is withdrawn.`
-    );
-  } else {
-    console.log(`${index + 1}. ${movement} amount of money is deposited.`);
-  }
-}
+// // The Use of INDEX Values
+// console.log('=== Index value ------------ By using FOROF loop ------------');
+// for (const [index, movement] of movements.entries()) {
+//   if (movement < 0) {
+//     console.log(
+//       `${index + 1}. ${Math.abs(movement)} amount of money is withdrawn.`
+//     );
+//   } else {
+//     console.log(`${index + 1}. ${movement} amount of money is deposited.`);
+//   }
+// }
 
-// By using "forEach" loop
-console.log('=== Index value ------------ By using FOREACH loop ------------');
-movements.forEach(function (movement, index, array) {
-  if (movement < 0) {
-    console.log(
-      `${index + 1}. ${Math.abs(movement)} amount of money is withdrawn.`
-    );
-  } else {
-    console.log(`${index + 1}. ${movement} amount of money is deposited.`);
-  }
+// // By using "forEach" loop
+// console.log('=== Index value ------------ By using FOREACH loop ------------');
+// movements.forEach(function (movement, index, array) {
+//   if (movement < 0) {
+//     console.log(
+//       `${index + 1}. ${Math.abs(movement)} amount of money is withdrawn.`
+//     );
+//   } else {
+//     console.log(`${index + 1}. ${movement} amount of money is deposited.`);
+//   }
+// });
+//================ FOREACH for MAPs and SETs =====================================
+//
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+
+//------ for MAPs --------------------------------
+currencies.forEach(function (value, key, map) {
+  console.log(`${key}: ${value}`);
 });
+
+//------ for SETs --------------------------------
+const currencySet = new Set(['USD', 'EUR', 'USD', 'GBP']);
+console.log(currencySet);
+
+currencySet.forEach(function (value, _, map) {
+  console.log(`${value}: ${value}`);
+});
+//----- In SETs "key" is not defined

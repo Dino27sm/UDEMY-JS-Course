@@ -178,24 +178,24 @@ const inputClosePin = document.querySelector('.form__input--pin');
 //     console.log(`${index + 1}. ${movement} amount of money is deposited.`);
 //   }
 // });
-//================ FOREACH for MAPs and SETs =====================================
-//
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
+// //================ FOREACH for MAPs and SETs =====================================
+// //
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
 
-//------ for MAPs --------------------------------
-currencies.forEach(function (value, key, map) {
-  console.log(`${key}: ${value}`);
-});
+// //------ for MAPs --------------------------------
+// currencies.forEach(function (value, key, map) {
+//   console.log(`${key}: ${value}`);
+// });
 
-//------ for SETs --------------------------------
-const currencySet = new Set(['USD', 'EUR', 'USD', 'GBP']);
-console.log(currencySet);
+// //------ for SETs --------------------------------
+// const currencySet = new Set(['USD', 'EUR', 'USD', 'GBP']);
+// console.log(currencySet);
 
-currencySet.forEach(function (value, _, map) {
-  console.log(`${value}: ${value}`);
-});
-//----- In SETs "key" is not defined
+// currencySet.forEach(function (value, _, map) {
+//   console.log(`${value}: ${value}`);
+// });
+// //----- In SETs "key" is not defined

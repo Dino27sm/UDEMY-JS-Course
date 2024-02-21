@@ -64,16 +64,18 @@ const inputClosePin = document.querySelector('.form__input--pin');
 //============== DOM Manupulations =========================================
 //
 const displayMovements = function (movements) {
+  containerMovements.innerHTML = ''; // In this way old elements are deleted
+
   movements.forEach(function (mov, i) {
     const movType = mov < 0 ? 'withdrawal' : 'deposit';
-    const html = `<div class="movements__row">
+    const htmlStr = `<div class="movements__row">
     <div class="movements__type movements__type--${movType}">${
       i + 1
     } ${movType}</div>
-    <div class="movements__value">${mov}€</div>
+    <div class="movements__value">${Math.abs(mov)}€</div>
   </div>`;
 
-    containerMovements.insertAdjacentHTML('afterbegin', html);
+    containerMovements.insertAdjacentHTML('afterbegin', htmlStr);
   });
 };
 

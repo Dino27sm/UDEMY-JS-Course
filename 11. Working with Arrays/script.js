@@ -61,25 +61,25 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-//============== DOM Manupulations =========================================
-//
-const displayMovements = function (movements) {
-  containerMovements.innerHTML = ''; // In this way old elements are deleted
+// //============== DOM Manupulations =========================================
+// //
+// const displayMovements = function (movements) {
+//   containerMovements.innerHTML = ''; // In this way old elements are deleted
 
-  movements.forEach(function (mov, i) {
-    const movType = mov < 0 ? 'withdrawal' : 'deposit';
-    const htmlStr = `<div class="movements__row">
-    <div class="movements__type movements__type--${movType}">${
-      i + 1
-    } ${movType}</div>
-    <div class="movements__value">${Math.abs(mov)}€</div>
-  </div>`;
+//   movements.forEach(function (mov, i) {
+//     const movType = mov < 0 ? 'withdrawal' : 'deposit';
+//     const htmlStr = `<div class="movements__row">
+//     <div class="movements__type movements__type--${movType}">${
+//       i + 1
+//     } ${movType}</div>
+//     <div class="movements__value">${Math.abs(mov)}€</div>
+//   </div>`;
 
-    containerMovements.insertAdjacentHTML('afterbegin', htmlStr);
-  });
-};
+//     containerMovements.insertAdjacentHTML('afterbegin', htmlStr);
+//   });
+// };
 
-displayMovements(account1.movements);
+// displayMovements(account1.movements);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -219,3 +219,30 @@ displayMovements(account1.movements);
 //   console.log(`${value}: ${value}`);
 // });
 // //----- In SETs "key" is not defined
+
+//========================== Coding Challenge #1 ====================================
+let dogsJulia_1 = [3, 5, 2, 12, 7];
+let dogsJulia_2 = [9, 16, 6, 8, 3];
+
+let dogsKate_1 = [4, 1, 15, 8, 3];
+let dogsKate_2 = [10, 5, 6, 1, 4];
+
+const checkDogs = function (dogsJulia, dogsKate) {
+  const dogsOnlyJulia = dogsJulia.slice(1, -2);
+
+  const allDogs = dogsOnlyJulia.concat(dogsKate);
+
+  allDogs.forEach(function (dogAge, i) {
+    const displayStr =
+      dogAge < 3
+        ? `Dog number ${i + 1} is still a puppy 🐶`
+        : `Dog number ${i + 1} is an adult, and is ${dogAge} years old`;
+    console.log(displayStr);
+  });
+};
+
+checkDogs(dogsJulia_1, dogsKate_1);
+
+console.log('\n======= Next TEST =======\n');
+
+checkDogs(dogsJulia_2, dogsKate_2);

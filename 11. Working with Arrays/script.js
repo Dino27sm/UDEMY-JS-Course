@@ -61,25 +61,40 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-// //============== DOM Manupulations =========================================
-// //
-// const displayMovements = function (movements) {
-//   containerMovements.innerHTML = ''; // In this way old elements are deleted
+//============== DOM Manupulations =========================================
+//
+const displayMovements = function (movements) {
+  containerMovements.innerHTML = ''; // In this way old elements are deleted
 
-//   movements.forEach(function (mov, i) {
-//     const movType = mov < 0 ? 'withdrawal' : 'deposit';
-//     const htmlStr = `<div class="movements__row">
-//     <div class="movements__type movements__type--${movType}">${
-//       i + 1
-//     } ${movType}</div>
-//     <div class="movements__value">${Math.abs(mov)}€</div>
-//   </div>`;
+  movements.forEach(function (mov, i) {
+    const movType = mov < 0 ? 'withdrawal' : 'deposit';
+    const htmlStr = `<div class="movements__row">
+    <div class="movements__type movements__type--${movType}">${
+      i + 1
+    } ${movType}</div>
+    <div class="movements__value">${Math.abs(mov)}€</div>
+  </div>`;
 
-//     containerMovements.insertAdjacentHTML('afterbegin', htmlStr);
-//   });
-// };
+    containerMovements.insertAdjacentHTML('afterbegin', htmlStr);
+  });
+};
 
-// displayMovements(account1.movements);
+displayMovements(account1.movements);
+
+//--------- Create Usernames ------------
+const createUsernames = function (accountsArr) {
+  accountsArr.forEach(function (accElm) {
+    accElm.username = accElm.owner
+      .toLowerCase()
+      .split(' ')
+      .map(item => item[0])
+      .join('');
+  });
+};
+
+createUsernames(accounts);
+
+console.log(accounts);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -247,26 +262,29 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 // checkDogs(dogsJulia_2, dogsKate_2);
 //
-//========================== MAP Method ====================================
+// //========================== MAP Method ====================================
+// //
+// const movementsEUR = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const rateEUR_USD = 1.08;
+
+// const movementsUSD_1 = movementsEUR.map(function (elm, index, arrayElm) {
+//   const elmUSD = (elm * rateEUR_USD).toFixed(2);
+//   return `Movement ${
+//     index + 1
+//   } is a ${elmUSD < 0 ? 'negative' : 'positive'} value of ${elmUSD}`;
+// });
+// console.log(movementsEUR);
+// console.log(movementsUSD_1);
+
+// //------- The same using arrow callback function
+// const movementsUSD_2 = movementsEUR.map(
+//   (elm, index) =>
+//     `Movement ${index + 1} is a ${
+//       (elm * rateEUR_USD).toFixed(2) < 0 ? 'negative' : 'positive'
+//     } value of ${(elm * rateEUR_USD).toFixed(2)}`
+// );
+
+// console.log(movementsUSD_2);
 //
-const movementsEUR = [200, 450, -400, 3000, -650, -130, 70, 1300];
-const rateEUR_USD = 1.08;
-
-const movementsUSD_1 = movementsEUR.map(function (elm, index, arrayElm) {
-  const elmUSD = (elm * rateEUR_USD).toFixed(2);
-  return `Movement ${
-    index + 1
-  } is a ${elmUSD < 0 ? 'negative' : 'positive'} value of ${elmUSD}`;
-});
-console.log(movementsEUR);
-console.log(movementsUSD_1);
-
-//------- The same using arrow callback function
-const movementsUSD_2 = movementsEUR.map(
-  (elm, index) =>
-    `Movement ${index + 1} is a ${
-      (elm * rateEUR_USD).toFixed(2) < 0 ? 'negative' : 'positive'
-    } value of ${(elm * rateEUR_USD).toFixed(2)}`
-);
-
-console.log(movementsUSD_2);
+//========================== FILTER Method ====================================
+//

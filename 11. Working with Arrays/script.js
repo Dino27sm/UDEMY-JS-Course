@@ -220,29 +220,53 @@ const inputClosePin = document.querySelector('.form__input--pin');
 // });
 // //----- In SETs "key" is not defined
 
-//========================== Coding Challenge #1 ====================================
-let dogsJulia_1 = [3, 5, 2, 12, 7];
-let dogsJulia_2 = [9, 16, 6, 8, 3];
+// //========================== Coding Challenge #1 ====================================
+// let dogsJulia_1 = [3, 5, 2, 12, 7];
+// let dogsJulia_2 = [9, 16, 6, 8, 3];
 
-let dogsKate_1 = [4, 1, 15, 8, 3];
-let dogsKate_2 = [10, 5, 6, 1, 4];
+// let dogsKate_1 = [4, 1, 15, 8, 3];
+// let dogsKate_2 = [10, 5, 6, 1, 4];
 
-const checkDogs = function (dogsJulia, dogsKate) {
-  const dogsOnlyJulia = dogsJulia.slice(1, -2);
+// const checkDogs = function (dogsJulia, dogsKate) {
+//   const dogsOnlyJulia = dogsJulia.slice(1, -2);
 
-  const allDogs = dogsOnlyJulia.concat(dogsKate);
+//   const allDogs = dogsOnlyJulia.concat(dogsKate);
 
-  allDogs.forEach(function (dogAge, i) {
-    const displayStr =
-      dogAge < 3
-        ? `Dog number ${i + 1} is still a puppy 🐶`
-        : `Dog number ${i + 1} is an adult, and is ${dogAge} years old`;
-    console.log(displayStr);
-  });
-};
+//   allDogs.forEach(function (dogAge, i) {
+//     const displayStr =
+//       dogAge < 3
+//         ? `Dog number ${i + 1} is still a puppy 🐶`
+//         : `Dog number ${i + 1} is an adult, and is ${dogAge} years old`;
+//     console.log(displayStr);
+//   });
+// };
 
-checkDogs(dogsJulia_1, dogsKate_1);
+// checkDogs(dogsJulia_1, dogsKate_1);
 
-console.log('\n======= Next TEST =======\n');
+// console.log('\n======= Next TEST =======\n');
 
-checkDogs(dogsJulia_2, dogsKate_2);
+// checkDogs(dogsJulia_2, dogsKate_2);
+//
+//========================== MAP Method ====================================
+//
+const movementsEUR = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const rateEUR_USD = 1.08;
+
+const movementsUSD_1 = movementsEUR.map(function (elm, index, arrayElm) {
+  const elmUSD = (elm * rateEUR_USD).toFixed(2);
+  return `Movement ${
+    index + 1
+  } is a ${elmUSD < 0 ? 'negative' : 'positive'} value of ${elmUSD}`;
+});
+console.log(movementsEUR);
+console.log(movementsUSD_1);
+
+//------- The same using arrow callback function
+const movementsUSD_2 = movementsEUR.map(
+  (elm, index) =>
+    `Movement ${index + 1} is a ${
+      (elm * rateEUR_USD).toFixed(2) < 0 ? 'negative' : 'positive'
+    } value of ${(elm * rateEUR_USD).toFixed(2)}`
+);
+
+console.log(movementsUSD_2);

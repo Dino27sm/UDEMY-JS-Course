@@ -295,8 +295,10 @@ const depositMov_1 = movementsEUR.filter(function (elm, index, arrayElm) {
 
 const depositMov_2 = movementsEUR.filter(elm => elm > 0);
 
-const withdrawalMov = [];
+const withdrawalMov_1 = movementsEUR.filter(elm => elm <= 0);
 
 console.log(movementsEUR);
-console.log('depositMov-1: ', depositMov_1);
+// console.log('depositMov-1: ', depositMov_1);
 console.log('depositMov-2: ', depositMov_2);
+
+console.log('withdrawalMov_1: ', withdrawalMov_1);

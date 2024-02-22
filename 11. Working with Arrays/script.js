@@ -289,13 +289,14 @@ console.log(accounts);
 //========================== FILTER Method ====================================
 //
 const movementsEUR = [200, 450, -400, 3000, -650, -130, 70, 1300];
-const depositMov = movementsEUR.filter(function (elm, index, arrayElm) {
-  if (elm > 0) {
-    return elm;
-  }
+const depositMov_1 = movementsEUR.filter(function (elm, index, arrayElm) {
+  return elm > 0;
 });
+
+const depositMov_2 = movementsEUR.filter(elm => elm > 0);
 
 const withdrawalMov = [];
 
 console.log(movementsEUR);
-console.log(depositMov);
+console.log('depositMov-1: ', depositMov_1);
+console.log('depositMov-2: ', depositMov_2);

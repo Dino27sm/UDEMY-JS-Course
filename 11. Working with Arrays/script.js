@@ -63,6 +63,13 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 //============== DOM Manupulations =========================================
 //
+//--------- Calculate and Display the Balance -----------
+const calcDisplayBalance = function (movements) {
+  const movBalance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${movBalance} EUR`;
+};
+
+//------------- Display Movements ------------------------
 const displayMovements = function (movements) {
   containerMovements.innerHTML = ''; // In this way old elements are deleted
 
@@ -80,6 +87,8 @@ const displayMovements = function (movements) {
 };
 
 displayMovements(account1.movements);
+
+calcDisplayBalance(account1.movements);
 
 //--------- Create Usernames ------------
 const createUsernames = function (accountsArr) {

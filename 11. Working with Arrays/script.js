@@ -286,19 +286,37 @@ console.log(accounts);
 
 // console.log(movementsUSD_2);
 //
-//========================== FILTER Method ====================================
+// //========================== FILTER Method ====================================
+// //
+// const movementsEUR = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const depositMov_1 = movementsEUR.filter(function (elm, index, arrayElm) {
+//   return elm > 0;
+// });
+
+// const depositMov_2 = movementsEUR.filter(elm => elm > 0);
+
+// const withdrawalMov_1 = movementsEUR.filter(elm => elm <= 0);
+
+// console.log(movementsEUR);
+// // console.log('depositMov-1: ', depositMov_1);
+// console.log('depositMov-2: ', depositMov_2);
+
+// console.log('withdrawalMov_1: ', withdrawalMov_1);
+
+//========================== REDUCE Method ====================================
 //
 const movementsEUR = [200, 450, -400, 3000, -650, -130, 70, 1300];
-const depositMov_1 = movementsEUR.filter(function (elm, index, arrayElm) {
-  return elm > 0;
-});
+const balance = movementsEUR.reduce(function (
+  accumulator,
+  elm,
+  index,
+  arrayElm
+) {
+  return accumulator + elm;
+},
+0);
 
-const depositMov_2 = movementsEUR.filter(elm => elm > 0);
-
-const withdrawalMov_1 = movementsEUR.filter(elm => elm <= 0);
-
+const balance2 = movementsEUR.reduce((acc, elm) => acc + elm, 0);
 console.log(movementsEUR);
-// console.log('depositMov-1: ', depositMov_1);
-console.log('depositMov-2: ', depositMov_2);
-
-console.log('withdrawalMov_1: ', withdrawalMov_1);
+console.log(`balance: ${balance}`);
+console.log(`balance2: ${balance2}`);

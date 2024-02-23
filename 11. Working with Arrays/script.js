@@ -327,5 +327,23 @@ const balance = movementsEUR.reduce(function (
 
 const balance2 = movementsEUR.reduce((acc, elm) => acc + elm, 0);
 console.log(movementsEUR);
-console.log(`balance: ${balance}`);
+
 console.log(`balance2: ${balance2}`);
+
+//---------- Use "reduce" to find the MAX value in an array ------------
+const maxMov = movementsEUR.reduce(function (acc, mov) {
+  if (acc <= mov) {
+    acc = mov;
+  }
+  return acc;
+});
+
+const minMov = movementsEUR.reduce(function (acc, mov) {
+  if (acc > mov) {
+    acc = mov;
+  }
+  return acc;
+});
+
+console.log(`Max movement is: ${maxMov}`);
+console.log(`Min movement is: ${minMov}`);

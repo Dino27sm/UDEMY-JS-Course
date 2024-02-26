@@ -361,7 +361,10 @@ let data2 = [16, 6, 10, 5, 6, 1, 4];
 
 const calcAverageHumanAge = function (ages) {
   const dogHumanAges = ages.map(age => (age <= 2 ? age * 2 : age * 4 + 16));
-  return dogHumanAges.filter(hunamAge => hunamAge >= 18);
+  const adultDogs = dogHumanAges.filter(hunamAge => hunamAge >= 18);
+  const sumAdultDogsAges = adultDogs.reduce((acm, elm) => acm + elm);
+  const averageAgeAdultDogs = sumAdultDogsAges / adultDogs.length;
+  return averageAgeAdultDogs.toFixed(2);
 };
 
 console.log('=============== With Data 1 =================');

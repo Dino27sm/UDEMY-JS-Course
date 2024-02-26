@@ -312,45 +312,62 @@ console.log(accounts);
 
 // console.log('withdrawalMov_1: ', withdrawalMov_1);
 
-//========================== REDUCE Method ====================================
+// //========================== REDUCE Method ====================================
+// //
+// const movementsEUR = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const balance = movementsEUR.reduce(function (
+//   accumulator,
+//   elm,
+//   index,
+//   arrayElm
+// ) {
+//   return accumulator + elm;
+// },
+// 0);
+
+// const balance2 = movementsEUR.reduce((acc, elm) => acc + elm, 0);
+// console.log(movementsEUR);
+
+// console.log(`balance2: ${balance2}`);
+
+// //---------- Use "reduce" to find the MAX value in an array ------------
+// const maxMov_1 = movementsEUR.reduce(function (acc, mov) {
+//   if (acc <= mov) {
+//     acc = mov;
+//   }
+//   return acc;
+// });
+
+// const maxMov_2 = movementsEUR.reduce((acc, mov) => (acc <= mov ? mov : acc));
+
+// const minMov_1 = movementsEUR.reduce(function (acc, mov) {
+//   if (acc > mov) {
+//     acc = mov;
+//   }
+//   return acc;
+// });
+
+// const minMov_2 = movementsEUR.reduce((acc, mov) => (acc > mov ? mov : acc));
+
+// console.log(`Max-1 movement is: ${maxMov_1}`);
+// console.log(`Max-2 movement is: ${maxMov_2}`);
+// console.log('-------------------------------------------');
+// console.log(`Min-1 movement is: ${minMov_1}`);
+// console.log(`Min-2 movement is: ${minMov_2}`);
 //
-const movementsEUR = [200, 450, -400, 3000, -650, -130, 70, 1300];
-const balance = movementsEUR.reduce(function (
-  accumulator,
-  elm,
-  index,
-  arrayElm
-) {
-  return accumulator + elm;
-},
-0);
+//========================== Coding Challenge #2 ====================================
+let data1 = [5, 2, 4, 1, 15, 8, 3];
+let data2 = [16, 6, 10, 5, 6, 1, 4];
 
-const balance2 = movementsEUR.reduce((acc, elm) => acc + elm, 0);
-console.log(movementsEUR);
+const calcAverageHumanAge = function (ages) {
+  const dogHumanAges = ages.map(age => (age <= 2 ? age * 2 : age * 4 + 16));
+  return dogHumanAges.filter(hunamAge => hunamAge >= 18);
+};
 
-console.log(`balance2: ${balance2}`);
+console.log('=============== With Data 1 =================');
+console.log(data1);
+console.log(calcAverageHumanAge(data1));
 
-//---------- Use "reduce" to find the MAX value in an array ------------
-const maxMov_1 = movementsEUR.reduce(function (acc, mov) {
-  if (acc <= mov) {
-    acc = mov;
-  }
-  return acc;
-});
-
-const maxMov_2 = movementsEUR.reduce((acc, mov) => (acc <= mov ? mov : acc));
-
-const minMov_1 = movementsEUR.reduce(function (acc, mov) {
-  if (acc > mov) {
-    acc = mov;
-  }
-  return acc;
-});
-
-const minMov_2 = movementsEUR.reduce((acc, mov) => (acc > mov ? mov : acc));
-
-console.log(`Max-1 movement is: ${maxMov_1}`);
-console.log(`Max-2 movement is: ${maxMov_2}`);
-console.log('-------------------------------------------');
-console.log(`Min-1 movement is: ${minMov_1}`);
-console.log(`Min-2 movement is: ${minMov_2}`);
+console.log('=============== With Data 2 =================');
+console.log(data2);
+console.log(calcAverageHumanAge(data2));

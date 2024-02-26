@@ -404,13 +404,12 @@ console.log(accounts);
 let data1 = [5, 2, 4, 1, 15, 8, 3];
 let data2 = [16, 6, 10, 5, 6, 1, 4];
 
-const calcAverageHumanAge_2 = function (ages) {
-  return ages
+const calcAverageHumanAge_2 = ages =>
+  ages
     .map(age => (age <= 2 ? age * 2 : age * 4 + 16))
     .filter(age => age >= 18)
     .reduce((acm, ageElm, index, arrayElm) => acm + ageElm / arrayElm.length, 0)
     .toFixed(2);
-};
 
 console.log('=============== With Data 1 =================');
 console.log(data1);

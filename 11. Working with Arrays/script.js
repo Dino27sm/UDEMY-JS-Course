@@ -66,7 +66,7 @@ const inputClosePin = document.querySelector('.form__input--pin');
 //--------- Calculate and Display the Balance -----------
 const calcDisplayBalance = function (movements) {
   const movBalance = movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${movBalance} EUR`;
+  labelBalance.textContent = `${movBalance.toFixed(2)} €`;
 };
 
 //------------- Display Movements ------------------------
@@ -79,16 +79,31 @@ const displayMovements = function (movements) {
     <div class="movements__type movements__type--${movType}">${
       i + 1
     } ${movType}</div>
-    <div class="movements__value">${Math.abs(mov)}€</div>
+    <div class="movements__value">${Math.abs(mov).toFixed(2)}€</div>
   </div>`;
 
     containerMovements.insertAdjacentHTML('afterbegin', htmlStr);
   });
 };
 
+//------------- Calculate and Display Summary ------------------------
+const calcDisplaySummary = function (movements) {
+  let incomeValue = movements
+    .filter(mov => mov > 0)
+    .reduce((acm, mov) => acm + mov);
+  labelSumIn.textContent = `${incomeValue.toFixed(2)}€`;
+
+  let outcomeValue = Math.abs(
+    movements.filter(mov => mov < 0).reduce((acm, mov) => acm + mov)
+  );
+  labelSumOut.textContent = `${outcomeValue.toFixed(2)}€`;
+};
+
 displayMovements(account1.movements);
 
 calcDisplayBalance(account1.movements);
+
+calcDisplaySummary(account1.movements);
 
 //--------- Create Usernames ------------
 const createUsernames = function (accountsArr) {
@@ -355,22 +370,22 @@ console.log(accounts);
 // console.log(`Min-1 movement is: ${minMov_1}`);
 // console.log(`Min-2 movement is: ${minMov_2}`);
 //
-//========================== Coding Challenge #2 ====================================
-let data1 = [5, 2, 4, 1, 15, 8, 3];
-let data2 = [16, 6, 10, 5, 6, 1, 4];
+// //========================== Coding Challenge #2 ====================================
+// let data1 = [5, 2, 4, 1, 15, 8, 3];
+// let data2 = [16, 6, 10, 5, 6, 1, 4];
 
-const calcAverageHumanAge = function (ages) {
-  const dogHumanAges = ages.map(age => (age <= 2 ? age * 2 : age * 4 + 16));
-  const adultDogs = dogHumanAges.filter(hunamAge => hunamAge >= 18);
-  const sumAdultDogsAges = adultDogs.reduce((acm, elm) => acm + elm);
-  const averageAgeAdultDogs = sumAdultDogsAges / adultDogs.length;
-  return averageAgeAdultDogs.toFixed(2);
-};
+// const calcAverageHumanAge = function (ages) {
+//   const dogHumanAges = ages.map(age => (age <= 2 ? age * 2 : age * 4 + 16));
+//   const adultDogs = dogHumanAges.filter(hunamAge => hunamAge >= 18);
+//   const sumAdultDogsAges = adultDogs.reduce((acm, elm) => acm + elm);
+//   const averageAgeAdultDogs = sumAdultDogsAges / adultDogs.length;
+//   return averageAgeAdultDogs.toFixed(2);
+// };
 
-console.log('=============== With Data 1 =================');
-console.log(data1);
-console.log(calcAverageHumanAge(data1));
+// console.log('=============== With Data 1 =================');
+// console.log(data1);
+// console.log(calcAverageHumanAge(data1));
 
-console.log('=============== With Data 2 =================');
-console.log(data2);
-console.log(calcAverageHumanAge(data2));
+// console.log('=============== With Data 2 =================');
+// console.log(data2);
+// console.log(calcAverageHumanAge(data2));

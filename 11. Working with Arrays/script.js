@@ -93,10 +93,17 @@ const calcDisplaySummary = function (movements) {
     .reduce((acm, mov) => acm + mov);
   labelSumIn.textContent = `${incomeValue.toFixed(2)}€`;
 
-  let outcomeValue = Math.abs(
-    movements.filter(mov => mov < 0).reduce((acm, mov) => acm + mov)
-  );
-  labelSumOut.textContent = `${outcomeValue.toFixed(2)}€`;
+  let outcomeValue = movements
+    .filter(mov => mov < 0)
+    .reduce((acm, mov) => acm + mov);
+  labelSumOut.textContent = `${Math.abs(outcomeValue).toFixed(2)}€`;
+
+  let interestDeposit = movements
+    .filter(mov => mov > 0)
+    .map(mov => (mov * 1.2) / 100)
+    .filter(elm => elm >= 1)
+    .reduce((acm, elm) => acm + elm);
+  labelSumInterest.textContent = `${interestDeposit.toFixed(2)}`;
 };
 
 displayMovements(account1.movements);

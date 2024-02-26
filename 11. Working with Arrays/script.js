@@ -125,8 +125,6 @@ const createUsernames = function (accountsArr) {
 
 createUsernames(accounts);
 
-console.log(accounts);
-
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -397,24 +395,31 @@ console.log(accounts);
 // console.log(data2);
 // console.log(calcAverageHumanAge(data2));
 //
-//========================== Coding Challenge #3 ====================================
-// Rewrite the 'calcAverageHumanAge' function from Challenge #2, but this time
-// as an arrow function, and using chaining!
+// //========================== Coding Challenge #3 ====================================
+// // Rewrite the 'calcAverageHumanAge' function from Challenge #2, but this time
+// // as an arrow function, and using chaining!
 
-let data1 = [5, 2, 4, 1, 15, 8, 3];
-let data2 = [16, 6, 10, 5, 6, 1, 4];
+// let data1 = [5, 2, 4, 1, 15, 8, 3];
+// let data2 = [16, 6, 10, 5, 6, 1, 4];
 
-const calcAverageHumanAge_2 = ages =>
-  ages
-    .map(age => (age <= 2 ? age * 2 : age * 4 + 16))
-    .filter(age => age >= 18)
-    .reduce((acm, ageElm, index, arrayElm) => acm + ageElm / arrayElm.length, 0)
-    .toFixed(2);
+// const calcAverageHumanAge_2 = ages =>
+//   ages
+//     .map(age => (age <= 2 ? age * 2 : age * 4 + 16))
+//     .filter(age => age >= 18)
+//     .reduce((acm, ageElm, index, arrayElm) => acm + ageElm / arrayElm.length, 0)
+//     .toFixed(2);
 
-console.log('=============== With Data 1 =================');
-console.log(data1);
-console.log(calcAverageHumanAge_2(data1));
+// console.log('=============== With Data 1 =================');
+// console.log(data1);
+// console.log(calcAverageHumanAge_2(data1));
 
-console.log('=============== With Data 2 =================');
-console.log(data2);
-console.log(calcAverageHumanAge_2(data2));
+// console.log('=============== With Data 2 =================');
+// console.log(data2);
+// console.log(calcAverageHumanAge_2(data2));
+//
+//========================== FIND Method ====================================
+//
+console.log(accounts);
+
+const getAccount = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(getAccount);

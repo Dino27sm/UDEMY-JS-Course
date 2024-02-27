@@ -64,16 +64,16 @@ const inputClosePin = document.querySelector('.form__input--pin');
 //============== DOM Manupulations =========================================
 //
 //--------- Calculate and Display the Balance -----------
-const calcDisplayBalance = function (movements) {
-  const movBalance = movements.reduce((acc, mov) => acc + mov, 0);
+const calcDisplayBalance = function (accData) {
+  const movBalance = accData.movements.reduce((acc, mov) => acc + mov, 0);
   labelBalance.textContent = `${movBalance.toFixed(2)} €`;
 };
 
 //------------- Display Movements ------------------------
-const displayMovements = function (movements) {
+const displayMovements = function (accData) {
   containerMovements.innerHTML = ''; // In this way old elements are deleted
 
-  movements.forEach(function (mov, i) {
+  accData.movements.forEach(function (mov, i) {
     const movType = mov < 0 ? 'withdrawal' : 'deposit';
     const htmlStr = `<div class="movements__row">
     <div class="movements__type movements__type--${movType}">${
@@ -87,31 +87,26 @@ const displayMovements = function (movements) {
 };
 
 //------------- Calculate and Display Summary ------------------------
-const calcDisplaySummary = function (movements) {
-  let incomeValue = movements
+const calcDisplaySummary = function (accData) {
+  let incomeValue = accData.movements
     .filter(mov => mov > 0)
     .reduce((acm, mov) => acm + mov);
   labelSumIn.textContent = `${incomeValue.toFixed(2)}€`;
 
-  let outcomeValue = movements
+  let outcomeValue = accData.movements
     .filter(mov => mov < 0)
     .reduce((acm, mov) => acm + mov);
   labelSumOut.textContent = `${Math.abs(outcomeValue).toFixed(2)}€`;
 
-  let interestDeposit = movements
+  let interestDeposit = accData.movements
     .filter(mov => mov > 0)
-    .map(mov => (mov * 1.2) / 100)
+    .map(mov => (mov * accData.interestRate) / 100)
     .filter(elm => elm >= 1)
     .reduce((acm, elm) => acm + elm);
   labelSumInterest.textContent = `${interestDeposit.toFixed(2)}`;
 };
 
-displayMovements(account1.movements);
-
-calcDisplayBalance(account1.movements);
-
-calcDisplaySummary(account1.movements);
-
+//=====================================================================
 //--------- Create Usernames ------------
 const createUsernames = function (accountsArr) {
   accountsArr.forEach(function (accElm) {
@@ -124,6 +119,29 @@ const createUsernames = function (accountsArr) {
 };
 
 createUsernames(accounts);
+console.log(`All accounts are here: `, accounts);
+//=========== Here Usernames has been created ========================
+//
+let currentAccount;
+
+//------ Event handler -------
+btnLogin.addEventListener('click', function (e) {
+  e.preventDefault(); // Prevent the "form" from submitting
+  let logUsername = inputLoginUsername.value;
+  let logPin = Number(inputLoginPin.value);
+
+  currentAccount = accounts.find(acc => acc.username === logUsername);
+
+  if (currentAccount?.pin === logPin) {
+    const ownerFirstName = currentAccount.owner.split(' ')[0];
+    labelWelcome.textContent = `Welcome back, ${ownerFirstName}`;
+    containerApp.style.opacity = 100;
+
+    calcDisplayBalance(currentAccount);
+    displayMovements(currentAccount);
+    calcDisplaySummary(currentAccount);
+  }
+});
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -417,9 +435,9 @@ createUsernames(accounts);
 // console.log(data2);
 // console.log(calcAverageHumanAge_2(data2));
 //
-//========================== FIND Method ====================================
-//
-console.log(accounts);
+// //========================== FIND Method ====================================
+// //
+// console.log(accounts);
 
-const getAccount = accounts.find(acc => acc.owner === 'Jessica Davis');
-console.log(getAccount);
+// const getAccount = accounts.find(acc => acc.owner === 'Jessica Davis');
+// console.log(getAccount);

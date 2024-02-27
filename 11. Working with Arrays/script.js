@@ -137,6 +137,11 @@ btnLogin.addEventListener('click', function (e) {
     labelWelcome.textContent = `Welcome back, ${ownerFirstName}`;
     containerApp.style.opacity = 100;
 
+    //--- Clear the input fields ---
+    inputLoginUsername.value = '';
+    inputLoginPin.value = '';
+    inputLoginPin.blur(); // To avoid cursor blinking at PIN input line
+
     calcDisplayBalance(currentAccount.movements);
     displayMovements(currentAccount.movements);
     calcDisplaySummary(currentAccount);

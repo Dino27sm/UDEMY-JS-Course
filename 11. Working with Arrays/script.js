@@ -64,16 +64,16 @@ const inputClosePin = document.querySelector('.form__input--pin');
 //============== DOM Manupulations =========================================
 //
 //--------- Calculate and Display the Balance -----------
-const calcDisplayBalance = function (accData) {
-  const movBalance = accData.movements.reduce((acc, mov) => acc + mov, 0);
+const calcDisplayBalance = function (movements) {
+  const movBalance = movements.reduce((acc, mov) => acc + mov, 0);
   labelBalance.textContent = `${movBalance.toFixed(2)} €`;
 };
 
 //------------- Display Movements ------------------------
-const displayMovements = function (accData) {
+const displayMovements = function (movements) {
   containerMovements.innerHTML = ''; // In this way old elements are deleted
 
-  accData.movements.forEach(function (mov, i) {
+  movements.forEach(function (mov, i) {
     const movType = mov < 0 ? 'withdrawal' : 'deposit';
     const htmlStr = `<div class="movements__row">
     <div class="movements__type movements__type--${movType}">${
@@ -137,8 +137,8 @@ btnLogin.addEventListener('click', function (e) {
     labelWelcome.textContent = `Welcome back, ${ownerFirstName}`;
     containerApp.style.opacity = 100;
 
-    calcDisplayBalance(currentAccount);
-    displayMovements(currentAccount);
+    calcDisplayBalance(currentAccount.movements);
+    displayMovements(currentAccount.movements);
     calcDisplaySummary(currentAccount);
   }
 });

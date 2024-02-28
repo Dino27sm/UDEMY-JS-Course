@@ -64,16 +64,16 @@ const inputClosePin = document.querySelector('.form__input--pin');
 //============== DOM Manupulations =========================================
 //
 //--------- Calculate and Display the Balance -----------
-const calcDisplayBalance = function (movements) {
-  const movBalance = movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${movBalance.toFixed(2)} €`;
+const calcDisplayBalance = function (accData) {
+  accData.moneyBalance = accData.movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${accData.moneyBalance.toFixed(2)} €`;
 };
 
 //------------- Display Movements ------------------------
-const displayMovements = function (movements) {
+const displayMovements = function (accData) {
   containerMovements.innerHTML = ''; // In this way old elements are deleted
 
-  movements.forEach(function (mov, i) {
+  accData.movements.forEach(function (mov, i) {
     const movType = mov < 0 ? 'withdrawal' : 'deposit';
     const htmlStr = `<div class="movements__row">
     <div class="movements__type movements__type--${movType}">${
@@ -119,9 +119,16 @@ const createUsernames = function (accountsArr) {
 };
 
 createUsernames(accounts);
-console.log(`All accounts are here: `, accounts);
-//=========== Here Usernames has been created ========================
-//
+// console.log(`All accounts are here: `, accounts);
+//=========== Upto here Usernames has been created =====================
+//----------------------------------------------------------------------
+// A Function to update the user interfaces
+const updateUI = function (accData) {
+  calcDisplayBalance(accData);
+  displayMovements(accData);
+  calcDisplaySummary(accData);
+};
+
 let currentAccount;
 
 //------ Event handler -------
@@ -142,9 +149,37 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginPin.value = '';
     inputLoginPin.blur(); // To avoid cursor blinking at PIN input line
 
-    calcDisplayBalance(currentAccount.movements);
-    displayMovements(currentAccount.movements);
-    calcDisplaySummary(currentAccount);
+    updateUI(currentAccount);
+  }
+});
+
+//------ Event handler of money transfer to another account --------
+btnTransfer.addEventListener('click', function (evn) {
+  evn.preventDefault(); // Prevents the "form" from reloading the page
+
+  let amountTransfer = Number(inputTransferAmount.value);
+  let receiverInitials = inputTransferTo.value;
+  let receiverAcc = accounts.find(acc => acc.username === receiverInitials);
+
+  //------ Clear transfer inputs
+  inputTransferAmount.value = '';
+  inputTransferTo.value = '';
+
+  let rightAmount =
+    amountTransfer > 0 && amountTransfer <= currentAccount.moneyBalance;
+  let rightReceiverAcc =
+    receiverAcc !== undefined &&
+    receiverAcc.username !== currentAccount.username;
+
+  if (rightAmount && rightReceiverAcc) {
+    receiverAcc.movements.push(amountTransfer);
+    currentAccount.movements.push(-amountTransfer);
+
+    updateUI(currentAccount);
+  } else {
+    alert(
+      `Incorrect receiver "${receiverInitials}" or wrong amount of money !`
+    );
   }
 });
 

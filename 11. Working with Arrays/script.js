@@ -131,7 +131,7 @@ const updateUI = function (accData) {
 
 let currentAccount;
 
-//------ Event handler -------
+//========== Event handler =======================
 btnLogin.addEventListener('click', function (e) {
   e.preventDefault(); // Prevent the "form" from submitting
   let logUsername = inputLoginUsername.value;
@@ -153,7 +153,7 @@ btnLogin.addEventListener('click', function (e) {
   }
 });
 
-//------ Event handler of money transfer to another account --------
+//========== Event handler of money transfer to another account =========
 btnTransfer.addEventListener('click', function (evn) {
   evn.preventDefault(); // Prevents the "form" from reloading the page
 

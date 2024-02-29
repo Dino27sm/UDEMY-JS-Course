@@ -131,7 +131,7 @@ const updateUI = function (accData) {
 
 let currentAccount;
 
-//========== Event handler =======================
+//========== Event handler of User Login =======================
 btnLogin.addEventListener('click', function (e) {
   e.preventDefault(); // Prevent the "form" from submitting
   let logUsername = inputLoginUsername.value;
@@ -144,15 +144,15 @@ btnLogin.addEventListener('click', function (e) {
     labelWelcome.textContent = `Welcome back, ${ownerFirstName}`;
     containerApp.style.opacity = 100;
 
-    //--- Clear the input fields ---
-    inputLoginUsername.value = '';
-    inputLoginPin.value = '';
-    inputLoginPin.blur(); // To avoid cursor blinking at PIN input line
-
     updateUI(currentAccount);
   } else {
     alert(`Wrong User ID or PIN !`);
   }
+
+  //--- Clear the input fields ---
+  inputLoginUsername.value = '';
+  inputLoginPin.value = '';
+  inputLoginPin.blur(); // To avoid cursor blinking at PIN input line
 });
 
 //========== Event handler of money transfer to another account =========
@@ -184,7 +184,31 @@ btnTransfer.addEventListener('click', function (evn) {
     );
   }
 });
+//
+//========== Event handler to Close the User Account =========
+//
+btnClose.addEventListener('click', function (evn) {
+  evn.preventDefault();
 
+  let usrConfirm = inputCloseUsername.value;
+  let pinConfirm = Number(inputClosePin.value);
+
+  inputCloseUsername.value = '';
+  inputClosePin.value = '';
+
+  if (
+    usrConfirm === currentAccount.username &&
+    pinConfirm === currentAccount.pin
+  ) {
+    const currentAccountIndex = accounts.findIndex(
+      acc => acc.username === currentAccount.username
+    );
+    accounts.splice(currentAccountIndex, 1);
+    containerApp.style.opacity = 0;
+  } else {
+    alert(`Wrong confirmation data !\n Action is not allowed !`);
+  }
+});
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES

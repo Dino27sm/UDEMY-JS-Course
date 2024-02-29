@@ -508,16 +508,30 @@ btnClose.addEventListener('click', function (evn) {
 // const getAccount = accounts.find(acc => acc.owner === 'Jessica Davis');
 // console.log(getAccount);
 //
-//========================== SOME Method ====================================
+// //==================== SOME Method -> returns "true" if there is at least
+// // one element that fulfils the condition ===============================
+// //
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// console.log(movements);
+
+// const isNumberIncluded = movements.includes(-130);
+// console.log(isNumberIncluded);
+
+// const isSomeNumber = movements.some(mov => mov === -130);
+// console.log(isSomeNumber);
+
+// const isConditionNumber = movements.some(mov => mov <= 2000);
+// console.log(isConditionNumber);
+// //
+//====================== EVERY Method -> returns "true" if all elements fulfil
+// // the condition ===================================
 //
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 console.log(movements);
 
-const isNumberIncluded = movements.includes(-130);
-console.log(isNumberIncluded);
+const isFulfiled = movements.every(mov => mov > 0);
+console.log(isFulfiled);
 
-const isSomeNumber = movements.some(mov => mov === -130);
-console.log(isSomeNumber);
-
-const isConditionNumber = movements.some(mov => mov <= 2000);
-console.log(isConditionNumber);
+console.log(account4.movements);
+const isFulfiled_4 = account4.movements.every(mov => mov > 0);
+console.log(isFulfiled_4);

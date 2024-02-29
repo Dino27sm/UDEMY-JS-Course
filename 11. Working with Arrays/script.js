@@ -131,7 +131,9 @@ const updateUI = function (accData) {
 
 let currentAccount;
 
+//=======================================================================
 //========== Event handler of User Login =======================
+//
 btnLogin.addEventListener('click', function (e) {
   e.preventDefault(); // Prevent the "form" from submitting
   let logUsername = inputLoginUsername.value;
@@ -154,8 +156,9 @@ btnLogin.addEventListener('click', function (e) {
   inputLoginPin.value = '';
   inputLoginPin.blur(); // To avoid cursor blinking at PIN input line
 });
-
+//========================================================================
 //========== Event handler of money transfer to another account =========
+//
 btnTransfer.addEventListener('click', function (evn) {
   evn.preventDefault(); // Prevents the "form" from reloading the page
 
@@ -184,7 +187,27 @@ btnTransfer.addEventListener('click', function (evn) {
     );
   }
 });
+//=======================================================================
+//========== Event handler to Request a Loan =========
 //
+btnLoan.addEventListener('click', function (evn) {
+  evn.preventDefault();
+  const loanAmount = Number(inputLoanAmount.value);
+  inputLoanAmount.value = '';
+
+  const loanAllowed =
+    loanAmount > 0 &&
+    currentAccount.movements.some(mov => mov > 0 && mov >= 0.1 * loanAmount);
+
+  if (loanAllowed) {
+    currentAccount.movements.push(loanAmount);
+
+    updateUI(currentAccount);
+  } else {
+    alert(`This Loan is not allowed !`);
+  }
+});
+//=======================================================================
 //========== Event handler to Close the User Account =========
 //
 btnClose.addEventListener('click', function (evn) {
@@ -523,15 +546,15 @@ btnClose.addEventListener('click', function (evn) {
 // const isConditionNumber = movements.some(mov => mov <= 2000);
 // console.log(isConditionNumber);
 // //
-//====================== EVERY Method -> returns "true" if all elements fulfil
+// //====================== EVERY Method -> returns "true" if all elements fulfil
 // // the condition ===================================
-//
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-console.log(movements);
+// //
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// console.log(movements);
 
-const isFulfiled = movements.every(mov => mov > 0);
-console.log(isFulfiled);
+// const isFulfiled = movements.every(mov => mov > 0);
+// console.log(isFulfiled);
 
-console.log(account4.movements);
-const isFulfiled_4 = account4.movements.every(mov => mov > 0);
-console.log(isFulfiled_4);
+// console.log(account4.movements);
+// const isFulfiled_4 = account4.movements.every(mov => mov > 0);
+// console.log(isFulfiled_4);

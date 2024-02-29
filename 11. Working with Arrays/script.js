@@ -150,6 +150,8 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginPin.blur(); // To avoid cursor blinking at PIN input line
 
     updateUI(currentAccount);
+  } else {
+    alert(`Wrong User ID or PIN !`);
   }
 });
 

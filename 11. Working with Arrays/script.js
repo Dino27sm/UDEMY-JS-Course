@@ -558,3 +558,15 @@ btnClose.addEventListener('click', function (evn) {
 // console.log(account4.movements);
 // const isFulfiled_4 = account4.movements.every(mov => mov > 0);
 // console.log(isFulfiled_4);
+//
+//====================== FLAT Method ==========================
+//
+const arr1 = [[1, 2], 3, [4, 5], 6, 7, 8];
+const flatArr1 = arr1.flat();
+console.log(arr1);
+console.log(flatArr1);
+
+const arr2 = [[[1, 2], 3], [[4, 5], 6, 7], 8];
+const flatArr2 = arr1.flat(2); // Second level deeper
+console.log(arr2);
+console.log(flatArr2);

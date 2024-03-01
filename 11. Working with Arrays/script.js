@@ -577,8 +577,14 @@ console.log(accounts);
 const allAccountsMovementsArray = accounts.map(acc => acc.movements).flat(1);
 console.log(allAccountsMovementsArray);
 
-const totalBalance = accounts
+const totalBalance_1 = accounts
   .map(acc => acc.movements)
   .flat(1)
   .reduce((acm, mov) => acm + mov, 0);
-console.log(totalBalance);
+console.log(totalBalance_1);
+
+// "map" and "flat" can be replaced by "flatMap" method (wit only 1 depth level)
+const totalBalance_2 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((acm, mov) => acm + mov, 0);
+console.log(totalBalance_2);

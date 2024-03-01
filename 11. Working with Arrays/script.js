@@ -559,14 +559,26 @@ btnClose.addEventListener('click', function (evn) {
 // const isFulfiled_4 = account4.movements.every(mov => mov > 0);
 // console.log(isFulfiled_4);
 //
-//====================== FLAT Method ==========================
-//
-const arr1 = [[1, 2], 3, [4, 5], 6, 7, 8];
-const flatArr1 = arr1.flat();
-console.log(arr1);
-console.log(flatArr1);
+// //====================== FLAT Method ==========================
+// //
+// const arr1 = [[1, 2], 3, [4, 5], 6, 7, 8];
+// const flatArr1 = arr1.flat();
+// console.log(arr1);
+// console.log(flatArr1);
 
-const arr2 = [[[1, 2], 3], [[4, 5], 6, 7], 8];
-const flatArr2 = arr1.flat(2); // Second level deeper
-console.log(arr2);
-console.log(flatArr2);
+// const arr2 = [[[1, 2], 3], [[4, 5], 6, 7], 8];
+// const flatArr2 = arr1.flat(2); // Second level of depth
+// console.log(arr2);
+// console.log(flatArr2);
+// //
+//====================== flatMap Method =======================
+//
+console.log(accounts);
+const allAccountsMovementsArray = accounts.map(acc => acc.movements).flat(1);
+console.log(allAccountsMovementsArray);
+
+const totalBalance = accounts
+  .map(acc => acc.movements)
+  .flat(1)
+  .reduce((acm, mov) => acm + mov, 0);
+console.log(totalBalance);

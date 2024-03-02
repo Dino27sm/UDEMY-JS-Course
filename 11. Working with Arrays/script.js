@@ -571,20 +571,39 @@ btnClose.addEventListener('click', function (evn) {
 // console.log(arr2);
 // console.log(flatArr2);
 // //
-//====================== flatMap Method =======================
+// //====================== flatMap Method =======================
+// //
+// console.log(accounts);
+// const allAccountsMovementsArray = accounts.map(acc => acc.movements).flat(1);
+// console.log(allAccountsMovementsArray);
+
+// const totalBalance_1 = accounts
+//   .map(acc => acc.movements)
+//   .flat(1)
+//   .reduce((acm, mov) => acm + mov, 0);
+// console.log(totalBalance_1);
+
+// // "map" and "flat" can be replaced by "flatMap" method (wit only 1 depth level)
+// const totalBalance_2 = accounts
+//   .flatMap(acc => acc.movements)
+//   .reduce((acm, mov) => acm + mov, 0);
+// console.log(totalBalance_2);
 //
-console.log(accounts);
-const allAccountsMovementsArray = accounts.map(acc => acc.movements).flat(1);
-console.log(allAccountsMovementsArray);
+//====================== SORT Method =======================
+//
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movSorted_1 = movements.slice();
+const movSorted_2 = movements.slice();
+console.log(movSorted_1);
 
-const totalBalance_1 = accounts
-  .map(acc => acc.movements)
-  .flat(1)
-  .reduce((acm, mov) => acm + mov, 0);
-console.log(totalBalance_1);
+movSorted_1.sort(function (a, b) {
+  if (a > b) return 1;
+  if (a < b) return -1;
+  if (a === b) return 0;
+});
+console.log(movSorted_1);
 
-// "map" and "flat" can be replaced by "flatMap" method (wit only 1 depth level)
-const totalBalance_2 = accounts
-  .flatMap(acc => acc.movements)
-  .reduce((acm, mov) => acm + mov, 0);
-console.log(totalBalance_2);
+// Using arrow function -> the same result
+movSorted_2.sort((a, b) => a - b);
+
+console.log(movSorted_2);

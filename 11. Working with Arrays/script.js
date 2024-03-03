@@ -63,6 +63,7 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 //============== DOM Manupulations =========================================
 //
+let sorted = false;
 //--------- Calculate and Display the Balance -----------
 const calcDisplayBalance = function (accData) {
   accData.moneyBalance = accData.movements.reduce((acc, mov) => acc + mov, 0);
@@ -70,10 +71,10 @@ const calcDisplayBalance = function (accData) {
 };
 
 //------------- Display Movements ------------------------
-const displayMovements = function (accData) {
+const displayMovements = function (movements) {
   containerMovements.innerHTML = ''; // In this way old elements are deleted
 
-  accData.movements.forEach(function (mov, i) {
+  movements.forEach(function (mov, i) {
     const movType = mov < 0 ? 'withdrawal' : 'deposit';
     const htmlStr = `<div class="movements__row">
     <div class="movements__type movements__type--${movType}">${
@@ -125,8 +126,9 @@ createUsernames(accounts);
 // A Function to update the user interfaces
 const updateUI = function (accData) {
   calcDisplayBalance(accData);
-  displayMovements(accData);
+  displayMovements(accData.movements);
   calcDisplaySummary(accData);
+  sorted = false;
 };
 
 let currentAccount;
@@ -231,6 +233,20 @@ btnClose.addEventListener('click', function (evn) {
   } else {
     alert(`Wrong confirmation data !\n Action is not allowed !`);
   }
+});
+//=======================================================================
+//========== Event handler to Sort movements =========
+//
+btnSort.addEventListener('click', function (evn) {
+  evn.preventDefault();
+
+  const dispMov = sorted
+    ? currentAccount.movements
+    : currentAccount.movements.slice().sort((a, b) => a - b);
+  console.log(currentAccount.movements);
+  console.log(dispMov);
+  displayMovements(dispMov);
+  sorted = !sorted;
 });
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -589,21 +605,22 @@ btnClose.addEventListener('click', function (evn) {
 //   .reduce((acm, mov) => acm + mov, 0);
 // console.log(totalBalance_2);
 //
-//====================== SORT Method =======================
+// //====================== SORT Method =======================
+// //
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movSorted_1 = movements.slice();
+// const movSorted_2 = movements.slice();
+// console.log(movSorted_1);
+
+// movSorted_1.sort(function (a, b) {
+//   if (a > b) return 1;
+//   if (a < b) return -1;
+//   if (a === b) return 0;
+// });
+// console.log(movSorted_1);
+
+// // Using arrow function -> the same result
+// movSorted_2.sort((a, b) => a - b);
+
+// console.log(movSorted_2);
 //
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-const movSorted_1 = movements.slice();
-const movSorted_2 = movements.slice();
-console.log(movSorted_1);
-
-movSorted_1.sort(function (a, b) {
-  if (a > b) return 1;
-  if (a < b) return -1;
-  if (a === b) return 0;
-});
-console.log(movSorted_1);
-
-// Using arrow function -> the same result
-movSorted_2.sort((a, b) => a - b);
-
-console.log(movSorted_2);

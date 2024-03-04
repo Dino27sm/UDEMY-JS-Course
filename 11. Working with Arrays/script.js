@@ -243,8 +243,7 @@ btnSort.addEventListener('click', function (evn) {
   const dispMov = sorted
     ? currentAccount.movements
     : currentAccount.movements.slice().sort((a, b) => a - b);
-  console.log(currentAccount.movements);
-  console.log(dispMov);
+
   displayMovements(dispMov);
   sorted = !sorted;
 });
@@ -639,9 +638,11 @@ btnSort.addEventListener('click', function (evn) {
 // console.log(arr3);
 // //
 //====================== Get DOM elements in an array =============
-const domMovElm = document.querySelectorAll('.movements__value');
-const domMovElmValues = Array.from(domMovElm, (elm, index) =>
-  Number(elm.textContent.replace('€', '').replace(' ', ''))
-);
+labelBalance.addEventListener('click', function (evn) {
+  const domMovElm = document.querySelectorAll('.movements__value');
+  const domMovElmValues = Array.from(domMovElm, (elm, index) =>
+    Number(elm.textContent.replace('€', '').replace(' ', ''))
+  );
 
-console.log(domMovElmValues);
+  console.log(domMovElmValues);
+});

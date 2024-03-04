@@ -624,3 +624,16 @@ btnSort.addEventListener('click', function (evn) {
 
 // console.log(movSorted_2);
 //
+//====================== Array.from Method =======================
+const arr1 = new Array(7);
+console.log(arr1);
+
+const arr2 = Array.from({ length: 7 }, function (elm, index) {
+  return index + 1;
+});
+console.log(arr2);
+
+const arr3 = Array.from({ length: 12 }, function (elm, index) {
+  return (index + 1) % 3 === 0 ? 333 : index + 1;
+});
+console.log(arr3);

@@ -679,46 +679,65 @@ btnSort.addEventListener('click', function (evn) {
 
 // console.log(numDeposits1000_2);
 // //
-// 3. Create an object using "reduce" method
-const allSums_1 = accounts
-  .flatMap(acc => acc.movements)
-  .reduce(
-    function (acm, mov) {
-      if (mov > 0) {
-        acm.deposits = acm.deposits + mov;
-      } else {
-        acm.withdrawals = acm.withdrawals + mov;
-      }
-      return acm;
-    },
-    { deposits: 0, withdrawals: 0 }
-  );
+// // 3. Create an object using "reduce" method
+// const allSums_1 = accounts
+//   .flatMap(acc => acc.movements)
+//   .reduce(
+//     function (acm, mov) {
+//       if (mov > 0) {
+//         acm.deposits = acm.deposits + mov;
+//       } else {
+//         acm.withdrawals = acm.withdrawals + mov;
+//       }
+//       return acm;
+//     },
+//     { deposits: 0, withdrawals: 0 }
+//   );
 
-console.log(allSums_1);
+// console.log(allSums_1);
+// //
+// // The same result using "ternary" operator
+// const allSums_2 = accounts
+//   .flatMap(acc => acc.movements)
+//   .reduce(
+//     (acm, mov) => {
+//       mov > 0 ? (acm.deposits += mov) : (acm.withdrawals += mov);
+//       return acm;
+//     },
+//     { deposits: 0, withdrawals: 0 }
+//   );
+
+// console.log(allSums_2);
+// //
+// // In general, dot notation is preferred for its readability and simplicity, but square bracket notation is necessary when you need to access properties dynamically or when dealing with property names that are not valid identifiers.
+// // The same result using "square brackets" notation
+// const allSums_3 = accounts
+//   .flatMap(acc => acc.movements)
+//   .reduce(
+//     (acm, mov) => {
+//       acm[mov > 0 ? 'deposits' : 'withdrawals'] += mov;
+//       return acm;
+//     },
+//     { deposits: 0, withdrawals: 0 }
+//   );
+
+// console.log(allSums_3);
+// //
+//========================== Coding Challenge #4 ====================================
 //
-// The same result using "ternary" operator
-const allSums_2 = accounts
-  .flatMap(acc => acc.movements)
-  .reduce(
-    (acm, mov) => {
-      mov > 0 ? (acm.deposits += mov) : (acm.withdrawals += mov);
-      return acm;
-    },
-    { deposits: 0, withdrawals: 0 }
-  );
-
-console.log(allSums_2);
+const dogs = [
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] },
+];
+// 1. Loop over the 'dogs' array containing dog objects, and for each dog, calculate
+// the recommended food portion and add it to the object as a new property. Do
+// not create a new array, simply loop over the array. Forumla:
+// recommendedFood = weight ** 0.75 * 28. (The result is in grams of
+// food, and the weight needs to be in kg)
 //
-// In general, dot notation is preferred for its readability and simplicity, but square bracket notation is necessary when you need to access properties dynamically or when dealing with property names that are not valid identifiers.
-// The same result using "square brackets" notation
-const allSums_3 = accounts
-  .flatMap(acc => acc.movements)
-  .reduce(
-    (acm, mov) => {
-      acm[mov > 0 ? 'deposits' : 'withdrawals'] += mov;
-      return acm;
-    },
-    { deposits: 0, withdrawals: 0 }
-  );
-
-console.log(allSums_3);
+dogs.forEach(
+  dog => (dog['recommendedFood'] = Math.round(dog.weight ** 0.75 * 28))
+);
+console.log(dogs);

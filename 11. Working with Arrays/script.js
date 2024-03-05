@@ -665,16 +665,34 @@ btnSort.addEventListener('click', function (evn) {
 
 // console.log(bankDepositSum2);
 // //
-// 2. Count the movements >= 1000
-const numDeposits1000_1 = accounts
+// // 2. Count the movements >= 1000
+// const numDeposits1000_1 = accounts
+//   .flatMap(acc => acc.movements)
+//   .filter(mov => mov >= 1000).length;
+
+// console.log(numDeposits1000_1);
+
+// // The same result using "reduce" method
+// const numDeposits1000_2 = accounts
+//   .flatMap(acc => acc.movements)
+//   .reduce((acm, mov) => (mov >= 1000 ? acm + 1 : acm), 0);
+
+// console.log(numDeposits1000_2);
+// //
+// 3. Create an object using "reduce" method
+const allSums = accounts
   .flatMap(acc => acc.movements)
-  .filter(mov => mov >= 1000).length;
+  .reduce(
+    function (acm, mov) {
+      if (mov > 0) {
+        acm.deposits = acm.deposits + mov;
+      } else {
+        acm.withdrawals = acm.withdrawals + mov;
+      }
+      return acm;
+    },
+    { deposits: 0, withdrawals: 0 }
+  );
 
-console.log(numDeposits1000_1);
-
-// The same result using "reduce" method
-const numDeposits1000_2 = accounts
-  .flatMap(acc => acc.movements)
-  .reduce((acm, mov) => (mov >= 1000 ? acm + 1 : acm), 0);
-
-console.log(numDeposits1000_2);
+console.log(allSums);
+//

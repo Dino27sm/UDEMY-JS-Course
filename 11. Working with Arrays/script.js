@@ -648,20 +648,33 @@ btnSort.addEventListener('click', function (evn) {
 // });
 //
 //===================== PRACTICE ARRAY METHODS =======================
-// 1.
-const bankDepositSum1 = accounts
-  .map(acc => acc.movements)
-  .flat(1) // "map" + "flat" can be replaced by "flatMap"
-  .filter(mov => mov > 0)
-  .reduce((sum, mov) => sum + mov, 0);
+// // 1.
+// const bankDepositSum1 = accounts
+//   .map(acc => acc.movements)
+//   .flat(1) // "map" + "flat" can be replaced by "flatMap"
+//   .filter(mov => mov > 0)
+//   .reduce((sum, mov) => sum + mov, 0);
 
-console.log(bankDepositSum1);
-//
-// "map" + "flat" are replaced by "flatMap"
-const bankDepositSum2 = accounts
+// console.log(bankDepositSum1);
+// //
+// // "map" + "flat" are replaced by "flatMap"
+// const bankDepositSum2 = accounts
+//   .flatMap(acc => acc.movements)
+//   .filter(mov => mov > 0)
+//   .reduce((sum, mov) => sum + mov, 0);
+
+// console.log(bankDepositSum2);
+// //
+// 2. Count the movements >= 1000
+const numDeposits1000_1 = accounts
   .flatMap(acc => acc.movements)
-  .filter(mov => mov > 0)
-  .reduce((sum, mov) => sum + mov, 0);
+  .filter(mov => mov >= 1000).length;
 
-console.log(bankDepositSum2);
-//
+console.log(numDeposits1000_1);
+
+// The same result using "reduce" method
+const numDeposits1000_2 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((acm, mov) => (mov >= 1000 ? acm + 1 : acm), 0);
+
+console.log(numDeposits1000_2);

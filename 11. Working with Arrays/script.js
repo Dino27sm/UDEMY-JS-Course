@@ -680,7 +680,7 @@ btnSort.addEventListener('click', function (evn) {
 // console.log(numDeposits1000_2);
 // //
 // 3. Create an object using "reduce" method
-const allSums = accounts
+const allSums_1 = accounts
   .flatMap(acc => acc.movements)
   .reduce(
     function (acm, mov) {
@@ -694,5 +694,17 @@ const allSums = accounts
     { deposits: 0, withdrawals: 0 }
   );
 
-console.log(allSums);
+console.log(allSums_1);
 //
+// The same result using "ternary" operator
+const allSums_2 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce(
+    (acm, mov) => {
+      mov > 0 ? (acm.deposits += mov) : (acm.withdrawals += mov);
+      return acm;
+    },
+    { deposits: 0, withdrawals: 0 }
+  );
+
+console.log(allSums_2);

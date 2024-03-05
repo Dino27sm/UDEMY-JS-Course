@@ -637,12 +637,31 @@ btnSort.addEventListener('click', function (evn) {
 // });
 // console.log(arr3);
 // //
-//====================== Get DOM elements in an array =============
-labelBalance.addEventListener('click', function (evn) {
-  const domMovElm = document.querySelectorAll('.movements__value');
-  const domMovElmValues = Array.from(domMovElm, (elm, index) =>
-    Number(elm.textContent.replace('€', '').replace(' ', ''))
-  );
+// //====================== Get DOM elements in an array =============
+// labelBalance.addEventListener('click', function (evn) {
+//   const domMovElm = document.querySelectorAll('.movements__value');
+//   const domMovElmValues = Array.from(domMovElm, (elm, index) =>
+//     Number(elm.textContent.replace('€', '').replace(' ', ''))
+//   );
 
-  console.log(domMovElmValues);
-});
+//   console.log(domMovElmValues);
+// });
+//
+//===================== PRACTICE ARRAY METHODS =======================
+// 1.
+const bankDepositSum1 = accounts
+  .map(acc => acc.movements)
+  .flat(1) // "map" + "flat" can be replaced by "flatMap"
+  .filter(mov => mov > 0)
+  .reduce((sum, mov) => sum + mov, 0);
+
+console.log(bankDepositSum1);
+//
+// "map" + "flat" are replaced by "flatMap"
+const bankDepositSum2 = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov > 0)
+  .reduce((sum, mov) => sum + mov, 0);
+
+console.log(bankDepositSum2);
+//

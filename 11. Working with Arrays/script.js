@@ -741,3 +741,22 @@ dogs.forEach(
   dog => (dog['recommendedFood'] = Math.round(dog.weight ** 0.75 * 28))
 );
 console.log(dogs);
+
+// 2. Find Sarah's dog and log to the console whether it's eating too much or too
+// little.
+const sarahDog = dogs.find(dog => dog.owners.includes('Sarah'));
+
+const foodEatResult = function (dogObject) {
+  let printText = '';
+  if (dogObject.curFood > 1.1 * dogObject.recommendedFood) {
+    printText = 'too much';
+  } else if (dogObject.curFood < 0.9 * dogObject.recommendedFood) {
+    printText = 'too little';
+  } else {
+    printText = 'OK';
+  }
+  return printText;
+};
+
+console.log(sarahDog);
+console.log(`Sarah's dog eats ${foodEatResult(sarahDog)} food.`);

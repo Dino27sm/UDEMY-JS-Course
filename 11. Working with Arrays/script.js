@@ -708,3 +708,17 @@ const allSums_2 = accounts
   );
 
 console.log(allSums_2);
+//
+// In general, dot notation is preferred for its readability and simplicity, but square bracket notation is necessary when you need to access properties dynamically or when dealing with property names that are not valid identifiers.
+// The same result using "square brackets" notation
+const allSums_3 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce(
+    (acm, mov) => {
+      acm[mov > 0 ? 'deposits' : 'withdrawals'] += mov;
+      return acm;
+    },
+    { deposits: 0, withdrawals: 0 }
+  );
+
+console.log(allSums_3);

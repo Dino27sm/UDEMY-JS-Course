@@ -799,3 +799,19 @@ console.log(
     okEatDogs ? 'YES' : 'NO'
   }`
 );
+
+// 7. Create an array containing the dogs that are eating an okay amount of food (try
+// to reuse the condition used in 6.)
+const dogsEatOK = dogs.filter(dog => foodEatResult(dog) === 'OK');
+
+console.log(dogsEatOK);
+
+// 8. Create a shallow copy of the 'dogs' array and sort it by recommended food
+// portion in an ascending order (keep in mind that the portions are inside the
+// array's objects 😉)
+const sortedDogs = dogs
+  .slice()
+  .sort((a, b) => a.recommendedFood - b.recommendedFood);
+
+console.log(dogs);
+console.log(sortedDogs);

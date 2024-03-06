@@ -747,15 +747,15 @@ console.log(dogs);
 const sarahDog = dogs.find(dog => dog.owners.includes('Sarah'));
 
 const foodEatResult = function (dogObject) {
-  let printText = '';
+  let eatResult = '';
   if (dogObject.curFood > 1.1 * dogObject.recommendedFood) {
-    printText = 'too much';
+    eatResult = 'too much';
   } else if (dogObject.curFood < 0.9 * dogObject.recommendedFood) {
-    printText = 'too little';
+    eatResult = 'too little';
   } else {
-    printText = 'OK';
+    eatResult = 'OK';
   }
-  return printText;
+  return eatResult;
 };
 
 console.log(sarahDog);

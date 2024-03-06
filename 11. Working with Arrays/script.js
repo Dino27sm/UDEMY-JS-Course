@@ -760,3 +760,21 @@ const foodEatResult = function (dogObject) {
 
 console.log(sarahDog);
 console.log(`Sarah's dog eats ${foodEatResult(sarahDog)} food.`);
+
+// 3. Create an array containing all owners of dogs who eat too much
+// ('ownersEatTooMuch') and an array with all owners of dogs who eat too little
+// ('ownersEatTooLittle').
+const ownersEatTooMuch = dogs
+  .filter(dog => foodEatResult(dog) === 'too much')
+  .flatMap(dog => dog.owners);
+
+const ownersEatTooLittle = dogs
+  .filter(dog => foodEatResult(dog) === 'too little')
+  .flatMap(dog => dog.owners);
+
+const ownersEatOK = dogs
+  .filter(dog => foodEatResult(dog) === 'OK')
+  .flatMap(dog => dog.owners);
+console.log(`ownersEatTooMuch: ${ownersEatTooMuch}`);
+console.log(`ownersEatTooLittle: ${ownersEatTooLittle}`);
+console.log(`ownersEatOK: ${ownersEatOK}`);

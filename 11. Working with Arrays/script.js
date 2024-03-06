@@ -775,6 +775,18 @@ const ownersEatTooLittle = dogs
 const ownersEatOK = dogs
   .filter(dog => foodEatResult(dog) === 'OK')
   .flatMap(dog => dog.owners);
-console.log(`ownersEatTooMuch: ${ownersEatTooMuch}`);
-console.log(`ownersEatTooLittle: ${ownersEatTooLittle}`);
-console.log(`ownersEatOK: ${ownersEatOK}`);
+
+// 4. Log a string to the console for each array created in 3., like this: "Matilda and
+// Alice and Bob's dogs eat too much!" and "Sarah and John and Michael's dogs eat
+// too little!"
+console.log(`${ownersEatTooMuch.join(' and ')}'s dogs eat too much!`);
+console.log(`${ownersEatTooLittle.join(' and ')}'s dogs eat too little!`);
+
+// 5. Log to the console whether there is any dog eating exactly the amount of food
+// that is recommended (just true or false)
+const exactEatDogs = dogs.some(dog => foodEatResult(dog) === 'OK');
+console.log(
+  `Are there some exact eating dogs?\n--- The ansfer is: ${
+    exactEatDogs ? 'YES' : 'NO'
+  }`
+);

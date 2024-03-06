@@ -784,9 +784,18 @@ console.log(`${ownersEatTooLittle.join(' and ')}'s dogs eat too little!`);
 
 // 5. Log to the console whether there is any dog eating exactly the amount of food
 // that is recommended (just true or false)
-const exactEatDogs = dogs.some(dog => foodEatResult(dog) === 'OK');
+const exactEatDogs = dogs.some(dog => dog.curFood === dog.recommendedFood);
 console.log(
   `Are there some exact eating dogs?\n--- The ansfer is: ${
     exactEatDogs ? 'YES' : 'NO'
+  }`
+);
+
+// 6. Log to the console whether there is any dog eating an okay amount of food
+// (just true or false)
+const okEatDogs = dogs.some(dog => foodEatResult(dog) === 'OK');
+console.log(
+  `Are there some OK eating dogs?\n--- The ansfer is: ${
+    okEatDogs ? 'YES' : 'NO'
   }`
 );

@@ -255,5 +255,31 @@ console.log(3 === 3.0);
 console.log(0.1 + 0.2);
 console.log(0.1 + 0.2 === 0.3); // Result is "false"
 
+// Conversion
 console.log(Number('0.7'));
 console.log(+'0.78');
+
+// Parsing Integer
+console.log('-----------------------------------------');
+console.log(Number.parseInt(3));
+console.log(Number.parseInt(3.87654));
+console.log(Number.parseInt('7'));
+console.log(Number.parseInt('7.6543'));
+
+// Parsing Floating point numbers
+console.log('-----------------------------------------');
+console.log(Number.parseFloat(3));
+console.log(Number.parseFloat(3.87654));
+console.log(Number.parseFloat('7'));
+console.log(Number.parseFloat('7.6543'));
+
+// Check if value is number
+console.log('----------- Check if value is number ------------');
+console.log(Number.isNaN(23));
+console.log(Number.isNaN('23'));
+console.log(Number.isNaN(+'text'));
+
+console.log(Number.isFinite(23)); // Use this way in practice
+console.log(Number.isFinite('23'));
+console.log(Number.isFinite(+'23x'));
+console.log(Number.isFinite(3 / 0));

@@ -251,3 +251,9 @@ btnSort.addEventListener('click', function (e) {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
+console.log(3 === 3.0);
+console.log(0.1 + 0.2);
+console.log(0.1 + 0.2 === 0.3); // Result is "false"
+
+console.log(Number('0.7'));
+console.log(+'0.78');

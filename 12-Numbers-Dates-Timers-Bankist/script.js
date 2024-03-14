@@ -303,3 +303,7 @@ console.log(Math.max(...arr1));
 console.log(Math.PI);
 const radius = 7;
 console.log(2 * Math.PI * radius); // Length of a circle with R = 7
+
+// Rounding integers
+console.log(Math.trunc(2.73)); // Removes the decimal part => 2
+console.log(Math.round(2.73)); // Rounds to the nearest integer => 3

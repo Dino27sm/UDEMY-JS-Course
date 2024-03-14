@@ -307,3 +307,9 @@ console.log(2 * Math.PI * radius); // Length of a circle with R = 7
 // Rounding integers
 console.log(Math.trunc(2.73)); // Removes the decimal part => 2
 console.log(Math.round(2.73)); // Rounds to the nearest integer => 3
+
+console.log(Math.ceil(5.2)); // Returns nearest biger than 5 integer => 6
+console.log(Math.ceil(5.7)); // Returns nearest biger than 5 integer => 6
+
+console.log(Math.floor(5.2)); // Returns 5
+console.log(Math.floor(5.7)); // Returns 5

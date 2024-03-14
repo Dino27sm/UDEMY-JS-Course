@@ -251,35 +251,55 @@ btnSort.addEventListener('click', function (e) {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
-console.log(3 === 3.0);
-console.log(0.1 + 0.2);
-console.log(0.1 + 0.2 === 0.3); // Result is "false"
+// console.log(3 === 3.0);
+// console.log(0.1 + 0.2);
+// console.log(0.1 + 0.2 === 0.3); // Result is "false"
 
-// Conversion
-console.log(Number('0.7'));
-console.log(+'0.78');
+// // Conversion
+// console.log(Number('0.7'));
+// console.log(+'0.78');
 
-// Parsing Integer
-console.log('-----------------------------------------');
-console.log(Number.parseInt(3));
-console.log(Number.parseInt(3.87654));
-console.log(Number.parseInt('7'));
-console.log(Number.parseInt('7.6543'));
+// // Parsing Integer
+// console.log('-----------------------------------------');
+// console.log(Number.parseInt(3));
+// console.log(Number.parseInt(3.87654));
+// console.log(Number.parseInt('7'));
+// console.log(Number.parseInt('7.6543'));
 
-// Parsing Floating point numbers
-console.log('-----------------------------------------');
-console.log(Number.parseFloat(3));
-console.log(Number.parseFloat(3.87654));
-console.log(Number.parseFloat('7'));
-console.log(Number.parseFloat('7.6543'));
+// // Parsing Floating point numbers
+// console.log('-----------------------------------------');
+// console.log(Number.parseFloat(3));
+// console.log(Number.parseFloat(3.87654));
+// console.log(Number.parseFloat('7'));
+// console.log(Number.parseFloat('7.6543'));
 
-// Check if value is number
-console.log('----------- Check if value is number ------------');
-console.log(Number.isNaN(23));
-console.log(Number.isNaN('23'));
-console.log(Number.isNaN(+'text'));
+// // Check if value is number
+// console.log('----------- Check if value is number ------------');
+// console.log(Number.isNaN(23));
+// console.log(Number.isNaN('23'));
+// console.log(Number.isNaN(+'text'));
 
-console.log(Number.isFinite(23)); // Use this way in practice
-console.log(Number.isFinite('23'));
-console.log(Number.isFinite(+'23x'));
-console.log(Number.isFinite(3 / 0));
+// console.log(Number.isFinite(23)); // Use this way in practice
+// console.log(Number.isFinite('23'));
+// console.log(Number.isFinite(+'23x'));
+// console.log(Number.isFinite(3 / 0));
+//
+//==================== Math operations =========================
+console.log(Math.sqrt(25));
+console.log(Math.sqrt('25'));
+console.log(25 ** (1 / 2));
+console.log(27 ** (1 / 3));
+
+console.log(Math.max(14, 13, 7, 23, 17, 2));
+console.log(Math.max(14, 13, 7, '23', 17, 2));
+
+console.log(Math.min(14, 13, 7, 23, 17, 2));
+console.log(Math.min(14, 13, 7, 23, 17, '2'));
+console.log(Math.min(14, 13, 7, 23, 17, '2exp')); // Wrong use
+
+const arr1 = [45, 33, 77, 41, 18, 19];
+console.log(Math.max(...arr1));
+
+console.log(Math.PI);
+const radius = 7;
+console.log(2 * Math.PI * radius); // Length of a circle with R = 7

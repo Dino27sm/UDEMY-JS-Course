@@ -94,7 +94,7 @@ const displayMovements = function (movements, sort = false) {
         <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
-        <div class="movements__value">${mov}€</div>
+        <div class="movements__value">${mov.toFixed(2)}€</div>
       </div>
     `;
 
@@ -104,19 +104,19 @@ const displayMovements = function (movements, sort = false) {
 
 const calcDisplayBalance = function (acc) {
   acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${acc.balance}€`;
+  labelBalance.textContent = `${acc.balance.toFixed(2)}€`;
 };
 
 const calcDisplaySummary = function (acc) {
   const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumIn.textContent = `${incomes}€`;
+  labelSumIn.textContent = `${incomes.toFixed(2)}€`;
 
   const out = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumOut.textContent = `${Math.abs(out)}€`;
+  labelSumOut.textContent = `${Math.abs(out).toFixed(2)}€`;
 
   const interest = acc.movements
     .filter(mov => mov > 0)
@@ -126,7 +126,7 @@ const calcDisplaySummary = function (acc) {
       return int >= 1;
     })
     .reduce((acc, int) => acc + int, 0);
-  labelSumInterest.textContent = `${interest}€`;
+  labelSumInterest.textContent = `${interest.toFixed(2)}€`;
 };
 
 const createUsernames = function (accs) {
@@ -284,32 +284,36 @@ btnSort.addEventListener('click', function (e) {
 // console.log(Number.isFinite(+'23x'));
 // console.log(Number.isFinite(3 / 0));
 //
-//==================== Math operations =========================
-console.log(Math.sqrt(25));
-console.log(Math.sqrt('25'));
-console.log(25 ** (1 / 2));
-console.log(27 ** (1 / 3));
+// //==================== Math operations =========================
+// console.log(Math.sqrt(25));
+// console.log(Math.sqrt('25'));
+// console.log(25 ** (1 / 2));
+// console.log(27 ** (1 / 3));
 
-console.log(Math.max(14, 13, 7, 23, 17, 2));
-console.log(Math.max(14, 13, 7, '23', 17, 2));
+// console.log(Math.max(14, 13, 7, 23, 17, 2));
+// console.log(Math.max(14, 13, 7, '23', 17, 2));
 
-console.log(Math.min(14, 13, 7, 23, 17, 2));
-console.log(Math.min(14, 13, 7, 23, 17, '2'));
-console.log(Math.min(14, 13, 7, 23, 17, '2exp')); // Wrong use
+// console.log(Math.min(14, 13, 7, 23, 17, 2));
+// console.log(Math.min(14, 13, 7, 23, 17, '2'));
+// console.log(Math.min(14, 13, 7, 23, 17, '2exp')); // Wrong use
 
-const arr1 = [45, 33, 77, 41, 18, 19];
-console.log(Math.max(...arr1));
+// const arr1 = [45, 33, 77, 41, 18, 19];
+// console.log(Math.max(...arr1));
 
-console.log(Math.PI);
-const radius = 7;
-console.log(2 * Math.PI * radius); // Length of a circle with R = 7
+// console.log(Math.PI);
+// const radius = 7;
+// console.log(2 * Math.PI * radius); // Length of a circle with R = 7
 
-// Rounding integers
-console.log(Math.trunc(2.73)); // Removes the decimal part => 2
-console.log(Math.round(2.73)); // Rounds to the nearest integer => 3
+// // Rounding integers
+// console.log(Math.trunc(2.73)); // Removes the decimal part => 2
+// console.log(Math.round(2.73)); // Rounds to the nearest integer => 3
 
-console.log(Math.ceil(5.2)); // Returns nearest biger than 5 integer => 6
-console.log(Math.ceil(5.7)); // Returns nearest biger than 5 integer => 6
+// console.log(Math.ceil(5.2)); // Returns nearest biger than 5 integer => 6
+// console.log(Math.ceil(5.7)); // Returns nearest biger than 5 integer => 6
 
-console.log(Math.floor(5.2)); // Returns 5
-console.log(Math.floor(5.7)); // Returns 5
+// console.log(Math.floor(5.2)); // Returns 5
+// console.log(Math.floor(5.7)); // Returns 5
+
+// // Rounding decimals
+// console.log((7.23).toFixed(0)); // Returns a string
+// console.log(+(7.83).toFixed(0)); // Returns a number because of "+"

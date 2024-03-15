@@ -344,3 +344,10 @@ console.log(whatNum(7));
 console.log(whatNum(57));
 console.log(whatNum(22));
 console.log(whatNum(13));
+//
+//=================== Numeric Separator =================================
+const bigNum = 345_789_123_000;
+console.log(bigNum);
+
+const nextNum = 13_854; // Use separator "_" to make numbers readable
+console.log(nextNum);

@@ -317,3 +317,14 @@ btnSort.addEventListener('click', function (e) {
 // // Rounding decimals
 // console.log((7.23).toFixed(0)); // Returns a string
 // console.log(+(7.83).toFixed(0)); // Returns a number because of "+"
+//
+//------ Function to generate RANDOM Numbers in given range
+const randomGenerator = function (min, max) {
+  const randomNum = Math.random() * (max - min) + min;
+  return Math.round(randomNum);
+};
+//================ REMAINDER Operator - returns the remainder left after division
+console.log(5 % 2);
+console.log(5 / 2);
+
+console.log(randomGenerator(3, 7));

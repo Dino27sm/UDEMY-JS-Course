@@ -318,13 +318,29 @@ btnSort.addEventListener('click', function (e) {
 // console.log((7.23).toFixed(0)); // Returns a string
 // console.log(+(7.83).toFixed(0)); // Returns a number because of "+"
 //
-//------ Function to generate RANDOM Numbers in given range
-const randomGenerator = function (min, max) {
-  const randomNum = Math.random() * (max - min) + min;
-  return Math.round(randomNum);
-};
+// //------ Function to generate RANDOM Numbers in given range
+// const randomGenerator = function (min, max) {
+//   const randomNum = Math.random() * (max - min) + min;
+//   return Math.round(randomNum);
+// };
 //================ REMAINDER Operator - returns the remainder left after division
 console.log(5 % 2);
 console.log(5 / 2);
 
-console.log(randomGenerator(3, 7));
+//------ Function to check whether a number is odd or even
+
+const whatNum = function (num) {
+  let resultMessage = '';
+  if (num % 2 === 0) {
+    resultMessage = 'even';
+  } else {
+    resultMessage = 'odd';
+  }
+  return `Number ${num} is an ${resultMessage} number.`;
+};
+
+console.log(whatNum(4));
+console.log(whatNum(7));
+console.log(whatNum(57));
+console.log(whatNum(22));
+console.log(whatNum(13));

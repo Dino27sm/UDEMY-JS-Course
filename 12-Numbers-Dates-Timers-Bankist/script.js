@@ -352,22 +352,41 @@ btnSort.addEventListener('click', function (e) {
 // const nextNum = 13_854; // Use separator "_" to make numbers readable
 // console.log(nextNum);
 //
-//=============== BigInt - Use "n" at the end of the number =================
-const bigNum_0 = 2 ** 53 - 1;
-const bigNum_1 = 123456789123456789123456789n;
-const bigNum_2 = 123_456_789_123_456_789_123_456_789n; // with num separator
-const bigNum_3 = BigInt(456789123456789);
-// BigInt() - Coverts to "bigint" only when the number is less than (2 ** 53 - 1)
+// //=============== BigInt - Use "n" at the end of the number =================
+// const bigNum_0 = 2 ** 53 - 1;
+// const bigNum_1 = 123456789123456789123456789n;
+// const bigNum_2 = 123_456_789_123_456_789_123_456_789n; // with num separator
+// const bigNum_3 = BigInt(456789123456789);
+// // BigInt() - Coverts to "bigint" only when the number is less than (2 ** 53 - 1)
 
-// console.log('bigNum_0: ', bigNum_0);
-console.log('bigNum_1: ', bigNum_1);
-// console.log('bigNum_2: ', bigNum_2);
-console.log('bigNum_3: ', bigNum_3);
+// // console.log('bigNum_0: ', bigNum_0);
+// console.log('bigNum_1: ', bigNum_1);
+// // console.log('bigNum_2: ', bigNum_2);
+// console.log('bigNum_3: ', bigNum_3);
 
-// Operations
-console.log(bigNum_1 + bigNum_3);
-console.log(bigNum_1 - bigNum_3);
-console.log(bigNum_1 * bigNum_3);
-console.log(bigNum_1 / bigNum_3);
-console.log('79 / 23: ', 79 / 23);
-console.log('79n / 23n: ', 79n / 23n); // Cuts of the decimal part of the result
+// // Operations
+// console.log(bigNum_1 + bigNum_3);
+// console.log(bigNum_1 - bigNum_3);
+// console.log(bigNum_1 * bigNum_3);
+// console.log(bigNum_1 / bigNum_3);
+// console.log('79 / 23: ', 79 / 23);
+// console.log('79n / 23n: ', 79n / 23n); // Cuts of the decimal part of the result
+// //
+//================ DATES and TIMES ==========================
+const nowDateStamp = Date.now(); // To get current time-stamp
+console.log(nowDateStamp);
+
+const nowDate = new Date(nowDateStamp);
+console.log('nowDate === ', nowDate);
+
+const myDate = new Date(2025, 11, 27, 17, 33, 6);
+console.log('myDate === ', myDate);
+// Month num is zero based - "11" is December
+
+console.log(myDate.getFullYear());
+console.log(nowDate.getFullYear());
+console.log(nowDate.getMonth());
+console.log(nowDate.getDate()); // Gives the day of the month
+console.log(nowDate.getDay()); // Gives the day of the week
+console.log(nowDate.getHours());
+console.log(nowDate.getMinutes());

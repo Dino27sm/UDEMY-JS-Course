@@ -323,31 +323,51 @@ btnSort.addEventListener('click', function (e) {
 //   const randomNum = Math.random() * (max - min) + min;
 //   return Math.round(randomNum);
 // };
-//================ REMAINDER Operator - returns the remainder left after division
-console.log(5 % 2);
-console.log(5 / 2);
+// //================ REMAINDER Operator - returns the remainder left after division
+// console.log(5 % 2);
+// console.log(5 / 2);
 
-//------ Function to check whether a number is odd or even
+// //------ Function to check whether a number is odd or even
 
-const whatNum = function (num) {
-  let resultMessage = '';
-  if (num % 2 === 0) {
-    resultMessage = 'even';
-  } else {
-    resultMessage = 'odd';
-  }
-  return `Number ${num} is an ${resultMessage} number.`;
-};
+// const whatNum = function (num) {
+//   let resultMessage = '';
+//   if (num % 2 === 0) {
+//     resultMessage = 'even';
+//   } else {
+//     resultMessage = 'odd';
+//   }
+//   return `Number ${num} is an ${resultMessage} number.`;
+// };
 
-console.log(whatNum(4));
-console.log(whatNum(7));
-console.log(whatNum(57));
-console.log(whatNum(22));
-console.log(whatNum(13));
+// console.log(whatNum(4));
+// console.log(whatNum(7));
+// console.log(whatNum(57));
+// console.log(whatNum(22));
+// console.log(whatNum(13));
+// //
+// //=================== Numeric Separator =================================
+// const bigNum = 345_789_123_000;
+// console.log(bigNum);
+
+// const nextNum = 13_854; // Use separator "_" to make numbers readable
+// console.log(nextNum);
 //
-//=================== Numeric Separator =================================
-const bigNum = 345_789_123_000;
-console.log(bigNum);
+//=============== BigInt - Use "n" at the end of the number =================
+const bigNum_0 = 2 ** 53 - 1;
+const bigNum_1 = 123456789123456789123456789n;
+const bigNum_2 = 123_456_789_123_456_789_123_456_789n; // with num separator
+const bigNum_3 = BigInt(456789123456789);
+// BigInt() - Coverts to "bigint" only when the number is less than (2 ** 53 - 1)
 
-const nextNum = 13_854; // Use separator "_" to make numbers readable
-console.log(nextNum);
+// console.log('bigNum_0: ', bigNum_0);
+console.log('bigNum_1: ', bigNum_1);
+// console.log('bigNum_2: ', bigNum_2);
+console.log('bigNum_3: ', bigNum_3);
+
+// Operations
+console.log(bigNum_1 + bigNum_3);
+console.log(bigNum_1 - bigNum_3);
+console.log(bigNum_1 * bigNum_3);
+console.log(bigNum_1 / bigNum_3);
+console.log('79 / 23: ', 79 / 23);
+console.log('79n / 23n: ', 79n / 23n); // Cuts of the decimal part of the result

@@ -384,9 +384,18 @@ console.log('myDate === ', myDate);
 // Month num is zero based - "11" is December
 
 console.log(myDate.getFullYear());
-console.log(nowDate.getFullYear());
-console.log(nowDate.getMonth());
-console.log(nowDate.getDate()); // Gives the day of the month
-console.log(nowDate.getDay()); // Gives the day of the week
-console.log(nowDate.getHours());
-console.log(nowDate.getMinutes());
+// console.log(nowDate.getFullYear());
+// console.log(nowDate.getMonth());
+// console.log(nowDate.getDate()); // Gives the day of the month
+// console.log(nowDate.getDay()); // Gives the day of the week
+// console.log(nowDate.getHours());
+// console.log(nowDate.getMinutes());
+
+const dateText = `${nowDate.getDate()}`.padStart(2, 0);
+const monthText = `${nowDate.getMonth() + 1}`.padStart(2, 0);
+const yearText = `${nowDate.getFullYear()}`;
+const hoursText = `${nowDate.getHours()}`.padStart(2, 0);
+const minutesText = `${nowDate.getMinutes()}`.padStart(2, 0);
+
+const dateMessage = `${dateText}/${monthText}/${yearText} - ${hoursText}:${minutesText}`;
+console.log(dateMessage);

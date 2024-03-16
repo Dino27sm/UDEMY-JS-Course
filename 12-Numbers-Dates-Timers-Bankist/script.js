@@ -80,16 +80,17 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 /////////////////////////////////////////////////
 // Date and Time
-const nowDateStamp = Date.now(); // To get current time-stamp
-const nowDate = new Date(nowDateStamp);
+const getCurrentDateAndTime = function () {
+  const nowDateStamp = Date.now(); // To get current time-stamp
+  const nowDate = new Date(nowDateStamp);
 
-const dateText = `${nowDate.getDate()}`.padStart(2, 0);
-const monthText = `${nowDate.getMonth() + 1}`.padStart(2, 0);
-const yearText = `${nowDate.getFullYear()}`;
-const hoursText = `${nowDate.getHours()}`.padStart(2, 0);
-const minutesText = `${nowDate.getMinutes()}`.padStart(2, 0);
-labelDate.textContent = `${dateText}/${monthText}/${yearText} - ${hoursText}:${minutesText}`;
-//
+  const dateText = `${nowDate.getDate()}`.padStart(2, 0);
+  const monthText = `${nowDate.getMonth() + 1}`.padStart(2, 0);
+  const yearText = `${nowDate.getFullYear()}`;
+  const hoursText = `${nowDate.getHours()}`.padStart(2, 0);
+  const minutesText = `${nowDate.getMinutes()}`.padStart(2, 0);
+  labelDate.textContent = `${dateText}/${monthText}/${yearText} - ${hoursText}:${minutesText}`;
+};
 // Functions
 //
 const displayMovements = function (movements, sort = false) {
@@ -160,6 +161,8 @@ const updateUI = function (acc) {
 
   // Display summary
   calcDisplaySummary(acc);
+  // Display Date and Time
+  getCurrentDateAndTime();
 };
 
 ///////////////////////////////////////

@@ -80,36 +80,36 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 /////////////////////////////////////////////////
 // Date and Time
-const getCurrentDateAndTime = function () {
-  const nowDateStamp = Date.now(); // To get current time-stamp
-  const nowDate = new Date(nowDateStamp);
-
-  const dateText = `${nowDate.getDate()}`.padStart(2, 0);
-  const monthText = `${nowDate.getMonth() + 1}`.padStart(2, 0);
-  const yearText = `${nowDate.getFullYear()}`;
-  const hoursText = `${nowDate.getHours()}`.padStart(2, 0);
-  const minutesText = `${nowDate.getMinutes()}`.padStart(2, 0);
-  labelDate.textContent = `${dateText}/${monthText}/${yearText} - ${hoursText}:${minutesText}`;
+const getDateAndTime = function (dateInfo) {
+  const dateText = `${dateInfo.getDate()}`.padStart(2, 0);
+  const monthText = `${dateInfo.getMonth() + 1}`.padStart(2, 0);
+  const yearText = `${dateInfo.getFullYear()}`;
+  const hoursText = `${dateInfo.getHours()}`.padStart(2, 0);
+  const minutesText = `${dateInfo.getMinutes()}`.padStart(2, 0);
+  return `${dateText}/${monthText}/${yearText} - ${hoursText}:${minutesText}`;
 };
 // Functions
 //
-const displayMovements = function (movements, sort = false) {
+const displayMovements = function (acc, sort = false) {
   containerMovements.innerHTML = '';
-
-  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+  const movs = sort
+    ? acc.movements.slice().sort((a, b) => a - b)
+    : acc.movements;
 
   movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
     const html = `
-      <div class="movements__row">
-        <div class="movements__type movements__type--${type}">${
+    <div class="movements__row">
+      <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
-        <div class="movements__value">${mov.toFixed(2)}€</div>
-      </div>
-    `;
-
+      <div class="movements__date">${getDateAndTime(
+        new Date(acc.movementsDates[i])
+      )}</div>
+      <div class="movements__value">${mov.toFixed(2)}€</div>
+    </div>
+  `;
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
@@ -154,15 +154,15 @@ createUsernames(accounts);
 
 const updateUI = function (acc) {
   // Display movements
-  displayMovements(acc.movements);
+  displayMovements(acc);
 
   // Display balance
   calcDisplayBalance(acc);
 
   // Display summary
   calcDisplaySummary(acc);
-  // Display Date and Time
-  getCurrentDateAndTime();
+  // Display Current Date and Time
+  labelDate.textContent = getDateAndTime(new Date());
 };
 
 ///////////////////////////////////////
@@ -176,6 +176,7 @@ btnLogin.addEventListener('click', function (e) {
   currentAccount = accounts.find(
     acc => acc.username === inputLoginUsername.value
   );
+  //------- Print Current Account --------
   console.log(currentAccount);
 
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
@@ -212,6 +213,10 @@ btnTransfer.addEventListener('click', function (e) {
     currentAccount.movements.push(-amount);
     receiverAcc.movements.push(amount);
 
+    // Add current transfer Date
+    currentAccount.movementsDates.push(new Date());
+    receiverAcc.movementsDates.push(new Date());
+
     // Update UI
     updateUI(currentAccount);
   }
@@ -225,6 +230,9 @@ btnLoan.addEventListener('click', function (e) {
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
     // Add movement
     currentAccount.movements.push(amount);
+
+    // Add current Date
+    currentAccount.movementsDates.push(new Date());
 
     // Update UI
     updateUI(currentAccount);
@@ -258,7 +266,7 @@ btnClose.addEventListener('click', function (e) {
 let sorted = false;
 btnSort.addEventListener('click', function (e) {
   e.preventDefault();
-  displayMovements(currentAccount.movements, !sorted);
+  displayMovements(currentAccount, !sorted);
   sorted = !sorted;
 });
 

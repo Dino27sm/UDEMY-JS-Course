@@ -412,3 +412,10 @@ btnSort.addEventListener('click', function (e) {
 // console.log(nowDate.getDay()); // Gives the day of the week
 // console.log(nowDate.getHours());
 // console.log(nowDate.getMinutes());
+//
+//================== Operations with DATES ========================
+const date_a = new Date();
+const date_b = new Date().toISOString();
+
+console.log(Number(date_a));
+console.log(date_b);

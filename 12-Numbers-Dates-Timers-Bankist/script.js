@@ -434,10 +434,30 @@ btnSort.addEventListener('click', function (e) {
 // console.log(DateDiff(date_1, date_2) / 1000 / 60 / 60 / 24);
 //
 // //=============== INTERNATIONALIZATION of DATES ====================
-const date_1 = new Date();
-const formatedDate_1 = Intl.DateTimeFormat('en-US').format(date_1);
+// const date_1 = new Date();
+// const formatedDate_1 = new Intl.DateTimeFormat('en-US').format(date_1);
 
-console.log(date_1);
-console.log(formatedDate_1);
-console.log(Intl.DateTimeFormat('en-UK').format(date_1));
-console.log(Intl.DateTimeFormat('bg-BG').format(date_1));
+// console.log(date_1);
+// console.log(formatedDate_1);
+// console.log(new Intl.DateTimeFormat('en-UK').format(date_1));
+// // console.log(Intl.DateTimeFormat('bg-BG').format(date_1));
+
+// const dateOptions = {
+//   day: 'numeric',
+//   hour: 'numeric',
+//   year: 'numeric',
+//   month: 'long',
+// };
+// console.log(new Intl.DateTimeFormat('en-UK', dateOptions).format(date_1));
+
+const date_13 = new Date(2024, 2, 13);
+const date_22 = new Date(2024, 2, 22);
+const date_27 = new Date(2024, 11, 27);
+
+const dateFormat_BG = new Intl.DateTimeFormat('bg-BG');
+const dateFormat_UK = new Intl.DateTimeFormat('en-UK');
+const dateFormat_US = new Intl.DateTimeFormat('en-US');
+
+console.log(dateFormat_BG.format(date_13));
+console.log(dateFormat_UK.format(date_13));
+console.log(dateFormat_US.format(date_13));

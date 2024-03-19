@@ -26,7 +26,7 @@ const account1 = {
     '2020-07-12T10:51:36.790Z',
   ],
   currency: 'EUR',
-  locale: 'pt-PT', // de-DE
+  locale: 'bg-BG', // de-DE
 };
 
 const account2 = {
@@ -79,14 +79,26 @@ const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
 /////////////////////////////////////////////////
-// Date and Time
-const getDateAndTime = function (dateInfo) {
-  const dateText = `${dateInfo.getDate()}`.padStart(2, 0);
-  const monthText = `${dateInfo.getMonth() + 1}`.padStart(2, 0);
-  const yearText = `${dateInfo.getFullYear()}`;
-  const hoursText = `${dateInfo.getHours()}`.padStart(2, 0);
-  const minutesText = `${dateInfo.getMinutes()}`.padStart(2, 0);
-  return `${dateText}/${monthText}/${yearText} - ${hoursText}:${minutesText}`;
+// // Date and Time - First Option
+// const getDateAndTime = function (dateInfo) {
+//   const dateText = `${dateInfo.getDate()}`.padStart(2, 0);
+//   const monthText = `${dateInfo.getMonth() + 1}`.padStart(2, 0);
+//   const yearText = `${dateInfo.getFullYear()}`;
+//   const hoursText = `${dateInfo.getHours()}`.padStart(2, 0);
+//   const minutesText = `${dateInfo.getMinutes()}`.padStart(2, 0);
+//   return `${dateText}/${monthText}/${yearText} - ${hoursText}:${minutesText}`;
+// };
+//
+// Date and Time - Second Option
+const dateOptions_2 = {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+  hour: 'numeric',
+  minute: 'numeric',
+};
+const getDateAndTime = function (acc, dateInfo, dateOption) {
+  return new Intl.DateTimeFormat(acc.locale, dateOption).format(dateInfo);
 };
 // Functions
 //
@@ -105,6 +117,7 @@ const displayMovements = function (acc, sort = false) {
       i + 1
     } ${type}</div>
       <div class="movements__date">${getDateAndTime(
+        currentAccount,
         new Date(acc.movementsDates[i])
       )}</div>
       <div class="movements__value">${mov.toFixed(2)}€</div>
@@ -162,7 +175,7 @@ const updateUI = function (acc) {
   // Display summary
   calcDisplaySummary(acc);
   // Display Current Date and Time
-  labelDate.textContent = getDateAndTime(new Date());
+  labelDate.textContent = getDateAndTime(acc, new Date(), dateOptions_2);
 };
 
 ///////////////////////////////////////
@@ -450,16 +463,18 @@ btnSort.addEventListener('click', function (e) {
 // };
 // console.log(new Intl.DateTimeFormat('en-UK', dateOptions).format(date_1));
 
-const date_13 = new Date(2024, 2, 13);
+const date_13 = new Date(2024, 2, 13, 9, 27);
 const date_22 = new Date(2024, 2, 22);
 const date_27 = new Date(2024, 11, 27);
-const dateOptions = {
+const dateOptions_1 = {
   month: 'long',
   day: 'numeric',
   year: 'numeric',
+  hour: 'numeric',
+  minute: 'numeric',
 };
 
-const dateFormat_BG = new Intl.DateTimeFormat('bg-BG', dateOptions);
+const dateFormat_BG = new Intl.DateTimeFormat('bg-BG', dateOptions_1);
 const dateFormat_UK = new Intl.DateTimeFormat('en-UK');
 const dateFormat_US = new Intl.DateTimeFormat('en-US');
 

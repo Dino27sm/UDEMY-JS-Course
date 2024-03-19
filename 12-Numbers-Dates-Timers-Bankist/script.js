@@ -91,15 +91,21 @@ const inputClosePin = document.querySelector('.form__input--pin');
 //
 // Date and Time - Second Option
 const dateOptions_2 = {
+  weekday: 'short',
   month: 'short',
   day: 'numeric',
   year: 'numeric',
   hour: 'numeric',
   minute: 'numeric',
 };
-const getDateAndTime = function (acc, dateInfo, dateOption) {
-  return new Intl.DateTimeFormat(acc.locale, dateOption).format(dateInfo);
+// const getDateAndTime = function (acc, dateInfo, dateOption) {
+//   return Intl.DateTimeFormat(acc.locale, dateOption).format(dateInfo);
+// };
+
+const getDateAndTime_n = function (acc, dateOption) {
+  return Intl.DateTimeFormat(acc.locale, dateOption);
 };
+
 // Functions
 //
 const displayMovements = function (acc, sort = false) {
@@ -116,8 +122,7 @@ const displayMovements = function (acc, sort = false) {
       <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
-      <div class="movements__date">${getDateAndTime(
-        currentAccount,
+      <div class="movements__date">${getDateAndTime_n(acc).format(
         new Date(acc.movementsDates[i])
       )}</div>
       <div class="movements__value">${mov.toFixed(2)}€</div>
@@ -175,7 +180,10 @@ const updateUI = function (acc) {
   // Display summary
   calcDisplaySummary(acc);
   // Display Current Date and Time
-  labelDate.textContent = getDateAndTime(acc, new Date(), dateOptions_2);
+  // labelDate.textContent = getDateAndTime(acc, new Date(), dateOptions_2);
+  labelDate.textContent = getDateAndTime_n(acc, dateOptions_2).format(
+    new Date()
+  );
 };
 
 ///////////////////////////////////////
@@ -474,6 +482,10 @@ const dateOptions_1 = {
   minute: 'numeric',
 };
 
+const dataFn = function (localInfo, dateOpt) {
+  return new Intl.DateTimeFormat(localInfo, dateOpt);
+};
+
 const dateFormat_BG = new Intl.DateTimeFormat('bg-BG', dateOptions_1);
 const dateFormat_UK = new Intl.DateTimeFormat('en-UK');
 const dateFormat_US = new Intl.DateTimeFormat('en-US');
@@ -481,3 +493,9 @@ const dateFormat_US = new Intl.DateTimeFormat('en-US');
 console.log(dateFormat_BG.format(date_13));
 console.log(dateFormat_UK.format(date_13));
 console.log(dateFormat_US.format(date_13));
+
+console.log(dateFormat_BG.format(new Date()));
+const usDate = 'en-US';
+
+const dateOut = dataFn(usDate, dateOptions_1).format(new Date());
+console.log(typeof dateOut);

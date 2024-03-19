@@ -453,8 +453,13 @@ btnSort.addEventListener('click', function (e) {
 const date_13 = new Date(2024, 2, 13);
 const date_22 = new Date(2024, 2, 22);
 const date_27 = new Date(2024, 11, 27);
+const dateOptions = {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+};
 
-const dateFormat_BG = new Intl.DateTimeFormat('bg-BG');
+const dateFormat_BG = new Intl.DateTimeFormat('bg-BG', dateOptions);
 const dateFormat_UK = new Intl.DateTimeFormat('en-UK');
 const dateFormat_US = new Intl.DateTimeFormat('en-US');
 

@@ -413,22 +413,31 @@ btnSort.addEventListener('click', function (e) {
 // console.log(nowDate.getHours());
 // console.log(nowDate.getMinutes());
 //
-//================== Operations with DATES ========================
-const date_a = new Date();
-const date_b = new Date().toISOString();
+// //================== Operations with DATES ========================
+// const date_a = new Date();
+// const date_b = new Date().toISOString();
 
-console.log(Number(date_a));
-console.log(date_b);
+// console.log(Number(date_a));
+// console.log(date_b);
 
-console.log('--------------------------------------');
-const date_1 = new Date(2024, 3, 17);
-const date_2 = new Date(2024, 3, 27);
+// console.log('--------------------------------------');
+// const date_1 = new Date(2024, 3, 17);
+// const date_2 = new Date(2024, 3, 27);
+
+// console.log(date_1);
+// console.log(date_2);
+
+// const DateDiff = function (d1, d2) {
+//   return Number(d2) - Number(d1);
+// };
+// // Convert miliseconds in days
+// console.log(DateDiff(date_1, date_2) / 1000 / 60 / 60 / 24);
+//
+// //=============== INTERNATIONALIZATION of DATES ====================
+const date_1 = new Date();
+const formatedDate_1 = Intl.DateTimeFormat('en-US').format(date_1);
 
 console.log(date_1);
-console.log(date_2);
-
-const DateDiff = function (d1, d2) {
-  return Number(d2) - Number(d1);
-};
-// Convert miliseconds in days
-console.log(DateDiff(date_1, date_2) / 1000 / 60 / 60 / 24);
+console.log(formatedDate_1);
+console.log(Intl.DateTimeFormat('en-UK').format(date_1));
+console.log(Intl.DateTimeFormat('bg-BG').format(date_1));

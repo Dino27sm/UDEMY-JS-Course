@@ -471,31 +471,45 @@ btnSort.addEventListener('click', function (e) {
 // };
 // console.log(new Intl.DateTimeFormat('en-UK', dateOptions).format(date_1));
 
-const date_13 = new Date(2024, 2, 13, 9, 27);
-const date_22 = new Date(2024, 2, 22);
-const date_27 = new Date(2024, 11, 27);
-const dateOptions_1 = {
-  month: 'long',
-  day: 'numeric',
-  year: 'numeric',
-  hour: 'numeric',
-  minute: 'numeric',
+// const date_13 = new Date(2024, 2, 13, 9, 27);
+// const date_22 = new Date(2024, 2, 22);
+// const date_27 = new Date(2024, 11, 27);
+// const dateOptions_1 = {
+//   month: 'long',
+//   day: 'numeric',
+//   year: 'numeric',
+//   hour: 'numeric',
+//   minute: 'numeric',
+// };
+
+// const dataFn = function (localInfo, dateOpt) {
+//   return new Intl.DateTimeFormat(localInfo, dateOpt);
+// };
+
+// const dateFormat_BG = new Intl.DateTimeFormat('bg-BG', dateOptions_1);
+// const dateFormat_UK = new Intl.DateTimeFormat('en-UK');
+// const dateFormat_US = new Intl.DateTimeFormat('en-US');
+
+// console.log(dateFormat_BG.format(date_13));
+// console.log(dateFormat_UK.format(date_13));
+// console.log(dateFormat_US.format(date_13));
+
+// console.log(dateFormat_BG.format(new Date()));
+// const usDate = 'en-US';
+
+// const dateOut = dataFn(usDate, dateOptions_1).format(new Date());
+// console.log(typeof dateOut);
+//
+//================== INTERNATIONALIZATION of NUMBERS ===========
+const num = 3884764.23;
+
+const option = {
+  style: 'currency',
+  unit: 'celsius',
+  currency: 'EUR',
 };
 
-const dataFn = function (localInfo, dateOpt) {
-  return new Intl.DateTimeFormat(localInfo, dateOpt);
-};
-
-const dateFormat_BG = new Intl.DateTimeFormat('bg-BG', dateOptions_1);
-const dateFormat_UK = new Intl.DateTimeFormat('en-UK');
-const dateFormat_US = new Intl.DateTimeFormat('en-US');
-
-console.log(dateFormat_BG.format(date_13));
-console.log(dateFormat_UK.format(date_13));
-console.log(dateFormat_US.format(date_13));
-
-console.log(dateFormat_BG.format(new Date()));
-const usDate = 'en-US';
-
-const dateOut = dataFn(usDate, dateOptions_1).format(new Date());
-console.log(typeof dateOut);
+console.log(new Intl.NumberFormat('en-US', option).format(num));
+console.log(new Intl.NumberFormat('en-UK', option).format(num));
+console.log(new Intl.NumberFormat('de-DE', option).format(num));
+console.log(new Intl.NumberFormat('bg-BG', option).format(num));

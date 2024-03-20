@@ -506,10 +506,15 @@ const num = 3884764.23;
 const option = {
   style: 'currency',
   unit: 'celsius',
-  currency: 'EUR',
+  currency: 'BGN',
 };
 
 console.log(new Intl.NumberFormat('en-US', option).format(num));
 console.log(new Intl.NumberFormat('en-UK', option).format(num));
 console.log(new Intl.NumberFormat('de-DE', option).format(num));
 console.log(new Intl.NumberFormat('bg-BG', option).format(num));
+
+console.log(
+  navigator.language,
+  Intl.NumberFormat(navigator.language, option).format(num)
+);

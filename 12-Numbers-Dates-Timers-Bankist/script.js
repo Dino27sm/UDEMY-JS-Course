@@ -520,7 +520,28 @@ btnSort.addEventListener('click', function (e) {
 // );
 //
 //================== TIMERS ==================
-const timeout_1 = setTimeout(function () {
-  console.log(`The pizza arrived on time.`);
-}, 3000);
-console.log(`The pizza is arriving in 3 seconds. Please, wait!`);
+// const timeout_1 = setTimeout(function () {
+//   console.log(`The pizza arrived on time.`);
+// }, 3000);
+// console.log(`The pizza is arriving in 3 seconds. Please, wait!`);
+
+//--------- Using arguments for callback function
+let sumResult = 0;
+const timerArg = [1, 2, 3];
+const sumTimerArg = function (arrArg) {
+  const result = arrArg.reduce((acm, elm) => acm + elm, 0);
+  return result;
+};
+console.log(sumTimerArg(timerArg));
+
+const timeout_2 = setTimeout(
+  function (arg1, arg2, arg3) {
+    const allArg = [arg1, arg2, arg3];
+    const modAllArg = allArg.map(elm => elm + 1);
+    sumResult = sumTimerArg(modAllArg);
+  },
+  5000,
+  ...timerArg
+);
+console.log(`Wait 5 seconds for the result!`);
+console.log(sumResult); // Prins "0" and in 5 sec it becomes "9"

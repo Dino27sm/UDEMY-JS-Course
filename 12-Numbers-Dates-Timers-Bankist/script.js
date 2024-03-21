@@ -187,8 +187,26 @@ const updateUI = function (acc) {
 };
 
 ///////////////////////////////////////
+//============ Logout Timer Settings =============================
+//
+const startLogoutTimer = function (timeLogout) {
+  let timer = Number(timeLogout);
+  const timeCounter = setInterval(function () {
+    let timerMinutes = String(Math.trunc(timer / 60)).padStart(2, 0);
+    let timerSeconds = String(timer % 60).padStart(2, 0);
+    labelTimer.textContent = `${timerMinutes}:${timerSeconds}`;
+    if (timer <= 0) {
+      clearInterval(timeCounter);
+      containerApp.style.opacity = 0;
+    }
+    timer = timer - 1;
+  }, 1000);
+  return timeCounter;
+};
+//=================================================================
 // Event handlers
 let currentAccount;
+let logoutTimer;
 
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
@@ -198,7 +216,7 @@ btnLogin.addEventListener('click', function (e) {
     acc => acc.username === inputLoginUsername.value
   );
   //------- Print Current Account --------
-  console.log(currentAccount);
+  // console.log(currentAccount);
 
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
     // Display UI and message
@@ -210,6 +228,12 @@ btnLogin.addEventListener('click', function (e) {
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
+
+    // Set Logout Timer
+    if (logoutTimer) {
+      clearInterval(logoutTimer);
+    }
+    logoutTimer = startLogoutTimer(120);
 
     // Update UI
     updateUI(currentAccount);
@@ -525,33 +549,33 @@ btnSort.addEventListener('click', function (e) {
 // }, 3000);
 // console.log(`The pizza is arriving in 3 seconds. Please, wait!`);
 
-//--------- Using arguments for callback function
-let sumResult = 0;
-const timerArg = [1, 2, 3];
-const sumTimerArg = function (arrArg) {
-  const result = arrArg.reduce((acm, elm) => acm + elm, 0);
-  return result;
-};
-console.log(sumTimerArg(timerArg));
+// //--------- Using arguments for callback function
+// let sumResult = 0;
+// const timerArg = [1, 2, 3];
+// const sumTimerArg = function (arrArg) {
+//   const result = arrArg.reduce((acm, elm) => acm + elm, 0);
+//   return result;
+// };
+// console.log(sumTimerArg(timerArg));
 
-const timeout_2 = setTimeout(
-  function (arg1, arg2, arg3) {
-    const allArg = [arg1, arg2, arg3];
-    const modAllArg = allArg.map(elm => elm + 1);
-    sumResult = sumTimerArg(modAllArg);
-  },
-  5000,
-  ...timerArg
-);
-console.log(`Wait 5 seconds for the result!`);
-console.log(sumResult); // Prins "0" and in 5 sec it becomes "9"
-//
-const dateOptions = {
-  hour: 'numeric',
-  minute: 'numeric',
-  second: 'numeric',
-};
-const timeIter = setInterval(function () {
-  const timeInfo = new Date();
-  console.log(new Intl.DateTimeFormat('bg-BG', dateOptions).format(timeInfo));
-}, 1000);
+// const timeout_2 = setTimeout(
+//   function (arg1, arg2, arg3) {
+//     const allArg = [arg1, arg2, arg3];
+//     const modAllArg = allArg.map(elm => elm + 1);
+//     sumResult = sumTimerArg(modAllArg);
+//   },
+//   5000,
+//   ...timerArg
+// );
+// console.log(`Wait 5 seconds for the result!`);
+// console.log(sumResult); // Prins "0" and in 5 sec it becomes "9"
+// //
+// const dateOptions = {
+//   hour: 'numeric',
+//   minute: 'numeric',
+//   second: 'numeric',
+// };
+// const timeIter = setInterval(function () {
+//   const timeInfo = new Date();
+//   console.log(new Intl.DateTimeFormat('bg-BG', dateOptions).format(timeInfo));
+// }, 1000);

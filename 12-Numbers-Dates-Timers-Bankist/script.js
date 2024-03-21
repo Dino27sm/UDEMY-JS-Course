@@ -500,21 +500,27 @@ btnSort.addEventListener('click', function (e) {
 // const dateOut = dataFn(usDate, dateOptions_1).format(new Date());
 // console.log(typeof dateOut);
 //
-//================== INTERNATIONALIZATION of NUMBERS ===========
-const num = 3884764.23;
+// //================== INTERNATIONALIZATION of NUMBERS ===========
+// const num = 3884764.23;
 
-const option = {
-  style: 'currency',
-  unit: 'celsius',
-  currency: 'BGN',
-};
+// const option = {
+//   style: 'currency',
+//   unit: 'celsius',
+//   currency: 'BGN',
+// };
 
-console.log(new Intl.NumberFormat('en-US', option).format(num));
-console.log(new Intl.NumberFormat('en-UK', option).format(num));
-console.log(new Intl.NumberFormat('de-DE', option).format(num));
-console.log(new Intl.NumberFormat('bg-BG', option).format(num));
+// console.log(new Intl.NumberFormat('en-US', option).format(num));
+// console.log(new Intl.NumberFormat('en-UK', option).format(num));
+// console.log(new Intl.NumberFormat('de-DE', option).format(num));
+// console.log(new Intl.NumberFormat('bg-BG', option).format(num));
 
-console.log(
-  navigator.language,
-  Intl.NumberFormat(navigator.language, option).format(num)
-);
+// console.log(
+//   navigator.language,
+//   Intl.NumberFormat(navigator.language, option).format(num)
+// );
+//
+//================== TIMERS ==================
+const timeout_1 = setTimeout(function () {
+  console.log(`The pizza arrived on time.`);
+}, 3000);
+console.log(`The pizza is arriving in 3 seconds. Please, wait!`);

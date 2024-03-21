@@ -198,6 +198,7 @@ const startLogoutTimer = function (timeLogout) {
     if (timer <= 0) {
       clearInterval(timeCounter);
       containerApp.style.opacity = 0;
+      labelWelcome.textContent = 'Log in to get started';
     }
     timer = timer - 1;
   }, 1000);
@@ -233,7 +234,7 @@ btnLogin.addEventListener('click', function (e) {
     if (logoutTimer) {
       clearInterval(logoutTimer);
     }
-    logoutTimer = startLogoutTimer(120);
+    logoutTimer = startLogoutTimer(20);
 
     // Update UI
     updateUI(currentAccount);

@@ -265,6 +265,10 @@ btnTransfer.addEventListener('click', function (e) {
     currentAccount.movementsDates.push(new Date().toISOString());
     receiverAcc.movementsDates.push(new Date().toISOString());
 
+    // Resset Logout Timer
+    if (logoutTimer) clearInterval(logoutTimer);
+    logoutTimer = startLogoutTimer(120);
+
     // Update UI
     updateUI(currentAccount);
   }
@@ -281,6 +285,10 @@ btnLoan.addEventListener('click', function (e) {
 
     // Add current Date
     currentAccount.movementsDates.push(new Date().toISOString());
+
+    // Resset Logout Timer
+    if (logoutTimer) clearInterval(logoutTimer);
+    logoutTimer = startLogoutTimer(120);
 
     // Update UI
     updateUI(currentAccount);

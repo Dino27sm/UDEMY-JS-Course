@@ -545,3 +545,13 @@ const timeout_2 = setTimeout(
 );
 console.log(`Wait 5 seconds for the result!`);
 console.log(sumResult); // Prins "0" and in 5 sec it becomes "9"
+//
+const dateOptions = {
+  hour: 'numeric',
+  minute: 'numeric',
+  second: 'numeric',
+};
+const timeIter = setInterval(function () {
+  const timeInfo = new Date();
+  console.log(new Intl.DateTimeFormat('bg-BG', dateOptions).format(timeInfo));
+}, 1000);

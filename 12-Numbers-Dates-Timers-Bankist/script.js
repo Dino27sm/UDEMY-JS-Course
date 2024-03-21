@@ -191,7 +191,7 @@ const updateUI = function (acc) {
 //
 const startLogoutTimer = function (timeLogout) {
   let timer = Number(timeLogout);
-  const timeCounter = setInterval(function () {
+  const timeCounterFn = function () {
     let timerMinutes = String(Math.trunc(timer / 60)).padStart(2, 0);
     let timerSeconds = String(timer % 60).padStart(2, 0);
     labelTimer.textContent = `${timerMinutes}:${timerSeconds}`;
@@ -201,7 +201,9 @@ const startLogoutTimer = function (timeLogout) {
       labelWelcome.textContent = 'Log in to get started';
     }
     timer = timer - 1;
-  }, 1000);
+  };
+  timeCounterFn();
+  const timeCounter = setInterval(timeCounterFn, 1000);
   return timeCounter;
 };
 //=================================================================
@@ -234,7 +236,7 @@ btnLogin.addEventListener('click', function (e) {
     if (logoutTimer) {
       clearInterval(logoutTimer);
     }
-    logoutTimer = startLogoutTimer(20);
+    logoutTimer = startLogoutTimer(120);
 
     // Update UI
     updateUI(currentAccount);

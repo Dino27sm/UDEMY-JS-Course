@@ -61,5 +61,12 @@ message.innerHTML = `We use cookies to impruve functionality.<button class="btn 
 header.append(message); // Add it as LAST child of "header" element
 // header.append(message.cloneNode(true)); // To duplicate the same element
 
-header.before(message); // Place "message" before "header" as a sibling element
+// header.before(message); // Place "message" before "header" as a sibling element
 // header.after(message);  // Place "message" after "header" as a sibling element
+
+// Delete Elements
+document
+  .querySelector('.btn--close--cookie')
+  .addEventListener('click', function () {
+    message.remove();
+  });

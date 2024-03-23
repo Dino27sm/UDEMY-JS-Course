@@ -36,7 +36,7 @@ console.log(document.documentElement);
 console.log(document.head);
 console.log(document.body);
 
-document.querySelector('.header');
+const header = document.querySelector('.header');
 const allSections = document.querySelectorAll('.section');
 console.log(allSections);
 
@@ -46,3 +46,20 @@ console.log(document.getElementsByClassName('btn'));
 
 const allButtons = document.getElementsByTagName('button');
 console.log(allButtons);
+
+// Creating and Inserting elements
+// .insertAdjacentHTML - creates and inserts DOM elem defined by string
+
+const message = document.createElement('div');
+// "div" created but still not included into DOM
+
+message.classList.add('cookie-message'); // Class "cookie-message" added to new "div"
+// message.textContent = 'We use cookies to impruve functionality.';
+message.innerHTML = `We use cookies to impruve functionality.<button class="btn btn--close--cookie">Got it!</button>`;
+
+// header.prepend(message); // Add it as FIRST child of "header" element
+header.append(message); // Add it as LAST child of "header" element
+// header.append(message.cloneNode(true)); // To duplicate the same element
+
+header.before(message); // Place "message" before "header" as a sibling element
+// header.after(message);  // Place "message" after "header" as a sibling element

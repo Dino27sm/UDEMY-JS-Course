@@ -32,20 +32,20 @@ document.addEventListener('keydown', function (e) {
 ////======================================================================
 // Selecting Elements
 //
-console.log(document.documentElement);
-console.log(document.head);
-console.log(document.body);
+// console.log(document.documentElement);
+// console.log(document.head);
+// console.log(document.body);
 
 const header = document.querySelector('.header');
 const allSections = document.querySelectorAll('.section');
-console.log(allSections);
+// console.log(allSections);
 
-console.log(document.querySelector('#section--1'));
-console.log(document.getElementById('section--1'));
-console.log(document.getElementsByClassName('btn'));
+// console.log(document.querySelector('#section--1'));
+// console.log(document.getElementById('section--1'));
+// console.log(document.getElementsByClassName('btn'));
 
 const allButtons = document.getElementsByTagName('button');
-console.log(allButtons);
+// console.log(allButtons);
 
 // Creating and Inserting elements
 // .insertAdjacentHTML - creates and inserts DOM elem defined by string
@@ -70,3 +70,14 @@ document
   .addEventListener('click', function () {
     message.remove();
   });
+
+// Styles
+message.style.backgroundColor = '#37383d';
+message.style.width = '120%';
+
+console.log(message.style.color); // Prints out only inline style data
+console.log(message.style.backgroundColor);
+
+// To get style data from css file - use "getComputedStyle()"
+console.log(getComputedStyle(message).color);
+console.log(getComputedStyle(message).height);

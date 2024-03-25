@@ -87,4 +87,20 @@ console.log(getComputedStyle(message).height);
 message.style.height =
   Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
 
-// Attributes ------------------------------
+// Using of "CSS" properties (variables) defuined in ":root"
+document.documentElement.style.setProperty('--color-primary', 'orangered');
+
+// Attributes - Standard ------------------------------
+const logo = document.querySelector('.nav__logo');
+console.log(logo.alt);
+console.log(logo.src);
+
+// Non standard Attributes ----------------------------
+// "designer" is defined in "html" file as non standard attribute - use "getAttribute()"
+console.log(logo.getAttribute('designer'));
+
+// Classes --------------------------------------------
+logo.classList.add('test__class_name_1');
+// logo.classList.remove('test__class_name');
+logo.classList.toggle('test__class_name_2');
+console.log(logo.classList.contains('test__class_name_1'));

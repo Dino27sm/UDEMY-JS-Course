@@ -64,14 +64,14 @@ header.append(message); // Add it as LAST child of "header" element
 // header.before(message); // Place "message" before "header" as a sibling element
 // header.after(message);  // Place "message" after "header" as a sibling element
 
-// Delete Elements
+// Delete Elements -------------------------
 document
   .querySelector('.btn--close--cookie')
   .addEventListener('click', function () {
     message.remove();
   });
 
-// Styles
+// Styles -----------------------------------
 message.style.backgroundColor = '#37383d';
 message.style.width = '120%';
 
@@ -81,3 +81,10 @@ console.log(message.style.backgroundColor);
 // To get style data from css file - use "getComputedStyle()"
 console.log(getComputedStyle(message).color);
 console.log(getComputedStyle(message).height);
+
+// Get style data from "css", convert it to number, add 30 px as correction and
+// send it into inline style of "message" element
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
+
+// Attributes ------------------------------

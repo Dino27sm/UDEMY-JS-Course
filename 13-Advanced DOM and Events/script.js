@@ -53,54 +53,75 @@ const allButtons = document.getElementsByTagName('button');
 const message = document.createElement('div');
 // "div" created but still not included into DOM
 
-message.classList.add('cookie-message'); // Class "cookie-message" added to new "div"
-// message.textContent = 'We use cookies to impruve functionality.';
-message.innerHTML = `We use cookies to impruve functionality.<button class="btn btn--close--cookie">Got it!</button>`;
+// message.classList.add('cookie-message'); // Class "cookie-message" added to new "div"
+// // message.textContent = 'We use cookies to impruve functionality.';
+// message.innerHTML = `We use cookies to impruve functionality.<button class="btn btn--close--cookie">Got it!</button>`;
 
 // header.prepend(message); // Add it as FIRST child of "header" element
-header.append(message); // Add it as LAST child of "header" element
+// header.append(message); // Add it as LAST child of "header" element
 // header.append(message.cloneNode(true)); // To duplicate the same element
 
 // header.before(message); // Place "message" before "header" as a sibling element
 // header.after(message);  // Place "message" after "header" as a sibling element
 
-// Delete Elements -------------------------
-document
-  .querySelector('.btn--close--cookie')
-  .addEventListener('click', function () {
-    message.remove();
-  });
+// // Delete Elements -------------------------
+// document
+//   .querySelector('.btn--close--cookie')
+//   .addEventListener('click', function () {
+//     message.remove();
+//   });
 
-// Styles -----------------------------------
-message.style.backgroundColor = '#37383d';
-message.style.width = '120%';
+// // Styles -----------------------------------
+// message.style.backgroundColor = '#37383d';
+// message.style.width = '120%';
 
-console.log(message.style.color); // Prints out only inline style data
-console.log(message.style.backgroundColor);
+// console.log(message.style.color); // Prints out only inline style data
+// console.log(message.style.backgroundColor);
 
-// To get style data from css file - use "getComputedStyle()"
-console.log(getComputedStyle(message).color);
-console.log(getComputedStyle(message).height);
+// // To get style data from css file - use "getComputedStyle()"
+// console.log(getComputedStyle(message).color);
+// console.log(getComputedStyle(message).height);
 
-// Get style data from "css", convert it to number, add 30 px as correction and
-// send it into inline style of "message" element
-message.style.height =
-  Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
+// // Get style data from "css", convert it to number, add 30 px as correction and
+// // send it into inline style of "message" element
+// message.style.height =
+//   Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
 
-// Using of "CSS" properties (variables) defuined in ":root"
-document.documentElement.style.setProperty('--color-primary', 'orangered');
+// // Using of "CSS" properties (variables) defuined in ":root"
+// document.documentElement.style.setProperty('--color-primary', 'orangered');
 
-// Attributes - Standard ------------------------------
-const logo = document.querySelector('.nav__logo');
-console.log(logo.alt);
-console.log(logo.src);
+// // Attributes - Standard ------------------------------
+// const logo = document.querySelector('.nav__logo');
+// console.log(logo.alt);
+// console.log(logo.src);
 
-// Non standard Attributes ----------------------------
-// "designer" is defined in "html" file as non standard attribute - use "getAttribute()"
-console.log(logo.getAttribute('designer'));
+// // Non standard Attributes ----------------------------
+// // "designer" is defined in "html" file as non standard attribute - use "getAttribute()"
+// console.log(logo.getAttribute('designer'));
 
-// Classes --------------------------------------------
-logo.classList.add('test__class_name_1');
-// logo.classList.remove('test__class_name');
-logo.classList.toggle('test__class_name_2');
-console.log(logo.classList.contains('test__class_name_1'));
+// // Classes --------------------------------------------
+// logo.classList.add('test__class_name_1');
+// // logo.classList.remove('test__class_name');
+// logo.classList.toggle('test__class_name_2');
+// console.log(logo.classList.contains('test__class_name_1'));
+//
+//======================= SMOOTH SCROLLING ============================
+//
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function (evn) {
+  const s1coords = section1.getBoundingClientRect();
+  // "getBoundingClientRect()" - to get coordinates of the element "section1"
+
+  console.log(s1coords);
+  console.log(evn.target.getBoundingClientRect()); // "btnScrollTo" coordinates
+  // console.log(btnScrollTo.getBoundingClientRect()); // Like previous line
+
+  //------- To print out the size of current viewport ---------
+  console.log(
+    'Height/Width of viewport',
+    document.documentElement.clientHeight,
+    document.documentElement.clientWidth
+  );
+});

@@ -148,3 +148,6 @@ const alertOverH1 = function () {
 };
 
 h1.addEventListener('mouseenter', alertOverH1);
+
+// Removes the Event Listener after 5 seconds
+setTimeout(() => h1.removeEventListener('mouseenter', alertOverH1), 5000);

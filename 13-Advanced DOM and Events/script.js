@@ -118,10 +118,21 @@ btnScrollTo.addEventListener('click', function (evn) {
   console.log(evn.target.getBoundingClientRect()); // "btnScrollTo" coordinates
   // console.log(btnScrollTo.getBoundingClientRect()); // Like previous line
 
-  //------- To print out the size of current viewport ---------
+  //-------- To get position of scroling window
+  // "scrollX" - distance from left; "scrollY" - distance from right of the page
+  console.log('Get scrolling X/Y position: ', window.scrollX, window.scrollY);
+
+  //------- To print out the dimensions of current viewport ---------
   console.log(
     'Height/Width of viewport',
     document.documentElement.clientHeight,
     document.documentElement.clientWidth
   );
+
+  //------- Smooth Scrolling
+  window.scrollTo({
+    left: s1coords.left + window.scrollX,
+    top: s1coords.top + window.scrollY,
+    behavior: 'smooth',
+  });
 });

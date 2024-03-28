@@ -140,3 +140,11 @@ btnScrollTo.addEventListener('click', function (evn) {
   section1.scrollIntoView({ behavior: 'smooth' });
 });
 //======================================================================
+//------------- Type of EVENTS -----------------------------------------
+const h1 = document.querySelector('h1');
+
+const alertOverH1 = function () {
+  alert('Mouse was over h1 !');
+};
+
+h1.addEventListener('mouseenter', alertOverH1);

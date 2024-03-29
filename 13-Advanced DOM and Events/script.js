@@ -161,5 +161,10 @@ const randomColor = function () {
 };
 console.log(randomColor());
 
-const featuresElm = document.querySelector('.nav__link');
-featuresElm.style.backgroundColor = randomColor();
+const firstNavItem = document.querySelector('.nav__link');
+const allNavItems = document.querySelector('.nav__links');
+const navHeader = document.querySelector('.nav');
+
+firstNavItem.setAttribute('style', `background-color: ${randomColor()}`);
+allNavItems.setAttribute('style', `background-color: ${randomColor()}`);
+navHeader.setAttribute('style', `background-color: ${randomColor()}`);

@@ -154,9 +154,10 @@ const message = document.createElement('div');
 //
 //====================== EVENT PROPAGATION ============================
 const randomColor = function () {
-  const colorArray = [0, 0, 0];
-  const outArray = colorArray.map(elm => Math.floor(Math.random() * 256));
-  return `rgb(${outArray.join(', ')})`;
+  const R = Math.floor(Math.random() * 256);
+  const G = Math.floor(Math.random() * 256);
+  const B = Math.floor(Math.random() * 256);
+  return `rgb(${R}, ${G}, ${B})`;
 };
 console.log(randomColor());
 

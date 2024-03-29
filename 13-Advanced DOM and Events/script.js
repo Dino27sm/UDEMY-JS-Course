@@ -165,6 +165,12 @@ const firstNavItem = document.querySelector('.nav__link');
 const allNavItems = document.querySelector('.nav__links');
 const navHeader = document.querySelector('.nav');
 
-firstNavItem.setAttribute('style', `background-color: ${randomColor()}`);
-allNavItems.setAttribute('style', `background-color: ${randomColor()}`);
-navHeader.setAttribute('style', `background-color: ${randomColor()}`);
+firstNavItem.addEventListener('click', function (evn) {
+  this.setAttribute('style', `background-color: ${randomColor()}`);
+});
+allNavItems.addEventListener('click', function (evn) {
+  this.setAttribute('style', `background-color: ${randomColor()}`);
+});
+navHeader.addEventListener('click', function (evn) {
+  this.setAttribute('style', `background-color: ${randomColor()}`);
+});

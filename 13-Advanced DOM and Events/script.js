@@ -105,49 +105,60 @@ const message = document.createElement('div');
 // logo.classList.toggle('test__class_name_2');
 // console.log(logo.classList.contains('test__class_name_1'));
 //
-//======================= SMOOTH SCROLLING ============================
+// //======================= SMOOTH SCROLLING ============================
+// //
+// const btnScrollTo = document.querySelector('.btn--scroll-to');
+// const section1 = document.querySelector('#section--1');
+
+// btnScrollTo.addEventListener('click', function (evn) {
+//   const s1coords = section1.getBoundingClientRect();
+//   // "getBoundingClientRect()" - to get coordinates of the element "section1"
+
+//   console.log(s1coords);
+//   console.log(evn.target.getBoundingClientRect()); // "btnScrollTo" coordinates
+//   // console.log(btnScrollTo.getBoundingClientRect()); // Like previous line
+
+//   //-------- To get position of scroling window
+//   // "scrollX" - distance from left; "scrollY" - distance from right of the page
+//   console.log('Get scrolling X/Y position: ', window.scrollX, window.scrollY);
+
+// //------- To print out the dimensions of current viewport ---------
+// console.log(
+//   'Height/Width of viewport',
+//   document.documentElement.clientHeight,
+//   document.documentElement.clientWidth
+// );
+
+// //------- Smooth Scrolling
+// window.scrollTo({
+//   left: s1coords.left + window.scrollX,
+//   top: s1coords.top + window.scrollY,
+//   behavior: 'smooth',
+// });
+
+//   //-------- BEST WAY to do SMOOTH SCROLLING -------------------
+//   section1.scrollIntoView({ behavior: 'smooth' });
+// });
+// //======================================================================
+// //------------- Type of EVENTS -----------------------------------------
+// const h1 = document.querySelector('h1');
+
+// const alertOverH1 = function () {
+//   alert('Mouse was over h1 !');
+// };
+
+// h1.addEventListener('mouseenter', alertOverH1);
+
+// // Removes the Event Listener after 5 seconds
+// setTimeout(() => h1.removeEventListener('mouseenter', alertOverH1), 5000);
 //
-const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1');
-
-btnScrollTo.addEventListener('click', function (evn) {
-  const s1coords = section1.getBoundingClientRect();
-  // "getBoundingClientRect()" - to get coordinates of the element "section1"
-
-  console.log(s1coords);
-  console.log(evn.target.getBoundingClientRect()); // "btnScrollTo" coordinates
-  // console.log(btnScrollTo.getBoundingClientRect()); // Like previous line
-
-  //-------- To get position of scroling window
-  // "scrollX" - distance from left; "scrollY" - distance from right of the page
-  console.log('Get scrolling X/Y position: ', window.scrollX, window.scrollY);
-
-  // //------- To print out the dimensions of current viewport ---------
-  // console.log(
-  //   'Height/Width of viewport',
-  //   document.documentElement.clientHeight,
-  //   document.documentElement.clientWidth
-  // );
-
-  // //------- Smooth Scrolling
-  // window.scrollTo({
-  //   left: s1coords.left + window.scrollX,
-  //   top: s1coords.top + window.scrollY,
-  //   behavior: 'smooth',
-  // });
-
-  //-------- BEST WAY to do SMOOTH SCROLLING -------------------
-  section1.scrollIntoView({ behavior: 'smooth' });
-});
-//======================================================================
-//------------- Type of EVENTS -----------------------------------------
-const h1 = document.querySelector('h1');
-
-const alertOverH1 = function () {
-  alert('Mouse was over h1 !');
+//====================== EVENT PROPAGATION ============================
+const randomColor = function () {
+  const colorArray = [0, 0, 0];
+  const outArray = colorArray.map(elm => Math.floor(Math.random() * 256));
+  return `rgb(${outArray.join(', ')})`;
 };
+console.log(randomColor());
 
-h1.addEventListener('mouseenter', alertOverH1);
-
-// Removes the Event Listener after 5 seconds
-setTimeout(() => h1.removeEventListener('mouseenter', alertOverH1), 5000);
+const featuresElm = document.querySelector('.nav__link');
+featuresElm.style.backgroundColor = randomColor();

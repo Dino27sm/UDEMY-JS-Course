@@ -36,21 +36,21 @@ document.addEventListener('keydown', function (e) {
 // console.log(document.head);
 // console.log(document.body);
 
-const header = document.querySelector('.header');
-const allSections = document.querySelectorAll('.section');
+// const header = document.querySelector('.header');
+// const allSections = document.querySelectorAll('.section');
 // console.log(allSections);
 
 // console.log(document.querySelector('#section--1'));
 // console.log(document.getElementById('section--1'));
 // console.log(document.getElementsByClassName('btn'));
 
-const allButtons = document.getElementsByTagName('button');
+// const allButtons = document.getElementsByTagName('button');
 // console.log(allButtons);
 
 // Creating and Inserting elements
 // .insertAdjacentHTML - creates and inserts DOM elem defined by string
 
-const message = document.createElement('div');
+// const message = document.createElement('div');
 // "div" created but still not included into DOM
 
 // message.classList.add('cookie-message'); // Class "cookie-message" added to new "div"
@@ -183,3 +183,15 @@ const message = document.createElement('div');
 // });
 // // "evn.target" gives the element which is clicked on !!!
 //
+//======================= EVENT DELEGATION ===========================
+// 1. Add Event Listener to common parent element
+// 2. Find out the element on which the Event is created
+const navBar = document.querySelector('.nav__links');
+navBar.addEventListener('click', function (evn) {
+  evn.preventDefault();
+
+  if (evn.target.classList.contains('nav__link')) {
+    const idElm = evn.target.getAttribute('href');
+    document.querySelector(`${idElm}`).scrollIntoView({ behavior: 'smooth' });
+  }
+});

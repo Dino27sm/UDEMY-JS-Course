@@ -152,33 +152,34 @@ const message = document.createElement('div');
 // // Removes the Event Listener after 5 seconds
 // setTimeout(() => h1.removeEventListener('mouseenter', alertOverH1), 5000);
 //
-//====================== EVENT PROPAGATION ============================
-const randomColor = function () {
-  const R = Math.floor(Math.random() * 256);
-  const G = Math.floor(Math.random() * 256);
-  const B = Math.floor(Math.random() * 256);
-  return `rgb(${R}, ${G}, ${B})`;
-};
-console.log(randomColor());
+// //====================== EVENT PROPAGATION ============================
+// const randomColor = function () {
+//   const R = Math.floor(Math.random() * 256);
+//   const G = Math.floor(Math.random() * 256);
+//   const B = Math.floor(Math.random() * 256);
+//   return `rgb(${R}, ${G}, ${B})`;
+// };
+// console.log(randomColor());
 
-const firstNavItem = document.querySelector('.nav__link');
-const allNavItems = document.querySelector('.nav__links');
-const navHeader = document.querySelector('.nav');
+// const firstNavItem = document.querySelector('.nav__link');
+// const allNavItems = document.querySelector('.nav__links');
+// const navHeader = document.querySelector('.nav');
 
-firstNavItem.addEventListener('click', function (evn) {
-  // evn.target.setAttribute('style', `background-color: ${randomColor()}`);
-  this.setAttribute('style', `background-color: ${randomColor()}`);
-  evn.stopPropagation(); // To STOP Propagation
-});
-// "this" points to the element to which "addEventListener" is attached
-// Here "this" means the element "firstNavItem"
+// firstNavItem.addEventListener('click', function (evn) {
+//   // evn.target.setAttribute('style', `background-color: ${randomColor()}`);
+//   this.setAttribute('style', `background-color: ${randomColor()}`);
+//   evn.stopPropagation(); // To STOP Propagation
+// });
+// // "this" points to the element to which "addEventListener" is attached
+// // Here "this" means the element "firstNavItem"
 
-allNavItems.addEventListener('click', function (evn) {
-  // evn.target.setAttribute('style', `background-color: ${randomColor()}`);
-  this.setAttribute('style', `background-color: ${randomColor()}`);
-});
-navHeader.addEventListener('click', function (evn) {
-  // evn.target.setAttribute('style', `background-color: ${randomColor()}`);
-  this.setAttribute('style', `background-color: ${randomColor()}`);
-});
-// "evn.target" gives the element which is clicked on !!!
+// allNavItems.addEventListener('click', function (evn) {
+//   // evn.target.setAttribute('style', `background-color: ${randomColor()}`);
+//   this.setAttribute('style', `background-color: ${randomColor()}`);
+// });
+// navHeader.addEventListener('click', function (evn) {
+//   // evn.target.setAttribute('style', `background-color: ${randomColor()}`);
+//   this.setAttribute('style', `background-color: ${randomColor()}`);
+// });
+// // "evn.target" gives the element which is clicked on !!!
+//

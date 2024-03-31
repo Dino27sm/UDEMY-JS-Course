@@ -192,6 +192,7 @@ navBar.addEventListener('click', function (evn) {
 
   if (evn.target.classList.contains('nav__link')) {
     const idElm = evn.target.getAttribute('href');
-    document.querySelector(`${idElm}`).scrollIntoView({ behavior: 'smooth' });
+    // document.querySelector(`${idElm}`).scrollIntoView({ behavior: 'smooth' });
+    document.querySelector(idElm).scrollIntoView({ behavior: 'smooth' });
   }
 });

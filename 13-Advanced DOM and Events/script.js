@@ -207,3 +207,14 @@ console.log(h1.children);
 
 h1.firstElementChild.setAttribute('style', 'color: white');
 h1.lastElementChild.setAttribute('style', 'color: orangered');
+//
+//------ Go up to PARENT Elements
+console.log(h1.parentNode);
+console.log(h1.parentElement);
+
+h1.closest('.header').setAttribute(
+  'style',
+  'background: var(--gradient-secondary)'
+);
+
+h1.closest('h1').setAttribute('style', 'background: var(--gradient-primary)');

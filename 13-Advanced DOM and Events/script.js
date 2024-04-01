@@ -250,7 +250,13 @@ tabbContainer.addEventListener('click', function (evn) {
     elm.classList.remove('operations__content--active')
   );
 
-  [...operationsContent]
-    .find(elm => elm.classList.contains(`operations__content--${dataTabNum}`))
+  document
+    .querySelector(`.operations__content--${dataTabNum}`)
     .classList.add('operations__content--active');
+
+  // // Another way of solution ------------------------------
+  // [...operationsContent]
+  //   .find(elm => elm.classList.contains(`operations__content--${dataTabNum}`))
+  //   .classList.add('operations__content--active');
+  // //-------------------------------------------------------
 });

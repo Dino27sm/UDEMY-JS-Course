@@ -219,11 +219,28 @@ console.log(h1);
 
 // h1.closest('h1').setAttribute('style', 'background: var(--gradient-primary)');
 // //
-//-------- Go sideway to Siblings
-console.log(h1.previousElementSibling);
-console.log(h1.nextElementSibling);
+// //-------- Go sideway to Siblings
+// console.log(h1.previousElementSibling);
+// console.log(h1.nextElementSibling);
 
-console.log(h1.previousSibling);
-console.log(h1.nextSibling);
+// console.log(h1.previousSibling);
+// console.log(h1.nextSibling);
 
-console.log(h1.parentElement.children); // To get all siblings of "h1"
+// console.log(h1.parentElement.children); // To get all siblings of "h1"
+//=================== Building a TABBED COMPONENT ===========================
+const tabbContainer = document.querySelector('.operations__tab-container');
+const tabbContainerBtns = tabbContainer.querySelectorAll('.operations__tab');
+
+tabbContainer.addEventListener('click', function (evn) {
+  const clickedElm = evn.target.closest('.operations__tab');
+
+  // If "clickedElm" is "null" or "undefined"
+  if (!clickedElm) return;
+  //-------------------------------------------
+
+  tabbContainerBtns.forEach(elm =>
+    elm.classList.remove('operations__tab--active')
+  );
+
+  clickedElm.classList.add('operations__tab--active');
+});

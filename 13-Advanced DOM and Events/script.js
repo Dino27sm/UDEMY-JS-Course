@@ -183,16 +183,27 @@ document.addEventListener('keydown', function (e) {
 // });
 // // "evn.target" gives the element which is clicked on !!!
 //
-//======================= EVENT DELEGATION ===========================
-// 1. Add Event Listener to common parent element
-// 2. Find out the element on which the Event is created
-const navBar = document.querySelector('.nav__links');
-navBar.addEventListener('click', function (evn) {
-  evn.preventDefault();
+// //======================= EVENT DELEGATION ===========================
+// // 1. Add Event Listener to common parent element
+// // 2. Find out the element on which the Event is created
+// const navBar = document.querySelector('.nav__links');
+// navBar.addEventListener('click', function (evn) {
+//   evn.preventDefault();
 
-  if (evn.target.classList.contains('nav__link')) {
-    const idElm = evn.target.getAttribute('href');
-    // document.querySelector(`${idElm}`).scrollIntoView({ behavior: 'smooth' });
-    document.querySelector(idElm).scrollIntoView({ behavior: 'smooth' });
-  }
-});
+//   if (evn.target.classList.contains('nav__link')) {
+//     const idElm = evn.target.getAttribute('href');
+//     // document.querySelector(`${idElm}`).scrollIntoView({ behavior: 'smooth' });
+//     document.querySelector(idElm).scrollIntoView({ behavior: 'smooth' });
+//   }
+// });
+//========================= DOM Traversing ============================
+//------ Go down to CHILD Elements
+const h1 = document.querySelector('h1');
+console.log(h1);
+
+console.log(h1.querySelectorAll('.highlight'));
+console.log(h1.childNodes);
+console.log(h1.children);
+
+h1.firstElementChild.setAttribute('style', 'color: white');
+h1.lastElementChild.setAttribute('style', 'color: orangered');

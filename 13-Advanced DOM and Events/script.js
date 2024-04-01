@@ -230,6 +230,7 @@ console.log(h1);
 //=================== Building a TABBED COMPONENT ===========================
 const tabbContainer = document.querySelector('.operations__tab-container');
 const tabbContainerBtns = tabbContainer.querySelectorAll('.operations__tab');
+const operationsContent = document.querySelectorAll('.operations__content');
 
 tabbContainer.addEventListener('click', function (evn) {
   const clickedElm = evn.target.closest('.operations__tab');
@@ -241,6 +242,15 @@ tabbContainer.addEventListener('click', function (evn) {
   tabbContainerBtns.forEach(elm =>
     elm.classList.remove('operations__tab--active')
   );
-
   clickedElm.classList.add('operations__tab--active');
+
+  // Activate the Content area
+  const dataTabNum = clickedElm.getAttribute('data-tab');
+  operationsContent.forEach(elm =>
+    elm.classList.remove('operations__content--active')
+  );
+
+  [...operationsContent]
+    .find(elm => elm.classList.contains(`operations__content--${dataTabNum}`))
+    .classList.add('operations__content--active');
 });

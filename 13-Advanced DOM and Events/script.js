@@ -269,7 +269,7 @@ tabbContainer.addEventListener('click', function (evn) {
 //
 //================ Passing Arguments to Event Handlers =================
 // Menu Fade animation
-nav.addEventListener('mouseover', function (e) {
+const handleHover = function (e, opacity) {
   if (e.target.classList.contains('nav__link')) {
     const link = e.target;
     const navLinkAll = link.closest('.nav').querySelectorAll('.nav__link');
@@ -277,24 +277,17 @@ nav.addEventListener('mouseover', function (e) {
 
     navLinkAll.forEach(function (elm) {
       if (elm !== link) {
-        elm.setAttribute('style', 'opacity: 0.5');
+        elm.setAttribute('style', `opacity: ${opacity}`);
       }
     });
-    logo.setAttribute('style', 'opacity: 0.5');
+    logo.setAttribute('style', `opacity: ${opacity}`);
   }
+};
+
+nav.addEventListener('mouseover', function (e) {
+  handleHover(e, 0.5);
 });
 
 nav.addEventListener('mouseout', function (e) {
-  if (e.target.classList.contains('nav__link')) {
-    const link = e.target;
-    const navLinkAll = link.closest('.nav').querySelectorAll('.nav__link');
-    const logo = link.closest('.nav').querySelector('img');
-
-    navLinkAll.forEach(function (elm) {
-      if (elm !== link) {
-        elm.setAttribute('style', 'opacity: 1');
-      }
-    });
-    logo.setAttribute('style', 'opacity: 1');
-  }
+  handleHover(e, 1);
 });

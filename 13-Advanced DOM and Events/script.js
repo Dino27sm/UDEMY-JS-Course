@@ -1,4 +1,13 @@
 'use strict';
+//=====================================================
+//
+const h1 = document.querySelector('h1');
+
+const tabbContainer = document.querySelector('.operations__tab-container');
+const tabbContainerBtns = tabbContainer.querySelectorAll('.operations__tab');
+const operationsContent = document.querySelectorAll('.operations__content');
+
+const nav = document.querySelector('.nav');
 
 ///////////////////////////////////////
 // Modal window
@@ -198,8 +207,8 @@ document.addEventListener('keydown', function (e) {
 // });
 // //========================= DOM Traversing ============================
 // //------ Go down to CHILD Elements
-const h1 = document.querySelector('h1');
-console.log(h1);
+// const h1 = document.querySelector('h1');
+// console.log(h1);
 
 // console.log(h1.querySelectorAll('.highlight'));
 // console.log(h1.childNodes);
@@ -228,9 +237,6 @@ console.log(h1);
 
 // console.log(h1.parentElement.children); // To get all siblings of "h1"
 //=================== Building a TABBED COMPONENT ===========================
-const tabbContainer = document.querySelector('.operations__tab-container');
-const tabbContainerBtns = tabbContainer.querySelectorAll('.operations__tab');
-const operationsContent = document.querySelectorAll('.operations__content');
 
 tabbContainer.addEventListener('click', function (evn) {
   const clickedElm = evn.target.closest('.operations__tab');
@@ -259,4 +265,36 @@ tabbContainer.addEventListener('click', function (evn) {
   //   .find(elm => elm.classList.contains(`operations__content--${dataTabNum}`))
   //   .classList.add('operations__content--active');
   // //-------------------------------------------------------
+});
+//
+//================ Passing Arguments to Event Handlers =================
+// Menu Fade animation
+nav.addEventListener('mouseover', function (e) {
+  if (e.target.classList.contains('nav__link')) {
+    const link = e.target;
+    const navLinkAll = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelector('img');
+
+    navLinkAll.forEach(function (elm) {
+      if (elm !== link) {
+        elm.setAttribute('style', 'opacity: 0.5');
+      }
+    });
+    logo.setAttribute('style', 'opacity: 0.5');
+  }
+});
+
+nav.addEventListener('mouseout', function (e) {
+  if (e.target.classList.contains('nav__link')) {
+    const link = e.target;
+    const navLinkAll = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelector('img');
+
+    navLinkAll.forEach(function (elm) {
+      if (elm !== link) {
+        elm.setAttribute('style', 'opacity: 1');
+      }
+    });
+    logo.setAttribute('style', 'opacity: 1');
+  }
 });

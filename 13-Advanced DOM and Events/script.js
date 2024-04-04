@@ -274,14 +274,14 @@ const handleHover = function (e) {
     const link = e.target;
     const navLinkAll = link.closest('.nav').querySelectorAll('.nav__link');
     const logo = link.closest('.nav').querySelector('img');
-    const opacity = Number(this);
+    const opacityNum = Number(this);
 
     navLinkAll.forEach(function (elm) {
       if (elm !== link) {
-        elm.setAttribute('style', `opacity: ${opacity}`);
+        elm.setAttribute('style', `opacity: ${opacityNum}`);
       }
     });
-    logo.setAttribute('style', `opacity: ${opacity}`);
+    logo.setAttribute('style', `opacity: ${opacityNum}`);
   }
 };
 

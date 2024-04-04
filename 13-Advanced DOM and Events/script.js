@@ -269,11 +269,12 @@ tabbContainer.addEventListener('click', function (evn) {
 //
 //================ Passing Arguments to Event Handlers =================
 // Menu Fade animation
-const handleHover = function (e, opacity) {
+const handleHover = function (e) {
   if (e.target.classList.contains('nav__link')) {
     const link = e.target;
     const navLinkAll = link.closest('.nav').querySelectorAll('.nav__link');
     const logo = link.closest('.nav').querySelector('img');
+    const opacity = Number(this);
 
     navLinkAll.forEach(function (elm) {
       if (elm !== link) {
@@ -284,10 +285,5 @@ const handleHover = function (e, opacity) {
   }
 };
 
-nav.addEventListener('mouseover', function (e) {
-  handleHover(e, 0.5);
-});
-
-nav.addEventListener('mouseout', function (e) {
-  handleHover(e, 1);
-});
+nav.addEventListener('mouseover', handleHover.bind(0.5));
+nav.addEventListener('mouseout', handleHover.bind(1));

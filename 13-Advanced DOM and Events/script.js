@@ -293,12 +293,14 @@ nav.addEventListener('mouseout', handleHover.bind(1));
 
 const obsCallback = function (entries, observer) {
   entries.forEach(function (entry) {
-    console.log(entry);
+    if (entry.isIntersecting) {
+      console.log(entry);
+    }
   });
 };
 const obsOptions = {
   root: null,
-  threshold: 0.1,
+  threshold: 0.2,
 };
 
 const observer = new IntersectionObserver(obsCallback, obsOptions);

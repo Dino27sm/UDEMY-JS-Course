@@ -2,6 +2,7 @@
 //=====================================================
 //
 const h1 = document.querySelector('h1');
+const section1 = document.querySelector('#section--1');
 
 const tabbContainer = document.querySelector('.operations__tab-container');
 const tabbContainerBtns = tabbContainer.querySelectorAll('.operations__tab');
@@ -287,3 +288,18 @@ const handleHover = function (e) {
 
 nav.addEventListener('mouseover', handleHover.bind(0.5));
 nav.addEventListener('mouseout', handleHover.bind(1));
+//
+//============= STICKY NAVIGATION - Intersection Observer API ===============
+
+const obsCallback = function (entries, observer) {
+  entries.forEach(function (entry) {
+    console.log(entry);
+  });
+};
+const obsOptions = {
+  root: null,
+  threshold: 0.1,
+};
+
+const observer = new IntersectionObserver(obsCallback, obsOptions);
+observer.observe(section1);

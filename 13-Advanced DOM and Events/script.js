@@ -307,7 +307,6 @@ nav.addEventListener('mouseout', handleHover.bind(1));
 //------- Header Sticky Navigation
 const header = document.querySelector('.header');
 const navHeight = nav.getBoundingClientRect().height;
-console.log(navHeight);
 
 const headerObsCallback = function (entries) {
   const entry = entries[0]; // Takes the first element of "entries" array
@@ -325,3 +324,6 @@ const obsOptions = {
 
 const headerObserver = new IntersectionObserver(headerObsCallback, obsOptions);
 headerObserver.observe(header);
+//
+//======================= REVEAL SECTIONS ============================
+//

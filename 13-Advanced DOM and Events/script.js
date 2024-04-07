@@ -331,21 +331,23 @@ const allSections = document.querySelectorAll('.section');
 
 const revealSection = function (entries, observer) {
   const [entry] = entries;
-  console.log(entry);
 
   if (!entry.isIntersecting) {
     return;
   } else {
     entry.target.classList.remove('section--hidden');
+    observer.unobserve(entry.target);
   }
 };
 
 const sectionObserver = new IntersectionObserver(revealSection, {
   root: null,
-  threshold: 0.25,
+  threshold: 0.2,
 });
 
 allSections.forEach(section => {
   section.classList.add('section--hidden');
   sectionObserver.observe(section);
 });
+//=======================================================================
+//

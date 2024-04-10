@@ -360,10 +360,14 @@ const loadImg = function (entries, observer) {
     return;
   } else {
     //------ Replace "src" with "data-src"
-    console.log('LOAD Image !');
     entry.target.src = entry.target.dataset.src;
-    entry.target.classList.remove('lazy-img');
   }
+
+  entry.target.addEventListener('load', function () {
+    entry.target.classList.remove('lazy-img');
+  });
+
+  observer.unobserve(entry.target);
 };
 
 const imgObserver = new IntersectionObserver(loadImg, {

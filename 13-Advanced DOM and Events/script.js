@@ -349,5 +349,18 @@ allSections.forEach(section => {
   section.classList.add('section--hidden');
   sectionObserver.observe(section);
 });
-//=======================================================================
+//==================== Lazy Loading Images ==============================
 //
+const imgTargets = document.querySelectorAll('img[data-src]');
+
+const loadImg = function (entries, observer) {
+  const [entry] = entries;
+  console.log(entry);
+};
+
+const imgObserver = new IntersectionObserver(loadImg, {
+  root: null,
+  threshold: 0.1,
+});
+
+imgTargets.forEach(img => imgObserver.observe(img));

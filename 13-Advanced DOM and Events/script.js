@@ -373,6 +373,7 @@ const loadImg = function (entries, observer) {
 const imgObserver = new IntersectionObserver(loadImg, {
   root: null,
   threshold: 0.7,
+  rootMargin: '200px', // To load images 200px before viewport
 });
 
 imgTargets.forEach(img => imgObserver.observe(img));

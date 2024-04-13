@@ -346,7 +346,7 @@ const sectionObserver = new IntersectionObserver(revealSection, {
 });
 
 allSections.forEach(section => {
-  section.classList.add('section--hidden');
+  // section.classList.add('section--hidden'); // Disallowed temporarily
   sectionObserver.observe(section);
 });
 //==================== Lazy Loading Images ==============================
@@ -379,3 +379,9 @@ const imgObserver = new IntersectionObserver(loadImg, {
 imgTargets.forEach(img => imgObserver.observe(img));
 //
 //===================== SLIDER Manipulation =======================
+const slides = document.querySelectorAll('.slide');
+const slider = document.querySelector('.slider');
+slider.style.transform = 'scale(0.5) translateX(-300px)';
+slider.style.overflow = 'visible';
+
+slides.forEach((s, i) => (s.style.transform = `translateX(${i * 100}%)`));

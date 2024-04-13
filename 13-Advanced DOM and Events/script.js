@@ -386,11 +386,13 @@ const btnRight = document.querySelector('.slider__btn--right');
 let currentSlide = 0;
 const maxSlideNum = slides.length - 1;
 
-const slider = document.querySelector('.slider');
-slider.style.transform = 'scale(0.5) translateX(-300px)';
-slider.style.overflow = 'visible';
+const goToSlide = function (slide) {
+  slides.forEach(
+    (s, i) => (s.style.transform = `translateX(${(i - slide) * 100}%)`)
+  );
+};
 
-slides.forEach((s, i) => (s.style.transform = `translateX(${i * 100}%)`));
+goToSlide(0);
 
 // Go to Next Slide
 btnRight.addEventListener('click', function () {
@@ -399,10 +401,7 @@ btnRight.addEventListener('click', function () {
   } else {
     currentSlide++;
   }
-
-  slides.forEach(
-    (s, i) => (s.style.transform = `translateX(${(i - currentSlide) * 100}%)`)
-  );
+  goToSlide(currentSlide);
 });
 
 // Go to Previous Slide
@@ -412,8 +411,5 @@ btnLeft.addEventListener('click', function () {
   } else {
     currentSlide--;
   }
-
-  slides.forEach(
-    (s, i) => (s.style.transform = `translateX(${(i - currentSlide) * 100}%)`)
-  );
+  goToSlide(currentSlide);
 });

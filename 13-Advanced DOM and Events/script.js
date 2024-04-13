@@ -380,8 +380,40 @@ imgTargets.forEach(img => imgObserver.observe(img));
 //
 //===================== SLIDER Manipulation =======================
 const slides = document.querySelectorAll('.slide');
+const btnLeft = document.querySelector('.slider__btn--left');
+const btnRight = document.querySelector('.slider__btn--right');
+
+let currentSlide = 0;
+const maxSlideNum = slides.length - 1;
+
 const slider = document.querySelector('.slider');
 slider.style.transform = 'scale(0.5) translateX(-300px)';
 slider.style.overflow = 'visible';
 
 slides.forEach((s, i) => (s.style.transform = `translateX(${i * 100}%)`));
+
+// Go to Next Slide
+btnRight.addEventListener('click', function () {
+  if (currentSlide === maxSlideNum) {
+    currentSlide = 0;
+  } else {
+    currentSlide++;
+  }
+
+  slides.forEach(
+    (s, i) => (s.style.transform = `translateX(${(i - currentSlide) * 100}%)`)
+  );
+});
+
+// Go to Previous Slide
+btnLeft.addEventListener('click', function () {
+  if (currentSlide === 0) {
+    currentSlide = maxSlideNum;
+  } else {
+    currentSlide--;
+  }
+
+  slides.forEach(
+    (s, i) => (s.style.transform = `translateX(${(i - currentSlide) * 100}%)`)
+  );
+});

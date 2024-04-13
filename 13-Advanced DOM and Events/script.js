@@ -413,3 +413,4 @@ btnLeft.addEventListener('click', function () {
   }
   goToSlide(currentSlide);
 });
+//======================================================================

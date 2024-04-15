@@ -452,3 +452,9 @@ document.addEventListener('DOMContentLoaded', function (evn) {
 window.addEventListener('load', function (evn) {
   console.log('All Files and Pictures have been loaded!', evn);
 });
+
+// Event before leaving the web page - dialogue box appears
+window.addEventListener('beforeunload', function (evn) {
+  evn.preventDefault();
+  console.log(evn);
+});

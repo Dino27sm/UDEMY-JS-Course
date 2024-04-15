@@ -441,3 +441,14 @@ document.addEventListener('keydown', function (evn) {
   if (evn.key === 'ArrowRight') nextSlide();
   if (evn.key === 'ArrowLeft') previousSlide();
 });
+//
+//=========== EVENTS CAUSED by web page loading/unloading ==============
+// "DOMContentLoaded" event occurs after loading of "html" and "js" files
+document.addEventListener('DOMContentLoaded', function (evn) {
+  console.log('DOM Content Loaded', evn);
+});
+
+// "load" event occurs after loading of "html", "js", "css" and pictures
+window.addEventListener('load', function (evn) {
+  console.log('All Files and Pictures have been loaded!', evn);
+});

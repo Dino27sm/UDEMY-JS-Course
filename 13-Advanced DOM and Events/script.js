@@ -436,3 +436,8 @@ btnRight.addEventListener('click', nextSlide);
 btnLeft.addEventListener('click', previousSlide);
 //======================================================================
 //
+//=========== Using arrow keys (left/right) from the keyboard ==========
+document.addEventListener('keydown', function (evn) {
+  if (evn.key === 'ArrowRight') nextSlide();
+  if (evn.key === 'ArrowLeft') previousSlide();
+});

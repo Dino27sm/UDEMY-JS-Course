@@ -394,23 +394,45 @@ const goToSlide = function (slide) {
 
 goToSlide(0);
 
-// Go to Next Slide
-btnRight.addEventListener('click', function () {
+// Go to Next Slide -----------------------------------------
+// btnRight.addEventListener('click', function () {
+//   if (currentSlide === maxSlideNum) {
+//     currentSlide = 0;
+//   } else {
+//     currentSlide++;
+//   }
+//   goToSlide(currentSlide);
+// });
+//---------- Another solution for "Next Slide"
+const nextSlide = function () {
   if (currentSlide === maxSlideNum) {
     currentSlide = 0;
   } else {
     currentSlide++;
   }
   goToSlide(currentSlide);
-});
+};
 
-// Go to Previous Slide
-btnLeft.addEventListener('click', function () {
+// Go to Previous Slide -------------------------------------
+// btnLeft.addEventListener('click', function () {
+//   if (currentSlide === 0) {
+//     currentSlide = maxSlideNum;
+//   } else {
+//     currentSlide--;
+//   }
+//   goToSlide(currentSlide);
+// });
+//---------- Another solution for "Previous Slide"
+const previousSlide = function () {
   if (currentSlide === 0) {
     currentSlide = maxSlideNum;
   } else {
     currentSlide--;
   }
   goToSlide(currentSlide);
-});
+};
+
+btnRight.addEventListener('click', nextSlide);
+btnLeft.addEventListener('click', previousSlide);
 //======================================================================
+//

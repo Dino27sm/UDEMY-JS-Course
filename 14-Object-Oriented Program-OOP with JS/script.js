@@ -18,3 +18,5 @@ const matilda = new Person('Matilda', 1967);
 const jack = new Person('Jack', 1972);
 
 console.log(matilda, jack);
+
+console.log(dino instanceof Person);

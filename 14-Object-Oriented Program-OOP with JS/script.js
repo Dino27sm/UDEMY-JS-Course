@@ -20,3 +20,13 @@ const jack = new Person('Jack', 1972);
 console.log(matilda, jack);
 
 console.log(dino instanceof Person);
+
+//============= PROTOTYPES ====================================
+//
+console.log(Person.prototype);
+
+Person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+};
+
+dino.calcAge();

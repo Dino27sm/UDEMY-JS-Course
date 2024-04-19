@@ -45,3 +45,13 @@ console.log(Person.prototype.isPrototypeOf(Person));
 
 console.log(dino.__proto__.isPrototypeOf(dino));
 console.log(dino.__proto__.isPrototypeOf(matilda));
+
+// Defining properties in "Person.prototype"
+Person.prototype.species = 'I am Dino.';
+
+console.log(dino.__proto__.species);
+console.log(matilda.__proto__.species);
+console.log(jack.__proto__.species);
+// The property "species" is in each object's "prototype"
+
+console.log('====>', Person.prototype.species);

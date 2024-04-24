@@ -57,3 +57,7 @@ console.log(jack.__proto__.species);
 
 console.log('Has dino firstName? => ', dino.hasOwnProperty('firstName'));
 console.log('Has dino species? => ', dino.hasOwnProperty('species'));
+console.log(
+  'Has dino._proto_ species? => ',
+  dino.__proto__.hasOwnProperty('species')
+);

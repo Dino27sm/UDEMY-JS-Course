@@ -78,3 +78,9 @@ console.dir(arr.__proto__);
 console.dir(arr.__proto__.__proto__);
 
 console.log(arr.__proto__ === Array.prototype);
+
+Array.prototype.testUnique = function () {
+  return [...new Set(this)]; // Returns an array
+};
+
+console.log(arr.testUnique());

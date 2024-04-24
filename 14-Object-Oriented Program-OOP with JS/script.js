@@ -82,5 +82,6 @@ console.log(arr.__proto__ === Array.prototype);
 Array.prototype.testUnique = function () {
   return [...new Set(this)]; // Returns an array
 };
-
+// In this way a function can be defined in "Array.prototype" and
+// can be called from all arrays. THIS IS NOT RECOMMENDED !!!
 console.log(arr.testUnique());

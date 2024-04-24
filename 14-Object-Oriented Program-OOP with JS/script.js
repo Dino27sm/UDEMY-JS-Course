@@ -85,3 +85,4 @@ Array.prototype.testUnique = function () {
 // In this way a function can be defined in "Array.prototype" and
 // can be called from all arrays. THIS IS NOT RECOMMENDED !!!
 console.log(arr.testUnique());
+//==================================================================

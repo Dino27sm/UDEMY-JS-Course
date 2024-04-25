@@ -86,3 +86,32 @@ Array.prototype.testUnique = function () {
 // can be called from all arrays. THIS IS NOT RECOMMENDED !!!
 console.log(arr.testUnique());
 //==================================================================
+//
+//============== Coding CHALLENGE #1 ===============================
+// 1. Constructor Function
+const Car = function (make, speed) {
+  this.make = make;
+  this.speed = speed;
+};
+
+const bmw = new Car('bmw', 120);
+console.log(bmw);
+
+// 2. Implement an 'accelerate' method that will increase the speed by 10
+Car.prototype.accelerate = function () {
+  this.speed += 10;
+};
+
+// 3. Implement a 'brake' method that will decrease the car's speed by 5
+Car.prototype.brake = function () {
+  this.speed -= 5;
+};
+
+bmw.accelerate();
+bmw.accelerate();
+bmw.accelerate();
+console.log(bmw.speed);
+
+bmw.brake();
+bmw.brake();
+console.log(bmw.speed);

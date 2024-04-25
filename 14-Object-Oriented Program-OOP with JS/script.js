@@ -93,15 +93,17 @@ const Car = function (make, speed) {
   this.make = make;
   this.speed = speed;
 };
-
+//    'BMW' going at 120 km/h
 // 2. Implement an 'accelerate' method that will increase the speed by 10
 Car.prototype.accelerate = function () {
   this.speed += 10;
+  console.log(`${this.make} going at ${this.speed} km/h.`);
 };
 
 // 3. Implement a 'brake' method that will decrease the car's speed by 5
 Car.prototype.brake = function () {
   this.speed -= 5;
+  console.log(`${this.make} going at ${this.speed} km/h.`);
 };
 
 // 4. Create 2 'Car' objects - "BMW" and "Mercedes"

@@ -94,9 +94,6 @@ const Car = function (make, speed) {
   this.speed = speed;
 };
 
-const bmw = new Car('bmw', 120);
-console.log(bmw);
-
 // 2. Implement an 'accelerate' method that will increase the speed by 10
 Car.prototype.accelerate = function () {
   this.speed += 10;
@@ -107,11 +104,20 @@ Car.prototype.brake = function () {
   this.speed -= 5;
 };
 
-bmw.accelerate();
-bmw.accelerate();
-bmw.accelerate();
-console.log(bmw.speed);
+// 4. Create 2 'Car' objects - "BMW" and "Mercedes"
+const bmw = new Car('BMW', 120);
+const mercedes = new Car('Mercedes', 95);
 
+console.log(bmw, mercedes);
+
+console.log('------------- Accelerate ---------------------');
+bmw.accelerate();
+mercedes.accelerate();
+bmw.accelerate();
+mercedes.accelerate();
+console.log(bmw, mercedes);
+
+console.log('------------- Brake --------------------------');
 bmw.brake();
-bmw.brake();
-console.log(bmw.speed);
+mercedes.brake();
+console.log(bmw, mercedes);

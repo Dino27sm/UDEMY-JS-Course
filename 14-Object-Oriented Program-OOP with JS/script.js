@@ -166,23 +166,48 @@ jessica.greet();
 // 2. Classes are first-class citizens
 // 3. Classes are executed in "strict mode"
 //
-//============= GET and SET for any regular Object =====================
-const account = {
-  owner: 'Dino',
-  movements: [250, 120, 340, 277],
+// //============= GET and SET for any regular Object =====================
+// const account = {
+//   owner: 'Dino',
+//   movements: [250, 120, 340, 277],
 
-  get latest() {
-    return this.movements.slice(-1).pop();
-  },
-  set latest(mov) {
-    this.movements.push(mov);
-  },
-};
+//   get latest() {
+//     return this.movements.slice(-1).pop();
+//   },
+//   set latest(mov) {
+//     this.movements.push(mov);
+//   },
+// };
 
-console.log(account.movements);
-console.log('Get latest movement: ', account.latest);
+// console.log(account.movements);
+// console.log('Get latest movement: ', account.latest);
 
-account.latest = 50;
-console.log(account.movements);
-//======================================================================
+// account.latest = 50;
+// console.log(account.movements);
+// //======================================================================
 //
+//================== GET and SET for any CLASS =========================
+class BankAccount {
+  constructor(firstName, accNum) {
+    this.firstName = firstName;
+    this.accountNum = accNum;
+  }
+
+  set fullName(name) {
+    if (name.includes(' ')) {
+      this._fullName = name;
+    } else {
+      alert(`${name} is not a full name!`);
+    }
+  }
+
+  get fullName() {
+    return this._fullName;
+  }
+}
+
+const janet = new BankAccount('Janet', 123456);
+console.log(janet);
+
+janet.fullName = 'Janet Smith';
+console.log(janet.fullName);

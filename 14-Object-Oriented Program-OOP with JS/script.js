@@ -1,5 +1,6 @@
 'use strict';
 //
+/*
 const Person = function (firstName, birthYear) {
   // Instance properties
   this.firstName = firstName;
@@ -9,8 +10,9 @@ const Person = function (firstName, birthYear) {
 const dino = new Person('Dino', 1997);
 console.log(dino);
 
+// ------ These 4 steps are done by "new" operator ---------
 // 1. New empty object is created "{}"
-// 2. function is called, "this" = {}
+// 2. function is called, "this" = {} - points to empty object created
 // 3. {} linked to prototype
 // 4. function automaticaly return "{}"
 
@@ -123,3 +125,20 @@ console.log('------------- Brake --------------------------');
 bmw.brake();
 mercedes.brake();
 console.log(bmw, mercedes);
+//================================================================
+//
+*/
+//==================== ES6 CLASSES ===============================
+// Class Expression
+// const PersonCl = class {};
+
+// Class Declaration
+class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+}
+
+const jessica = new PersonCl('Jessica', 1975);
+console.log(jessica);

@@ -138,7 +138,22 @@ class PersonCl {
     this.firstName = firstName;
     this.birthYear = birthYear;
   }
+
+  // These methods go to "prototype" property of the class "PersonCl"
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
 }
 
 const jessica = new PersonCl('Jessica', 1975);
 console.log(jessica);
+
+jessica.calcAge();
+
+console.log(jessica.__proto__ === PersonCl.prototype);
+
+PersonCl.prototype.greet = function () {
+  console.log(`Hello ${this.firstName} !`);
+};
+
+jessica.greet();

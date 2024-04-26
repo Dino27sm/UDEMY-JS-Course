@@ -165,3 +165,24 @@ jessica.greet();
 // 1. Classes are NOT Hoisted - cannot be used before declaration
 // 2. Classes are first-class citizens
 // 3. Classes are executed in "strict mode"
+//
+//============= GET and SET for any regular Object =====================
+const account = {
+  owner: 'Dino',
+  movements: [250, 120, 340, 277],
+
+  get latest() {
+    return this.movements.slice(-1).pop();
+  },
+  set latest(mov) {
+    this.movements.push(mov);
+  },
+};
+
+console.log(account.movements);
+console.log('Get latest movement: ', account.latest);
+
+account.latest = 50;
+console.log(account.movements);
+//======================================================================
+//

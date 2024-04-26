@@ -188,8 +188,8 @@ jessica.greet();
 //
 //================== GET and SET for any CLASS =========================
 class BankAccount {
-  constructor(firstName, accNum) {
-    this.firstName = firstName;
+  constructor(fullName, accNum) {
+    this.fullName = fullName;
     this.accountNum = accNum;
   }
 
@@ -206,8 +206,9 @@ class BankAccount {
   }
 }
 
-const janet = new BankAccount('Janet', 123456);
+const janet = new BankAccount('Janet Smith', 123456);
 console.log(janet);
 
-janet.fullName = 'Janet Smith';
+janet.fullName = 'Sandra Scot';
 console.log(janet.fullName);
+console.log(janet);

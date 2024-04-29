@@ -204,6 +204,10 @@ class BankAccount {
   get fullName() {
     return this._fullName;
   }
+  // Static Methods ---------------------------------------
+  static hey() {
+    console.log('Hello there 👋 !');
+  }
 }
 
 const janet = new BankAccount('Janet Smith', 123456);
@@ -212,3 +216,5 @@ console.log(janet);
 janet.fullName = 'Sandra Scot';
 console.log(janet.fullName);
 console.log(janet);
+
+BankAccount.hey(); // To call static method ---------------

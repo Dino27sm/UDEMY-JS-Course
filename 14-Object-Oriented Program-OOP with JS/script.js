@@ -218,3 +218,20 @@ console.log(janet.fullName);
 console.log(janet);
 
 BankAccount.hey(); // To call static method ---------------
+//
+//================= STATIC Methods ========================
+//
+// Create an object and assign it as a "prototype" to any "person objects"
+const PersonProto = {
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  },
+};
+
+// Create a person object with "PersonProto" prototype
+const steven = Object.create(PersonProto); // Empty object created
+
+steven.name = 'Steven';
+steven.birthYear = 2002;
+console.log(steven);
+steven.calcAge();

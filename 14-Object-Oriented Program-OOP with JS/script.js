@@ -141,7 +141,7 @@ class PersonCl {
 
   // These methods go to "prototype" property of the class "PersonCl"
   calcAge() {
-    console.log(2037 - this.birthYear);
+    console.log(`${this.firstName} age: `, 2037 - this.birthYear);
   }
 
   greet() {
@@ -186,45 +186,45 @@ jessica.greet();
 // console.log(account.movements);
 // //======================================================================
 //
-//================== GET and SET for any CLASS =========================
-class BankAccount {
-  constructor(fullName, accNum) {
-    this.fullName = fullName;
-    this.accountNum = accNum;
-  }
+// //================== GET and SET for any CLASS =========================
+// class BankAccount {
+//   constructor(fullName, accNum) {
+//     this.fullName = fullName;
+//     this.accountNum = accNum;
+//   }
 
-  set fullName(name) {
-    if (name.includes(' ')) {
-      this._fullName = name;
-    } else {
-      alert(`${name} is not a full name!`);
-    }
-  }
+//   set fullName(name) {
+//     if (name.includes(' ')) {
+//       this._fullName = name;
+//     } else {
+//       alert(`${name} is not a full name!`);
+//     }
+//   }
 
-  get fullName() {
-    return this._fullName;
-  }
-  // Static Methods ---------------------------------------
-  static hey() {
-    console.log('Hello there 👋 !');
-  }
-}
+//   get fullName() {
+//     return this._fullName;
+//   }
+//   // Static Methods ---------------------------------------
+//   static hey() {
+//     console.log('Hello there 👋 !');
+//   }
+// }
 
-const janet = new BankAccount('Janet Smith', 123456);
-console.log(janet);
+// const janet = new BankAccount('Janet Smith', 123456);
+// console.log(janet);
 
-janet.fullName = 'Sandra Scot';
-console.log(janet.fullName);
-console.log(janet);
+// janet.fullName = 'Sandra Scot';
+// console.log(janet.fullName);
+// console.log(janet);
 
-BankAccount.hey(); // To call static method ---------------
+// BankAccount.hey(); // To call static method ---------------
 //
 //================= STATIC Methods ========================
 //
 // Create an object and assign it as a "prototype" to any "person objects"
 const PersonProto = {
   calcAge() {
-    console.log(2037 - this.birthYear);
+    console.log(`${this.name} age: `, 2037 - this.birthYear);
   },
 };
 
@@ -235,3 +235,10 @@ steven.name = 'Steven';
 steven.birthYear = 2002;
 console.log(steven);
 steven.calcAge();
+console.log('------------------------------------');
+
+const anna = new PersonCl('Anna', 2000);
+console.log(anna);
+
+anna.calcAge();
+jessica.calcAge();

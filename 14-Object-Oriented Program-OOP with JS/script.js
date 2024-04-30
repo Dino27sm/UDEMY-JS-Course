@@ -224,7 +224,11 @@ jessica.greet();
 // Create an object and assign it as a "prototype" to any "person objects"
 const PersonProto = {
   calcAge() {
-    console.log(`${this.name} age: `, 2037 - this.birthYear);
+    console.log(`${this.firstName} age: `, 2037 - this.birthYear);
+  },
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
   },
 };
 
@@ -232,7 +236,8 @@ const PersonProto = {
 const steven = Object.create(PersonProto); // Empty object created
 
 steven.name = 'Steven';
-steven.birthYear = 2002;
+steven.init('Steven', 2002);
+
 console.log(steven);
 steven.calcAge();
 console.log('------------------------------------');
@@ -242,3 +247,9 @@ console.log(anna);
 
 anna.calcAge();
 jessica.calcAge();
+
+console.log(steven.__proto__ === PersonProto); // Result is "true"
+
+const sarah = Object.create(PersonProto);
+sarah.init('Sarah', 1972);
+sarah.calcAge();

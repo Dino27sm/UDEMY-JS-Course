@@ -351,3 +351,8 @@ mike.introduction();
 
 // Now "Student" objects can use "calcAge" because they INHERITS "Person.prototype"
 mike.calcAge();
+
+console.log(mike instanceof Student); // "mike" is instance of "Student" -> true
+console.log(mike instanceof Person); // "mike" is instance of "Person" -> true
+console.log(mike instanceof Object); // "mike" is instance of "Object" -> true
+// All are "true" because their prototypes are chained ---- !!!!

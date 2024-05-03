@@ -364,9 +364,10 @@ const Car = function (make, speed) {
   this.speed = speed;
 };
 
-// Car.prototype.accelerate = function () {
-//   this.speed += 10;
-// };
+Car.prototype.accelerate = function () {
+  this.speed += 10;
+  console.log(`${this.make} is going at ${this.speed} km/h.`);
+};
 
 Car.prototype.brake = function () {
   this.speed -= 5;
@@ -388,6 +389,7 @@ EV.prototype.chargeBattery = function (chargeTo) {
   this.charge = chargeTo;
 };
 
+// Here EV "accelerate" OVERWRITES the one from parent "Car.accelerate" !!!
 EV.prototype.accelerate = function () {
   this.speed += 20;
   this.charge -= 1;
@@ -406,3 +408,4 @@ tesla.chargeBattery(90);
 
 tesla.accelerate();
 tesla.brake();
+//===============================================================

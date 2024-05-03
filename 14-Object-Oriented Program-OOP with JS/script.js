@@ -320,10 +320,17 @@ console.log(dino);
 Person.prototype.calcAge = function () {
   console.log(2037 - this.birthYear);
 };
-// Create "Student" Constrction function
+// // Create "Student" Constrction function
+// const Student = function (firstName, birthYear, course) {
+//   this.firstName = firstName;
+//   this.birthYear = birthYear;
+//   this.course = course;
+// };
+
+//---------- To avoid repetition of coding lines -----------------
 const Student = function (firstName, birthYear, course) {
-  this.firstName = firstName;
-  this.birthYear = birthYear;
+  // Here "call" makes "this" to point to "Student" objects
+  Person.call(this, firstName, birthYear);
   this.course = course;
 };
 

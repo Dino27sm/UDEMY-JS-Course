@@ -254,53 +254,84 @@ console.log(bmw, mercedes);
 // sarah.init('Sarah', 1972);
 // sarah.calcAge();
 //
-//============== Coding CHALLENGE #2 ===============================
-// Recreate Challenge #1 by using CLASS "CarCl"
-class CarCl {
-  constructor(make, speed) {
-    this.make = make;
-    this.speed = speed;
-  }
+// //============== Coding CHALLENGE #2 ===============================
+// // Recreate Challenge #1 by using CLASS "CarCl"
+// class CarCl {
+//   constructor(make, speed) {
+//     this.make = make;
+//     this.speed = speed;
+//   }
 
-  accelerate = function () {
-    this.speed += 10;
-    console.log(`${this.make} going at ${this.speed} km/h.`);
-  };
+//   accelerate = function () {
+//     this.speed += 10;
+//     console.log(`${this.make} going at ${this.speed} km/h.`);
+//   };
 
-  brake = function () {
-    this.speed -= 5;
-    console.log(`${this.make} going at ${this.speed} km/h.`);
-  };
+//   brake = function () {
+//     this.speed -= 5;
+//     console.log(`${this.make} going at ${this.speed} km/h.`);
+//   };
 
-  get speedUS() {
-    return this.speed / 1.6;
-  }
+//   get speedUS() {
+//     return this.speed / 1.6;
+//   }
 
-  set speedUS(speed) {
-    this.speed = speed * 1.6;
-  }
-}
+//   set speedUS(speed) {
+//     this.speed = speed * 1.6;
+//   }
+// }
 
-// Create 2 'Car' objects - "BMW" and "Mercedes"
-const bmw = new CarCl('BMW', 120);
-const mercedes = new CarCl('Mercedes', 95);
+// // Create 2 'Car' objects - "BMW" and "Mercedes"
+// const bmw = new CarCl('BMW', 120);
+// const mercedes = new CarCl('Mercedes', 95);
 
-console.log(bmw, mercedes);
+// console.log(bmw, mercedes);
 
-console.log('------------- Accelerate ---------------------');
-bmw.accelerate();
-mercedes.accelerate();
-console.log(bmw, mercedes);
+// console.log('------------- Accelerate ---------------------');
+// bmw.accelerate();
+// mercedes.accelerate();
+// console.log(bmw, mercedes);
 
-console.log('------------- Brake --------------------------');
-bmw.brake();
-mercedes.brake();
-console.log(bmw, mercedes);
-//================================================================
+// console.log('------------- Brake --------------------------');
+// bmw.brake();
+// mercedes.brake();
+// console.log(bmw, mercedes);
+// //================================================================
+// //
+// const ford = new CarCl('Ford', 120);
+// console.log(ford);
+
+// ford.speedUS = 100;
+// console.log(`Ford's new speed in [km/h] is: ${ford.speed} km/h`);
+// console.log(`Ford's new speed in [mi/h] is: ${ford.speedUS} mi/h`);
 //
-const ford = new CarCl('Ford', 120);
-console.log(ford);
+//=============== Construction Function Inheritance ================
+//
+// Create "Person" Constrction function
+const Person = function (firstName, birthYear) {
+  // Instance properties
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
 
-ford.speedUS = 100;
-console.log(`Ford's new speed in [km/h] is: ${ford.speed} km/h`);
-console.log(`Ford's new speed in [mi/h] is: ${ford.speedUS} mi/h`);
+const dino = new Person('Dino', 1997);
+console.log(dino);
+
+Person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+};
+// Create "Student" Constrction function
+const Student = function (firstName, birthYear, course) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+  this.course = course;
+};
+
+Student.prototype.introduction = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}.`);
+};
+
+const mike = new Student('Mike', 2020, 'Computer Science');
+console.log(mike);
+
+mike.introduction();

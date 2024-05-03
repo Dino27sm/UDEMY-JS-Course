@@ -305,54 +305,104 @@ console.log(bmw, mercedes);
 // console.log(`Ford's new speed in [km/h] is: ${ford.speed} km/h`);
 // console.log(`Ford's new speed in [mi/h] is: ${ford.speedUS} mi/h`);
 //
-//=============== Construction Function Inheritance ================
-//
-// Create "Person" Constrction function
-const Person = function (firstName, birthYear) {
-  // Instance properties
-  this.firstName = firstName;
-  this.birthYear = birthYear;
-};
-
-const dino = new Person('Dino', 1997);
-console.log(dino);
-
-Person.prototype.calcAge = function () {
-  console.log(2037 - this.birthYear);
-};
-// // Create "Student" Constrction function
-// const Student = function (firstName, birthYear, course) {
+// //=============== Construction Function Inheritance ================
+// //
+// // Create "Person" Constrction function
+// const Person = function (firstName, birthYear) {
+//   // Instance properties
 //   this.firstName = firstName;
 //   this.birthYear = birthYear;
+// };
+
+// const dino = new Person('Dino', 1997);
+// console.log(dino);
+
+// Person.prototype.calcAge = function () {
+//   console.log(2037 - this.birthYear);
+// };
+// // // Create "Student" Constrction function
+// // const Student = function (firstName, birthYear, course) {
+// //   this.firstName = firstName;
+// //   this.birthYear = birthYear;
+// //   this.course = course;
+// // };
+
+// //---------- To avoid repetition of coding lines -----------------
+// const Student = function (firstName, birthYear, course) {
+//   // Here "call" makes "this" to point to "Student" objects
+//   Person.call(this, firstName, birthYear);
 //   this.course = course;
 // };
 
-//---------- To avoid repetition of coding lines -----------------
-const Student = function (firstName, birthYear, course) {
-  // Here "call" makes "this" to point to "Student" objects
-  Person.call(this, firstName, birthYear);
-  this.course = course;
+// // To Link PROTOTYPE OBJECTS -----------------------------
+// // Here "Student.prototype" inherits "Person.prototype"
+// Student.prototype = Object.create(Person.prototype);
+// //--------------------------------------------------------
+
+// // Adding some specific Methods to "Student.prototype"
+// Student.prototype.introduction = function () {
+//   console.log(`My name is ${this.firstName} and I study ${this.course}.`);
+// };
+
+// const mike = new Student('Mike', 2020, 'Computer Science');
+// console.log(mike);
+
+// mike.introduction();
+
+// // Now "Student" objects can use "calcAge" because they INHERITS "Person.prototype"
+// mike.calcAge();
+
+// console.log(mike instanceof Student); // "mike" is instance of "Student" -> true
+// console.log(mike instanceof Person); // "mike" is instance of "Person" -> true
+// console.log(mike instanceof Object); // "mike" is instance of "Object" -> true
+// // All are "true" because their prototypes are chained ---- !!!!
+//
+//============== Coding CHALLENGE #3 ===============================
+//
+const Car = function (make, speed) {
+  this.make = make;
+  this.speed = speed;
 };
 
-// To Link PROTOTYPE OBJECTS -----------------------------
-// Here "Student.prototype" inherits "Person.prototype"
-Student.prototype = Object.create(Person.prototype);
-//--------------------------------------------------------
+// Car.prototype.accelerate = function () {
+//   this.speed += 10;
+// };
 
-// Adding some specific Methods to "Student.prototype"
-Student.prototype.introduction = function () {
-  console.log(`My name is ${this.firstName} and I study ${this.course}.`);
+Car.prototype.brake = function () {
+  this.speed -= 5;
+  console.log(
+    `${this.make} is going at ${this.speed} km/h, after pressing brakes.`
+  );
 };
 
-const mike = new Student('Mike', 2020, 'Computer Science');
-console.log(mike);
+// Create child "EV" construction function
+const EV = function (make, speed, charge) {
+  Car.call(this, make, speed);
+  this.charge = charge;
+};
 
-mike.introduction();
+// Link both prototypes
+EV.prototype = Object.create(Car.prototype);
 
-// Now "Student" objects can use "calcAge" because they INHERITS "Person.prototype"
-mike.calcAge();
+EV.prototype.chargeBattery = function (chargeTo) {
+  this.charge = chargeTo;
+};
 
-console.log(mike instanceof Student); // "mike" is instance of "Student" -> true
-console.log(mike instanceof Person); // "mike" is instance of "Person" -> true
-console.log(mike instanceof Object); // "mike" is instance of "Object" -> true
-// All are "true" because their prototypes are chained ---- !!!!
+EV.prototype.accelerate = function () {
+  this.speed += 20;
+  this.charge -= 1;
+  console.log(
+    `${this.make} is going at ${this.speed} km/h, with a charge of ${this.charge}%.`
+  );
+};
+
+const tesla = new EV('Tesla', 120, 23);
+
+tesla.accelerate();
+
+tesla.brake();
+
+tesla.chargeBattery(90);
+
+tesla.accelerate();
+tesla.brake();

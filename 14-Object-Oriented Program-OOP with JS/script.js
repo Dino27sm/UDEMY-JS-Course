@@ -334,6 +334,12 @@ const Student = function (firstName, birthYear, course) {
   this.course = course;
 };
 
+// To Link PROTOTYPE OBJECTS -----------------------------
+// Here "Student.prototype" inherits "Person.prototype"
+Student.prototype = Object.create(Person.prototype);
+//--------------------------------------------------------
+
+// Adding some specific Methods to "Student.prototype"
 Student.prototype.introduction = function () {
   console.log(`My name is ${this.firstName} and I study ${this.course}.`);
 };
@@ -342,3 +348,6 @@ const mike = new Student('Mike', 2020, 'Computer Science');
 console.log(mike);
 
 mike.introduction();
+
+// Now "Student" objects can use "calcAge" because they INHERITS "Person.prototype"
+mike.calcAge();

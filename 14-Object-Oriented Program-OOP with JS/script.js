@@ -410,68 +410,82 @@ console.log(bmw, mercedes);
 // tesla.brake();
 // //===============================================================
 //
-//==================== ES6 Classes Inheritance =====================
+// //==================== ES6 Classes Inheritance =====================
+// //
+// class PersonCl {
+//   constructor(fullName, birthYear) {
+//     this.fullName = fullName;
+//     this.birthYear = birthYear;
+//   }
+
+//   // These methods go to "prototype" property of the class "PersonCl"
+//   calcAge() {
+//     console.log(`${this.fullName} age: `, 2037 - this.birthYear);
+//   }
+
+//   greet() {
+//     console.log(`Hello ${this.fullName} !`);
+//   }
+
+//   get age() {
+//     return 2037 - this.birthYear;
+//   }
+
+//   set fullName(name) {
+//     if (name.includes(' ')) {
+//       this._fullName = name;
+//     } else {
+//       alert(`${name} is not a full name!`);
+//     }
+//   }
+
+//   get fullName() {
+//     return this._fullName;
+//   }
+
+//   // STATIC Method
+//   static hey() {
+//     console.log(`Hey there 👋!`);
+//   }
+// }
+
+// class StudentCl extends PersonCl {
+//   constructor(fullName, birthYear, course) {
+//     // Write "super" first, because it creates "this" for "StudentCl"
+//     super(fullName, birthYear);
+//     this.course = course;
+//   }
+
+//   introduce() {
+//     console.log(`My name is ${this.fullName} and I study ${this.course}.`);
+//   }
+
+//   // Here "calcAge" OVERWRITES the same Method in the Parent Class "PersonCl"
+//   calcAge() {
+//     console.log(
+//       `I am ${
+//         2037 - this.birthYear
+//       } years old, but as a student I feel more like ${
+//         2037 - this.birthYear + 10
+//       }.`
+//     );
+//   }
+// }
+
+// const martha = new StudentCl('Martha Jones', 2012, 'Computer Science');
+// martha.introduce();
+// martha.calcAge();
 //
-class PersonCl {
-  constructor(fullName, birthYear) {
-    this.fullName = fullName;
+//=========== Inheritance between Classes: "Object.create" ============
+//
+const PersonProto = {
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  },
+  init(firstName, birthYear) {
+    this.firstName = firstName;
     this.birthYear = birthYear;
-  }
+  },
+};
 
-  // These methods go to "prototype" property of the class "PersonCl"
-  calcAge() {
-    console.log(`${this.fullName} age: `, 2037 - this.birthYear);
-  }
-
-  greet() {
-    console.log(`Hello ${this.fullName} !`);
-  }
-
-  get age() {
-    return 2037 - this.birthYear;
-  }
-
-  set fullName(name) {
-    if (name.includes(' ')) {
-      this._fullName = name;
-    } else {
-      alert(`${name} is not a full name!`);
-    }
-  }
-
-  get fullName() {
-    return this._fullName;
-  }
-
-  // STATIC Method
-  static hey() {
-    console.log(`Hey there 👋!`);
-  }
-}
-
-class StudentCl extends PersonCl {
-  constructor(fullName, birthYear, course) {
-    // Write "super" first, because it creates "this" for "StudentCl"
-    super(fullName, birthYear);
-    this.course = course;
-  }
-
-  introduce() {
-    console.log(`My name is ${this.fullName} and I study ${this.course}.`);
-  }
-
-  // Here "calcAge" OVERWRITES the same Method in the Parent Class "PersonCl"
-  calcAge() {
-    console.log(
-      `I am ${
-        2037 - this.birthYear
-      } years old, but as a student I feel more like ${
-        2037 - this.birthYear + 10
-      }.`
-    );
-  }
-}
-
-const martha = new StudentCl('Martha Jones', 2012, 'Computer Science');
-martha.introduce();
-martha.calcAge();
+const steven = Object.create(PersonProto);

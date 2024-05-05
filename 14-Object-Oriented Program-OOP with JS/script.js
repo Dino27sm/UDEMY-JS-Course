@@ -357,55 +357,109 @@ console.log(bmw, mercedes);
 // console.log(mike instanceof Object); // "mike" is instance of "Object" -> true
 // // All are "true" because their prototypes are chained ---- !!!!
 //
-//============== Coding CHALLENGE #3 ===============================
+// //============== Coding CHALLENGE #3 ===============================
+// //
+// const Car = function (make, speed) {
+//   this.make = make;
+//   this.speed = speed;
+// };
+
+// Car.prototype.accelerate = function () {
+//   this.speed += 10;
+//   console.log(`${this.make} is going at ${this.speed} km/h.`);
+// };
+
+// Car.prototype.brake = function () {
+//   this.speed -= 5;
+//   console.log(
+//     `${this.make} is going at ${this.speed} km/h, after pressing brakes.`
+//   );
+// };
+
+// // Create child "EV" construction function
+// const EV = function (make, speed, charge) {
+//   Car.call(this, make, speed);
+//   this.charge = charge;
+// };
+
+// // Link both prototypes
+// EV.prototype = Object.create(Car.prototype);
+
+// EV.prototype.chargeBattery = function (chargeTo) {
+//   this.charge = chargeTo;
+// };
+
+// // Here EV "accelerate" OVERWRITES the one from parent "Car.accelerate" !!!
+// EV.prototype.accelerate = function () {
+//   this.speed += 20;
+//   this.charge -= 1;
+//   console.log(
+//     `${this.make} is going at ${this.speed} km/h, with a charge of ${this.charge}%.`
+//   );
+// };
+
+// const tesla = new EV('Tesla', 120, 23);
+
+// tesla.accelerate();
+
+// tesla.brake();
+
+// tesla.chargeBattery(90);
+
+// tesla.accelerate();
+// tesla.brake();
+// //===============================================================
 //
-const Car = function (make, speed) {
-  this.make = make;
-  this.speed = speed;
-};
+//==================== ES6 Classes Inheritance =====================
+//
+class PersonCl {
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  }
 
-Car.prototype.accelerate = function () {
-  this.speed += 10;
-  console.log(`${this.make} is going at ${this.speed} km/h.`);
-};
+  // These methods go to "prototype" property of the class "PersonCl"
+  calcAge() {
+    console.log(`${this.fullName} age: `, 2037 - this.birthYear);
+  }
 
-Car.prototype.brake = function () {
-  this.speed -= 5;
-  console.log(
-    `${this.make} is going at ${this.speed} km/h, after pressing brakes.`
-  );
-};
+  greet() {
+    console.log(`Hello ${this.fullName} !`);
+  }
 
-// Create child "EV" construction function
-const EV = function (make, speed, charge) {
-  Car.call(this, make, speed);
-  this.charge = charge;
-};
+  get age() {
+    return 2037 - this.birthYear;
+  }
 
-// Link both prototypes
-EV.prototype = Object.create(Car.prototype);
+  set fullName(name) {
+    if (name.includes(' ')) {
+      this._fullName = name;
+    } else {
+      alert(`${name} is not a full name!`);
+    }
+  }
 
-EV.prototype.chargeBattery = function (chargeTo) {
-  this.charge = chargeTo;
-};
+  get fullName() {
+    return this._fullName;
+  }
 
-// Here EV "accelerate" OVERWRITES the one from parent "Car.accelerate" !!!
-EV.prototype.accelerate = function () {
-  this.speed += 20;
-  this.charge -= 1;
-  console.log(
-    `${this.make} is going at ${this.speed} km/h, with a charge of ${this.charge}%.`
-  );
-};
+  // STATIC Method
+  static hey() {
+    console.log(`Hey there 👋!`);
+  }
+}
 
-const tesla = new EV('Tesla', 120, 23);
+class StudentCl extends PersonCl {
+  constructor(fullName, birthYear, course) {
+    // Write "super" first, because it creates "this" for "StudentCl"
+    super(fullName, birthYear);
+    this.course = course;
+  }
 
-tesla.accelerate();
+  introduce() {
+    console.log(`My name is ${this.fullName} and I study ${this.course}.`);
+  }
+}
 
-tesla.brake();
-
-tesla.chargeBattery(90);
-
-tesla.accelerate();
-tesla.brake();
-//===============================================================
+const martha = new StudentCl('Martha Jones', 2012, 'Computer Science');
+martha.introduce();

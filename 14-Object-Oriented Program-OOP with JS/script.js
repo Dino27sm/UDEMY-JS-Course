@@ -459,7 +459,19 @@ class StudentCl extends PersonCl {
   introduce() {
     console.log(`My name is ${this.fullName} and I study ${this.course}.`);
   }
+
+  // Here "calcAge" OVERWRITES the same Method in the Parent Class "PersonCl"
+  calcAge() {
+    console.log(
+      `I am ${
+        2037 - this.birthYear
+      } years old, but as a student I feel more like ${
+        2037 - this.birthYear + 10
+      }.`
+    );
+  }
 }
 
 const martha = new StudentCl('Martha Jones', 2012, 'Computer Science');
 martha.introduce();
+martha.calcAge();

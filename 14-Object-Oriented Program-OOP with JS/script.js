@@ -520,6 +520,8 @@ class Account {
 
     console.log(`Thanks for opening an account, ${this.owner}!`);
   }
+
+  // Public Interface to Access this Object (API)
   deposit(val) {
     this.muvements.push(val);
   }

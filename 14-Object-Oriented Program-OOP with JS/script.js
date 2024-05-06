@@ -517,10 +517,12 @@ class Account {
     this.pin = pin;
     this.muvements = [];
     this.locale = navigator.language;
+
+    console.log(`Thanks for opening an account, ${this.owner}!`);
   }
 }
 
 const acc1 = new Account('Dino', 'EUR', 1111);
-acc1.muvements.push(250);
-acc1.muvements.push(-140);
+acc1.muvements.push(250); // For deposits
+acc1.muvements.push(-140); // For withdrawals
 console.log(acc1);

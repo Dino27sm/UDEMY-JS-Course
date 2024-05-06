@@ -520,9 +520,15 @@ class Account {
 
     console.log(`Thanks for opening an account, ${this.owner}!`);
   }
+  deposit(val) {
+    this.muvements.push(val);
+  }
+  withdraw(val) {
+    this.deposit(-val);
+  }
 }
 
 const acc1 = new Account('Dino', 'EUR', 1111);
-acc1.muvements.push(250); // For deposits
-acc1.muvements.push(-140); // For withdrawals
+acc1.deposit(250); // For deposits using a method "deposit()"
+acc1.withdraw(140); // For withdrawals using a method "withdraw()"
 console.log(acc1);

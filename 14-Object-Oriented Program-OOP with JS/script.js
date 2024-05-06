@@ -515,8 +515,12 @@ class Account {
     this.owner = owner;
     this.currency = currency;
     this.pin = pin;
+    this.muvements = [];
+    this.locale = navigator.language;
   }
 }
 
 const acc1 = new Account('Dino', 'EUR', 1111);
+acc1.muvements.push(250);
+acc1.muvements.push(-140);
 console.log(acc1);

@@ -476,34 +476,47 @@ console.log(bmw, mercedes);
 // martha.introduce();
 // martha.calcAge();
 //
-//=========== Inheritance between Classes: "Object.create" ============
+// //=========== Inheritance between Classes: "Object.create" ============
+// //
+// const PersonProto = {
+//   calcAge() {
+//     console.log(2037 - this.birthYear);
+//   },
+//   init(firstName, birthYear) {
+//     this.firstName = firstName;
+//     this.birthYear = birthYear;
+//   },
+// };
+
+// const steven = Object.create(PersonProto);
+
+// const StudentProto = Object.create(PersonProto);
+
+// StudentProto.init = function (firstName, birthYear, course) {
+//   PersonProto.init.call(this, firstName, birthYear);
+//   this.course = course;
+// };
+
+// StudentProto.introduce = function () {
+//   console.log(`My name is ${this.firstName} and I study ${this.course}.`);
+// };
+
+// const jay = Object.create(StudentProto);
+// jay.init('Jay', 2010, 'Computer Science');
+
+// console.log(jay);
+// jay.calcAge();
+// jay.introduce();
 //
-const PersonProto = {
-  calcAge() {
-    console.log(2037 - this.birthYear);
-  },
-  init(firstName, birthYear) {
-    this.firstName = firstName;
-    this.birthYear = birthYear;
-  },
-};
+//==================== Another Class Example ===========================
+//
+class Account {
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    this.pin = pin;
+  }
+}
 
-const steven = Object.create(PersonProto);
-
-const StudentProto = Object.create(PersonProto);
-
-StudentProto.init = function (firstName, birthYear, course) {
-  PersonProto.init.call(this, firstName, birthYear);
-  this.course = course;
-};
-
-StudentProto.introduce = function () {
-  console.log(`My name is ${this.firstName} and I study ${this.course}.`);
-};
-
-const jay = Object.create(StudentProto);
-jay.init('Jay', 2010, 'Computer Science');
-
-console.log(jay);
-jay.calcAge();
-jay.introduce();
+const acc1 = new Account('Dino', 'EUR', 1111);
+console.log(acc1);

@@ -510,30 +510,50 @@ console.log(bmw, mercedes);
 //
 //==================== Another Class Example ===========================
 //
+// 1. Public Fields
+// 2. Private Fields
+// 3. Public Methods
+// 4. Private Methods
+
 class Account {
+  // 1. Public fields creation (they are in instances)
+  locale = navigator.language;
+
+  // 2. Private fields - use "#" to make them Private (in instances)
+  #muvements = [];
+  #pin;
+
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
 
     // Protected property using (_) - it is a conventition
-    this._pin = pin;
-    this._muvements = [];
+    // this._pin = pin;
+    // this._muvements = [];
 
-    this.locale = navigator.language;
+    this.#pin = pin;
+    // this.locale = navigator.language;
 
     console.log(`Thanks for opening an account, ${this.owner}!`);
   }
 
   // Public Interface to Access this Object (API)
   deposit(val) {
-    this._muvements.push(val);
+    this.#muvements.push(val);
   }
   withdraw(val) {
     this.deposit(-val);
   }
+
+  getMovements = function () {
+    return this.#muvements;
+  };
 }
 
 const acc1 = new Account('Dino', 'EUR', 1111);
 acc1.deposit(250); // For deposits using a method "deposit()"
 acc1.withdraw(140); // For withdrawals using a method "withdraw()"
 console.log(acc1);
+
+// console.log(acc1.#pin); // Cannot be red - "#pin" is realy Private
+console.log(acc1.getMovements());

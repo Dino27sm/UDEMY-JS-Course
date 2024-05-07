@@ -514,8 +514,11 @@ class Account {
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
-    this.pin = pin;
-    this.muvements = [];
+
+    // Protected property using (_) - it is a conventition
+    this._pin = pin;
+    this._muvements = [];
+
     this.locale = navigator.language;
 
     console.log(`Thanks for opening an account, ${this.owner}!`);
@@ -523,7 +526,7 @@ class Account {
 
   // Public Interface to Access this Object (API)
   deposit(val) {
-    this.muvements.push(val);
+    this._muvements.push(val);
   }
   withdraw(val) {
     this.deposit(-val);

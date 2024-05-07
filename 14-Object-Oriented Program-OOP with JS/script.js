@@ -508,12 +508,13 @@ console.log(bmw, mercedes);
 // jay.calcAge();
 // jay.introduce();
 //
-//==================== Another Class Example ===========================
+//========= ENCAPSULATION and Data Privacy - Class Example =========
 //
 // 1. Public Fields
 // 2. Private Fields
 // 3. Public Methods
 // 4. Private Methods
+// There is also the static versoin
 
 class Account {
   // 1. Public fields creation (they are in instances)
@@ -578,5 +579,5 @@ console.log(acc1.getMovements());
 acc1.requestLoan(333);
 console.log(acc1);
 
-console.log(Account.helper());
+Account.helper();
 // console.log(acc1.helper()); // Cannot be used like this

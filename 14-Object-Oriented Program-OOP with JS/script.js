@@ -557,6 +557,11 @@ class Account {
     }
   }
 
+  // Static Methods are ONLY used in Classes NOT in Instances !!!
+  static helper() {
+    console.log('Printed by a Static method!');
+  }
+
   // 4. Private methods
   #approveLoan(val) {
     return true;
@@ -572,3 +577,6 @@ console.log(acc1.getMovements());
 
 acc1.requestLoan(333);
 console.log(acc1);
+
+console.log(Account.helper());
+// console.log(acc1.helper()); // Cannot be used like this

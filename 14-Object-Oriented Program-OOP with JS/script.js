@@ -537,6 +537,7 @@ class Account {
     console.log(`Thanks for opening an account, ${this.owner}!`);
   }
 
+  // 3. Public methods
   // Public Interface to Access this Object (API)
   deposit(val) {
     this.#muvements.push(val);
@@ -548,12 +549,26 @@ class Account {
   getMovements = function () {
     return this.#muvements;
   };
+
+  requestLoan(val) {
+    if (this.#approveLoan(val)) {
+      this.deposit(val);
+      console.log(`Loan of ${val} approved.`);
+    }
+  }
+
+  // 4. Private methods
+  #approveLoan(val) {
+    return true;
+  }
 }
 
 const acc1 = new Account('Dino', 'EUR', 1111);
 acc1.deposit(250); // For deposits using a method "deposit()"
 acc1.withdraw(140); // For withdrawals using a method "withdraw()"
-console.log(acc1);
 
 // console.log(acc1.#pin); // Cannot be red - "#pin" is realy Private
 console.log(acc1.getMovements());
+
+acc1.requestLoan(333);
+console.log(acc1);

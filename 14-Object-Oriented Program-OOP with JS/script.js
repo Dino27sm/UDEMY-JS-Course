@@ -625,22 +625,39 @@ class CarCl {
 
 // Create child class "EVCl" of the parent class "CarCl"
 class EVCl extends CarCl {
+  #charge;
+
   constructor(make, speed, charge) {
     super(make, speed);
-    this.charge = charge;
+    this.#charge = charge;
   }
 
   chargeBattery(chargeTo) {
-    this.charge = chargeTo;
+    this.#charge = chargeTo;
+    return this;
   }
 
   // Here EVCl "accelerate" OVERWRITES the one from parent "CarCl.accelerate" !!!
   accelerate() {
     this.speed += 20;
-    this.charge -= 1;
+    this.#charge -= 1;
     console.log(
-      `${this.make} is going at ${this.speed} km/h, with a charge of ${this.charge}%.`
+      `${this.make} is going at ${this.speed} km/h, with a charge of ${
+        this.#charge
+      }%.`
     );
+    return this;
+  }
+
+  brake() {
+    this.speed -= 10;
+    this.#charge++;
+    console.log(
+      `${this.make} is going at ${this.speed} km/h with a charge of ${
+        this.#charge
+      }%, after pressing brakes.`
+    );
+    return this;
   }
 }
 
@@ -649,15 +666,12 @@ console.log(tesla);
 
 tesla.accelerate();
 tesla.brake();
+console.log('----------------------------------------------');
 
 // 'Rivian' going at 120 km/h, with a charge of 23%
 const rivian = new EVCl('Rivian', 120, 23);
 
-rivian.accelerate();
-rivian.brake();
-
-rivian.chargeBattery(80);
-rivian.accelerate();
+rivian.accelerate().chargeBattery(80).accelerate().brake().chargeBattery(90);
 rivian.brake();
 
 console.log(rivian);

@@ -542,9 +542,11 @@ class Account {
   // Public Interface to Access this Object (API)
   deposit(val) {
     this.#muvements.push(val);
+    return this; // Makes method to be chained
   }
   withdraw(val) {
     this.deposit(-val);
+    return this; // Makes method to be chained
   }
 
   getMovements = function () {
@@ -556,6 +558,7 @@ class Account {
       this.deposit(val);
       console.log(`Loan of ${val} approved.`);
     }
+    return this; // Makes method to be chained
   }
 
   // Static Methods are ONLY used in Classes NOT in Instances !!!
@@ -574,10 +577,28 @@ acc1.deposit(250); // For deposits using a method "deposit()"
 acc1.withdraw(140); // For withdrawals using a method "withdraw()"
 
 // console.log(acc1.#pin); // Cannot be red - "#pin" is realy Private
-console.log(acc1.getMovements());
+// console.log(acc1.getMovements());
 
 acc1.requestLoan(333);
-console.log(acc1);
+// console.log(acc1);
 
-Account.helper();
-// console.log(acc1.helper()); // Cannot be used like this
+// Account.helper();
+// console.log(acc1.helper());
+// Cannot be used like this, because it is STATIC Method
+//
+//====================== Chaining Methods ===========================
+//
+console.log(acc1.getMovements());
+
+// !!! --- Chaining Methods requires chained Methods to return "this" --- !!!
+acc1
+  .deposit(567)
+  .deposit(553)
+  .withdraw(677)
+  .requestLoan(888)
+  .deposit(544)
+  .withdraw(789);
+
+console.log(acc1.getMovements());
+//-------------------------------------------------------------------
+//

@@ -508,97 +508,158 @@ console.log(bmw, mercedes);
 // jay.calcAge();
 // jay.introduce();
 //
-//========= ENCAPSULATION and Data Privacy - Class Example =========
+// //========= ENCAPSULATION and Data Privacy - Class Example =========
+// //
+// // 1. Public Fields
+// // 2. Private Fields
+// // 3. Public Methods
+// // 4. Private Methods
+// // There is also the static versoin
+
+// class Account {
+//   // 1. Public fields creation (they are in instances)
+//   locale = navigator.language;
+
+//   // 2. Private fields - use "#" to make them Private (in instances)
+//   #muvements = [];
+//   #pin;
+
+//   constructor(owner, currency, pin) {
+//     this.owner = owner;
+//     this.currency = currency;
+
+//     // Protected property using (_) - it is a conventition
+//     // this._pin = pin;
+//     // this._muvements = [];
+
+//     this.#pin = pin;
+//     // this.locale = navigator.language;
+
+//     console.log(`Thanks for opening an account, ${this.owner}!`);
+//   }
+
+//   // 3. Public methods
+//   // Public Interface to Access this Object (API)
+//   deposit(val) {
+//     this.#muvements.push(val);
+//     return this; // Makes method to be chained
+//   }
+//   withdraw(val) {
+//     this.deposit(-val);
+//     return this; // Makes method to be chained
+//   }
+
+//   getMovements = function () {
+//     return this.#muvements;
+//   };
+
+//   requestLoan(val) {
+//     if (this.#approveLoan(val)) {
+//       this.deposit(val);
+//       console.log(`Loan of ${val} approved.`);
+//     }
+//     return this; // Makes method to be chained
+//   }
+
+//   // Static Methods are ONLY used in Classes NOT in Instances !!!
+//   static helper() {
+//     console.log('Printed by a Static method!');
+//   }
+
+//   // 4. Private methods
+//   #approveLoan(val) {
+//     return true;
+//   }
+// }
+
+// const acc1 = new Account('Dino', 'EUR', 1111);
+// acc1.deposit(250); // For deposits using a method "deposit()"
+// acc1.withdraw(140); // For withdrawals using a method "withdraw()"
+
+// // console.log(acc1.#pin); // Cannot be red - "#pin" is realy Private
+// // console.log(acc1.getMovements());
+
+// acc1.requestLoan(333);
+// // console.log(acc1);
+
+// // Account.helper();
+// // console.log(acc1.helper());
+// // Cannot be used like this, because it is STATIC Method
+// //
+// //====================== Chaining Methods ===========================
+// //
+// console.log(acc1.getMovements());
+
+// // !!! --- Chaining Methods requires chained Methods to return "this" --- !!!
+// acc1
+//   .deposit(567)
+//   .deposit(553)
+//   .withdraw(677)
+//   .requestLoan(888)
+//   .deposit(544)
+//   .withdraw(789);
+
+// console.log(acc1.getMovements());
+// //-------------------------------------------------------------------
 //
-// 1. Public Fields
-// 2. Private Fields
-// 3. Public Methods
-// 4. Private Methods
-// There is also the static versoin
-
-class Account {
-  // 1. Public fields creation (they are in instances)
-  locale = navigator.language;
-
-  // 2. Private fields - use "#" to make them Private (in instances)
-  #muvements = [];
-  #pin;
-
-  constructor(owner, currency, pin) {
-    this.owner = owner;
-    this.currency = currency;
-
-    // Protected property using (_) - it is a conventition
-    // this._pin = pin;
-    // this._muvements = [];
-
-    this.#pin = pin;
-    // this.locale = navigator.language;
-
-    console.log(`Thanks for opening an account, ${this.owner}!`);
+//============== Coding CHALLENGE #4 ===============================
+//
+class CarCl {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
   }
 
-  // 3. Public methods
-  // Public Interface to Access this Object (API)
-  deposit(val) {
-    this.#muvements.push(val);
-    return this; // Makes method to be chained
-  }
-  withdraw(val) {
-    this.deposit(-val);
-    return this; // Makes method to be chained
+  accelerate() {
+    this.speed += 10;
+    console.log(`${this.make} is going at ${this.speed} km/h.`);
   }
 
-  getMovements = function () {
-    return this.#muvements;
-  };
-
-  requestLoan(val) {
-    if (this.#approveLoan(val)) {
-      this.deposit(val);
-      console.log(`Loan of ${val} approved.`);
-    }
-    return this; // Makes method to be chained
-  }
-
-  // Static Methods are ONLY used in Classes NOT in Instances !!!
-  static helper() {
-    console.log('Printed by a Static method!');
-  }
-
-  // 4. Private methods
-  #approveLoan(val) {
-    return true;
+  brake() {
+    this.speed -= 5;
+    console.log(
+      `${this.make} is going at ${this.speed} km/h, after pressing brakes.`
+    );
   }
 }
 
-const acc1 = new Account('Dino', 'EUR', 1111);
-acc1.deposit(250); // For deposits using a method "deposit()"
-acc1.withdraw(140); // For withdrawals using a method "withdraw()"
+// Create child class "EVCl" of the parent class "CarCl"
+class EVCl extends CarCl {
+  constructor(make, speed, charge) {
+    super(make, speed);
+    this.charge = charge;
+  }
 
-// console.log(acc1.#pin); // Cannot be red - "#pin" is realy Private
-// console.log(acc1.getMovements());
+  chargeBattery(chargeTo) {
+    this.charge = chargeTo;
+  }
 
-acc1.requestLoan(333);
-// console.log(acc1);
+  // Here EVCl "accelerate" OVERWRITES the one from parent "CarCl.accelerate" !!!
+  accelerate() {
+    this.speed += 20;
+    this.charge -= 1;
+    console.log(
+      `${this.make} is going at ${this.speed} km/h, with a charge of ${this.charge}%.`
+    );
+  }
+}
 
-// Account.helper();
-// console.log(acc1.helper());
-// Cannot be used like this, because it is STATIC Method
-//
-//====================== Chaining Methods ===========================
-//
-console.log(acc1.getMovements());
+const tesla = new CarCl('Tesla', 120);
+console.log(tesla);
 
-// !!! --- Chaining Methods requires chained Methods to return "this" --- !!!
-acc1
-  .deposit(567)
-  .deposit(553)
-  .withdraw(677)
-  .requestLoan(888)
-  .deposit(544)
-  .withdraw(789);
+tesla.accelerate();
+tesla.brake();
 
-console.log(acc1.getMovements());
-//-------------------------------------------------------------------
-//
+// 'Rivian' going at 120 km/h, with a charge of 23%
+const rivian = new EVCl('Rivian', 120, 23);
+
+rivian.accelerate();
+rivian.brake();
+
+rivian.chargeBattery(80);
+rivian.accelerate();
+rivian.brake();
+
+console.log(rivian);
+
+//===============================================================

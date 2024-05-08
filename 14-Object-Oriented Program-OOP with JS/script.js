@@ -621,6 +621,14 @@ class CarCl {
       `${this.make} is going at ${this.speed} km/h, after pressing brakes.`
     );
   }
+
+  get speedUS() {
+    return this.speed / 1.6;
+  }
+
+  set speedUS(speed) {
+    this.speed = speed * 1.6;
+  }
 }
 
 // Create child class "EVCl" of the parent class "CarCl"
@@ -668,12 +676,16 @@ tesla.accelerate();
 tesla.brake();
 console.log('----------------------------------------------');
 
-// 'Rivian' going at 120 km/h, with a charge of 23%
+// Creating the 'Rivian' going at 120 km/h, with a charge of 23%
 const rivian = new EVCl('Rivian', 120, 23);
 
 rivian.accelerate().chargeBattery(80).accelerate().brake().chargeBattery(90);
 rivian.brake();
 
-console.log(rivian);
+// Using the inherited "get" and "set" from "CarCL"
+console.log(rivian.speedUS);
+rivian.speedUS = 100;
+console.log(rivian.speedUS);
 
+console.log(rivian);
 //===============================================================

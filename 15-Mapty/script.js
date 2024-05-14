@@ -20,14 +20,15 @@ if (navigator.geolocation) {
       // console.log(`https://www.google.com/maps/@${latitude},${longitude}`);
 
       //--------------- Leaflet Map part ---------------------------------
-      const map = L.map('map').setView([latitude, longitude], 15);
+      const coords = [latitude, longitude];
+      const map = L.map('map').setView(coords, 15);
 
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution:
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(map);
 
-      L.marker([latitude, longitude])
+      L.marker(coords)
         .addTo(map)
         .bindPopup('A pretty CSS popup.<br> Easily customizable.')
         .openPopup();

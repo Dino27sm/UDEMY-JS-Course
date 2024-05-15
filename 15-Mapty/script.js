@@ -37,6 +37,7 @@ if (navigator.geolocation) {
       map.on('click', function (mapEvent) {
         const { lat, lng } = mapEvent.latlng;
 
+        // Settings of message appearance on the map after clicking
         L.marker([lat, lng])
           .addTo(map)
           .bindPopup(

@@ -49,7 +49,7 @@ if (navigator.geolocation) {
               className: 'running-popup',
             })
           )
-          .setPopupContent('Workout Test.')
+          .setPopupContent(`Workout done👌`)
           .openPopup();
       });
 

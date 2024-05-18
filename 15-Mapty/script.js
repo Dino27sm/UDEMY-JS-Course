@@ -11,6 +11,9 @@ const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 
+let map;
+let mapEvent;
+
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(
     function (position) {
@@ -36,21 +39,22 @@ if (navigator.geolocation) {
 
       map.on('click', function (mapEvent) {
         const { lat, lng } = mapEvent.latlng;
+        form.classList.remove('hidden');
 
-        // Settings of message appearance on the map after clicking
-        L.marker([lat, lng])
-          .addTo(map)
-          .bindPopup(
-            L.popup({
-              maxWidth: 250,
-              minWidth: 100,
-              autoClose: false,
-              closeOnClick: false,
-              className: 'running-popup',
-            })
-          )
-          .setPopupContent(`Workout done👌`)
-          .openPopup();
+        // // Settings of message appearance on the map after clicking
+        // L.marker([lat, lng])
+        //   .addTo(map)
+        //   .bindPopup(
+        //     L.popup({
+        //       maxWidth: 250,
+        //       minWidth: 100,
+        //       autoClose: false,
+        //       closeOnClick: false,
+        //       className: 'running-popup',
+        //     })
+        //   )
+        //   .setPopupContent(`Workout done👌`)
+        //   .openPopup();
       });
 
       //-----------------------------------------------------------------

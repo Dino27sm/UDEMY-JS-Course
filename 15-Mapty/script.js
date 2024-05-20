@@ -24,7 +24,7 @@ if (navigator.geolocation) {
 
       //--------------- Leaflet Map part ---------------------------------
       const coords = [latitude, longitude];
-      const map = L.map('map').setView(coords, 15);
+      map = L.map('map').setView(coords, 15);
       // console.log(map);
 
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -37,24 +37,10 @@ if (navigator.geolocation) {
       //     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       // }).addTo(map);
 
-      map.on('click', function (mapEvent) {
-        const { lat, lng } = mapEvent.latlng;
+      map.on('click', function (mapEvn) {
+        mapEvent = mapEvn;
         form.classList.remove('hidden');
-
-        // // Settings of message appearance on the map after clicking
-        // L.marker([lat, lng])
-        //   .addTo(map)
-        //   .bindPopup(
-        //     L.popup({
-        //       maxWidth: 250,
-        //       minWidth: 100,
-        //       autoClose: false,
-        //       closeOnClick: false,
-        //       className: 'running-popup',
-        //     })
-        //   )
-        //   .setPopupContent(`Workout done👌`)
-        //   .openPopup();
+        inputDistance.focus();
       });
 
       //-----------------------------------------------------------------
@@ -64,3 +50,24 @@ if (navigator.geolocation) {
     }
   );
 }
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  //----- Display the Marker
+  // Settings of message appearance on the map after clicking
+  const { lat, lng } = mapEvent.latlng;
+  L.marker([lat, lng])
+    .addTo(map)
+    .bindPopup(
+      L.popup({
+        maxWidth: 250,
+        minWidth: 100,
+        autoClose: false,
+        closeOnClick: false,
+        className: 'running-popup',
+      })
+    )
+    .setPopupContent(`Workout done👌`)
+    .openPopup();
+});

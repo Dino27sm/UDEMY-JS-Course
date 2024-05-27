@@ -37,6 +37,7 @@ if (navigator.geolocation) {
       //     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       // }).addTo(map);
 
+      // Handling "click" on the map
       map.on('click', function (mapEvn) {
         mapEvent = mapEvn;
         form.classList.remove('hidden');
@@ -54,6 +55,13 @@ if (navigator.geolocation) {
 form.addEventListener('submit', function (e) {
   e.preventDefault();
 
+  // Clear the Input Fields
+  inputDistance.value =
+    inputDuration.value =
+    inputCadence.value =
+    inputElevation.value =
+      '';
+
   //----- Display the Marker
   // Settings of message appearance on the map after clicking
   const { lat, lng } = mapEvent.latlng;
@@ -70,4 +78,9 @@ form.addEventListener('submit', function (e) {
     )
     .setPopupContent(`Workout done👌`)
     .openPopup();
+});
+
+inputType.addEventListener('change', function () {
+  inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
+  inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
 });

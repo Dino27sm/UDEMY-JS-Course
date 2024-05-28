@@ -11,8 +11,7 @@ const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 
-let map, mapEvent;
-
+// Class Definition with Properties & Methods
 class App {
   #map;
   #mapEvent;
@@ -20,9 +19,7 @@ class App {
   // "constructor" is activated immediately after a class object creation
   constructor() {
     this._getPosition();
-
     form.addEventListener('submit', this._newWorkout.bind(this));
-
     inputType.addEventListener('change', this._toggleElevationField);
   }
 
@@ -40,11 +37,8 @@ class App {
   _loadMap(position) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
-
-    //--------------- Leaflet Map part ---------------------------------
     const coords = [latitude, longitude];
     this.#map = L.map('map').setView(coords, 15);
-    // console.log(map);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution:
@@ -95,4 +89,4 @@ class App {
   }
 }
 
-const app = new App(); // Create a class object
+const app = new App(); // Create a class instance

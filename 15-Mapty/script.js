@@ -14,43 +14,50 @@ const inputElevation = document.querySelector('.form__input--elevation');
 let map;
 let mapEvent;
 
-if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(
-    function (position) {
-      console.log(position);
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-      // console.log(`https://www.google.com/maps/@${latitude},${longitude}`);
+class App {
+  // "constructor" is activated immediately after a class object creation
+  constructor() {
+    this._getPosition();
+  }
 
-      //--------------- Leaflet Map part ---------------------------------
-      const coords = [latitude, longitude];
-      map = L.map('map').setView(coords, 15);
-      // console.log(map);
-
-      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      }).addTo(map);
-
-      // L.tileLayer('https://tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-      //   attribution:
-      //     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      // }).addTo(map);
-
-      // Handling "click" on the map
-      map.on('click', function (mapEvn) {
-        mapEvent = mapEvn;
-        form.classList.remove('hidden');
-        inputDistance.focus();
+  _getPosition() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this._loadMap, function () {
+        alert('Cannot get your position!');
       });
-
-      //-----------------------------------------------------------------
-    },
-    function () {
-      alert('Cannot get your position!');
     }
-  );
+  }
+
+  _loadMap(position) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+    //--------------- Leaflet Map part ---------------------------------
+    const coords = [latitude, longitude];
+    map = L.map('map').setView(coords, 15);
+    // console.log(map);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(map);
+
+    // Handling "click" on the map
+    map.on('click', function (mapEvn) {
+      mapEvent = mapEvn;
+      form.classList.remove('hidden');
+      inputDistance.focus();
+    });
+  }
+
+  _showForm() {}
+
+  _toggleElevationField() {}
+
+  _newWorkout() {}
 }
+
+const app = new App(); // Create a class object
 
 form.addEventListener('submit', function (e) {
   e.preventDefault();

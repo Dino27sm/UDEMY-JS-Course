@@ -13,11 +13,11 @@ const inputElevation = document.querySelector('.form__input--elevation');
 //=========================================================================
 //
 class Workout {
-  date = Date.now();  // Fields
-  id = (this.date + '').slice(-10);  // Fields
+  date = new Date(); // Fields
+  id = (Date.now() + '').slice(-10); // Fields
 
   constructor(coords, distance, duration) {
-    this.coords = coords;
+    this.coords = coords; // [lat, lng]
     this.distance = distance; // in km
     this.duration = duration; // in minutes
   }
@@ -30,7 +30,7 @@ class Running extends Workout {
     this.calcPace();
   }
 
-  calcPace(){
+  calcPace() {
     this.pace = this.duration / this.distance;
     return this.pace;
   }
@@ -40,8 +40,16 @@ class Cycling extends Workout {
   constructor(coords, distance, duration, elevationGain) {
     super(coords, distance, duration); // Initialize "this"
     this.elevationGain = elevationGain;
+    this.calcSpeed();
+  }
+
+  calcSpeed() {
+    this.speed = this.distance / (this.duration / 60); // Convert to hours
+    return this.speed;
+  }
 }
 
+//====================== Application Structure ===========================
 // Class Definition with Properties & Methods
 class App {
   #map;

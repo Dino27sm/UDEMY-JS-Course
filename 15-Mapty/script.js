@@ -102,6 +102,12 @@ class App {
   }
 
   _newWorkout(e) {
+    // Function to check if inputs are valid
+    const validInputs = function (...inputs) {
+      const result = inputs.every(inp => isFinite(inp));
+      return result;
+    };
+
     e.preventDefault();
 
     // Get the data from the "form"
@@ -114,7 +120,7 @@ class App {
       const cadence = Number(inputCadence.value);
 
       // Check the data if valid
-      if (!(isFinite(distance) && isFinite(duration) && isFinite(cadence))) {
+      if (!validInputs(distance, duration, cadence)) {
         return alert('Enter positive numbers!');
       }
     }
@@ -122,6 +128,10 @@ class App {
     // If workout "cycling", create "cycling" object
     if (type === 'cycling') {
       const elevation = Number(inputElevation.value);
+
+      if (!validInputs(distance, duration, elevation)) {
+        return alert('Enter positive numbers!');
+      }
     }
 
     // Add the new object to workout array

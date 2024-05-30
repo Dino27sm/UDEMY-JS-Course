@@ -107,6 +107,7 @@ class App {
       const result = inputs.every(inp => isFinite(inp));
       return result;
     };
+    const allPositive = (...inputs) => inputs.every(inp => inp > 0);
 
     e.preventDefault();
 
@@ -120,7 +121,10 @@ class App {
       const cadence = Number(inputCadence.value);
 
       // Check the data if valid
-      if (!validInputs(distance, duration, cadence)) {
+      if (
+        !validInputs(distance, duration, cadence) ||
+        !allPositive(distance, duration, cadence)
+      ) {
         return alert('Enter positive numbers!');
       }
     }
@@ -129,7 +133,10 @@ class App {
     if (type === 'cycling') {
       const elevation = Number(inputElevation.value);
 
-      if (!validInputs(distance, duration, elevation)) {
+      if (
+        !validInputs(distance, duration, elevation) ||
+        !allPositive(distance, duration)
+      ) {
         return alert('Enter positive numbers!');
       }
     }

@@ -3,13 +3,6 @@
 // prettier-ignore
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-const form = document.querySelector('.form');
-const containerWorkouts = document.querySelector('.workouts');
-const inputType = document.querySelector('.form__input--type');
-const inputDistance = document.querySelector('.form__input--distance');
-const inputDuration = document.querySelector('.form__input--duration');
-const inputCadence = document.querySelector('.form__input--cadence');
-const inputElevation = document.querySelector('.form__input--elevation');
 //=========================================================================
 //
 class Workout {
@@ -51,6 +44,15 @@ class Cycling extends Workout {
 
 //====================== Application Structure ===========================
 // Class Definition with Properties & Methods
+const form = document.querySelector('.form');
+const containerWorkouts = document.querySelector('.workouts');
+const inputType = document.querySelector('.form__input--type');
+const inputDistance = document.querySelector('.form__input--distance');
+const inputDuration = document.querySelector('.form__input--duration');
+const inputCadence = document.querySelector('.form__input--cadence');
+const inputElevation = document.querySelector('.form__input--elevation');
+//------------------------------------------------------------------------
+
 class App {
   #map;
   #mapEvent;
@@ -103,12 +105,24 @@ class App {
     e.preventDefault();
 
     // Get the data from the "form"
-
-    // Check the data if valid
+    const type = inputType.value;
+    const distance = Number(inputDistance.value);
+    const duration = Number(inputDuration.value);
 
     // If workout "running", create "running" object
+    if (type === 'running') {
+      const cadence = Number(inputCadence.value);
+
+      // Check the data if valid
+      if (!(isFinite(distance) && isFinite(duration) && isFinite(cadence))) {
+        return alert('Enter positive numbers!');
+      }
+    }
 
     // If workout "cycling", create "cycling" object
+    if (type === 'cycling') {
+      const elevation = Number(inputElevation.value);
+    }
 
     // Add the new object to workout array
 
@@ -136,8 +150,6 @@ class App {
       inputCadence.value =
       inputElevation.value =
         '';
-
-    //----- Display the Marker
   }
 }
 

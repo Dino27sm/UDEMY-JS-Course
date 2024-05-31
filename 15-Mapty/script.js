@@ -56,6 +56,7 @@ const inputElevation = document.querySelector('.form__input--elevation');
 class App {
   #map;
   #mapEvent;
+  #workouts = []; // Private array to keep each "workout" on map
 
   // "constructor" is activated immediately after a class object creation
   constructor() {
@@ -115,6 +116,9 @@ class App {
     const type = inputType.value;
     const distance = Number(inputDistance.value);
     const duration = Number(inputDuration.value);
+    const { lat, lng } = this.#mapEvent.latlng;
+
+    let workout;
 
     // If workout "running", create "running" object
     if (type === 'running') {
@@ -127,6 +131,7 @@ class App {
       ) {
         return alert('Enter positive numbers!');
       }
+      workout = new Running([lat, lng], distance, duration, cadence);
     }
 
     // If workout "cycling", create "cycling" object
@@ -139,12 +144,13 @@ class App {
       ) {
         return alert('Enter positive numbers!');
       }
+      workout = new Cycling([lat, lng], distance, duration, elevation);
     }
 
     // Add the new object to workout array
+    this.#workouts.push(workout);
 
     // Render workout on the map as marker
-    const { lat, lng } = this.#mapEvent.latlng;
     L.marker([lat, lng])
       .addTo(this.#map)
       .bindPopup(
@@ -153,7 +159,7 @@ class App {
           minWidth: 100,
           autoClose: false,
           closeOnClick: false,
-          className: 'running-popup',
+          className: `${type}-popup`,
         })
       )
       .setPopupContent(`Workout done👌`)

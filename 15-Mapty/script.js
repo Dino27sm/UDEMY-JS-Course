@@ -12,16 +12,16 @@ class Workout {
     this.coords = coords; // [lat, lng]
     this.distance = distance; // in km
     this.duration = duration; // in minutes
-    this._setDescription();
   }
 
   _setDescription() {
     // prettier-ignore
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const typeString = String(this.workoutType);
 
-    this.description = `${this.workoutType} on ${
-      months[this.date.getMonth()]
-    } ${this.date.getDate()}`;
+    this.description = `${typeString[0].toUpperCase()}${typeString.slice(
+      1
+    )} on ${months[this.date.getMonth()]} ${this.date.getDate()}`;
   }
 }
 
@@ -31,6 +31,7 @@ class Running extends Workout {
     this.cadence = cadence;
     this.calcPace();
     this.workoutType = 'running';
+    this._setDescription();
   }
 
   calcPace() {
@@ -45,6 +46,7 @@ class Cycling extends Workout {
     this.elevationGain = elevationGain;
     this.calcSpeed();
     this.workoutType = 'cycling';
+    this._setDescription();
   }
 
   calcSpeed() {
@@ -195,13 +197,13 @@ class App {
   }
 
   _renderWorkout(workoutInp) {
-    let html = `<li class="workout workout--${workoutInp.type}" data-id="${
-      workoutInp.id
-    }">
+    let html = `<li class="workout workout--${
+      workoutInp.workoutType
+    }" data-id="${workoutInp.id}">
     <h2 class="workout__title">Running on April 14</h2>
     <div class="workout__details">
       <span class="workout__icon">${
-        workoutInp.type === 'running' ? '🏃‍♂️' : '🚴'
+        workoutInp.workoutType === 'running' ? '🏃‍♂️' : '🚴'
       }</span>
       <span class="workout__value">${workoutInp.distance}</span>
       <span class="workout__unit">km</span>

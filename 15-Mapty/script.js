@@ -210,8 +210,33 @@ class App {
       <span class="workout__icon">⏱</span>
       <span class="workout__value">${workoutInp.duration}</span>
       <span class="workout__unit">min</span>
+    </div>`;
+
+    if (workoutInp.workoutType === 'running') {
+      html += `<div class="workout__details">
+    <span class="workout__icon">⚡️</span>
+    <span class="workout__value">${workoutInp.calcPace()}</span>
+    <span class="workout__unit">min/km</span>
+  </div>
+  <div class="workout__details">
+    <span class="workout__icon">🦶🏼</span>
+    <span class="workout__value">${workoutInp.cadence}</span>
+    <span class="workout__unit">spm</span>
+  </div></li>`;
+    }
+
+    if (workoutInp.workoutType === 'cycling') {
+      html += `<div class="workout__details">
+      <span class="workout__icon">⚡️</span>
+      <span class="workout__value">${workoutInp.calcSpeed()}</span>
+      <span class="workout__unit">km/h</span>
     </div>
-  </li>`;
+    <div class="workout__details">
+      <span class="workout__icon">⛰</span>
+      <span class="workout__value">${workoutInp.elevationGain}</span>
+      <span class="workout__unit">m</span>
+    </div></li>`;
+    }
 
     form.insertAdjacentHTML('afterend', html);
   }

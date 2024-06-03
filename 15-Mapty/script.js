@@ -17,9 +17,8 @@ class Workout {
   _setDescription() {
     // prettier-ignore
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    const typeString = String(this.workoutType);
 
-    this.description = `${typeString[0].toUpperCase()}${typeString.slice(
+    this.description = `${this.workoutType[0].toUpperCase()}${this.workoutType.slice(
       1
     )} on ${months[this.date.getMonth()]} ${this.date.getDate()}`;
   }
@@ -168,7 +167,6 @@ class App {
     // Render workout on the map as marker
     this._renderWorkoutMarker(this.workout);
     console.log(this.workout);
-
     // Render workout on list
     this._renderWorkout(this.workout);
 
@@ -200,7 +198,7 @@ class App {
     let html = `<li class="workout workout--${
       workoutInp.workoutType
     }" data-id="${workoutInp.id}">
-    <h2 class="workout__title">Running on April 14</h2>
+    <h2 class="workout__title">${workoutInp.description}</h2>
     <div class="workout__details">
       <span class="workout__icon">${
         workoutInp.workoutType === 'running' ? '🏃‍♂️' : '🚴'
@@ -214,6 +212,8 @@ class App {
       <span class="workout__unit">min</span>
     </div>
   </li>`;
+
+    form.insertAdjacentHTML('afterend', html);
   }
 }
 

@@ -112,6 +112,17 @@ class App {
     inputDistance.focus();
   }
 
+  _hideForm() {
+    inputDistance.value = '';
+    inputDuration.value = '';
+    inputCadence.value = '';
+    inputElevation.value = '';
+
+    form.style.display = 'none';
+    form.classList.add('hidden');
+    setTimeout(() => (form.style.display = 'grid'), 1000);
+  }
+
   _toggleElevationField() {
     inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
     inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
@@ -166,16 +177,12 @@ class App {
 
     // Render workout on the map as marker
     this._renderWorkoutMarker(this.workout);
-    console.log(this.workout);
+
     // Render workout on list
     this._renderWorkout(this.workout);
 
     // Hide "form" and clear input fields
-    inputDistance.value =
-      inputDuration.value =
-      inputCadence.value =
-      inputElevation.value =
-        '';
+    this._hideForm();
   }
 
   _renderWorkoutMarker(workoutInp) {
@@ -190,7 +197,11 @@ class App {
           className: `${workoutInp.workoutType}-popup`,
         })
       )
-      .setPopupContent(`Workout done👌`)
+      .setPopupContent(
+        `${workoutInp.workoutType === 'running' ? '🏃‍♂️' : '🚴'} ${
+          workoutInp.description
+        }.`
+      )
       .openPopup();
   }
 
@@ -215,7 +226,7 @@ class App {
     if (workoutInp.workoutType === 'running') {
       html += `<div class="workout__details">
     <span class="workout__icon">⚡️</span>
-    <span class="workout__value">${workoutInp.calcPace()}</span>
+    <span class="workout__value">${workoutInp.pace.toFixed(1)}</span>
     <span class="workout__unit">min/km</span>
   </div>
   <div class="workout__details">
@@ -228,7 +239,7 @@ class App {
     if (workoutInp.workoutType === 'cycling') {
       html += `<div class="workout__details">
       <span class="workout__icon">⚡️</span>
-      <span class="workout__value">${workoutInp.calcSpeed()}</span>
+      <span class="workout__value">${workoutInp.speed.toFixed(1)}</span>
       <span class="workout__unit">km/h</span>
     </div>
     <div class="workout__details">

@@ -1,21 +1,27 @@
 'use strict';
 
-// prettier-ignore
-const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
 //=========================================================================
 //
 
 class Workout {
   date = new Date(); // Fields
   id = (Date.now() + '').slice(-10); // Fields
-
   workoutType;
 
   constructor(coords, distance, duration) {
     this.coords = coords; // [lat, lng]
     this.distance = distance; // in km
     this.duration = duration; // in minutes
+    this._setDescription();
+  }
+
+  _setDescription() {
+    // prettier-ignore
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+    this.description = `${this.workoutType} on ${
+      months[this.date.getMonth()]
+    } ${this.date.getDate()}`;
   }
 }
 
@@ -158,9 +164,11 @@ class App {
     this.#workouts.push(this.workout);
 
     // Render workout on the map as marker
-    this.renderWorkoutMarker(this.workout);
+    this._renderWorkoutMarker(this.workout);
+    console.log(this.workout);
 
     // Render workout on list
+    this._renderWorkout(this.workout);
 
     // Hide "form" and clear input fields
     inputDistance.value =
@@ -170,7 +178,7 @@ class App {
         '';
   }
 
-  renderWorkoutMarker(workoutInp) {
+  _renderWorkoutMarker(workoutInp) {
     L.marker(workoutInp.coords)
       .addTo(this.#map)
       .bindPopup(
@@ -184,6 +192,26 @@ class App {
       )
       .setPopupContent(`Workout done👌`)
       .openPopup();
+  }
+
+  _renderWorkout(workoutInp) {
+    let html = `<li class="workout workout--${workoutInp.type}" data-id="${
+      workoutInp.id
+    }">
+    <h2 class="workout__title">Running on April 14</h2>
+    <div class="workout__details">
+      <span class="workout__icon">${
+        workoutInp.type === 'running' ? '🏃‍♂️' : '🚴'
+      }</span>
+      <span class="workout__value">${workoutInp.distance}</span>
+      <span class="workout__unit">km</span>
+    </div>
+    <div class="workout__details">
+      <span class="workout__icon">⏱</span>
+      <span class="workout__value">${workoutInp.duration}</span>
+      <span class="workout__unit">min</span>
+    </div>
+  </li>`;
   }
 }
 

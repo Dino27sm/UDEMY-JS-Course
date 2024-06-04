@@ -66,6 +66,7 @@ const inputElevation = document.querySelector('.form__input--elevation');
 //------------------------------------------------------------------------
 
 class App {
+  #mapZoomLevel = 15;
   #map;
   #mapEvent;
   #workouts = []; // Private array to keep each "workout" on map
@@ -78,6 +79,8 @@ class App {
     this._getPosition();
     form.addEventListener('submit', this._newWorkout.bind(this));
     inputType.addEventListener('change', this._toggleElevationField);
+    containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
+    // "addEventListener" changes "this", so "bind()" has to return it the current class
   }
 
   _getPosition() {
@@ -95,7 +98,7 @@ class App {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
     const coords = [latitude, longitude];
-    this.#map = L.map('map').setView(coords, 15);
+    this.#map = L.map('map').setView(coords, this.#mapZoomLevel);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution:
@@ -250,6 +253,24 @@ class App {
     }
 
     form.insertAdjacentHTML('afterend', html);
+  }
+
+  _moveToPopup(e) {
+    const workoutEl = e.target.closest('.workout');
+
+    if (!workoutEl) return; // To make to work only if "workoutEl" exist
+
+    const workout = this.#workouts.find(
+      work => work.id === workoutEl.dataset.id
+    );
+
+    this.#map.setView(workout.coords, this.#mapZoomLevel, {
+      animate: true,
+      pan: {
+        duration: 1.5, // animation option of duration movement
+      },
+    });
+    // Here "map" is moving to the chosen workout box
   }
 }
 

@@ -296,3 +296,5 @@ class App {
 }
 
 const app = new App(); // Create a class instance
+// To delete local storage data use in Console:
+// localStorage.removeItem('workouts');

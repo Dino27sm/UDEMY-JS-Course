@@ -77,6 +77,8 @@ class App {
   // "constructor" is activated immediately after a class object creation
   constructor() {
     this._getPosition();
+    this._getLocalStorage();
+
     form.addEventListener('submit', this._newWorkout.bind(this));
     inputType.addEventListener('change', this._toggleElevationField);
     containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
@@ -107,6 +109,9 @@ class App {
 
     // Handling "click" on the map
     this.#map.on('click', this._showForm.bind(this));
+
+    // Show markers of old starage data - AFTER "MAP" LOADING
+    this.#workouts.forEach(workElm => this._renderWorkoutMarker(workElm));
   }
 
   _showForm(mapEvn) {
@@ -186,6 +191,9 @@ class App {
 
     // Hide "form" and clear input fields
     this._hideForm();
+
+    // Set Local Storage
+    this._setLocalStorage();
   }
 
   _renderWorkoutMarker(workoutInp) {
@@ -271,6 +279,19 @@ class App {
       },
     });
     // Here "map" is moving to the chosen workout box
+  }
+
+  _setLocalStorage() {
+    localStorage.setItem('workouts', JSON.stringify(this.#workouts));
+  }
+
+  _getLocalStorage() {
+    const localData = JSON.parse(localStorage.getItem('workouts'));
+    if (!localData) return;
+
+    this.#workouts = localData;
+
+    this.#workouts.forEach(workElm => this._renderWorkout(workElm));
   }
 }
 

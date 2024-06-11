@@ -4,9 +4,9 @@ const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
 
 ///////////////////////////////////////
-const renderCountry = function (data) {
+const renderCountry = function (data, className = '') {
   const peopleNum = (Number(data.population) / 1000000).toFixed(2);
-  const html = `<article class="country">
+  const html = `<article class="country ${className}">
             <img class="country__img" src="${data.flag}" />
             <div class="country__data">
               <h3 class="country__name">${data.name}</h3>
@@ -51,11 +51,11 @@ const getCountryAndNeighbour = function (country) {
     request2.addEventListener('load', function () {
       const data2 = JSON.parse(this.responseText);
 
-      renderCountry(data2);
+      renderCountry(data2, 'neighbour');
     });
   });
 };
 
-getCountryAndNeighbour('bulgaria');
-// getCountryAndNeighbour('usa');
 // getCountryAndNeighbour('portugal');
+// getCountryAndNeighbour('bulgaria');
+getCountryAndNeighbour('usa');

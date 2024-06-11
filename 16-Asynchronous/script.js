@@ -40,9 +40,20 @@ const getCountryAndNeighbour = function (country) {
     // Get neighbour country-2
     const neighbour = data.borders[0];
     if (!neighbour) return;
+    console.log(neighbour);
+    // AJAX Call country-1
+    const request2 = new XMLHttpRequest();
+    request2.open(
+      'GET',
+      `https://countries-api-836d.onrender.com/countries/alpha/${neighbour}`
+    );
+    request2.send();
+    request2.addEventListener('load', function () {
+      console.log(this.responseText);
+    });
   });
 };
 
-getCountryAndNeighbour('bulgaria');
-getCountryAndNeighbour('usa');
+// getCountryAndNeighbour('bulgaria');
+// getCountryAndNeighbour('usa');
 getCountryAndNeighbour('portugal');

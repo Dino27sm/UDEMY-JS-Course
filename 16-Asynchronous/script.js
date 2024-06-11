@@ -49,11 +49,13 @@ const getCountryAndNeighbour = function (country) {
     );
     request2.send();
     request2.addEventListener('load', function () {
-      console.log(this.responseText);
+      const data2 = JSON.parse(this.responseText);
+
+      renderCountry(data2);
     });
   });
 };
 
-// getCountryAndNeighbour('bulgaria');
+getCountryAndNeighbour('bulgaria');
 // getCountryAndNeighbour('usa');
-getCountryAndNeighbour('portugal');
+// getCountryAndNeighbour('portugal');

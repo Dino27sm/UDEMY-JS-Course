@@ -4,21 +4,9 @@ const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
 
 ///////////////////////////////////////
-
-const getCountryData = function (country) {
-  const request = new XMLHttpRequest();
-  request.open(
-    'GET',
-    `https://countries-api-836d.onrender.com/countries/name/${country}`
-  );
-  request.send();
-
-  request.addEventListener('load', function () {
-    const [data] = JSON.parse(this.responseText);
-    const peopleNum = (Number(data.population) / 1000000).toFixed(2);
-    console.log(data);
-
-    const html = `<article class="country">
+const renderCountry = function (data) {
+  const peopleNum = (Number(data.population) / 1000000).toFixed(2);
+  const html = `<article class="country">
             <img class="country__img" src="${data.flag}" />
             <div class="country__data">
               <h3 class="country__name">${data.name}</h3>
@@ -29,11 +17,32 @@ const getCountryData = function (country) {
             </div>
           </article>`;
 
-    countriesContainer.insertAdjacentHTML('beforeend', html);
-    countriesContainer.style.opacity = 1;
+  countriesContainer.insertAdjacentHTML('beforeend', html);
+  countriesContainer.style.opacity = 1;
+};
+
+const getCountryAndNeighbour = function (country) {
+  // AJAX Call country-1
+  const request = new XMLHttpRequest();
+  request.open(
+    'GET',
+    `https://countries-api-836d.onrender.com/countries/name/${country}`
+  );
+  request.send();
+
+  request.addEventListener('load', function () {
+    const [data] = JSON.parse(this.responseText);
+    console.log(data);
+
+    // Render country-1
+    renderCountry(data);
+
+    // Get neighbour country-2
+    const neighbour = data.borders[0];
+    if (!neighbour) return;
   });
 };
 
-getCountryData('bulgaria');
-getCountryData('usa');
-getCountryData('portugal');
+getCountryAndNeighbour('bulgaria');
+getCountryAndNeighbour('usa');
+getCountryAndNeighbour('portugal');

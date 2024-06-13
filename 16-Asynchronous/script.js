@@ -5,6 +5,7 @@ const countriesContainer = document.querySelector('.countries');
 
 ///////////////////////////////////////
 const renderCountry = function (data, className = '') {
+  // Here "data" is an object
   const peopleNum = (Number(data.population) / 1000000).toFixed(2);
   const html = `<article class="country ${className}">
             <img class="country__img" src="${data.flag}" />
@@ -64,9 +65,37 @@ const renderCountry = function (data, className = '') {
 //
 //=============== FETCH and PROMISES ===================================
 //
-const request = fetch(
-  `https://countries-api-836d.onrender.com/countries/name/portugal`
-);
-// The "promis" is an object, used as a container to keep
-// the data receved via "fetch" asynchronously
-console.log(request);
+// const request = fetch(
+//   `https://countries-api-836d.onrender.com/countries/name/portugal`
+// );
+// // The "promis" is an object, used as a container to keep
+// // the data receved via "fetch" asynchronously
+// console.log(request);
+
+const getCountryData = function (countryName) {
+  const promiceFetch = fetch(
+    // "fetch" returns a "promise"
+    `https://countries-api-836d.onrender.com/countries/name/${countryName}`
+  );
+
+  const promiceJSON = promiceFetch.then(function (responseFetch) {
+    return responseFetch.json(); // "json()" returns a "promise"
+  });
+
+  promiceJSON.then(function (responseJSON) {
+    // "responseJSON" is required Data as array
+    renderCountry(responseJSON[0]);
+  });
+};
+//
+//==================== Using arrow functions =================================
+// const getCountryData = function (countryName) {
+//   const promiceFetch = fetch(
+//     `https://countries-api-836d.onrender.com/countries/name/${countryName}`
+//   )
+//     .then(response => response.json())
+//     .then(data => renderCountry(data[0]));
+// };
+//============================================================================
+//
+getCountryData('portugal');

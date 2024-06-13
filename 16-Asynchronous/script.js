@@ -20,42 +20,53 @@ const renderCountry = function (data, className = '') {
   countriesContainer.insertAdjacentHTML('beforeend', html);
   countriesContainer.style.opacity = 1;
 };
+//------------------------------------------------------------------
+// //
+// const getCountryAndNeighbour = function (country) {
+//   // AJAX Call country-1
+//   const request = new XMLHttpRequest();
+//   request.open(
+//     'GET',
+//     `https://countries-api-836d.onrender.com/countries/name/${country}`
+//   );
+//   request.send();
 
-const getCountryAndNeighbour = function (country) {
-  // AJAX Call country-1
-  const request = new XMLHttpRequest();
-  request.open(
-    'GET',
-    `https://countries-api-836d.onrender.com/countries/name/${country}`
-  );
-  request.send();
+//   request.addEventListener('load', function () {
+//     const [data] = JSON.parse(this.responseText);
+//     console.log(data);
 
-  request.addEventListener('load', function () {
-    const [data] = JSON.parse(this.responseText);
-    console.log(data);
+//     // Render country-1
+//     renderCountry(data);
 
-    // Render country-1
-    renderCountry(data);
+//     // Get neighbour country-2
+//     const neighbour = data.borders[0];
+//     if (!neighbour) return;
+//     console.log(neighbour);
+//     // AJAX Call country-1
+//     const request2 = new XMLHttpRequest();
+//     request2.open(
+//       'GET',
+//       `https://countries-api-836d.onrender.com/countries/alpha/${neighbour}`
+//     );
+//     request2.send();
+//     request2.addEventListener('load', function () {
+//       const data2 = JSON.parse(this.responseText);
 
-    // Get neighbour country-2
-    const neighbour = data.borders[0];
-    if (!neighbour) return;
-    console.log(neighbour);
-    // AJAX Call country-1
-    const request2 = new XMLHttpRequest();
-    request2.open(
-      'GET',
-      `https://countries-api-836d.onrender.com/countries/alpha/${neighbour}`
-    );
-    request2.send();
-    request2.addEventListener('load', function () {
-      const data2 = JSON.parse(this.responseText);
+//       renderCountry(data2, 'neighbour');
+//     });
+//   });
+// };
 
-      renderCountry(data2, 'neighbour');
-    });
-  });
-};
-
-// getCountryAndNeighbour('portugal');
-// getCountryAndNeighbour('bulgaria');
-getCountryAndNeighbour('usa');
+// // getCountryAndNeighbour('portugal');
+// // getCountryAndNeighbour('bulgaria');
+// getCountryAndNeighbour('usa');
+//======================================================================
+//
+//=============== FETCH and PROMISES ===================================
+//
+const request = fetch(
+  `https://countries-api-836d.onrender.com/countries/name/portugal`
+);
+// The "promis" is an object, used as a container to keep
+// the data receved via "fetch" asynchronously
+console.log(request);

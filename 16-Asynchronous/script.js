@@ -82,20 +82,52 @@ const renderCountry = function (data, className = '') {
 //     return responseFetch.json(); // "json()" returns a "promise"
 //   });
 
-//   promiceJSON.then(function (responseJSON) {
+//   promiceJSON.then(function (jsonData) {
 //     // "responseJSON" is required Data as array
-//     renderCountry(responseJSON[0]);
+//     renderCountry(jsonData[0]);
 //   });
 // };
 //
 //==================== Using arrow functions =================================
-const getCountryData = function (countryName) {
-  const promiceFetch = fetch(
-    `https://countries-api-836d.onrender.com/countries/name/${countryName}`
-  )
-    .then(response => response.json())
-    .then(data => renderCountry(data[0]));
-};
+// const getCountryData = function (countryName) {
+//   const promiceFetch = fetch(
+//     `https://countries-api-836d.onrender.com/countries/name/${countryName}`
+//   )
+//     .then(response => response.json())
+//     .then(data => renderCountry(data[0]));
+// };
 //============================================================================
 //
+//=========================== Get Neighbour Country ==========================
+//
+const getCountryData = function (countryName) {
+  // Get Main (first) Country
+  const promiceFetch = fetch(
+    `https://countries-api-836d.onrender.com/countries/name/${countryName}`
+  );
+  const promiceJSON = promiceFetch.then(function (responseFetch) {
+    return responseFetch.json(); // "json()" returns a "promise"
+  });
+
+  // Get Neighbour (second) Country
+  const promisNeighbour = promiceJSON.then(function (jsonData) {
+    renderCountry(jsonData[0]);
+    const neighbour = jsonData[0].borders[0];
+    return fetch(
+      `https://countries-api-836d.onrender.com/countries/alpha/${neighbour}`
+    );
+  });
+  const promisNeighbourJSON = promisNeighbour.then(function (
+    responseNeighbour
+  ) {
+    return responseNeighbour.json();
+  });
+
+  // Render Neighbour Country
+  promisNeighbourJSON.then(function (neighbourData) {
+    renderCountry(neighbourData, 'neighbour');
+  });
+};
+//===========================================================================
+
 getCountryData('portugal');

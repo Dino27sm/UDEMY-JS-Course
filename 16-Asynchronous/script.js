@@ -19,8 +19,14 @@ const renderCountry = function (data, className = '') {
           </article>`;
 
   countriesContainer.insertAdjacentHTML('beforeend', html);
-  countriesContainer.style.opacity = 1;
+  // countriesContainer.style.opacity = 1;
 };
+
+const renderError = function (msg) {
+  countriesContainer.insertAdjacentText('beforeend', msg);
+  // countriesContainer.style.opacity = 1;
+};
+
 //------------------------------------------------------------------
 // //
 // const getCountryAndNeighbour = function (country) {
@@ -132,14 +138,9 @@ const renderCountry = function (data, className = '') {
 //
 //================ Get Neighbour Country Using Array Functions =================
 //
-const renderError = function (msg) {
-  countriesContainer.insertAdjacentText('beforeend', msg);
-  countriesContainer.style.opacity = 1;
-};
-
 const getCountryData = function (countryName) {
   fetch(`https://countries-api-836d.onrender.com/countries/name/${countryName}`)
-    .then(response => response.json())
+    .then(response => response.json()) // When the Promise is "fulfiled"
     .then(data => {
       renderCountry(data[0]);
       const neighbour = data[0].borders[0];
@@ -150,8 +151,12 @@ const getCountryData = function (countryName) {
     .then(resposeNeighbour => resposeNeighbour.json())
     .then(dataNeighbour => renderCountry(dataNeighbour, 'neighbour'))
     .catch(err => {
+      // When the Promise is "rejected"
       console.error(`${err}: 💥💥💥`);
       renderError(`Something's gone wrong 💥💥💥 ${err.message}! Try again!`);
+    })
+    .finally(() => {
+      countriesContainer.style.opacity = 1;
     });
 };
 //===========================================================================

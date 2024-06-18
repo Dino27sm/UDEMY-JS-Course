@@ -132,6 +132,11 @@ const renderCountry = function (data, className = '') {
 //
 //================ Get Neighbour Country Using Array Functions =================
 //
+const renderError = function (msg) {
+  countriesContainer.insertAdjacentText('beforeend', msg);
+  countriesContainer.style.opacity = 1;
+};
+
 const getCountryData = function (countryName) {
   fetch(`https://countries-api-836d.onrender.com/countries/name/${countryName}`)
     .then(response => response.json())
@@ -146,6 +151,7 @@ const getCountryData = function (countryName) {
     .then(dataNeighbour => renderCountry(dataNeighbour, 'neighbour'))
     .catch(err => {
       console.error(`${err}: 💥💥💥`);
+      renderError(`Something's gone wrong 💥💥💥 ${err.message}! Try again!`);
     });
 };
 //===========================================================================

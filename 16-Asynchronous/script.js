@@ -134,10 +134,7 @@ const renderCountry = function (data, className = '') {
 //
 const getCountryData = function (countryName) {
   fetch(`https://countries-api-836d.onrender.com/countries/name/${countryName}`)
-    .then(
-      response => response.json(),
-      err => alert(err)
-    )
+    .then(response => response.json())
     .then(data => {
       renderCountry(data[0]);
       const neighbour = data[0].borders[0];
@@ -145,11 +142,9 @@ const getCountryData = function (countryName) {
         `https://countries-api-836d.onrender.com/countries/alpha/${neighbour}`
       );
     })
-    .then(
-      resposeNeighbour => resposeNeighbour.json(),
-      err => alert(err)
-    )
-    .then(dataNeighbour => renderCountry(dataNeighbour, 'neighbour'));
+    .then(resposeNeighbour => resposeNeighbour.json())
+    .then(dataNeighbour => renderCountry(dataNeighbour, 'neighbour'))
+    .catch(err => console.log(`${err}: 💥💥💥`));
 };
 //===========================================================================
 

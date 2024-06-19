@@ -178,5 +178,5 @@ const getCountryData = function (countryName) {
 //===========================================================================
 
 btn.addEventListener('click', function () {
-  getCountryData('australia');
+  getCountryData('germany');
 });

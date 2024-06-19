@@ -140,7 +140,13 @@ const renderError = function (msg) {
 //
 const getCountryData = function (countryName) {
   fetch(`https://countries-api-836d.onrender.com/countries/name/${countryName}`)
-    .then(response => response.json()) // When the Promise is "fulfiled"
+    .then(response => {
+      if (!response.ok) {
+        // Manually created Error to "throw"
+        throw new Error(`Country not found! --- ${response.status}`);
+      }
+      return response.json();
+    }) // When the Promise is "fulfiled"
     .then(data => {
       renderCountry(data[0]);
       const neighbour = data[0].borders[0];
@@ -162,5 +168,5 @@ const getCountryData = function (countryName) {
 //===========================================================================
 
 btn.addEventListener('click', function () {
-  getCountryData('portugal');
+  getCountryData('adadad');
 });

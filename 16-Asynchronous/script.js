@@ -143,7 +143,9 @@ const getCountryData = function (countryName) {
     .then(response => {
       if (!response.ok) {
         // Manually created Error to "throw"
-        throw new Error(`Country not found! --- ${response.status}`);
+        throw new Error(
+          `Country "${countryName}" not found! --- ${response.status}`
+        );
       }
       return response.json();
     }) // When the Promise is "fulfiled"
@@ -154,7 +156,15 @@ const getCountryData = function (countryName) {
         `https://countries-api-836d.onrender.com/countries/alpha/${neighbour}`
       );
     })
-    .then(resposeNeighbour => resposeNeighbour.json())
+    .then(resposeNeighbour => {
+      if (!resposeNeighbour.ok) {
+        // Manually created Error to "throw"
+        throw new Error(
+          `Neighbour country not found! --- ${resposeNeighbour.status}`
+        );
+      }
+      return resposeNeighbour.json();
+    })
     .then(dataNeighbour => renderCountry(dataNeighbour, 'neighbour'))
     .catch(err => {
       // When the Promise is "rejected"
@@ -168,5 +178,5 @@ const getCountryData = function (countryName) {
 //===========================================================================
 
 btn.addEventListener('click', function () {
-  getCountryData('adadad');
+  getCountryData('australia');
 });

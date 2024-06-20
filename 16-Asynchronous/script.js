@@ -136,47 +136,59 @@ const renderError = function (msg) {
 // };
 // //===========================================================================
 //
-//================ Get Neighbour Country Using Array Functions =================
-//
-const getCountryData = function (countryName) {
-  fetch(`https://countries-api-836d.onrender.com/countries/name/${countryName}`)
-    .then(response => {
-      if (!response.ok) {
-        // Manually created Error to "throw"
-        throw new Error(
-          `Country "${countryName}" not found! --- ${response.status}`
-        );
-      }
-      return response.json();
-    }) // When the Promise is "fulfiled"
-    .then(data => {
-      renderCountry(data[0]);
-      const neighbour = data[0].borders[0];
-      return fetch(
-        `https://countries-api-836d.onrender.com/countries/alpha/${neighbour}`
-      );
-    })
-    .then(resposeNeighbour => {
-      if (!resposeNeighbour.ok) {
-        // Manually created Error to "throw"
-        throw new Error(
-          `Neighbour country not found! --- ${resposeNeighbour.status}`
-        );
-      }
-      return resposeNeighbour.json();
-    })
-    .then(dataNeighbour => renderCountry(dataNeighbour, 'neighbour'))
-    .catch(err => {
-      // When the Promise is "rejected"
-      console.error(`${err}: 💥💥💥`);
-      renderError(`Something's gone wrong 💥💥💥 ${err.message}! Try again!`);
-    })
-    .finally(() => {
-      countriesContainer.style.opacity = 1;
-    });
-};
-//===========================================================================
+// //================ Get Neighbour Country Using Array Functions =================
+// //
+// const getCountryData = function (countryName) {
+//   fetch(`https://countries-api-836d.onrender.com/countries/name/${countryName}`)
+//     .then(response => {
+//       if (!response.ok) {
+//         // Manually created Error to "throw"
+//         throw new Error(
+//           `Country "${countryName}" not found! --- ${response.status}`
+//         );
+//       }
+//       return response.json();
+//     }) // When the Promise is "fulfiled"
+//     .then(data => {
+//       renderCountry(data[0]);
+//       const neighbour = data[0].borders[0];
+//       return fetch(
+//         `https://countries-api-836d.onrender.com/countries/alpha/${neighbour}`
+//       );
+//     })
+//     .then(resposeNeighbour => {
+//       if (!resposeNeighbour.ok) {
+//         // Manually created Error to "throw"
+//         throw new Error(
+//           `Neighbour country not found! --- ${resposeNeighbour.status}`
+//         );
+//       }
+//       return resposeNeighbour.json();
+//     })
+//     .then(dataNeighbour => renderCountry(dataNeighbour, 'neighbour'))
+//     .catch(err => {
+//       // When the Promise is "rejected"
+//       console.error(`${err}: 💥💥💥`);
+//       renderError(`Something's gone wrong 💥💥💥 ${err.message}! Try again!`);
+//     })
+//     .finally(() => {
+//       countriesContainer.style.opacity = 1;
+//     });
+// };
+// //===========================================================================
 
-btn.addEventListener('click', function () {
-  getCountryData('germany');
-});
+// btn.addEventListener('click', function () {
+//   getCountryData('germany');
+// });
+//
+//===================== Coding CHALLENGE #1 ====================================
+//
+const whereAmI = function (lat, lng) {
+  const fetchPromise = fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
+  fetchPromise
+    .then(gpsResponse => gpsResponse.json())
+    .then(data => console.log(data));
+};
+//-----------------------------------------------------
+
+const gpsResult = whereAmI(52.508, 13.381);

@@ -184,10 +184,13 @@ const renderError = function (msg) {
 //===================== Coding CHALLENGE #1 ====================================
 //
 const whereAmI = function (lat, lng) {
-  const fetchPromise = fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
+  const fetchPromise = fetch(`https://geocode.xyz/${lat},${lng}?json=1`);
+
   fetchPromise
     .then(gpsResponse => gpsResponse.json())
-    .then(data => console.log(data));
+    .then(data => {
+      console.log(data.postal);
+    });
 };
 //-----------------------------------------------------
 

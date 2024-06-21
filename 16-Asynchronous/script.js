@@ -197,9 +197,28 @@ const whereAmI = function (lat, lng) {
       return gpsResponse.json();
     })
     .then(gpsData => {
-      let gpsCity = gpsData.city;
-      let gpsCountry = gpsData.country;
-      console.log(`You are in ${gpsCity}, ${gpsCountry}.`);
+      let cityName = gpsData.city;
+      let countryName = gpsData.country;
+      console.log(`You are in ${cityName}, ${countryName}.`);
+      fetch(
+        `https://countries-api-836d.onrender.com/countries/name/${countryName}`
+      )
+        .then(response => {
+          if (!response.ok) {
+            // Manually created Error to "throw"
+            throw new Error(
+              `Country "${countryName}" not found! --- ${response.status}`
+            );
+          }
+          return response.json();
+        })
+        .then(data => {
+          renderCountry(data[0]);
+          const neighbour = data[0].borders[0];
+          return fetch(
+            `https://countries-api-836d.onrender.com/countries/alpha/${neighbour}`
+          );
+        });
     })
     .catch(err => {
       // When the Promise is "rejected"
@@ -212,6 +231,9 @@ const whereAmI = function (lat, lng) {
 };
 //-----------------------------------------------------
 
-whereAmI(52.508, 13.381);
-whereAmI(19.037, 72.873);
-whereAmI(-33.933, 18.474);
+btn.addEventListener('click', function () {
+  whereAmI(52.508, 13.381);
+});
+
+// whereAmI(19.037, 72.873);
+// whereAmI(-33.933, 18.474);

@@ -200,8 +200,18 @@ const whereAmI = function (lat, lng) {
       let gpsCity = gpsData.city;
       let gpsCountry = gpsData.country;
       console.log(`You are in ${gpsCity}, ${gpsCountry}.`);
+    })
+    .catch(err => {
+      // When the Promise is "rejected"
+      console.error(`${err}: 💥💥💥`);
+      renderError(`Something's gone wrong 💥💥💥 ${err.message}! Try again!`);
+    })
+    .finally(() => {
+      countriesContainer.style.opacity = 1;
     });
 };
 //-----------------------------------------------------
 
-const gpsResult = whereAmI(52.508, 13.381);
+whereAmI(52.508, 13.381);
+whereAmI(19.037, 72.873);
+whereAmI(-33.933, 18.474);

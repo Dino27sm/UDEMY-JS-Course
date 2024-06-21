@@ -184,12 +184,22 @@ const renderError = function (msg) {
 //===================== Coding CHALLENGE #1 ====================================
 //
 const whereAmI = function (lat, lng) {
-  const fetchPromise = fetch(`https://geocode.xyz/${lat},${lng}?json=1`);
+  const fetchPromise = fetch(
+    `https://geocode.xyz/${lat},${lng}?geoit=json&auth=876344398626174668428x49381 `
+  );
 
   fetchPromise
-    .then(gpsResponse => gpsResponse.json())
-    .then(data => {
-      console.log(data.postal);
+    .then(gpsResponse => {
+      if (!gpsResponse.ok) {
+        console.log('Response is not OK!');
+        return;
+      }
+      return gpsResponse.json();
+    })
+    .then(gpsData => {
+      let gpsCity = gpsData.city;
+      let gpsCountry = gpsData.country;
+      console.log(`You are in ${gpsCity}, ${gpsCountry}.`);
     });
 };
 //-----------------------------------------------------

@@ -228,6 +228,7 @@ const whereAmI = function (lat, lng) {
 
 btn.addEventListener('click', function () {
   whereAmI(52.508, 13.381);
-  // whereAmI(19.037, 72.873);
+  whereAmI(42.69459, 23.32663);
   whereAmI(-33.933, 18.474);
 });
+//============================= END of Coding Challenge #1 ==========================

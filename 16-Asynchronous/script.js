@@ -191,7 +191,7 @@ const whereAmI = function (lat, lng) {
   fetchPromise
     .then(gpsResponse => {
       if (!gpsResponse.ok) {
-        console.log('Response is not OK!');
+        console.log('Response of GeoCode is not OK!');
         return;
       }
       return gpsResponse.json();
@@ -200,25 +200,20 @@ const whereAmI = function (lat, lng) {
       let cityName = gpsData.city;
       let countryName = gpsData.country;
       console.log(`You are in ${cityName}, ${countryName}.`);
-      fetch(
+      return fetch(
         `https://countries-api-836d.onrender.com/countries/name/${countryName}`
-      )
-        .then(response => {
-          if (!response.ok) {
-            // Manually created Error to "throw"
-            throw new Error(
-              `Country "${countryName}" not found! --- ${response.status}`
-            );
-          }
-          return response.json();
-        })
-        .then(data => {
-          renderCountry(data[0]);
-          const neighbour = data[0].borders[0];
-          return fetch(
-            `https://countries-api-836d.onrender.com/countries/alpha/${neighbour}`
-          );
-        });
+      );
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(
+          `Country "${countryName}" not found! --- ${response.status}`
+        );
+      }
+      return response.json();
+    })
+    .then(data => {
+      renderCountry(data[0]);
     })
     .catch(err => {
       // When the Promise is "rejected"
@@ -233,7 +228,6 @@ const whereAmI = function (lat, lng) {
 
 btn.addEventListener('click', function () {
   whereAmI(52.508, 13.381);
+  // whereAmI(19.037, 72.873);
+  whereAmI(-33.933, 18.474);
 });
-
-// whereAmI(19.037, 72.873);
-// whereAmI(-33.933, 18.474);

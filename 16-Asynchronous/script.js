@@ -181,54 +181,60 @@ const renderError = function (msg) {
 //   getCountryData('germany');
 // });
 //
-//===================== Coding CHALLENGE #1 ====================================
+// //===================== Coding CHALLENGE #1 ====================================
+// //
+// const whereAmI = function (lat, lng) {
+//   const fetchPromise = fetch(
+//     `https://geocode.xyz/${lat},${lng}?geoit=json&auth=876344398626174668428x49381 `
+//   );
+
+//   fetchPromise
+//     .then(gpsResponse => {
+//       if (!gpsResponse.ok) {
+//         console.log('Response of GeoCode is not OK!');
+//         return;
+//       }
+//       return gpsResponse.json();
+//     })
+//     .then(gpsData => {
+//       let cityName = gpsData.city;
+//       let countryName = gpsData.country;
+//       console.log(`You are in ${cityName}, ${countryName}.`);
+//       return fetch(
+//         `https://countries-api-836d.onrender.com/countries/name/${countryName}`
+//       );
+//     })
+//     .then(response => {
+//       if (!response.ok) {
+//         throw new Error(
+//           `Country "${countryName}" not found! --- ${response.status}`
+//         );
+//       }
+//       return response.json();
+//     })
+//     .then(data => {
+//       renderCountry(data[0]);
+//     })
+//     .catch(err => {
+//       // When the Promise is "rejected"
+//       console.error(`${err}: 💥💥💥`);
+//       renderError(`Something's gone wrong 💥💥💥 ${err.message}! Try again!`);
+//     })
+//     .finally(() => {
+//       countriesContainer.style.opacity = 1;
+//     });
+// };
+// //-----------------------------------------------------
+
+// btn.addEventListener('click', function () {
+//   whereAmI(52.508, 13.381);
+//   whereAmI(42.69459, 23.32663);
+//   whereAmI(-33.933, 18.474);
+// });
+// //============================= END of Coding Challenge #1 ==========================
 //
-const whereAmI = function (lat, lng) {
-  const fetchPromise = fetch(
-    `https://geocode.xyz/${lat},${lng}?geoit=json&auth=876344398626174668428x49381 `
-  );
-
-  fetchPromise
-    .then(gpsResponse => {
-      if (!gpsResponse.ok) {
-        console.log('Response of GeoCode is not OK!');
-        return;
-      }
-      return gpsResponse.json();
-    })
-    .then(gpsData => {
-      let cityName = gpsData.city;
-      let countryName = gpsData.country;
-      console.log(`You are in ${cityName}, ${countryName}.`);
-      return fetch(
-        `https://countries-api-836d.onrender.com/countries/name/${countryName}`
-      );
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(
-          `Country "${countryName}" not found! --- ${response.status}`
-        );
-      }
-      return response.json();
-    })
-    .then(data => {
-      renderCountry(data[0]);
-    })
-    .catch(err => {
-      // When the Promise is "rejected"
-      console.error(`${err}: 💥💥💥`);
-      renderError(`Something's gone wrong 💥💥💥 ${err.message}! Try again!`);
-    })
-    .finally(() => {
-      countriesContainer.style.opacity = 1;
-    });
-};
-//-----------------------------------------------------
-
-btn.addEventListener('click', function () {
-  whereAmI(52.508, 13.381);
-  whereAmI(42.69459, 23.32663);
-  whereAmI(-33.933, 18.474);
-});
-//============================= END of Coding Challenge #1 ==========================
+console.log('START the Test.'); // First executed (first result) - 1
+setTimeout(() => console.log('0 sec Timer.'), 0); //Forth result - 4
+Promise.resolve('Resolved Promise 1').then(res => console.log(res)); // Third result - 3
+console.log('END the Test.'); // Second result - 2
+// MicroTasks have advantage before "Callback tasks"

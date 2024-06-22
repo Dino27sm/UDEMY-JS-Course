@@ -233,8 +233,13 @@ const renderError = function (msg) {
 // });
 // //============================= END of Coding Challenge #1 ==========================
 //
-console.log('START the Test.'); // First executed (first result) - 1
-setTimeout(() => console.log('0 sec Timer.'), 0); //Forth result - 4
-Promise.resolve('Resolved Promise 1').then(res => console.log(res)); // Third result - 3
+console.log('START the Test.');
+setTimeout(() => console.log('0 sec Timer.'), 1);
+Promise.resolve('Resolved Promise 1').then(res => console.log(res));
+
+Promise.resolve('Resolved Promise 2').then(res => {
+  for (let i = 0; i < 2500000000; i++) {} // Prevents the "timer" to result in 1 sec
+  console.log(res);
+});
 console.log('END the Test.'); // Second result - 2
 // MicroTasks have advantage before "Callback tasks"

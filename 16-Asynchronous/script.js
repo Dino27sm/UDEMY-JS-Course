@@ -247,11 +247,16 @@ const renderError = function (msg) {
 //=============== Lesson 260 - Building a Promise =====================================
 //
 const lotteryPromise = new Promise(function (resolve, reject) {
-  if (Math.random() >= 0.5) {
-    resolve('You Win!');
-  } else {
-    reject('You have lost the money!!!');
-  }
+  console.log('Start lottery draw!');
+
+  setTimeout(function () {
+    // To imitate Asynchronous behaviour by "setTimeout"
+    if (Math.random() >= 0.5) {
+      resolve('You Win!');
+    } else {
+      reject(new Error('You have lost the money!!!'));
+    }
+  }, 3000);
 });
 
 lotteryPromise.then(res => console.log(res)).catch(err => console.log(err));

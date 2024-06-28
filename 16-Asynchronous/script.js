@@ -256,7 +256,16 @@ const lotteryPromise = new Promise(function (resolve, reject) {
     } else {
       reject(new Error('You have lost the money!!!'));
     }
-  }, 3000);
+  }, 2000);
 });
 
 lotteryPromise.then(res => console.log(res)).catch(err => console.log(err));
+
+// Promisifying "setTimeout"
+const wait = function (seconds) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, seconds * 1000);
+  });
+};
+
+wait(3).then(() => console.log('You waited for 3 sec.'));

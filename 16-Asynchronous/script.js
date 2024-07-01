@@ -244,28 +244,36 @@ const renderError = function (msg) {
 // console.log('END the Test.'); // Second result - 2
 // // MicroTasks have advantage before "Callback tasks"
 //
-//=============== Lesson 260 - Building a Promise =====================================
+// //=============== Lesson 260 - Building a Promise =====================================
+// //
+// const lotteryPromise = new Promise(function (resolve, reject) {
+//   console.log('Start lottery draw!');
+
+//   setTimeout(function () {
+//     // To imitate Asynchronous behaviour by "setTimeout"
+//     if (Math.random() >= 0.5) {
+//       resolve('You Win!');
+//     } else {
+//       reject(new Error('You have lost the money!!!'));
+//     }
+//   }, 2000);
+// });
+
+// lotteryPromise.then(res => console.log(res)).catch(err => console.log(err));
+
+// // Promisifying "setTimeout"
+// const wait = function (seconds) {
+//   return new Promise(function (resolve) {
+//     setTimeout(resolve, seconds * 1000);
+//   });
+// };
+
+// wait(3).then(() => console.log('You waited for 3 sec.'));
+// //
+//=============== Lesson 261 - Promisifying the Geolocation API ===================
 //
-const lotteryPromise = new Promise(function (resolve, reject) {
-  console.log('Start lottery draw!');
-
-  setTimeout(function () {
-    // To imitate Asynchronous behaviour by "setTimeout"
-    if (Math.random() >= 0.5) {
-      resolve('You Win!');
-    } else {
-      reject(new Error('You have lost the money!!!'));
-    }
-  }, 2000);
-});
-
-lotteryPromise.then(res => console.log(res)).catch(err => console.log(err));
-
-// Promisifying "setTimeout"
-const wait = function (seconds) {
-  return new Promise(function (resolve) {
-    setTimeout(resolve, seconds * 1000);
-  });
-};
-
-wait(3).then(() => console.log('You waited for 3 sec.'));
+navigator.geolocation.getCurrentPosition(
+  position => console.log(position),
+  err => console.log(err)
+);
+console.log('Start getting position.');

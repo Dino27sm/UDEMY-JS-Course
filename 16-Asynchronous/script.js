@@ -340,6 +340,12 @@ const renderError = function (msg) {
 
 //=============== Lesson 262 - Coding Challenge #2 ===================
 //
+const wait = function (seconds) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, seconds * 1000);
+  });
+};
+
 const imgContainer = document.querySelector('.images');
 
 // Promisifying an Image loading ------------------------------
@@ -359,7 +365,17 @@ const createImage = function (imgPath) {
   });
 };
 
+let currentImg;
+
 createImage('img/img-1.jpg')
-  .then(img => console.log('Image 1 loaded!'))
+  .then(img => {
+    currentImg = img;
+    console.log('Image 1 loaded!');
+    return wait(3);
+  })
+  .then(() => {
+    currentImg.style.display = 'none';
+    // To hide the Image after 3 sec - return wait(3)
+  })
   .catch(err => console.error(err));
 //--------------------------------------------------------------

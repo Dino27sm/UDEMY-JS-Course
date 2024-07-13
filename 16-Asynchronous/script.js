@@ -270,70 +270,96 @@ const renderError = function (msg) {
 
 // wait(3).then(() => console.log('You waited for 3 sec.'));
 // //
-//=============== Lesson 261 - Promisifying the Geolocation API ===================
-//
+// //=============== Lesson 261 - Promisifying the Geolocation API ===================
+// //
+// // const getPosition = function () {
+// //   return new Promise(function (resolve, reject) {
+// //     navigator.geolocation.getCurrentPosition(
+// //       position => resolve(position),
+// //       err => reject(err)
+// //     );
+// //   });
+// // };
+
+// // Shorter way of the upper function "getPosition"
+// //
 // const getPosition = function () {
 //   return new Promise(function (resolve, reject) {
-//     navigator.geolocation.getCurrentPosition(
-//       position => resolve(position),
-//       err => reject(err)
-//     );
+//     navigator.geolocation.getCurrentPosition(resolve, reject);
 //   });
 // };
+// // getPosition().then(pos => console.log(pos));
+// //----------------------------------------------------------------------
+// const whereAmI = function () {
+//   getPosition()
+//     .then(pos => {
+//       const { latitude: lat, longitude: lng } = pos.coords;
 
-// Shorter way of the upper function "getPosition"
+//       return fetch(
+//         `https://geocode.xyz/${lat},${lng}?geoit=json&auth=876344398626174668428x49381 `
+//       );
+//     })
+//     .then(gpsResponse => {
+//       if (!gpsResponse.ok) {
+//         console.log('Response of GeoCode is not OK!');
+//         return;
+//       }
+//       return gpsResponse.json();
+//     })
+//     .then(gpsData => {
+//       let cityName = gpsData.city;
+//       let countryName = gpsData.country;
+//       console.log(`You are in ${cityName}, ${countryName}.`);
+//       return fetch(
+//         `https://countries-api-836d.onrender.com/countries/name/${countryName}`
+//       );
+//     })
+//     .then(response => {
+//       if (!response.ok) {
+//         throw new Error(
+//           `Country "${countryName}" not found! --- ${response.status}`
+//         );
+//       }
+//       return response.json();
+//     })
+//     .then(data => {
+//       renderCountry(data[0]);
+//     })
+//     .catch(err => {
+//       // When the Promise is "rejected"
+//       console.error(`${err}: 💥💥💥`);
+//       renderError(`Something's gone wrong 💥💥💥 ${err.message}! Try again!`);
+//     })
+//     .finally(() => {
+//       countriesContainer.style.opacity = 1;
+//     });
+// };
+// //-----------------------------------------------------
+
+// btn.addEventListener('click', whereAmI);
+
+//=============== Lesson 262 - Coding Challenge #2 ===================
 //
-const getPosition = function () {
+const imgContainer = document.querySelector('.images');
+
+// Promisifying an Image loading ------------------------------
+const createImage = function (imgPath) {
   return new Promise(function (resolve, reject) {
-    navigator.geolocation.getCurrentPosition(resolve, reject);
+    const img = document.createElement('img');
+    img.src = imgPath;
+
+    img.addEventListener('load', function () {
+      imgContainer.append(img);
+      resolve(img);
+    });
+
+    img.addEventListener('error', function () {
+      reject(new Error('Image tot found!'));
+    });
   });
 };
-// getPosition().then(pos => console.log(pos));
-//----------------------------------------------------------------------
-const whereAmI = function () {
-  getPosition()
-    .then(pos => {
-      const { latitude: lat, longitude: lng } = pos.coords;
 
-      return fetch(
-        `https://geocode.xyz/${lat},${lng}?geoit=json&auth=876344398626174668428x49381 `
-      );
-    })
-    .then(gpsResponse => {
-      if (!gpsResponse.ok) {
-        console.log('Response of GeoCode is not OK!');
-        return;
-      }
-      return gpsResponse.json();
-    })
-    .then(gpsData => {
-      let cityName = gpsData.city;
-      let countryName = gpsData.country;
-      console.log(`You are in ${cityName}, ${countryName}.`);
-      return fetch(
-        `https://countries-api-836d.onrender.com/countries/name/${countryName}`
-      );
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(
-          `Country "${countryName}" not found! --- ${response.status}`
-        );
-      }
-      return response.json();
-    })
-    .then(data => {
-      renderCountry(data[0]);
-    })
-    .catch(err => {
-      // When the Promise is "rejected"
-      console.error(`${err}: 💥💥💥`);
-      renderError(`Something's gone wrong 💥💥💥 ${err.message}! Try again!`);
-    })
-    .finally(() => {
-      countriesContainer.style.opacity = 1;
-    });
-};
-//-----------------------------------------------------
-
-btn.addEventListener('click', whereAmI);
+createImage('img/img-1.jpg')
+  .then(img => console.log('Image 1 loaded!'))
+  .catch(err => console.error(err));
+//--------------------------------------------------------------

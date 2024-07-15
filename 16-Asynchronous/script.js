@@ -393,6 +393,12 @@ const renderError = function (msg) {
 //
 //=============== Lesson 263 - Consuming Promises with Async Await ===================
 //
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
+
 const whereAmI = async function (countryName) {
   const response = await fetch(
     `https://countries-api-836d.onrender.com/countries/name/${countryName}`
@@ -404,7 +410,7 @@ const whereAmI = async function (countryName) {
   // ).then(resp => console.log(resp));
   // //----------------------------------------------------------------------------
 
-  const data = await response.json();
+  const data = await response.json(); // To get the "Promise" value
   console.log(data);
 
   renderCountry(data[0]);

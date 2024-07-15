@@ -399,22 +399,26 @@ const getPosition = function () {
   });
 };
 
-const whereAmI = async function (countryName) {
+const whereAmI = async function () {
+  // GeoLocation
+  const position = await getPosition();
+  const { latitude: lat, longitude: lng } = position.coords;
+
+  // Reverse geocoding - locate the country by GPS data
+  const respGeo = await fetch(
+    `https://geocode.xyz/${lat},${lng}?geoit=json&auth=876344398626174668428x49381`
+  );
+  const dataGeo = await respGeo.json();
+
+  // Country data in use
   const response = await fetch(
-    `https://countries-api-836d.onrender.com/countries/name/${countryName}`
+    `https://countries-api-836d.onrender.com/countries/name/${dataGeo.country}`
   );
 
-  // //---------------- It it is the same if following used: -------------------
-  // fetch(
-  //   `https://countries-api-836d.onrender.com/countries/name/${countryName}`
-  // ).then(resp => console.log(resp));
-  // //----------------------------------------------------------------------------
-
   const data = await response.json(); // To get the "Promise" value
-  console.log(data);
 
   renderCountry(data[0]);
 };
 
-whereAmI('portugal');
+whereAmI();
 console.log('FIRST displyed!');

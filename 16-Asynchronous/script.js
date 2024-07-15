@@ -338,55 +338,68 @@ const renderError = function (msg) {
 
 // btn.addEventListener('click', whereAmI);
 
-//=============== Lesson 262 - Coding Challenge #2 ===================
+// //=============== Lesson 262 - Coding Challenge #2 ===================
+// //
+// const wait = function (seconds) {
+//   return new Promise(function (resolve) {
+//     setTimeout(resolve, seconds * 1000);
+//   });
+// };
+
+// const imgContainer = document.querySelector('.images');
+
+// // Promisifying an Image loading ------------------------------
+// const createImage = function (imgPath) {
+//   return new Promise(function (resolve, reject) {
+//     const img = document.createElement('img');
+//     img.src = imgPath; // Promisifying this Asynchronous process
+
+//     img.addEventListener('load', function () {
+//       imgContainer.append(img);
+//       resolve(img);
+//     });
+
+//     img.addEventListener('error', function () {
+//       reject(new Error('Image tot found!'));
+//     });
+//   });
+// };
+
+// let currentImg;
+
+// createImage('img/img-1.jpg')
+//   .then(img => {
+//     currentImg = img;
+//     console.log('Image 1 loaded!');
+//     return wait(3);
+//   })
+//   .then(() => {
+//     // To hide the Image1 after 3 sec - return wait(3)
+//     currentImg.style.display = 'none';
+
+//     return createImage('img/img-2.jpg');
+//   })
+//   .then(img => {
+//     currentImg = img;
+//     console.log('Image 2 loaded!');
+//     return wait(3);
+//   })
+//   .then(() => {
+//     // To hide the Image2 after 3 sec - return wait(3)
+//     currentImg.style.display = 'none';
+//   })
+//   .catch(err => console.error(err));
+// //--------------------------------------------------------------
 //
-const wait = function (seconds) {
-  return new Promise(function (resolve) {
-    setTimeout(resolve, seconds * 1000);
-  });
+//=============== Lesson 263 - Consuming Promises with Async Await ===================
+//
+const whereAmI = async function (countryName) {
+  const response = await fetch(
+    `https://countries-api-836d.onrender.com/countries/name/${countryName}`
+  );
+
+  console.log(response);
 };
 
-const imgContainer = document.querySelector('.images');
-
-// Promisifying an Image loading ------------------------------
-const createImage = function (imgPath) {
-  return new Promise(function (resolve, reject) {
-    const img = document.createElement('img');
-    img.src = imgPath; // Promisifying this Asynchronous process
-
-    img.addEventListener('load', function () {
-      imgContainer.append(img);
-      resolve(img);
-    });
-
-    img.addEventListener('error', function () {
-      reject(new Error('Image tot found!'));
-    });
-  });
-};
-
-let currentImg;
-
-createImage('img/img-1.jpg')
-  .then(img => {
-    currentImg = img;
-    console.log('Image 1 loaded!');
-    return wait(3);
-  })
-  .then(() => {
-    // To hide the Image1 after 3 sec - return wait(3)
-    currentImg.style.display = 'none';
-
-    return createImage('img/img-2.jpg');
-  })
-  .then(img => {
-    currentImg = img;
-    console.log('Image 2 loaded!');
-    return wait(3);
-  })
-  .then(() => {
-    // To hide the Image2 after 3 sec - return wait(3)
-    currentImg.style.display = 'none';
-  })
-  .catch(err => console.error(err));
-//--------------------------------------------------------------
+whereAmI('portugal');
+console.log('FIRST displyed!');

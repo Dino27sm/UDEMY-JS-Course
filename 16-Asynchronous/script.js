@@ -394,11 +394,15 @@ const renderError = function (msg) {
 //=============== Lesson 263 - Consuming Promises with Async Await ===================
 //
 const whereAmI = async function (countryName) {
-  const response = await fetch(
-    `https://countries-api-836d.onrender.com/countries/name/${countryName}`
-  );
+  // const response = await fetch(
+  //   `https://countries-api-836d.onrender.com/countries/name/${countryName}`
+  // );
 
-  console.log(response);
+  // console.log(response);
+  // It it is the same if following used:
+  fetch(
+    `https://countries-api-836d.onrender.com/countries/name/${countryName}`
+  ).then(resp => console.log(resp));
 };
 
 whereAmI('portugal');

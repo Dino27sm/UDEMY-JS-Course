@@ -19,7 +19,7 @@ const renderCountry = function (data, className = '') {
           </article>`;
 
   countriesContainer.insertAdjacentHTML('beforeend', html);
-  // countriesContainer.style.opacity = 1;
+  countriesContainer.style.opacity = 1;
 };
 
 const renderError = function (msg) {
@@ -394,15 +394,20 @@ const renderError = function (msg) {
 //=============== Lesson 263 - Consuming Promises with Async Await ===================
 //
 const whereAmI = async function (countryName) {
-  // const response = await fetch(
-  //   `https://countries-api-836d.onrender.com/countries/name/${countryName}`
-  // );
-
-  // console.log(response);
-  // It it is the same if following used:
-  fetch(
+  const response = await fetch(
     `https://countries-api-836d.onrender.com/countries/name/${countryName}`
-  ).then(resp => console.log(resp));
+  );
+
+  // //---------------- It it is the same if following used: -------------------
+  // fetch(
+  //   `https://countries-api-836d.onrender.com/countries/name/${countryName}`
+  // ).then(resp => console.log(resp));
+  // //----------------------------------------------------------------------------
+
+  const data = await response.json();
+  console.log(data);
+
+  renderCountry(data[0]);
 };
 
 whereAmI('portugal');

@@ -468,7 +468,18 @@ const whereAmI = async function () {
 };
 
 console.log('1-Will get location.');
-whereAmI()
-  .then(locationResp => console.log(`2-${locationResp}.`))
-  .catch(err => `2-💥 ${err.message} 💥`)
-  .finally(() => console.log('3-End of getting location.'));
+// whereAmI()
+//   .then(locationResp => console.log(`2-${locationResp}.`))
+//   .catch(err => `2-💥 ${err.message} 💥`)
+//   .finally(() => console.log('3-End of getting location.'));
+
+// The same idea by using "async/await" - use immediately involved functions
+(async function () {
+  try {
+    const locationResult = await whereAmI();
+    console.log(`2-${locationResult}.`);
+  } catch (err) {
+    console.log(`2-💥 ${err.message} 💥`);
+  }
+  console.log('3-End of getting location.');
+})();

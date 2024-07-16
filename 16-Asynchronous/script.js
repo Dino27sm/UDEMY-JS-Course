@@ -468,7 +468,7 @@ const whereAmI = async function () {
 };
 
 console.log('1-Will get location.');
-const myLocation = whereAmI()
+whereAmI()
   .then(locationResp => console.log(`2-${locationResp}.`))
   .catch(err => `2-💥 ${err.message} 💥`)
   .finally(() => console.log('3-End of getting location.'));

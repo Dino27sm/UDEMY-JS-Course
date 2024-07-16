@@ -24,7 +24,7 @@ const renderCountry = function (data, className = '') {
 
 const renderError = function (msg) {
   countriesContainer.insertAdjacentText('beforeend', msg);
-  // countriesContainer.style.opacity = 1;
+  countriesContainer.style.opacity = 1;
 };
 
 //------------------------------------------------------------------
@@ -442,19 +442,27 @@ const whereAmI = async function () {
     const respGeo = await fetch(
       `https://geocode.xyz/${lat},${lng}?geoit=json&auth=876344398626174668428x49381`
     );
+    if (!respGeo.ok) {
+      // Error handling of "respGeo fetch"
+      throw new Error(`Problems getting location! 💥`);
+    }
     const dataGeo = await respGeo.json();
 
     // Country data in use
-    const response = await fetch(
+    const resCountry = await fetch(
       `https://countries-api-836d.onrender.com/countries/name/${dataGeo.country}`
     );
-
-    const data = await response.json(); // To get the "Promise" value
+    if (!resCountry.ok) {
+      // Error handling of "resCountry fetch"
+      throw new Error(`Problems getting country name! 💥`);
+    }
+    const data = await resCountry.json(); // To get the "Promise" value
 
     renderCountry(data[0]);
   } catch (err) {
     // Executes this "catch" block if Error occurs in "try" block
     console.error(err);
+    renderError(`💥${err.message} 💥`);
   }
 };
 

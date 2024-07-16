@@ -457,8 +457,9 @@ const whereAmI = async function () {
       throw new Error(`Problems getting country name! 💥`);
     }
     const data = await resCountry.json(); // To get the "Promise" value
-
     renderCountry(data[0]);
+
+    return `You are in ${dataGeo.city}, ${dataGeo.country}`;
   } catch (err) {
     // Executes this "catch" block if Error occurs in "try" block
     console.error(err);
@@ -466,5 +467,8 @@ const whereAmI = async function () {
   }
 };
 
-whereAmI();
-console.log('FIRST displyed!');
+console.log('1-Will get location.');
+const myLocation = whereAmI()
+  .then(locationResp => console.log(`2-${locationResp}.`))
+  .catch(err => `2-💥 ${err.message} 💥`)
+  .finally(() => console.log('3-End of getting location.'));

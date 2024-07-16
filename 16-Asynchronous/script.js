@@ -391,7 +391,39 @@ const renderError = function (msg) {
 //   .catch(err => console.error(err));
 // //--------------------------------------------------------------
 //
-//=============== Lesson 263 - Consuming Promises with Async Await ===================
+// //=============== Lesson 263 - Consuming Promises with Async Await ===================
+// //
+// const getPosition = function () {
+//   return new Promise(function (resolve, reject) {
+//     navigator.geolocation.getCurrentPosition(resolve, reject);
+//   });
+// };
+
+// const whereAmI = async function () {
+//   // GeoLocation
+//   const position = await getPosition();
+//   const { latitude: lat, longitude: lng } = position.coords;
+
+//   // Reverse geocoding - locate the country by GPS data
+//   const respGeo = await fetch(
+//     `https://geocode.xyz/${lat},${lng}?geoit=json&auth=876344398626174668428x49381`
+//   );
+//   const dataGeo = await respGeo.json();
+
+//   // Country data in use
+//   const response = await fetch(
+//     `https://countries-api-836d.onrender.com/countries/name/${dataGeo.country}`
+//   );
+
+//   const data = await response.json(); // To get the "Promise" value
+
+//   renderCountry(data[0]);
+// };
+
+// whereAmI();
+// console.log('FIRST displyed!');
+// //
+//============== Lesson 264 - Error Handling with "Try / Catch" ===============
 //
 const getPosition = function () {
   return new Promise(function (resolve, reject) {
@@ -400,24 +432,30 @@ const getPosition = function () {
 };
 
 const whereAmI = async function () {
-  // GeoLocation
-  const position = await getPosition();
-  const { latitude: lat, longitude: lng } = position.coords;
+  try {
+    // Enter "try" block - Error here causes "catch" execution
+    // GeoLocation
+    const position = await getPosition();
+    const { latitude: lat, longitude: lng } = position.coords;
 
-  // Reverse geocoding - locate the country by GPS data
-  const respGeo = await fetch(
-    `https://geocode.xyz/${lat},${lng}?geoit=json&auth=876344398626174668428x49381`
-  );
-  const dataGeo = await respGeo.json();
+    // Reverse geocoding - locate the country by GPS data
+    const respGeo = await fetch(
+      `https://geocode.xyz/${lat},${lng}?geoit=json&auth=876344398626174668428x49381`
+    );
+    const dataGeo = await respGeo.json();
 
-  // Country data in use
-  const response = await fetch(
-    `https://countries-api-836d.onrender.com/countries/name/${dataGeo.country}`
-  );
+    // Country data in use
+    const response = await fetch(
+      `https://countries-api-836d.onrender.com/countries/name/${dataGeo.country}`
+    );
 
-  const data = await response.json(); // To get the "Promise" value
+    const data = await response.json(); // To get the "Promise" value
 
-  renderCountry(data[0]);
+    renderCountry(data[0]);
+  } catch (err) {
+    // Executes this "catch" block if Error occurs in "try" block
+    console.error(err);
+  }
 };
 
 whereAmI();

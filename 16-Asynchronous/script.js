@@ -474,6 +474,7 @@ console.log('1-Will get location.');
 //   .finally(() => console.log('3-End of getting location.'));
 
 // The same idea by using "async/await" - use immediately involved functions
+// Example: (function () {function body})();
 (async function () {
   try {
     const locationResult = await whereAmI();

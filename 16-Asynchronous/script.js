@@ -500,7 +500,8 @@ const getThreeCountries = async function (c1, c2, c3) {
       getCountryJSON(c2),
       getCountryJSON(c3),
     ]);
-    console.log(allDataArray.map(d => d[0].capital));
+    const capitalArray = allDataArray.map(d => d[0].capital);
+    console.log(capitalArray.join(', '));
   } catch (err) {
     console.log(`💥 ${err.message} 💥`);
   }

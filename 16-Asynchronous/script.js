@@ -495,12 +495,12 @@ const getCountryJSON = function (countryName) {
 
 const getThreeCountries = async function (c1, c2, c3) {
   try {
-    const data1 = await getCountryJSON(c1);
-    const data2 = await getCountryJSON(c2);
-    const data3 = await getCountryJSON(c3);
-    console.log(
-      `${data1[0].capital}, ${data2[0].capital}, ${data3[0].capital}.`
-    );
+    const allDataArray = await Promise.all([
+      getCountryJSON(c1),
+      getCountryJSON(c2),
+      getCountryJSON(c3),
+    ]);
+    console.log(allDataArray.map(d => d[0].capital));
   } catch (err) {
     console.log(`💥 ${err.message} 💥`);
   }

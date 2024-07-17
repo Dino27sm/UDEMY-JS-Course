@@ -423,64 +423,87 @@ const renderError = function (msg) {
 // whereAmI();
 // console.log('FIRST displyed!');
 // //
-//============== Lesson 264 - Error Handling with "Try / Catch" ===============
+// //============== Lesson 264 & 265 - Error Handling with "Try / Catch" ===============
+// //
+// const getPosition = function () {
+//   return new Promise(function (resolve, reject) {
+//     navigator.geolocation.getCurrentPosition(resolve, reject);
+//   });
+// };
+
+// const whereAmI = async function () {
+//   try {
+//     // Enter "try" block - Error here causes "catch" execution
+//     // GeoLocation
+//     const position = await getPosition();
+//     const { latitude: lat, longitude: lng } = position.coords;
+
+//     // Reverse geocoding - locate the country by GPS data
+//     const respGeo = await fetch(
+//       `https://geocode.xyz/${lat},${lng}?geoit=json&auth=876344398626174668428x49381`
+//     );
+//     if (!respGeo.ok) {
+//       // Error handling of "respGeo fetch"
+//       throw new Error(`Problems getting location! 💥`);
+//     }
+//     const dataGeo = await respGeo.json();
+
+//     // Country data in use
+//     const resCountry = await fetch(
+//       `https://countries-api-836d.onrender.com/countries/name/${dataGeo.country}`
+//     );
+//     if (!resCountry.ok) {
+//       // Error handling of "resCountry fetch"
+//       throw new Error(`Problems getting country name! 💥`);
+//     }
+//     const data = await resCountry.json(); // To get the "Promise" value
+//     renderCountry(data[0]);
+
+//     return `You are in ${dataGeo.city}, ${dataGeo.country}`;
+//   } catch (err) {
+//     // Executes this "catch" block if Error occurs in "try" block
+//     console.error(err);
+//     renderError(`💥${err.message} 💥`);
+//   }
+// };
+
+// console.log('1-Will get location.');
+// // whereAmI()
+// //   .then(locationResp => console.log(`2-${locationResp}.`))
+// //   .catch(err => `2-💥 ${err.message} 💥`)
+// //   .finally(() => console.log('3-End of getting location.'));
+
+// // The same idea by using "async/await" - use immediately involved functions
+// // Example: (function () {function body})();
+// (async function () {
+//   try {
+//     const locationResult = await whereAmI();
+//     console.log(`2-${locationResult}.`);
+//   } catch (err) {
+//     console.log(`2-💥 ${err.message} 💥`);
+//   }
+//   console.log('3-End of getting location.');
+// })();
+// //
+//============== Lesson 266 - Running Promises in Parallel ===============
 //
-const getPosition = function () {
-  return new Promise(function (resolve, reject) {
-    navigator.geolocation.getCurrentPosition(resolve, reject);
-  });
+const getCountryJSON = function (countryName) {
+  return fetch(
+    `https://countries-api-836d.onrender.com/countries/name/${countryName}`
+  ).then(promis => promis.json());
 };
 
-const whereAmI = async function () {
+const getThreeCountries = async function (c1, c2, c3) {
   try {
-    // Enter "try" block - Error here causes "catch" execution
-    // GeoLocation
-    const position = await getPosition();
-    const { latitude: lat, longitude: lng } = position.coords;
-
-    // Reverse geocoding - locate the country by GPS data
-    const respGeo = await fetch(
-      `https://geocode.xyz/${lat},${lng}?geoit=json&auth=876344398626174668428x49381`
+    const data1 = await getCountryJSON(c1);
+    const data2 = await getCountryJSON(c2);
+    const data3 = await getCountryJSON(c3);
+    console.log(
+      `${data1[0].capital}, ${data2[0].capital}, ${data3[0].capital}.`
     );
-    if (!respGeo.ok) {
-      // Error handling of "respGeo fetch"
-      throw new Error(`Problems getting location! 💥`);
-    }
-    const dataGeo = await respGeo.json();
-
-    // Country data in use
-    const resCountry = await fetch(
-      `https://countries-api-836d.onrender.com/countries/name/${dataGeo.country}`
-    );
-    if (!resCountry.ok) {
-      // Error handling of "resCountry fetch"
-      throw new Error(`Problems getting country name! 💥`);
-    }
-    const data = await resCountry.json(); // To get the "Promise" value
-    renderCountry(data[0]);
-
-    return `You are in ${dataGeo.city}, ${dataGeo.country}`;
   } catch (err) {
-    // Executes this "catch" block if Error occurs in "try" block
-    console.error(err);
-    renderError(`💥${err.message} 💥`);
+    console.log(`💥 ${err.message} 💥`);
   }
 };
 
-console.log('1-Will get location.');
-// whereAmI()
-//   .then(locationResp => console.log(`2-${locationResp}.`))
-//   .catch(err => `2-💥 ${err.message} 💥`)
-//   .finally(() => console.log('3-End of getting location.'));
-
-// The same idea by using "async/await" - use immediately involved functions
-// Example: (function () {function body})();
-(async function () {
-  try {
-    const locationResult = await whereAmI();
-    console.log(`2-${locationResult}.`);
-  } catch (err) {
-    console.log(`2-💥 ${err.message} 💥`);
-  }
-  console.log('3-End of getting location.');
-})();
+getThreeCountries('portugal', 'bulgaria', 'germany');

@@ -523,15 +523,42 @@ const getCountryJSON = function (countryName) {
 // Result depends on which promise of the upper 3 is fulfilled first !!!
 //-------------------------------------------------------------------------
 //
-//------------------ Promise.allSettled -----------------------------------
-// "Promise.allSettled" takes and array of promises and returns all of them fulfilled,
-// no matter if som of them have been rejected (NOT like "Promise.all") !!!
+// //------------------ Promise.allSettled -----------------------------------
+// // "Promise.allSettled" takes and array of promises and returns all of them fulfilled,
+// // no matter if som of them have been rejected (NOT like "Promise.all") !!!
+// (async function () {
+//   const resp = await Promise.allSettled([
+//     getCountryJSON('portugal'),
+//     getCountryJSON('germanyrrr'),
+//     getCountryJSON('italy'),
+//   ]);
+//   console.log(resp);
+// })();
+// //-------------------------------------------------------------------------
+// //
+//------------------ Promise.any ------------------------------------------
+// "Promise.any" works the same way like "Promise.race", returning the first
+// fulfilled promis, but ignoring the rejected once - "Promise.race" returns
+// first fulfilled one iven if it is rejected !!!
+
 (async function () {
-  const resp = await Promise.allSettled([
+  const resp = await Promise.race([
     getCountryJSON('portugal'),
-    getCountryJSON('germanyrrr'),
+    getCountryJSON('germany'),
     getCountryJSON('italy'),
   ]);
+  const winCity = resp[0].capital;
   console.log(resp);
+  console.log(`The race winner is: ${winCity}`);
 })();
-//-------------------------------------------------------------------------
+//
+(async function () {
+  const resp = await Promise.any([
+    getCountryJSON('bulgari'),
+    getCountryJSON('france'),
+    getCountryJSON('spain'),
+  ]);
+  const anyCity = resp[0].capital;
+  console.log(resp);
+  console.log(`The ANY RESULT is: ${anyCity}`);
+})();

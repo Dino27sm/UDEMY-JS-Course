@@ -536,29 +536,102 @@ const getCountryJSON = function (countryName) {
 // })();
 // //-------------------------------------------------------------------------
 // //
-//------------------ Promise.any ------------------------------------------
-// "Promise.any" works the same way like "Promise.race", returning the first
-// fulfilled promis, but ignoring the rejected once - "Promise.race" returns
-// first fulfilled one iven if it is rejected !!!
+// //------------------ Promise.any ------------------------------------------
+// // "Promise.any" works the same way like "Promise.race", returning the first
+// // fulfilled promis, but ignoring the rejected once - "Promise.race" returns
+// // first fulfilled one iven if it is rejected !!!
 
-(async function () {
-  const resp = await Promise.race([
-    getCountryJSON('portugalsss'),
-    getCountryJSON('germany'),
-    getCountryJSON('italy'),
-  ]);
-  // const winCity = resp[0].capital;
-  console.log(resp);
-  // console.log(`The race winner is: ${winCity}`);
-})();
+// (async function () {
+//   const resp = await Promise.race([
+//     getCountryJSON('portugalsss'),
+//     getCountryJSON('germany'),
+//     getCountryJSON('italy'),
+//   ]);
+//   // const winCity = resp[0].capital;
+//   console.log(resp);
+//   // console.log(`The race winner is: ${winCity}`);
+// })();
+// //
+// (async function () {
+//   const resp = await Promise.any([
+//     getCountryJSON('bulgaria'),
+//     getCountryJSON('france'),
+//     getCountryJSON('spain'),
+//   ]);
+//   // const anyCity = resp[0].capital;
+//   console.log(resp);
+//   // console.log(`The ANY RESULT is: ${anyCity}`);
+// })();
+// //
+//=============== Lesson 268 - Coding Challenge #3 ===================
 //
-(async function () {
-  const resp = await Promise.any([
-    getCountryJSON('bulgaria'),
-    getCountryJSON('france'),
-    getCountryJSON('spain'),
-  ]);
-  // const anyCity = resp[0].capital;
-  console.log(resp);
-  // console.log(`The ANY RESULT is: ${anyCity}`);
-})();
+const wait = function (seconds) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, seconds * 1000);
+  });
+};
+
+const imgContainer = document.querySelector('.images');
+
+// Promisifying an Image loading ------------------------------
+const createImage = function (imgPath) {
+  return new Promise(function (resolve, reject) {
+    const img = document.createElement('img');
+    img.src = imgPath; // Promisifying this Asynchronous process
+
+    img.addEventListener('load', function () {
+      imgContainer.append(img);
+      resolve(img);
+    });
+
+    img.addEventListener('error', function () {
+      reject(new Error('Image tot found!'));
+    });
+  });
+};
+
+// let currentImg;
+
+// createImage('img/img-1.jpg')
+//   .then(img => {
+//     currentImg = img;
+//     console.log('Image 1 loaded!');
+//     return wait(3);
+//   })
+//   .then(() => {
+//     // To hide the Image1 after 3 sec - return wait(3)
+//     currentImg.style.display = 'none';
+
+//     return createImage('img/img-2.jpg');
+//   })
+//   .then(img => {
+//     currentImg = img;
+//     console.log('Image 2 loaded!');
+//     return wait(3);
+//   })
+//   .then(() => {
+//     // To hide the Image2 after 3 sec - return wait(3)
+//     currentImg.style.display = 'none';
+//   })
+//   .catch(err => console.error(err));
+// //--------------------------------------------------------------
+//
+const loadAndPause = async function () {
+  try {
+    // Load Image-1
+    let img = await createImage('img/img-1.jpg');
+    console.log('Image 1 loaded!');
+    await wait(3);
+    img.style.display = 'none';
+
+    // Load Image-2
+    img = await createImage('img/img-2.jpg');
+    console.log('Image 2 loaded!');
+    await wait(3);
+    img.style.display = 'none';
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+loadAndPause();

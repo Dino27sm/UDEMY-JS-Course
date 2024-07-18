@@ -493,18 +493,31 @@ const getCountryJSON = function (countryName) {
   ).then(promis => promis.json());
 };
 
-const getThreeCountries = async function (c1, c2, c3) {
-  try {
-    const allDataArray = await Promise.all([
-      getCountryJSON(c1),
-      getCountryJSON(c2),
-      getCountryJSON(c3),
-    ]);
-    const capitalArray = allDataArray.map(d => d[0].capital);
-    console.log(capitalArray.join(', '));
-  } catch (err) {
-    console.log(`💥 ${err.message} 💥`);
-  }
-};
+// const getThreeCountries = async function (c1, c2, c3) {
+//   try {
+//     const allDataArray = await Promise.all([
+//       getCountryJSON(c1),
+//       getCountryJSON(c2),
+//       getCountryJSON(c3),
+//     ]);
+//     const capitalArray = allDataArray.map(d => d[0].capital);
+//     console.log(capitalArray.join(', '));
+//   } catch (err) {
+//     console.log(`💥 ${err.message} 💥`);
+//   }
+// };
 
-getThreeCountries('portugal', 'bulgaria', 'germany');
+// getThreeCountries('portugal', 'bulgaria', 'germany');
+// //
+//======= Lesson 267 - Promise.race - Promise.allSettled - Promise.any ========
+//------------------ Promise.race -----------------------
+// "Promise.race" takes an array of promises and returns the first fulfilled promise
+// from the array
+(async function () {
+  await Promise.race([
+    getCountryJSON('portugal'),
+    getCountryJSON('germany'),
+    getCountryJSON('italy'),
+  ]).then(resp => console.log(resp[0].capital));
+})();
+// Result depends on which promise of the upper 3 is fulfilled first !!!

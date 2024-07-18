@@ -543,22 +543,22 @@ const getCountryJSON = function (countryName) {
 
 (async function () {
   const resp = await Promise.race([
-    getCountryJSON('portugal'),
+    getCountryJSON('portugalsss'),
     getCountryJSON('germany'),
     getCountryJSON('italy'),
   ]);
-  const winCity = resp[0].capital;
+  // const winCity = resp[0].capital;
   console.log(resp);
-  console.log(`The race winner is: ${winCity}`);
+  // console.log(`The race winner is: ${winCity}`);
 })();
 //
 (async function () {
   const resp = await Promise.any([
-    getCountryJSON('bulgari'),
+    getCountryJSON('bulgaria'),
     getCountryJSON('france'),
     getCountryJSON('spain'),
   ]);
-  const anyCity = resp[0].capital;
+  // const anyCity = resp[0].capital;
   console.log(resp);
-  console.log(`The ANY RESULT is: ${anyCity}`);
+  // console.log(`The ANY RESULT is: ${anyCity}`);
 })();

@@ -638,10 +638,12 @@ const loadAndPause = async function () {
 // loadAndPause();
 //
 //-------------- Part 2 -------------------------------------------
-const loadAll = function (imgArr) {
+const loadAll = async function (imgArr) {
   try {
     const imgs = imgArr.map(async img => await createImage(img));
-    console.log(imgs);
+    const imgsElm = await Promise.all(imgs);
+
+    imgsElm.forEach(img => img.classList.add('parallel'));
   } catch (err) {
     console.error(err);
   }

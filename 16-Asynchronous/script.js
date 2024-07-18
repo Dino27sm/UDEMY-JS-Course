@@ -616,6 +616,7 @@ const createImage = function (imgPath) {
 //   .catch(err => console.error(err));
 // //--------------------------------------------------------------
 //
+//-------------- Part 1 -------------------------------------------
 const loadAndPause = async function () {
   try {
     // Load Image-1
@@ -634,4 +635,16 @@ const loadAndPause = async function () {
   }
 };
 
-loadAndPause();
+// loadAndPause();
+//
+//-------------- Part 2 -------------------------------------------
+const loadAll = function (imgArr) {
+  try {
+    const imgs = imgArr.map(async img => await createImage(img));
+    console.log(imgs);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);

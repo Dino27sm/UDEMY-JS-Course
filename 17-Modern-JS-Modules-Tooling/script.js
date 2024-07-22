@@ -15,5 +15,9 @@
 // //
 // Importing "default" from "shoppingCart"
 //
-import cartContent from './shoppingCart.js';
-cartContent('tomato', 11);
+import cartContent, { cart } from './shoppingCart.js';
+cartContent('tomato', 8);
+cartContent('bread', 1);
+cartContent('pizza', 3);
+
+console.log(cart);

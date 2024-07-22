@@ -8,7 +8,12 @@
 // console.log(num1, num2);
 //
 // To Import everything from "shoppingCart" as ONE Object
-import * as ShoppingCart from './shoppingCart.js';
+// import * as ShoppingCart from './shoppingCart.js';
 
-console.log(ShoppingCart.num1, ShoppingCart.num2);
-ShoppingCart.addToCart('potato', 7);
+// console.log(ShoppingCart.num1, ShoppingCart.num2);
+// ShoppingCart.addToCart('potato', 7);
+// //
+// Importing "default" from "shoppingCart"
+//
+import cartContent from './shoppingCart.js';
+cartContent('tomato', 11);

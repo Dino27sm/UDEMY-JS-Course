@@ -4,7 +4,7 @@
 // console.log('From EXPORTING Module.');
 
 // const shippingCost = 10;
-export const cart = [];
+export const cart = []; // EXPORTS NOT the copy of ARRAY but its POINTING ADDRESS
 
 // export const addToCart = function (product, quantity) {
 //   cart.push({ product, quantity });

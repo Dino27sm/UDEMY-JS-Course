@@ -26,9 +26,20 @@ console.log(cart);
 //
 console.log('Starting point.');
 
-// Use "https://jsonplaceholder.typicode.com/" - free online REST API --------
-const res = await fetch('https://jsonplaceholder.typicode.com/posts');
-const data = await res.json();
-console.log(data);
+// // Use "https://jsonplaceholder.typicode.com/" - free online REST API --------
+// const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+// const data = await res.json();
+// console.log(data);
 
-console.log('END point.');
+// console.log('END point.');
+
+// Using "async"
+const getLastPost = async function () {
+  const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const data = await res.json();
+  console.log(data);
+  return { title: data.at(-1).title };
+};
+
+const lastPost = getLastPost();
+lastPost.then(resp => console.log(resp.title));

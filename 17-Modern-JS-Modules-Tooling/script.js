@@ -21,3 +21,14 @@ cartContent('bread', 1);
 cartContent('pizza', 3);
 
 console.log(cart);
+//
+//======================= Lesson 274 - Top level AWAIT =======================
+//
+console.log('Starting point.');
+
+// Use "https://jsonplaceholder.typicode.com/" - free online REST API --------
+const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+const data = await res.json();
+console.log(data);
+
+console.log('END point.');

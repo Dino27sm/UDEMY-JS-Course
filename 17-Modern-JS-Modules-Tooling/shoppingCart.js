@@ -1,4 +1,11 @@
 //=========== EXPORTING Module ======================
+// This "fetch" block will be performed first and then the rest code lines
+// because of top level AWAIT is used here - in exporting module
+console.log('------------ START of fetching in shoppingCart.js ----------');
+await fetch('https://jsonplaceholder.typicode.com/users');
+console.log('------------ END of fetching in shoppingCart.js ----------');
+//..........................................................................
+//
 // // Named Exports ------------------------------------
 // //
 // console.log('From EXPORTING Module.');

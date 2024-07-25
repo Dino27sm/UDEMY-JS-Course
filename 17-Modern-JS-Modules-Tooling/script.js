@@ -41,5 +41,10 @@ const getLastPost = async function () {
   return { title: data.at(-1).title };
 };
 
-const lastPost = getLastPost();
-lastPost.then(resp => console.log(resp.title));
+// const lastPost = getLastPost();
+// lastPost.then(resp => console.log(resp));
+
+// Better way - using top level "await"
+const lastPost2 = await getLastPost();
+console.log(lastPost2);
+console.log(lastPost2.title);

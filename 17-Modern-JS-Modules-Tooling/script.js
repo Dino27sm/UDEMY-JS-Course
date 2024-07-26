@@ -67,14 +67,23 @@ const state = {
 
 // Without deep cloning
 const stateClone = Object.assign({}, state);
+const stateDeepClone = cloneDeep(state);
 
 console.log('---- Before changes in state');
-console.log(state.user.logIn); // Original variable
-console.log(stateClone.user.logIn); // Cloned (copy) variable
+console.log(`Initial state logIn: ${state.user.logIn}`); // Original variable
+console.log(`Initial value of stateClone logIn: ${stateClone.user.logIn}`);
+console.log(
+  `Initial value of stateDeepClone logIn: ${stateDeepClone.user.logIn}`
+);
 
 // Here change the "logIn" in "state" to "false"
 state.user.logIn = false;
 
 console.log('---- After changes in state');
-console.log(state.user.logIn); // Original variable
-console.log(stateClone.user.logIn); // Cloned (copy) variable
+console.log(`After changes of state logIn: ${state.user.logIn}`); // Original variable
+console.log(`After changes of stateClone logIn: ${stateClone.user.logIn}`);
+
+// With DEEP Cloning - keeps a real copy of "state", not the pointin address
+console.log(
+  `After the change of stateDeepClone logIn: ${stateDeepClone.user.logIn}`
+);

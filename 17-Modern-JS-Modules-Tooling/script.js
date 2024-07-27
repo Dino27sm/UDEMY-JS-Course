@@ -15,12 +15,12 @@
 // //
 // // Importing "default" from "shoppingCart"
 // //
-// import cartContent, { cart } from './shoppingCart.js';
-// cartContent('tomato', 8);
-// cartContent('bread', 1);
-// cartContent('pizza', 3);
+import cartContent, { cart } from './shoppingCart.js';
+cartContent('tomato', 8);
+cartContent('bread', 1);
+cartContent('pizza', 3);
 
-// console.log(cart);
+console.log(cart);
 // //
 //======================= Lesson 274 - Top level AWAIT =======================
 //
@@ -87,3 +87,4 @@ console.log(`After changes of stateClone logIn: ${stateClone.user.logIn}`);
 console.log(
   `After the change of stateDeepClone logIn: ${stateDeepClone.user.logIn}`
 );
+console.log();

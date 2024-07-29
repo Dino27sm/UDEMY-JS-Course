@@ -18,29 +18,20 @@ const getLimit = user => expendingLimits?.[user] ?? 0; // Using "Optional Chaini
 
 const addExpense = function (value, description, user = 'jonas') {
   user = user.toLowerCase();
-  const limit = getLimit(user);
 
-  if (value <= limit) {
+  if (value <= getLimit(user))
     budget.push({ value: -value, description, user });
-  }
 };
+
 addExpense(10, 'Pizza 🍕');
 addExpense(100, 'Going to movies 🍿', 'Matilda');
 addExpense(200, 'Stuff', 'Jay');
-console.log(budget);
 
 const checkExpenses = function () {
-  for (let entry of budget) {
-    const limit = getLimit(entry.user);
-
-    if (entry.value < -limit) {
-      entry.flag = 'limit';
-    }
-  }
+  for (let entry of budget)
+    if (entry.value < -getLimit(entry.user)) entry.flag = 'limit';
 };
 checkExpenses();
-
-console.log(budget);
 
 const bigExpenses = function (limit) {
   let output = '';
@@ -53,4 +44,5 @@ const bigExpenses = function (limit) {
   console.log(output);
 };
 
+console.log(budget);
 bigExpenses(1000);

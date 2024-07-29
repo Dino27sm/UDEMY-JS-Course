@@ -16,10 +16,11 @@ const expendingLimits = {
 
 const addExpense = function (value, description, user = 'jonas') {
   user = user.toLowerCase();
-  const limit = expendingLimits[user] ? expendingLimits[user] : 0;
+  // const limit = expendingLimits[user] ? expendingLimits[user] : 0;
+  const limit = expendingLimits?.[user] ?? 0; // Using "Optional Chaining"
 
   if (value <= limit) {
-    budget.push({ value: -value, description: description, user: user });
+    budget.push({ value: -value, description, user });
   }
 };
 addExpense(10, 'Pizza 🍕');
@@ -27,21 +28,17 @@ addExpense(100, 'Going to movies 🍿', 'Matilda');
 addExpense(200, 'Stuff', 'Jay');
 console.log(budget);
 
-const check = function () {
-  for (var el of budget) {
-    let lim;
-    if (expendingLimits[el.user]) {
-      lim = expendingLimits[el.user];
-    } else {
-      lim = 0;
-    }
+const checkExpenses = function () {
+  for (let entry of budget) {
+    // const limit = expendingLimits[entry.user] ? expendingLimits[entry.user] : 0;
+    const limit = expendingLimits?.[entry.user] ?? 0; // Using "Optional Chaining"
 
-    if (el.value < -lim) {
-      el.flag = 'limit';
+    if (entry.value < -limit) {
+      entry.flag = 'limit';
     }
   }
 };
-check();
+checkExpenses();
 
 console.log(budget);
 

@@ -14,10 +14,11 @@ const expendingLimits = {
   matilda: 100,
 };
 
+const getLimit = user => expendingLimits?.[user] ?? 0; // Using "Optional Chaining"
+
 const addExpense = function (value, description, user = 'jonas') {
   user = user.toLowerCase();
-  // const limit = expendingLimits[user] ? expendingLimits[user] : 0;
-  const limit = expendingLimits?.[user] ?? 0; // Using "Optional Chaining"
+  const limit = getLimit(user);
 
   if (value <= limit) {
     budget.push({ value: -value, description, user });
@@ -30,8 +31,7 @@ console.log(budget);
 
 const checkExpenses = function () {
   for (let entry of budget) {
-    // const limit = expendingLimits[entry.user] ? expendingLimits[entry.user] : 0;
-    const limit = expendingLimits?.[entry.user] ?? 0; // Using "Optional Chaining"
+    const limit = getLimit(entry.user);
 
     if (entry.value < -limit) {
       entry.flag = 'limit';

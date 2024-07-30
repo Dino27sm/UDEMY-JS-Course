@@ -37,10 +37,16 @@ const addExpense = function (
 //---------------------------------------------------------------------
 
 const newBudget1 = addExpense(budget, expendingLimits, 10, 'Pizza 🍕');
-console.log(newBudget1);
-
-addExpense(100, 'Going to movies 🍿', 'Matilda');
-addExpense(200, 'Stuff', 'Jay');
+const newBudget2 = addExpense(
+  newBudget1,
+  expendingLimits,
+  100,
+  'Going to movies 🍿',
+  'Matilda'
+);
+const newBudget3 = addExpense(newBudget2, expendingLimits, 200, 'Stuff', 'Jay');
+console.log(newBudget3);
+//---------------------------------------------------------------------
 
 const checkExpenses = function () {
   for (let entry of budget)

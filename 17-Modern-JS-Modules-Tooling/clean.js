@@ -1,6 +1,6 @@
 'strict mode';
 
-const budget = [
+const budget = Object.freeze([
   { value: 250, description: 'Sold old TV 📺', user: 'jonas' },
   { value: -45, description: 'Groceries 🥑', user: 'jonas' },
   { value: 3500, description: 'Monthly salary 👩‍💻', user: 'jonas' },
@@ -9,9 +9,10 @@ const budget = [
   { value: -20, description: 'Candy 🍭', user: 'matilda' },
   { value: -125, description: 'Toys 🚂', user: 'matilda' },
   { value: -1800, description: 'New Laptop 💻', user: 'jonas' },
-];
+]);
 
-// Use "Object.freeze" to protect an object from changes (make it immutable)
+// Use "Object.freeze" to protect an object from changes
+// Make it immutable - but it is not for "Deep freeze" !!!
 const expendingLimits = Object.freeze({
   jonas: 1500,
   matilda: 100,
@@ -19,14 +20,25 @@ const expendingLimits = Object.freeze({
 
 const getLimit = user => expendingLimits?.[user] ?? 0; // Using "Optional Chaining"
 
-const addExpense = function (value, description, user = 'jonas') {
-  user = user.toLowerCase();
+// Pure function "addExpense" ----------------------------------------
+const addExpense = function (
+  state,
+  limits,
+  value,
+  description,
+  user = 'jonas'
+) {
+  const cleanUser = user.toLowerCase();
 
-  if (value <= getLimit(user))
-    budget.push({ value: -value, description, user });
+  return value <= getLimit(cleanUser)
+    ? [...state, { value: -value, description, user: cleanUser }]
+    : state;
 };
+//---------------------------------------------------------------------
 
-addExpense(10, 'Pizza 🍕');
+const newBudget1 = addExpense(budget, expendingLimits, 10, 'Pizza 🍕');
+console.log(newBudget1);
+
 addExpense(100, 'Going to movies 🍿', 'Matilda');
 addExpense(200, 'Stuff', 'Jay');
 

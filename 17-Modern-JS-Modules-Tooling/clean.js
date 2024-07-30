@@ -1,3 +1,5 @@
+'strict mode';
+
 const budget = [
   { value: 250, description: 'Sold old TV 📺', user: 'jonas' },
   { value: -45, description: 'Groceries 🥑', user: 'jonas' },
@@ -9,10 +11,11 @@ const budget = [
   { value: -1800, description: 'New Laptop 💻', user: 'jonas' },
 ];
 
-const expendingLimits = {
+// Use "Object.freeze" to protect an object from changes (make it immutable)
+const expendingLimits = Object.freeze({
   jonas: 1500,
   matilda: 100,
-};
+});
 
 const getLimit = user => expendingLimits?.[user] ?? 0; // Using "Optional Chaining"
 

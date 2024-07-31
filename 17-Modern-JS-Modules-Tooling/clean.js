@@ -47,12 +47,15 @@ const newBudget2 = addExpense(
 const newBudget3 = addExpense(newBudget2, expendingLimits, 200, 'Stuff', 'Jay');
 console.log(newBudget3);
 //---------------------------------------------------------------------
-
-const checkExpenses = function () {
-  for (let entry of budget)
-    if (entry.value < -getLimit(entry.user)) entry.flag = 'limit';
+// Modify to avoid "for" loops by using arrow methods
+const checkExpenses = function (state) {
+  return state.map(entry =>
+    entry.value < -getLimit(entry.user) ? { ...entry, flag: 'limit' } : entry
+  );
 };
-checkExpenses();
+const finalBudget = checkExpenses(newBudget3);
+console.log(finalBudget);
+//---------------------------------------------------------------------
 
 const logBigExpenses = function (bigLimit) {
   let output = '';

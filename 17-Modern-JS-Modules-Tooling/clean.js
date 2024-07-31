@@ -47,6 +47,7 @@ const newBudget2 = addExpense(
 const newBudget3 = addExpense(newBudget2, expendingLimits, 200, 'Stuff', 'Jay');
 console.log(newBudget3);
 //---------------------------------------------------------------------
+
 // Modify to avoid "for" loops by using arrow methods
 const checkExpenses = function (state) {
   return state.map(entry =>
@@ -57,16 +58,13 @@ const finalBudget = checkExpenses(newBudget3);
 console.log(finalBudget);
 //---------------------------------------------------------------------
 
-const logBigExpenses = function (bigLimit) {
-  let output = '';
-  for (let entry of budget)
-    output +=
-      entry.value <= -bigLimit ? `${entry.description.slice(-2)}` + ' / ' : '';
-  // Emojis are 2 chars
-
-  output = output.slice(0, -2); // Remove last '/ '
-  console.log(output);
+// Modify to avoid "for" loops by using arrow methods
+const logBigExpenses = function (state, bigLimit) {
+  const bigExpenses = state
+    .filter(entry => entry.value <= -bigLimit)
+    .map(entry => entry.description.slice(-2))
+    .join(' / ');
+  console.log(bigExpenses);
 };
 
-console.log(budget);
-logBigExpenses(500);
+logBigExpenses(finalBudget, 500);

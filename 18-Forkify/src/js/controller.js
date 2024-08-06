@@ -42,6 +42,7 @@ const showRecipe = async function () {
     // "window.location.hash" goes throw enire URL to get "hash" value
     const recipeID = window.location.hash;
     const id = recipeID.slice(1); // Removes the first element - "#"
+    if (!id) return; // Activates when there is no "#id" in the URL
 
     renderSpinner(recipeContainer);
     // 1. Loading recipe ----------------------------------
@@ -176,6 +177,8 @@ const showRecipe = async function () {
   }
 };
 
-// showRecipe();
-window.addEventListener('hashchange', showRecipe);
-window.addEventListener('load', showRecipe);
+// window.addEventListener('hashchange', showRecipe);
+// window.addEventListener('load', showRecipe);
+//
+// Other way of upper lines
+['load', 'hashchange'].forEach(evn => window.addEventListener(evn, showRecipe));

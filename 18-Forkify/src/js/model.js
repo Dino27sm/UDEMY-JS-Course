@@ -1,3 +1,4 @@
+import { async } from 'regenerator-runtime';
 // Create Recipe
 export const state = {
   recipe: {},
@@ -13,7 +14,7 @@ export const loadRecipe = async function (id) {
 
   if (!resp.ok) throw new Error(`${data.message}---(${resp.status})`);
 
-  const { recipe } = data.data;
+  let { recipe } = data.data;
   state.recipe = {
     id: recipe.id,
     title: recipe.title,
@@ -24,5 +25,5 @@ export const loadRecipe = async function (id) {
     cookingTime: recipe.cooking_time,
     ingredients: recipe.ingredients,
   };
-  console.log(state.recipe);
+  // console.log(state.recipe);
 };

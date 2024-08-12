@@ -1,5 +1,7 @@
 // Inform "parcel" where icons come from ------------------
 import icons from 'url:../../img/icons.svg';
+import Fraction from 'fractional';
+console.log(Fraction);
 //---------------------------------------------------------
 
 class RecipeView {
@@ -92,10 +94,12 @@ class RecipeView {
               <svg class="recipe__icon">
                 <use href="${icons}#icon-check"></use>
               </svg>
-              <div class="recipe__quantity">${ingr.quantity}</div>
+              <div class="recipe__quantity">${
+                ingr.quantity ? ingr.quantity : ''
+              }</div>
               <div class="recipe__description">
                 <span class="recipe__unit">${ingr.unit}</span>
-          ${this.#data.description}
+          ${ingr.description}
               </div>
             </li>`;
             })

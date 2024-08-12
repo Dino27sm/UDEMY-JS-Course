@@ -1,3 +1,4 @@
+import * as model from './model.js';
 // First in command line of a terminal enter packages
 // "core-js" and "regenerator-runtime":
 // >npm i core-js regenerator-runtime (Enter)
@@ -45,35 +46,11 @@ const showRecipe = async function () {
     if (!id) return; // Activates when there is no "#id" in the URL
 
     renderSpinner(recipeContainer);
-    // 1. Loading recipe ----------------------------------
+    // 1. Loading recipe --------------------------------------
+    await model.loadRecipe(id);
+    const { recipe } = model.state;
     //
-    // const resp = await fetch(
-    //   `https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886?key=a25e8781-846d-4299-aec1-c45ac5640dba`
-    // );
-    const resp = await fetch(
-      `https://forkify-api.herokuapp.com/api/v2/recipes/${id}?key=a25e8781-846d-4299-aec1-c45ac5640dba`
-    );
-
-    const data = await resp.json();
-
-    if (!resp.ok) {
-      throw new Error(`${data.message}---(${resp.status})`);
-    }
-
-    let { recipe } = data.data;
-    recipe = {
-      id: recipe.id,
-      title: recipe.title,
-      publisher: recipe.publisher,
-      sourceUrl: recipe.source_url,
-      image: recipe.image_url,
-      servings: recipe.servings,
-      cookingTime: recipe.cooking_time,
-      ingredients: recipe.ingredients,
-    };
-    console.log(recipe);
-
-    // 2. Rendering recipe -------------------------------------
+    // 2. Rendering recipe ------------------------------------
     const markup = `<figure class="recipe__fig">
           <img src="${recipe.image}" alt="${
       recipe.title

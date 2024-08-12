@@ -584,12 +584,13 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"aenu9":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+var _webImmediateJs = require("core-js/modules/web.immediate.js");
+var _modelJs = require("./model.js");
 // First in command line of a terminal enter packages
 // "core-js" and "regenerator-runtime":
 // >npm i core-js regenerator-runtime (Enter)
 // In this way we make sure that this application can be used with Old Browsers
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-var _webImmediateJs = require("core-js/modules/web.immediate.js");
 var _runtime = require("regenerator-runtime/runtime"); // For polyfilling "async/await"
 //
 // In original "index.html" enter type="module" in this line:
@@ -629,27 +630,11 @@ const showRecipe = async function() {
         const id = recipeID.slice(1); // Removes the first element - "#"
         if (!id) return; // Activates when there is no "#id" in the URL
         renderSpinner(recipeContainer);
-        // 1. Loading recipe ----------------------------------
+        // 1. Loading recipe --------------------------------------
+        await _modelJs.loadRecipe(id);
+        const { recipe } = _modelJs.state;
         //
-        // const resp = await fetch(
-        //   `https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886?key=a25e8781-846d-4299-aec1-c45ac5640dba`
-        // );
-        const resp = await fetch(`https://forkify-api.herokuapp.com/api/v2/recipes/${id}?key=a25e8781-846d-4299-aec1-c45ac5640dba`);
-        const data = await resp.json();
-        if (!resp.ok) throw new Error(`${data.message}---(${resp.status})`);
-        let { recipe } = data.data;
-        recipe = {
-            id: recipe.id,
-            title: recipe.title,
-            publisher: recipe.publisher,
-            sourceUrl: recipe.source_url,
-            image: recipe.image_url,
-            servings: recipe.servings,
-            cookingTime: recipe.cooking_time,
-            ingredients: recipe.ingredients
-        };
-        console.log(recipe);
-        // 2. Rendering recipe -------------------------------------
+        // 2. Rendering recipe ------------------------------------
         const markup = `<figure class="recipe__fig">
           <img src="${recipe.image}" alt="${recipe.title}" class="recipe__img" />
           <h1 class="recipe__title">
@@ -751,7 +736,7 @@ const showRecipe = async function() {
     "hashchange"
 ].forEach((evn)=>window.addEventListener(evn, showRecipe));
 
-},{"url:../img/icons.svg":"loVOp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","core-js/modules/web.immediate.js":"49tUX","regenerator-runtime/runtime":"dXNgZ"}],"loVOp":[function(require,module,exports) {
+},{"url:../img/icons.svg":"loVOp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","core-js/modules/web.immediate.js":"49tUX","regenerator-runtime/runtime":"dXNgZ","./model.js":"Y4A21"}],"loVOp":[function(require,module,exports) {
 module.exports = require("9bcc84ee5d265e38").getBundleURL("hWUTQ") + "icons.dfd7a6db.svg" + "?" + Date.now();
 
 },{"9bcc84ee5d265e38":"lgJ39"}],"lgJ39":[function(require,module,exports) {
@@ -2655,6 +2640,33 @@ try {
     else Function("r", "regeneratorRuntime = r")(runtime);
 }
 
-},{}]},["hycaY","aenu9"], "aenu9", "parcelRequire3a11")
+},{}],"Y4A21":[function(require,module,exports) {
+// Create Recipe
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "state", ()=>state);
+parcelHelpers.export(exports, "loadRecipe", ()=>loadRecipe);
+const state = {
+    recipe: {}
+};
+const loadRecipe = async function(id) {
+    const resp = await fetch(`https://forkify-api.herokuapp.com/api/v2/recipes/${id}?key=a25e8781-846d-4299-aec1-c45ac5640dba`);
+    const data = await resp.json();
+    if (!resp.ok) throw new Error(`${data.message}---(${resp.status})`);
+    const { recipe } = data.data;
+    state.recipe = {
+        id: recipe.id,
+        title: recipe.title,
+        publisher: recipe.publisher,
+        sourceUrl: recipe.source_url,
+        image: recipe.image_url,
+        servings: recipe.servings,
+        cookingTime: recipe.cooking_time,
+        ingredients: recipe.ingredients
+    };
+    console.log(state.recipe);
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["hycaY","aenu9"], "aenu9", "parcelRequire3a11")
 
 //# sourceMappingURL=index.e37f48ea.js.map

@@ -66,7 +66,7 @@
 110E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\css-select\lib\pseudo-selectors\subselects.d.ts133671549824751017 0
 91E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\sass\types\value\string.d.ts133671553688522472 0
 106E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\modules\es.array-buffer.transfer.js133673201626156775 0
-54E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist133679449836744263 1
+54E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist133679463834034614 1
 91E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\css-select\lib\sort.d.ts.map133671549820820757 0
 105E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@swc\helpers\_\_class_apply_descriptor_get133671549830010683 1
 94E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\source-map-js\lib\quick-sort.js133671549801608143 0
@@ -249,7 +249,7 @@
 97E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\internals\string-cooked.js133673201655624667 0
 101E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\css-select\node_modules\dom-serializer133671549805671069 1
 130E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@parcel\optimizer-svgo\node_modules\svgo\lib\svgo\css-class-list.js133671549812012028 0
-76E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\src\js\views\recipeView.js133679449835777512 0
+76E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\src\js\views\recipeView.js133679463829103091 0
 94E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\actual\array\entries.js133673201625651508 0
 99E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\modules\esnext.map.key-by.js133673201630518613 0
 82E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\es\function133673201645832890 1
@@ -296,7 +296,7 @@
 80E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@msgpackr-extract133679431775788205 1
 105E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\caniuse-lite\data\features\css3-tabsize.js133671549836325192 0
 98E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\source-map\dist\source-map.debug.js133671549811096173 0
-73E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\icons.dfd7a6db.svg133679449144232724 0
+73E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\icons.dfd7a6db.svg133679463833794566 0
 111E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\proposals\well-formed-unicode-strings.js133673201660175921 0
 69E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@lezer133671549781444794 1
 115E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\modules\web.url-search-params.constructor.js133673201660035851 0
@@ -1803,7 +1803,7 @@
 108E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\css-select\node_modules\entities\package.json133671549810963846 0
 99E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\features\json\is-raw-json.js133673201642178950 0
 73E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\sass\types133671553688407187 1
-65E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\index.html133679449144252725 0
+65E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\index.html133679463833804555 0
 86E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\sass\types\compile.d.ts133671553687982120 0
 102E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\modules\esnext.iterator.drop.js133673201630224524 0
 88E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\posthtml-render\readme.md133671549800300877 0
@@ -7721,7 +7721,7 @@
 96E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\actual\array\find-last.js133673201632986395 0
 91E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\actual\array\find.js133673201633125782 0
 92E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@swc\helpers\cjs\_extends.cjs133671549817951059 0
-73E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\icons.21bad73c.svg133679449144232724 0
+73E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\icons.21bad73c.svg133679463833804555 0
 95E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\actual\array\flat-map.js133673201633499747 0
 97E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\actual\array\from-async.js133673201634269911 0
 102E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\actual\array\group-by-to-map.js133673201636933830 0
@@ -9702,9 +9702,9 @@
 94E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\.bin\update-browserslist-db.ps1133671549857349827 0
 77E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\18-Forkify.3464ddca.js133673160213506516 0
 81E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\18-Forkify.3464ddca.js.map133673160213586488 0
-75E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\favicon.8b2f57bf.png133679449144212724 0
-73E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\index.f7626f62.css133679449144262753 0
-77E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\index.f7626f62.css.map133679449144282736 0
-72E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\logo.726d37a8.png133679449144302789 0
-72E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\index.e37f48ea.js133679449836704145 0
-76E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\index.e37f48ea.js.map133679449836734205 0
+75E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\favicon.8b2f57bf.png133679463833724568 0
+73E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\index.f7626f62.css133679463833824579 0
+77E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\index.f7626f62.css.map133679463833854560 0
+72E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\logo.726d37a8.png133679463833904913 0
+72E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\index.e37f48ea.js133679463834004620 0
+76E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\index.e37f48ea.js.map133679463834024617 0

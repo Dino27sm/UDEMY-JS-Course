@@ -2540,7 +2540,7 @@ var _iconsSvg = require("url:../../img/icons.svg");
 var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 var _fractional = require("fractional");
 var _fractionalDefault = parcelHelpers.interopDefault(_fractional);
-console.log((0, _fractionalDefault.default));
+console.log(new (0, _fractionalDefault.default).Fraction(3.7).toString());
 //---------------------------------------------------------
 class RecipeView {
     #parentElement = document.querySelector(".recipe");
@@ -2616,18 +2616,7 @@ class RecipeView {
         <div class="recipe__ingredients">
           <h2 class="heading--2">Recipe ingredients</h2>
           <ul class="recipe__ingredient-list">
-          ${this.#data.ingredients.map((ingr)=>{
-            return `<li class="recipe__ingredient">
-              <svg class="recipe__icon">
-                <use href="${0, _iconsSvgDefault.default}#icon-check"></use>
-              </svg>
-              <div class="recipe__quantity">${ingr.quantity ? ingr.quantity : ""}</div>
-              <div class="recipe__description">
-                <span class="recipe__unit">${ingr.unit}</span>
-          ${ingr.description}
-              </div>
-            </li>`;
-        }).join("")}
+          ${this.#data.ingredients.map((ingr)=>this.#generateMarkupIngredient(ingr)).join("")}
           </ul>
         </div>
 
@@ -2649,6 +2638,18 @@ class RecipeView {
             </svg>
           </a>
         </div>`;
+    }
+    #generateMarkupIngredient(ingr) {
+        return `<li class="recipe__ingredient">
+              <svg class="recipe__icon">
+                <use href="${0, _iconsSvgDefault.default}#icon-check"></use>
+              </svg>
+              <div class="recipe__quantity">${ingr.quantity ? new (0, _fractionalDefault.default).Fraction(ingr.quantity).toString() : ""}</div>
+              <div class="recipe__description">
+                <span class="recipe__unit">${ingr.unit}</span>
+          ${ingr.description}
+              </div>
+            </li>`;
     }
 }
 // Create an object of "RecipeView" and export it

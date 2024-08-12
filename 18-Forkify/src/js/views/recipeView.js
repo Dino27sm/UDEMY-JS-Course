@@ -1,7 +1,7 @@
 // Inform "parcel" where icons come from ------------------
 import icons from 'url:../../img/icons.svg';
 import Fraction from 'fractional';
-console.log(Fraction);
+console.log(new Fraction.Fraction(3.7).toString());
 //---------------------------------------------------------
 
 class RecipeView {
@@ -89,20 +89,7 @@ class RecipeView {
           <h2 class="heading--2">Recipe ingredients</h2>
           <ul class="recipe__ingredient-list">
           ${this.#data.ingredients
-            .map(ingr => {
-              return `<li class="recipe__ingredient">
-              <svg class="recipe__icon">
-                <use href="${icons}#icon-check"></use>
-              </svg>
-              <div class="recipe__quantity">${
-                ingr.quantity ? ingr.quantity : ''
-              }</div>
-              <div class="recipe__description">
-                <span class="recipe__unit">${ingr.unit}</span>
-          ${ingr.description}
-              </div>
-            </li>`;
-            })
+            .map(ingr => this.#generateMarkupIngredient(ingr))
             .join('')}
           </ul>
         </div>
@@ -127,6 +114,22 @@ class RecipeView {
             </svg>
           </a>
         </div>`;
+  }
+  #generateMarkupIngredient(ingr) {
+    return `<li class="recipe__ingredient">
+              <svg class="recipe__icon">
+                <use href="${icons}#icon-check"></use>
+              </svg>
+              <div class="recipe__quantity">${
+                ingr.quantity
+                  ? new Fraction.Fraction(ingr.quantity).toString()
+                  : ''
+              }</div>
+              <div class="recipe__description">
+                <span class="recipe__unit">${ingr.unit}</span>
+          ${ingr.description}
+              </div>
+            </li>`;
   }
 }
 

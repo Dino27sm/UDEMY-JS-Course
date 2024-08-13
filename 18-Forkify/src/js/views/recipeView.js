@@ -1,7 +1,7 @@
 // Inform "parcel" where icons come from ------------------
 import icons from 'url:../../img/icons.svg';
 import Fraction from 'fractional';
-console.log(new Fraction.Fraction(3.7).toString());
+
 //---------------------------------------------------------
 
 class RecipeView {

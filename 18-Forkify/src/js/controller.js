@@ -40,10 +40,8 @@ const controlRecipes = async function () {
   }
 };
 
-// window.addEventListener('hashchange', showRecipe);
-// window.addEventListener('load', showRecipe);
-//
-// Other way of upper lines
-['load', 'hashchange'].forEach(evn =>
-  window.addEventListener(evn, controlRecipes)
-);
+const init = function () {
+  recipeView.addHandlerRender(controlRecipes);
+};
+
+init();

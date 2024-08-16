@@ -2554,8 +2554,6 @@ const getJSON = async function(url) {
             timeout((0, _configJs.TIMEOUT_SEC))
         ]);
         const data = await resp.json();
-        console.log(resp);
-        console.log(data);
         if (!resp.ok) throw new Error(`(${resp.status})-${resp.statusText} \u{1F4A5}\u{1F4A5}\u{1F4A5}
     (${data.message})`);
         return data;
@@ -2614,7 +2612,7 @@ class RecipeView {
         ].forEach((evn)=>window.addEventListener(evn, handler));
     }
     #generateMarkup() {
-        console.log(this.#data);
+        // console.log(this.#data);
         return `<figure class="recipe__fig">
           <img src="${this.#data.image}" alt="${this.#data.title}" class="recipe__img" />
           <h1 class="recipe__title">

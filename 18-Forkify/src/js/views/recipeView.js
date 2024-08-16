@@ -7,7 +7,7 @@ import Fraction from 'fractional';
 class RecipeView {
   #parentElement = document.querySelector('.recipe');
   #data;
-
+  #errorMessage = `No such recipe. Please, try another one!`;
   render(data) {
     this.#data = data;
     const markup = this.#generateMarkup();
@@ -19,15 +19,29 @@ class RecipeView {
     this.#parentElement.innerHTML = '';
   }
 
-  renderSpinner = function () {
+  renderSpinner() {
     const markup = `<div class="spinner">
             <svg>
               <use href="${icons}#icon-loader"></use>
             </svg>
           </div>`;
-    this.#parentElement.innerHTML = '';
+
+    this.#clear();
     this.#parentElement.insertAdjacentHTML('afterbegin', markup);
-  };
+  }
+
+  renderError(errMessage = this.#errorMessage) {
+    const markup = `<div class="error">
+    <div>
+      <svg>
+        <use href="${icons}#icon-alert-triangle"></use>
+      </svg>
+    </div>
+    <p>${errMessage}</p>
+  </div>`;
+    this.#clear();
+    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
+  }
 
   addHandlerRender(handler) {
     ['load', 'hashchange'].forEach(evn =>

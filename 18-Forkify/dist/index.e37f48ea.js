@@ -584,25 +584,26 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"aenu9":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-var _webImmediateJs = require("core-js/modules/web.immediate.js");
-var _modelJs = require("./model.js");
-var _recipeViewJs = require("./views/recipeView.js");
-var _recipeViewJsDefault = parcelHelpers.interopDefault(_recipeViewJs);
+//
+// This API has been created by Jonas Schmedtmann !!!
+// ******  https://forkify-api.herokuapp.com/v2  ******
+//
+// In original "index.html" enter type="module" in this line:
+// "<script type="module" defer src="src/js/controller.js"></script>"
 //
 // First in command line of a terminal enter packages
 // "core-js" and "regenerator-runtime":
 // >npm i core-js regenerator-runtime (Enter)
 // In this way we make sure that this application can be used with Old Browsers
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+var _webImmediateJs = require("core-js/modules/web.immediate.js");
 var _runtime = require("regenerator-runtime/runtime"); // For polyfilling "async/await"
 //
-// In original "index.html" enter type="module" in this line:
-// "<script type="module" defer src="src/js/controller.js"></script>"
-//
-const recipeContainer = document.querySelector(".recipe");
-// This API has been created by Jonas Schmedtmann !!!
-// https://forkify-api.herokuapp.com/v2
-///////////////////////////////////////
+var _modelJs = require("./model.js");
+var _recipeViewJs = require("./views/recipeView.js");
+var _recipeViewJsDefault = parcelHelpers.interopDefault(_recipeViewJs);
+var _searchViewJs = require("./views/searchView.js");
+var _searchViewJsDefault = parcelHelpers.interopDefault(_searchViewJs);
 //
 const controlRecipes = async function() {
     try {
@@ -621,15 +622,28 @@ const controlRecipes = async function() {
     //--------------------------------------------------------------------
     } catch (err) {
         (0, _recipeViewJsDefault.default).renderError(err);
-    // console.log(err.message);
+    }
+};
+const controlSearchResults = async function() {
+    try {
+        // 1. Get search result as a query
+        const query = (0, _searchViewJsDefault.default).getQuery();
+        if (!query) return;
+        // 2. Load of search results
+        await _modelJs.loadSearchResults(query);
+        // 3. Render search results
+        console.log(_modelJs.state.search.results);
+    } catch (err) {
+        console.log(`From control Search Results: ${err}`);
     }
 };
 const init = function() {
     (0, _recipeViewJsDefault.default).addHandlerRender(controlRecipes);
+    (0, _searchViewJsDefault.default).addHandlerSearch(controlSearchResults);
 };
 init();
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","core-js/modules/web.immediate.js":"49tUX","regenerator-runtime/runtime":"dXNgZ","./model.js":"Y4A21","./views/recipeView.js":"l60JC"}],"gkKU3":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","core-js/modules/web.immediate.js":"49tUX","regenerator-runtime/runtime":"dXNgZ","./model.js":"Y4A21","./views/recipeView.js":"l60JC","./views/searchView.js":"9OQAM"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -2500,11 +2514,16 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "state", ()=>state);
 parcelHelpers.export(exports, "loadRecipe", ()=>loadRecipe);
+parcelHelpers.export(exports, "loadSearchResults", ()=>loadSearchResults);
 var _regeneratorRuntime = require("regenerator-runtime");
 var _configJs = require("./config.js");
 var _helpersJs = require("./helpers.js");
 const state = {
-    recipe: {}
+    recipe: {},
+    search: {
+        query: "",
+        results: []
+    }
 };
 const loadRecipe = async function(id) {
     try {
@@ -2521,6 +2540,23 @@ const loadRecipe = async function(id) {
             ingredients: recipe.ingredients
         };
     } catch (err) {
+        throw err;
+    }
+};
+const loadSearchResults = async function(query) {
+    try {
+        state.search.query = query;
+        const data = await (0, _helpersJs.getJSON)(`${(0, _configJs.API_URL)}?search=${query}?key=a25e8781-846d-4299-aec1-c45ac5640dba`);
+        state.search.results = data.data.recipes.map((rec)=>{
+            return {
+                id: rec.id,
+                title: rec.title,
+                publisher: rec.publisher,
+                image: rec.image_url
+            };
+        });
+    } catch (err) {
+        console.error(`${err} \u{1F4A5}\u{1F4A5}\u{1F4A5}`);
         throw err;
     }
 };
@@ -2713,7 +2749,7 @@ class RecipeView {
             </li>`;
     }
 }
-// Create an object of "RecipeView" and export it
+// Create an Instance (object) of "RecipeView" and export it
 exports.default = new RecipeView();
 
 },{"url:../../img/icons.svg":"loVOp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","fractional":"3SU56"}],"loVOp":[function(require,module,exports) {
@@ -3007,6 +3043,29 @@ Fraction.primeFactors = function(n) {
 };
 module.exports.Fraction = Fraction;
 
-},{}]},["hycaY","aenu9"], "aenu9", "parcelRequire3a11")
+},{}],"9OQAM":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class SearchView {
+    #parentEl = document.querySelector(".search");
+    #clearInput() {
+        this.#parentEl.querySelector(".search__field").value = "";
+    }
+    getQuery() {
+        const queryResult = this.#parentEl.querySelector(".search__field").value;
+        this.#clearInput();
+        return queryResult;
+    }
+    addHandlerSearch(handler) {
+        this.#parentEl.addEventListener("submit", function(evn) {
+            evn.preventDefault();
+            handler(); // This function is defined in "controler.js"
+        });
+    }
+}
+// Create an Instance (object) of "SearchView" and export it
+exports.default = new SearchView();
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["hycaY","aenu9"], "aenu9", "parcelRequire3a11")
 
 //# sourceMappingURL=index.e37f48ea.js.map

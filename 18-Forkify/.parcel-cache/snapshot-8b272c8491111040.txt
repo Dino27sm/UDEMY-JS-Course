@@ -1,4 +1,4 @@
-9711
+9712
 61E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\.prettierrc133236837898229697 0
 126E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\lmdb\dependencies\lmdb-data-v1\libraries\liblmdb\sample-bdb.txt133671549828959658 0
 102E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\svgo\plugins\convertOneStopGradients.js133671549819217462 0
@@ -29,7 +29,7 @@
 110E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\css-select\lib\pseudo-selectors\subselects.d.ts133671549824751017 0
 91E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\sass\types\value\string.d.ts133671553688522472 0
 106E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\modules\es.array-buffer.transfer.js133673201626156775 0
-54E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist133683528864640803 1
+54E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist133683684298877930 1
 91E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\css-select\lib\sort.d.ts.map133671549820820757 0
 105E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@swc\helpers\_\_class_apply_descriptor_get133671549830010683 1
 94E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\source-map-js\lib\quick-sort.js133671549801608143 0
@@ -130,22 +130,6 @@
 91E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\nth-check\lib\esm\parse.d.ts133671549812072073 0
 56E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\src\js133680039652361509 1
 101E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\css-tree\lib\syntax\node\MediaQuery.js133671549832058244 0
-71E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\css-what133671549810103108 1
-104E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\caniuse-lite\data\features\flexbox-gap.js133671549838370234 0
-93E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@parcel\runtime-service-worker133671549798769009 1
-117E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@parcel\workers\test\integration\workerfarm\logging.js133671549811921903 0
-99E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\cosmiconfig\dist\ExplorerSync.js.map133671549812236993 0
-97E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\css-tree\lib\syntax\node\Atrule.js133671549827923181 0
-92E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\es\symbol\iterator.js133673201643494762 0
-109E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\caniuse-lite\data\features\user-select-none.js133671549851130096 0
-78E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\source-map\dist133671549812352823 1
-93E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\full\date\to-string.js133673201657597519 0
-100E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\actual\async-iterator\take.js133673201656230336 0
-109E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\csso\node_modules\css-tree\cjs\lexer\index.cjs133671549820950915 0
-110E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\caniuse-lite\data\features\css-cascade-scope.js133671549828133147 0
-81E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\utility-types\dist133671549810338184 1
-84E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\ordered-binary\assets133671549805927148 1
-98E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\internals\proxy-accessor.js133673201649148011 0
 82E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\full\symbol133673201659309068 1
 127E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@parcel\optimizer-svgo\node_modules\csso\lib\clean\WhiteSpace.js133671549819137402 0
 89E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\full\map\upsert.js133673201659464959 0
@@ -175,10 +159,6 @@
 75E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\src\sass\_components.scss133683521546003761 0
 104E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@swc\helpers\cjs\_array_without_holes.cjs133671549800838146 0
 76E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\react-refresh133671549804526650 1
-98E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\stable\instance\flat-map.js133673201633645254 0
-89E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@parcel\graph\lib\types.js133671549810913847 0
-124E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\css-select\node_modules\entities\lib\generated\encode-html.js133671549807475514 0
-83E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\resolve-from\license133671549796890888 0
 125E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\csso\node_modules\css-tree\cjs\definition-syntax\tokenizer.cjs133671549826519272 0
 79E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\argparse\LICENSE133671549794276805 0
 71E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\src\sass\_header.scss133236837901247761 0
@@ -211,12 +191,12 @@
 147E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@parcel\optimizer-svgo\node_modules\css-select\lib\pseudo-selectors\filters.d.ts.map133671549809701629 0
 70E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\globals133671549800888136 1
 82E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\semver\package.json133671549818277992 0
-66E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\src\js\config.js133680078384881543 0
+66E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\src\js\config.js133683544363164141 0
 111E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@swc\helpers\_\_non_iterable_spread\package.json133671549833413381 0
 99E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\internals\error-to-string.js133673201626066797 0
 137E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\css-select\node_modules\entities\lib\esm\generated\decode-data-html.js.map133671549812747785 0
 80E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\binary-extensions133671553686914170 1
-70E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\src\js\controller.js133683517792198959 0
+70E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\src\js\controller.js133683682127853163 0
 70E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@parcel133679431775788205 1
 113E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\csso\node_modules\css-tree\lib\syntax\node\Hash.js133671549829570847 0
 83E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\electron-to-chromium133671549806114305 1
@@ -229,7 +209,7 @@
 106E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\features\typed-array\from-base64.js133673201634309899 0
 72E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\svgo\dist133671549802240619 1
 91E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\internals\is-pure.js133673201642169047 0
-65E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\src\js\model.js133682699321758544 0
+65E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\src\js\model.js133683575172075784 0
 93E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\immutable\dist\immutable.es.js133671553687282079 0
 67E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\src\js\helpers.js133682726565642428 0
 98E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\svgo\plugins\cleanupListOfValues.js133671549818343457 0
@@ -241,7 +221,7 @@
 71E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\anymatch133671553686884085 1
 90E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\domutils\lib\traversal.d.ts133671549812132305 0
 92E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\actual\reflect\has.js133673201637629025 0
-62E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\src\js\views133679309818675561 1
+62E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\src\js\views133683598784812363 1
 77E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@parcel\fs\lib133671549810608427 1
 117E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@parcel\optimizer-svgo\node_modules\css-tree\README.md133671549827953167 0
 89E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\css-what\lib\es\parse.d.ts133671549811470940 0
@@ -252,7 +232,7 @@
 97E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\internals\string-cooked.js133673201655624667 0
 101E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\css-select\node_modules\dom-serializer133671549805671069 1
 130E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@parcel\optimizer-svgo\node_modules\svgo\lib\svgo\css-class-list.js133671549812012028 0
-76E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\src\js\views\recipeView.js133683528859791094 0
+76E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\src\js\views\recipeView.js133683621973300637 0
 94E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\actual\array\entries.js133673201625651508 0
 99E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\modules\esnext.map.key-by.js133673201630518613 0
 82E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\es\function133673201645832890 1
@@ -265,6 +245,8 @@
 102E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\actual\instance\group-to-map.js133673201637279977 0
 125E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@parcel\optimizer-svgo\node_modules\css-tree\lib\syntax\atrule133671549826977281 1
 80E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\source-map-js\lib133671549805786973 1
+76E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\src\js\views\searchView.js133683684297851320 0
+100E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\modules\es.promise.finally.js133673201628056066 0
 74E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\cosmiconfig133671549817411123 1
 100E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\type-fest\source\set-return-type.d.ts133671549815062824 0
 103E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\features\array\virtual\filter.js133673201632570021 0
@@ -305,7 +287,7 @@
 80E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@msgpackr-extract133679431775788205 1
 105E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\caniuse-lite\data\features\css3-tabsize.js133671549836325192 0
 98E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\source-map\dist\source-map.debug.js133671549811096173 0
-73E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\icons.dfd7a6db.svg133683528864420797 0
+73E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\icons.dfd7a6db.svg133683681546483651 0
 111E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\proposals\well-formed-unicode-strings.js133673201660175921 0
 69E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@lezer133671549781444794 1
 115E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\modules\web.url-search-params.constructor.js133673201660035851 0
@@ -414,6 +396,22 @@
 94E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@swc\helpers\_\_read_only_error133671549835565324 1
 71E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\css-tree133671549836235206 1
 87E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@swc\helpers\_\_inherits133671549832856107 1
+71E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\css-what133671549810103108 1
+104E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\caniuse-lite\data\features\flexbox-gap.js133671549838370234 0
+93E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@parcel\runtime-service-worker133671549798769009 1
+117E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@parcel\workers\test\integration\workerfarm\logging.js133671549811921903 0
+99E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\cosmiconfig\dist\ExplorerSync.js.map133671549812236993 0
+97E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\css-tree\lib\syntax\node\Atrule.js133671549827923181 0
+92E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\es\symbol\iterator.js133673201643494762 0
+109E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\caniuse-lite\data\features\user-select-none.js133671549851130096 0
+78E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\source-map\dist133671549812352823 1
+93E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\full\date\to-string.js133673201657597519 0
+100E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\actual\async-iterator\take.js133673201656230336 0
+109E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\csso\node_modules\css-tree\cjs\lexer\index.cjs133671549820950915 0
+110E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\caniuse-lite\data\features\css-cascade-scope.js133671549828133147 0
+81E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\utility-types\dist133671549810338184 1
+84E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\ordered-binary\assets133671549805927148 1
+98E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\internals\proxy-accessor.js133673201649148011 0
 101E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\posthtml-parser\dist\chunk.T6SARJYH.js133671549795607980 0
 91E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\stable\string\raw.js133673201649668621 0
 72E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\is-number133671549798005636 1
@@ -474,11 +472,11 @@
 71E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\escalade133671549802130229 1
 83E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@swc\types\README.md133671549795347640 0
 107E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\csso\node_modules\css-tree\lib\utils\List.js133671549830344275 0
+100E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\stable\symbol\has-instance.js133673201637517916 0
+80E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\get-port\index.js133671549797120786 0
 83E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\escape-string-regexp133671549798015386 1
 89E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\full\math\scale.js133673201653783802 0
 91E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\full\symbol\index.js133673201640847110 0
-100E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\stable\symbol\has-instance.js133673201637517916 0
-80E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\get-port\index.js133671549797120786 0
 93E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@parcel\cache\src\constants.js133671549797792963 0
 96E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\svgo\plugins\removeXMLProcInst.js133671549825254753 0
 120E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\lmdb\dependencies\lmdb-data-v1\libraries\liblmdb\Doxyfile133671549801558065 0
@@ -1805,7 +1803,7 @@
 108E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\css-select\node_modules\entities\package.json133671549810963846 0
 99E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\features\json\is-raw-json.js133673201642178950 0
 73E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\sass\types133671553688407187 1
-65E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\index.html133683528864430806 0
+65E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\index.html133683681546503679 0
 86E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\sass\types\compile.d.ts133671553687982120 0
 102E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\modules\esnext.iterator.drop.js133673201630224524 0
 88E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\posthtml-render\readme.md133671549800300877 0
@@ -1891,6 +1889,10 @@
 82E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\safe-buffer\LICENSE133671549794356865 0
 87E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\safe-buffer\package.json133671549796950902 0
 101E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@parcel\watcher-win32-x64\watcher.node133671549805266783 0
+98E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\stable\instance\flat-map.js133673201633645254 0
+89E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@parcel\graph\lib\types.js133671549810913847 0
+124E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\css-select\node_modules\entities\lib\generated\encode-html.js133671549807475514 0
+83E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\resolve-from\license133671549796890888 0
 101E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\internals\this-number-value.js133673201656346218 0
 90E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\regenerator-runtime\LICENSE133673201620401831 0
 98E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\csso\lib\replace\property\border.js133671549820850849 0
@@ -2913,8 +2915,6 @@
 109E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\internals\array-iteration-from-last.js133673201621706801 0
 110E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\modules\esnext.async-iterator.filter.js133673201629916980 0
 83E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\js-yaml\package.json133671549814732985 0
-108E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\caniuse-lite\dist\unpacker\browserVersions.js133671549824531189 0
-99E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\css-tree\lib\lexer\prepare-tokens.js133671549832671023 0
 80E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\js-yaml\README.md133671549815172987 0
 115E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\caniuse-lite\data\features\page-transition-events.js133671549843702315 0
 119E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@parcel\runtime-react-refresh\src\ReactRefreshRuntime.js133671549797915378 0
@@ -4251,6 +4251,8 @@
 93E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\stable\symbol\index.js133673201641177117 0
 91E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\es\date\to-string.js133673201657528356 0
 90E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\css-tree\lib\lexer\match.js133671549831888025 0
+108E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\caniuse-lite\dist\unpacker\browserVersions.js133671549824531189 0
+99E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\css-tree\lib\lexer\prepare-tokens.js133671549832671023 0
 90E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\css-tree\lib\lexer\trace.js133671549835495186 0
 95E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\css-tree\lib\generator\create.js133671549828565267 0
 94E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\css-tree\lib\generator\index.js133671549830241494 0
@@ -5513,7 +5515,6 @@
 113E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\caniuse-lite\data\features\css-element-function.js133671549828939472 0
 101E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\actual\typed-array\index-of.js133673201638214298 0
 104E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\modules\es.promise.constructor.js133673201628046061 0
-100E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\modules\es.promise.finally.js133673201628056066 0
 92E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\modules\es.promise.js133673201628066060 0
 99E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\modules\es.promise.reject.js133673201628086049 0
 100E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\modules\es.promise.resolve.js133673201628096054 0
@@ -7723,7 +7724,7 @@
 96E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\actual\array\find-last.js133673201632986395 0
 91E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\actual\array\find.js133673201633125782 0
 92E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@swc\helpers\cjs\_extends.cjs133671549817951059 0
-73E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\icons.21bad73c.svg133683528864410858 0
+73E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\icons.21bad73c.svg133683681546483651 0
 95E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\actual\array\flat-map.js133673201633499747 0
 97E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\actual\array\from-async.js133673201634269911 0
 102E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\core-js\actual\array\group-by-to-map.js133673201636933830 0
@@ -7996,7 +7997,6 @@
 98E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\caniuse-lite\data\features\audio.js133671549817841035 0
 97E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\caniuse-lite\data\features\avif.js133671549818613003 0
 101E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@parcel\transformer-html\lib\inline.js133671549801405623 0
-101E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@parcel\runtime-js\lib\helpers\browser133671549815749507 1
 114E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\caniuse-lite\data\features\background-attachment.js133671549819396609 0
 100E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@swc\helpers\src\_read_only_error.mjs133671549837980740 0
 113E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\caniuse-lite\data\features\background-clip-text.js133671549819546703 0
@@ -8794,6 +8794,7 @@
 104E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@parcel\packager-wasm\src\WasmPackager.js133671549800938401 0
 116E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@parcel\runtime-js\src\helpers\browser\wasm-loader.js133671549817255773 0
 93E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@parcel\runtime-js\lib\helpers133671549812332791 1
+101E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@parcel\runtime-js\lib\helpers\browser133671549815749507 1
 112E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@parcel\runtime-js\lib\helpers\bundle-manifest.js133671549798510665 0
 111E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@parcel\runtime-js\lib\helpers\get-worker-url.js133671549809270046 0
 115E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\@parcel\runtime-js\lib\helpers\worker\wasm-loader.js133671549817015404 0
@@ -9704,9 +9705,9 @@
 94E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\node_modules\.bin\update-browserslist-db.ps1133671549857349827 0
 77E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\18-Forkify.3464ddca.js133673160213506516 0
 81E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\18-Forkify.3464ddca.js.map133673160213586488 0
-75E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\favicon.8b2f57bf.png133683528864285524 0
-73E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\index.f7626f62.css133683528864430806 0
-77E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\index.f7626f62.css.map133683528864450818 0
-72E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\logo.726d37a8.png133683528864480798 0
-72E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\index.e37f48ea.js133683528864610817 0
-76E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\index.e37f48ea.js.map133683528864630816 0
+75E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\favicon.8b2f57bf.png133683681546313566 0
+73E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\index.f7626f62.css133683681546503679 0
+77E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\index.f7626f62.css.map133683681546533655 0
+72E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\logo.726d37a8.png133683681546553692 0
+72E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\index.e37f48ea.js133683684298847940 0
+76E:\GIT-Education-Repos\UDEMY-JS-Course\18-Forkify\dist\index.e37f48ea.js.map133683684298868002 0

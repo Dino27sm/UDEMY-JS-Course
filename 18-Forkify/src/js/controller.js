@@ -1,5 +1,9 @@
-import * as model from './model.js';
-import recipeView from './views/recipeView.js';
+//
+// This API has been created by Jonas Schmedtmann !!!
+// ******  https://forkify-api.herokuapp.com/v2  ******
+//
+// In original "index.html" enter type="module" in this line:
+// "<script type="module" defer src="src/js/controller.js"></script>"
 //
 // First in command line of a terminal enter packages
 // "core-js" and "regenerator-runtime":
@@ -8,15 +12,10 @@ import recipeView from './views/recipeView.js';
 import 'regenerator-runtime/runtime'; // For polyfilling "async/await"
 import 'core-js/stable'; // For polyfilling everything else
 //
-// In original "index.html" enter type="module" in this line:
-// "<script type="module" defer src="src/js/controller.js"></script>"
-//
-const recipeContainer = document.querySelector('.recipe');
-
-// This API has been created by Jonas Schmedtmann !!!
-// https://forkify-api.herokuapp.com/v2
-
-///////////////////////////////////////
+import * as model from './model.js';
+import recipeView from './views/recipeView.js';
+import recipeView from './views/recipeView.js';
+import searchView from './views/searchView.js';
 //
 const controlRecipes = async function () {
   try {
@@ -37,12 +36,28 @@ const controlRecipes = async function () {
     //--------------------------------------------------------------------
   } catch (err) {
     recipeView.renderError(err);
-    // console.log(err.message);
+  }
+};
+
+const controlSearchResults = async function () {
+  try {
+    // 1. Get search result as a query
+    const query = searchView.getQuery();
+    if (!query) return;
+
+    // 2. Load of search results
+    await model.loadSearchResults(query);
+
+    // 3. Render search results
+    console.log(model.state.search.results);
+  } catch (err) {
+    console.log(`From control Search Results: ${err}`);
   }
 };
 
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);
+  searchView.addHandlerSearch(controlSearchResults);
 };
 
 init();

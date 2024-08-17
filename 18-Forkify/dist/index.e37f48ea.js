@@ -2575,6 +2575,7 @@ class RecipeView {
     #parentElement = document.querySelector(".recipe");
     #data;
     #errorMessage = `No such recipe. Please, try another one!`;
+    #message = "";
     render(data) {
         this.#data = data;
         const markup = this.#generateMarkup();
@@ -2601,6 +2602,18 @@ class RecipeView {
       </svg>
     </div>
     <p>${errMessage}</p>
+  </div>`;
+        this.#clear();
+        this.#parentElement.insertAdjacentHTML("afterbegin", markup);
+    }
+    renderMessage(message = this.#message) {
+        const markup = `<div class="message">
+    <div>
+      <svg>
+        <use href="${(0, _iconsSvgDefault.default)}#icon-smile"></use>
+      </svg>
+    </div>
+    <p>${message}</p>
   </div>`;
         this.#clear();
         this.#parentElement.insertAdjacentHTML("afterbegin", markup);

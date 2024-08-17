@@ -168,5 +168,5 @@ class RecipeView {
   }
 }
 
-// Create an object of "RecipeView" and export it
+// Create an Instance (object) of "RecipeView" and export it
 export default new RecipeView();

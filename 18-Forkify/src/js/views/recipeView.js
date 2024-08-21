@@ -1,3 +1,4 @@
+import View from './View.js';
 // Inform "parcel" where icons come from ------------------
 import icons from 'url:../../img/icons.svg';
 import Fraction from 'fractional';
@@ -5,20 +6,20 @@ import Fraction from 'fractional';
 //---------------------------------------------------------
 
 class RecipeView {
-  #parentElement = document.querySelector('.recipe');
-  #data;
-  #errorMessage = `No such recipe. Please, try another one!`;
-  #message = '';
+  _parentElement = document.querySelector('.recipe');
+  _data;
+  _errorMessage = `No such recipe. Please, try another one!`;
+  _message = '';
 
   render(data) {
-    this.#data = data;
-    const markup = this.#generateMarkup();
-    this.#clear(); // First Delete the previous data in the box
-    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
+    this._data = data;
+    const markup = this._generateMarkup();
+    this._clear(); // First Delete the previous data in the box
+    this._parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
-  #clear() {
-    this.#parentElement.innerHTML = '';
+  _clear() {
+    this._parentElement.innerHTML = '';
   }
 
   renderSpinner() {
@@ -28,11 +29,11 @@ class RecipeView {
             </svg>
           </div>`;
 
-    this.#clear();
-    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
+    this._clear();
+    this._parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
-  renderError(errMessage = this.#errorMessage) {
+  renderError(errMessage = this._errorMessage) {
     const markup = `<div class="error">
     <div>
       <svg>
@@ -41,11 +42,11 @@ class RecipeView {
     </div>
     <p>${errMessage}</p>
   </div>`;
-    this.#clear();
-    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
+    this._clear();
+    this._parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
-  renderMessage(message = this.#message) {
+  renderMessage(message = this._message) {
     const markup = `<div class="message">
     <div>
       <svg>
@@ -54,8 +55,8 @@ class RecipeView {
     </div>
     <p>${message}</p>
   </div>`;
-    this.#clear();
-    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
+    this._clear();
+    this._parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
   addHandlerRender(handler) {
@@ -64,14 +65,14 @@ class RecipeView {
     );
   }
 
-  #generateMarkup() {
+  _generateMarkup() {
     // console.log(this.#data);
     return `<figure class="recipe__fig">
-          <img src="${this.#data.image}" alt="${
-      this.#data.title
+          <img src="${this._data.image}" alt="${
+      this._data.title
     }" class="recipe__img" />
           <h1 class="recipe__title">
-            <span>${this.#data.title}</span>
+            <span>${this._data.title}</span>
           </h1>
         </figure>
 
@@ -81,7 +82,7 @@ class RecipeView {
               <use href="${icons}#icon-clock"></use>
             </svg>
             <span class="recipe__info-data recipe__info-data--minutes">${
-              this.#data.cookingTime
+              this._data.cookingTime
             }</span>
             <span class="recipe__info-text">minutes</span>
           </div>
@@ -90,7 +91,7 @@ class RecipeView {
               <use href="${icons}#icon-users"></use>
             </svg>
             <span class="recipe__info-data recipe__info-data--people">${
-              this.#data.servings
+              this._data.servings
             }</span>
             <span class="recipe__info-text">servings</span>
 
@@ -123,8 +124,8 @@ class RecipeView {
         <div class="recipe__ingredients">
           <h2 class="heading--2">Recipe ingredients</h2>
           <ul class="recipe__ingredient-list">
-          ${this.#data.ingredients
-            .map(ingr => this.#generateMarkupIngredient(ingr))
+          ${this._data.ingredients
+            .map(ingr => this._generateMarkupIngredient(ingr))
             .join('')}
           </ul>
         </div>
@@ -134,13 +135,13 @@ class RecipeView {
           <p class="recipe__directions-text">
             This recipe was carefully designed and tested by
             <span class="recipe__publisher">${
-              this.#data.publisher
+              this._data.publisher
             }</span>. Please check out
             directions at their website.
           </p>
           <a
             class="btn--small recipe__btn"
-            href="${this.#data.sourceUrl}"
+            href="${this._data.sourceUrl}"
             target="_blank"
           >
             <span>Directions</span>
@@ -150,7 +151,7 @@ class RecipeView {
           </a>
         </div>`;
   }
-  #generateMarkupIngredient(ingr) {
+  _generateMarkupIngredient(ingr) {
     return `<li class="recipe__ingredient">
               <svg class="recipe__icon">
                 <use href="${icons}#icon-check"></use>

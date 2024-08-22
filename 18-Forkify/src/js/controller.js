@@ -14,8 +14,14 @@ import 'core-js/stable'; // For polyfilling everything else
 //
 import * as model from './model.js';
 import recipeView from './views/recipeView.js';
-import recipeView from './views/recipeView.js';
 import searchView from './views/searchView.js';
+import resultsView from './views/resultsView.js';
+
+// Next line is for "Parcel" - NOT for JS
+if (module.hot) {
+  module.hot.accept();
+}
+
 //
 const controlRecipes = async function () {
   try {
@@ -41,6 +47,8 @@ const controlRecipes = async function () {
 
 const controlSearchResults = async function () {
   try {
+    resultsView.renderSpinner();
+
     // 1. Get search result as a query
     const query = searchView.getQuery();
     if (!query) return;
@@ -49,7 +57,9 @@ const controlSearchResults = async function () {
     await model.loadSearchResults(query);
 
     // 3. Render search results
-    console.log(model.state.search.results);
+    // console.log(model.state.search.results);
+    // resultsView.render(model.state.search.results); // Renders all results
+    resultsView.render(model.getSearchResultsPage());
   } catch (err) {
     console.log(`From control Search Results: ${err}`);
   }

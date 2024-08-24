@@ -606,6 +606,8 @@ var _searchViewJs = require("./views/searchView.js");
 var _searchViewJsDefault = parcelHelpers.interopDefault(_searchViewJs);
 var _resultsViewJs = require("./views/resultsView.js");
 var _resultsViewJsDefault = parcelHelpers.interopDefault(_resultsViewJs);
+var _paginationViewJs = require("./views/paginationView.js");
+var _paginationViewJsDefault = parcelHelpers.interopDefault(_paginationViewJs);
 // Next line is for "Parcel" - NOT for JS
 if (module.hot) module.hot.accept();
 //
@@ -622,7 +624,7 @@ const controlRecipes = async function() {
         //
         // 2. Rendering recipe ------------------------------------
         (0, _recipeViewJsDefault.default).render(_modelJs.state.recipe);
-    //"render()" is a method in "RecipeView" class
+    //"render()" is a method in "View" class
     //--------------------------------------------------------------------
     } catch (err) {
         (0, _recipeViewJsDefault.default).renderError(err);
@@ -640,6 +642,8 @@ const controlSearchResults = async function() {
         // console.log(model.state.search.results);
         // resultsView.render(model.state.search.results); // Renders all results
         (0, _resultsViewJsDefault.default).render(_modelJs.getSearchResultsPage());
+        // 4. Render Initial Pagnation Buttons
+        (0, _paginationViewJsDefault.default).render(_modelJs.state.search);
     } catch (err) {
         console.log(`From control Search Results: ${err}`);
     }
@@ -650,7 +654,7 @@ const init = function() {
 };
 init();
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","core-js/modules/web.immediate.js":"49tUX","regenerator-runtime/runtime":"dXNgZ","./model.js":"Y4A21","./views/recipeView.js":"l60JC","./views/searchView.js":"9OQAM","./views/resultsView.js":"cSbZE"}],"gkKU3":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","core-js/modules/web.immediate.js":"49tUX","regenerator-runtime/runtime":"dXNgZ","./model.js":"Y4A21","./views/recipeView.js":"l60JC","./views/searchView.js":"9OQAM","./views/resultsView.js":"cSbZE","./views/paginationView.js":"6z7bi"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -3106,7 +3110,7 @@ var _viewJsDefault = parcelHelpers.interopDefault(_viewJs);
 //
 class ResultsView extends (0, _viewJsDefault.default) {
     _parentElement = document.querySelector(".results");
-    _errorMessage = `No recipes found for your query! Please, try again :)`;
+    _errorMessage = `No recipes found for your query! Please, try again! \u{1F612}`;
     _message = "";
     _generateMarkup() {
         return this._data.map((dataEl)=>this._generateMarkupPreview(dataEl)).join("");
@@ -3129,6 +3133,31 @@ class ResultsView extends (0, _viewJsDefault.default) {
 }
 exports.default = new ResultsView();
 
-},{"./View.js":"5cUXS","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["hycaY","aenu9"], "aenu9", "parcelRequire3a11")
+},{"./View.js":"5cUXS","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6z7bi":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _viewJs = require("./View.js");
+var _viewJsDefault = parcelHelpers.interopDefault(_viewJs);
+var _iconsSvg = require("url:../../img/icons.svg");
+var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
+//
+class PaginationView extends (0, _viewJsDefault.default) {
+    _parentElement = document.querySelector(".pagination");
+    _generateMarkup() {
+        const numPages = Math.ceil(this._data.results.length / this._data.resultsPerPage);
+        console.log(numPages);
+        // 1. Page 1, and there are other pages
+        if (this._data.page === 1 && numPages > 1) return `Page 1 and other pages.`;
+        // 2. Last page
+        if (this._data.page === numPages && numPages > 1) return `Last page.`;
+        // 3. Other page
+        if (this._data.page < numPages) return `Other pages.`;
+        // 4. Page 1, and NO other pages
+        return `Page 1 and NO other pages.`;
+    }
+}
+exports.default = new PaginationView();
+
+},{"./View.js":"5cUXS","url:../../img/icons.svg":"loVOp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["hycaY","aenu9"], "aenu9", "parcelRequire3a11")
 
 //# sourceMappingURL=index.e37f48ea.js.map

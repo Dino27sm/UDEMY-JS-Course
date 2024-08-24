@@ -16,6 +16,7 @@ import * as model from './model.js';
 import recipeView from './views/recipeView.js';
 import searchView from './views/searchView.js';
 import resultsView from './views/resultsView.js';
+import paginationView from './views/paginationView.js';
 
 // Next line is for "Parcel" - NOT for JS
 if (module.hot) {
@@ -37,8 +38,7 @@ const controlRecipes = async function () {
     //
     // 2. Rendering recipe ------------------------------------
     recipeView.render(model.state.recipe);
-    //"render()" is a method in "RecipeView" class
-
+    //"render()" is a method in "View" class
     //--------------------------------------------------------------------
   } catch (err) {
     recipeView.renderError(err);
@@ -60,6 +60,9 @@ const controlSearchResults = async function () {
     // console.log(model.state.search.results);
     // resultsView.render(model.state.search.results); // Renders all results
     resultsView.render(model.getSearchResultsPage());
+
+    // 4. Render Initial Pagnation Buttons
+    paginationView.render(model.state.search);
   } catch (err) {
     console.log(`From control Search Results: ${err}`);
   }

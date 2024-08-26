@@ -16,6 +16,17 @@ class RecipeView extends View {
     );
   }
 
+  addHandlerUpdateServings(handler) {
+    this._parentElement.addEventListener('click', function (evn) {
+      const btn = evn.target.closest('.btn--update-servings');
+      if (!btn) return;
+
+      const currentServings = Number(btn.dataset.updateTo);
+
+      handler(currentServings);
+    });
+  }
+
   _generateMarkup() {
     // console.log(this.#data);
     return `<figure class="recipe__fig">
@@ -47,12 +58,16 @@ class RecipeView extends View {
             <span class="recipe__info-text">servings</span>
 
             <div class="recipe__info-buttons">
-              <button class="btn--tiny btn--increase-servings">
+              <button class="btn--tiny btn--update-servings" data-update-to="${
+                this._data.servings - 1
+              }">
                 <svg>
                   <use href="${icons}g#icon-minus-circle"></use>
                 </svg>
               </button>
-              <button class="btn--tiny btn--increase-servings">
+              <button class="btn--tiny btn--update-servings" data-update-to="${
+                this._data.servings + 1
+              }">
                 <svg>
                   <use href="${icons}#icon-plus-circle"></use>
                 </svg>
@@ -103,20 +118,20 @@ class RecipeView extends View {
         </div>`;
   }
   _generateMarkupIngredient(ingr) {
-    return `<li class="recipe__ingredient">
-              <svg class="recipe__icon">
-                <use href="${icons}#icon-check"></use>
-              </svg>
-              <div class="recipe__quantity">${
-                ingr.quantity
-                  ? new Fraction.Fraction(ingr.quantity).toString()
-                  : ''
-              }</div>
-              <div class="recipe__description">
-                <span class="recipe__unit">${ingr.unit}</span>
-          ${ingr.description}
-              </div>
-            </li>`;
+    return `
+      <li class="recipe__ingredient">
+        <svg class="recipe__icon">
+          <use href="${icons}#icon-check"></use>
+        </svg>
+        <div class="recipe__quantity">
+          ${
+            ingr.quantity ? new Fraction.Fraction(ingr.quantity).toString() : ''
+          }
+        </div>
+        <div class="recipe__description">
+          <span class="recipe__unit">${ingr.unit}</span> ${ingr.description}
+        </div>
+      </li>`;
   }
 }
 

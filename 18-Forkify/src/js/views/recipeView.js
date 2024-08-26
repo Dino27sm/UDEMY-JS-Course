@@ -21,9 +21,9 @@ class RecipeView extends View {
       const btn = evn.target.closest('.btn--update-servings');
       if (!btn) return;
 
-      const currentServings = Number(btn.dataset.updateTo);
+      const updatedServings = Number(btn.dataset.updateTo);
 
-      handler(currentServings);
+      if (updatedServings > 0) handler(updatedServings);
     });
   }
 

@@ -623,7 +623,6 @@ const controlRecipes = async function() {
         await _modelJs.loadRecipe(id);
         //
         // 2. Rendering recipe ------------------------------------
-        console.log(_modelJs.state.recipe);
         (0, _recipeViewJsDefault.default).render(_modelJs.state.recipe);
     //"render()" is a method in "View" class
     //--------------------------------------------------------------------
@@ -659,7 +658,8 @@ const controlServings = function(newServings) {
     // Update Recipe Servings in the "state" object
     _modelJs.updateServings(newServings);
     // Update the Recipe view
-    (0, _recipeViewJsDefault.default).render(_modelJs.state.recipe);
+    // recipeView.render(model.state.recipe);
+    (0, _recipeViewJsDefault.default).update(_modelJs.state.recipe);
 };
 const init = function() {
     (0, _recipeViewJsDefault.default).addHandlerRender(controlRecipes);
@@ -3071,6 +3071,21 @@ class View {
         const markup = this._generateMarkup();
         this._clear(); // First Delete the previous data in the box
         this._parentElement.insertAdjacentHTML("afterbegin", markup);
+    }
+    update(data) {
+        if (!data || Array.isArray(data) && data.length === 0) return this.renderError();
+        this._data = data;
+        const newMarkup = this._generateMarkup();
+        const newDOM = document.createRange().createContextualFragment(newMarkup);
+        const newElements = Array.from(newDOM.querySelectorAll("*"));
+        const curElements = Array.from(this._parentElement.querySelectorAll("*"));
+        newElements.forEach((newEl, i)=>{
+            const curEl = curElements[i];
+            // Updates of changed TEXT
+            if (!newEl.isEqualNode(curEl) && newEl.firstChild?.nodeValue.trim() !== "") curEl.textContent = newEl.textContent;
+            // Updates of changed ATTRIBUTES
+            if (!newEl.isEqualNode(curEl)) Array.from(newEl.attributes).forEach((attrNew)=>curEl.setAttribute(attrNew.name, attrNew.value));
+        });
     }
     _clear() {
         this._parentElement.innerHTML = "";

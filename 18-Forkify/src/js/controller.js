@@ -37,7 +37,6 @@ const controlRecipes = async function () {
     await model.loadRecipe(id);
     //
     // 2. Rendering recipe ------------------------------------
-    console.log(model.state.recipe);
     recipeView.render(model.state.recipe);
     //"render()" is a method in "View" class
     //--------------------------------------------------------------------
@@ -82,7 +81,8 @@ const controlServings = function (newServings) {
   model.updateServings(newServings);
 
   // Update the Recipe view
-  recipeView.render(model.state.recipe);
+  // recipeView.render(model.state.recipe);
+  recipeView.update(model.state.recipe);
 };
 
 const init = function () {

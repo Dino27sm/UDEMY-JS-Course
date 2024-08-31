@@ -619,6 +619,9 @@ const controlRecipes = async function() {
         if (!id) return; // Activates when there is no "#id" in the URL
         (0, _recipeViewJsDefault.default).renderSpinner();
         //
+        // 0. Update the view of marked recipe from search recipes
+        (0, _resultsViewJsDefault.default).update(_modelJs.getSearchResultsPage());
+        //
         // 1. Loading recipe --------------------------------------
         await _modelJs.loadRecipe(id);
         //
@@ -659,7 +662,7 @@ const controlServings = function(newServings) {
     _modelJs.updateServings(newServings);
     // Update the Recipe view
     // recipeView.render(model.state.recipe);
-    (0, _recipeViewJsDefault.default).update(_modelJs.state.recipe);
+    (0, _recipeViewJsDefault.default).update(_modelJs.state.recipe); // Updates only the changes in Servings
 };
 const init = function() {
     (0, _recipeViewJsDefault.default).addHandlerRender(controlRecipes);
@@ -3073,7 +3076,6 @@ class View {
         this._parentElement.insertAdjacentHTML("afterbegin", markup);
     }
     update(data) {
-        if (!data || Array.isArray(data) && data.length === 0) return this.renderError();
         this._data = data;
         const newMarkup = this._generateMarkup();
         const newDOM = document.createRange().createContextualFragment(newMarkup);
@@ -3163,9 +3165,10 @@ class ResultsView extends (0, _viewJsDefault.default) {
         return this._data.map((dataEl)=>this._generateMarkupPreview(dataEl)).join("");
     }
     _generateMarkupPreview(result) {
+        const id = window.location.hash.slice(1);
         return `
     <li class="preview">
-            <a class="preview__link preview__link--active" href="#${result.id}">
+            <a class="preview__link ${result.id === id ? "preview__link--active" : ""}" href="#${result.id}">
               <figure class="preview__fig">
                 <img src="${result.image}" alt="${result.title}" />
               </figure>

@@ -33,6 +33,9 @@ const controlRecipes = async function () {
     if (!id) return; // Activates when there is no "#id" in the URL
     recipeView.renderSpinner();
     //
+    // 0. Update the view of marked recipe from search recipes
+    resultsView.update(model.getSearchResultsPage());
+    //
     // 1. Loading recipe --------------------------------------
     await model.loadRecipe(id);
     //
@@ -82,7 +85,7 @@ const controlServings = function (newServings) {
 
   // Update the Recipe view
   // recipeView.render(model.state.recipe);
-  recipeView.update(model.state.recipe);
+  recipeView.update(model.state.recipe); // Updates only the changes in Servings
 };
 
 const init = function () {

@@ -18,11 +18,11 @@ import searchView from './views/searchView.js';
 import resultsView from './views/resultsView.js';
 import paginationView from './views/paginationView.js';
 
-// Next line is for "Parcel" - NOT for JS
+// Next line is for "Parcel" - NOT for JS ----------------------
 if (module.hot) {
   module.hot.accept();
 }
-
+//--------------------------------------------------------------
 //
 const controlRecipes = async function () {
   try {

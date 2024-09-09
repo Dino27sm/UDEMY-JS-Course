@@ -13,6 +13,7 @@ export const state = {
     page: 1,
     resultsPerPage: RES_PER_PAGE,
   },
+  bookmarks: [],
 };
 
 // Load Recipe
@@ -69,4 +70,9 @@ export const updateServings = function (newServings) {
     ing.quantity = (ing.quantity / state.recipe.servings) * newServings;
   });
   state.recipe.servings = newServings;
+};
+
+export const addBookmark = function (recipe) {
+  // Add a bookmark
+  state.bookmarks.push(recipe);
 };

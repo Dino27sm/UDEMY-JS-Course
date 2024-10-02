@@ -677,7 +677,13 @@ const controlAddBookmark = function() {
     // 3. Render bookmarks
     (0, _bookmarksViewJsDefault.default).render(_modelJs.state.bookmarks);
 };
+const controlBookmarks = function() {
+    (0, _bookmarksViewJsDefault.default).render(_modelJs.state.bookmarks);
+};
 const init = function() {
+    // localStorage.removeItem('bookmarks'); // To delete Local Storage data
+    _modelJs.getPersistBookmarks(); // To get stored recipes from the Local Storage
+    (0, _bookmarksViewJsDefault.default).addHandlerRender(controlBookmarks);
     (0, _recipeViewJsDefault.default).addHandlerRender(controlRecipes);
     (0, _recipeViewJsDefault.default).addHandlerUpdateServings(controlServings);
     (0, _recipeViewJsDefault.default).addHandlerAddBookmark(controlAddBookmark);
@@ -2560,6 +2566,7 @@ parcelHelpers.export(exports, "loadRecipe", ()=>loadRecipe);
 parcelHelpers.export(exports, "loadSearchResults", ()=>loadSearchResults);
 parcelHelpers.export(exports, "getSearchResultsPage", ()=>getSearchResultsPage);
 parcelHelpers.export(exports, "updateServings", ()=>updateServings);
+parcelHelpers.export(exports, "getPersistBookmarks", ()=>getPersistBookmarks);
 parcelHelpers.export(exports, "addBookmark", ()=>addBookmark);
 parcelHelpers.export(exports, "deleteBookmark", ()=>deleteBookmark);
 var _regeneratorRuntime = require("regenerator-runtime");
@@ -2626,8 +2633,13 @@ const updateServings = function(newServings) {
     state.recipe.servings = newServings;
 };
 const persistBookmarks = function() {
-    // Store recipes in Local Storage
+    // Store recipes in Local Storage - first convert data to string
     localStorage.setItem("bookmarks", JSON.stringify(state.bookmarks));
+};
+const getPersistBookmarks = function() {
+    // Get stored recipes in Local Storage
+    const localStoredBookmarks = localStorage.getItem("bookmarks");
+    if (localStoredBookmarks) state.bookmarks = JSON.parse(localStoredBookmarks);
 };
 const addBookmark = function(recipe) {
     // Add a bookmark
@@ -3314,6 +3326,9 @@ class BookmarksView extends (0, _viewJsDefault.default) {
     _parentElement = document.querySelector(".bookmarks__list");
     _errorMessage = `No bookmarks included! Select a recipe and bookmark it! \u{1F601}`;
     _message = "";
+    addHandlerRender(handler) {
+        window.addEventListener("load", handler);
+    }
     _generateMarkup() {
         return this._data.map((bookmark)=>(0, _previewViewJsDefault.default).render(bookmark, false)).join("");
     }

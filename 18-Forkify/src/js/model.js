@@ -79,8 +79,16 @@ export const updateServings = function (newServings) {
 };
 
 const persistBookmarks = function () {
-  // Store recipes in Local Storage
+  // Store recipes in Local Storage - first convert data to string
   localStorage.setItem('bookmarks', JSON.stringify(state.bookmarks));
+};
+
+export const getPersistBookmarks = function () {
+  // Get stored recipes in Local Storage
+  const localStoredBookmarks = localStorage.getItem('bookmarks');
+  if (localStoredBookmarks) {
+    state.bookmarks = JSON.parse(localStoredBookmarks);
+  }
 };
 
 export const addBookmark = function (recipe) {

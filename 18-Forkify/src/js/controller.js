@@ -110,8 +110,8 @@ const controlBookmarks = function () {
 };
 
 const init = function () {
-  // localStorage.removeItem('bookmarks'); // To delete Local Storage data
-  model.getPersistBookmarks(); // To get stored recipes from the Local Storage
+  // localStorage.clear('bookmarks'); // To delete Local Storage data
+  model.getPersistBookmarks();
   bookmarksView.addHandlerRender(controlBookmarks);
   recipeView.addHandlerRender(controlRecipes);
   recipeView.addHandlerUpdateServings(controlServings);

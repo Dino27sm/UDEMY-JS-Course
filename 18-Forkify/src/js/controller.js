@@ -18,6 +18,7 @@ import searchView from './views/searchView.js';
 import resultsView from './views/resultsView.js';
 import bookmarksView from './views/bookmarksView.js';
 import paginationView from './views/paginationView.js';
+import addRecipeView from './views/addRecipeView.js';
 
 // Next line is for "Parcel" - NOT for JS ----------------------
 if (module.hot) {
@@ -109,6 +110,10 @@ const controlBookmarks = function () {
   bookmarksView.render(model.state.bookmarks);
 };
 
+const controlAddRecipe = function (newRecipe) {
+  console.log(newRecipe);
+};
+//
 const init = function () {
   // localStorage.clear('bookmarks'); // To delete Local Storage data
   model.getPersistBookmarks();
@@ -118,6 +123,7 @@ const init = function () {
   recipeView.addHandlerAddBookmark(controlAddBookmark);
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick_PageBtn(controlPagination);
+  addRecipeView.addHandlerUpload(controlAddRecipe);
 };
 
 init();

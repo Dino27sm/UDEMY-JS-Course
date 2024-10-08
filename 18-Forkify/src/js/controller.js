@@ -13,6 +13,7 @@ import 'regenerator-runtime/runtime'; // For polyfilling "async/await"
 import 'core-js/stable'; // For polyfilling everything else
 //
 import * as model from './model.js';
+import { MODAL_CLOSE_SEC } from './config.js';
 import recipeView from './views/recipeView.js';
 import searchView from './views/searchView.js';
 import resultsView from './views/resultsView.js';
@@ -111,7 +112,28 @@ const controlBookmarks = function () {
 };
 
 const controlAddRecipe = async function (newRecipe) {
-  await model.uploadRecipe(newRecipe);
+  try {
+    // Show loading spinner
+    addRecipeView.renderSpinner();
+
+    // Upload the new Recipe Data
+    await model.uploadRecipe(newRecipe);
+    console.log(model.state.recipe);
+
+    //Render created Recipe
+    recipeView.render(model.state.recipe);
+
+    // Render Success message
+    addRecipeView.renderMessage();
+
+    // Close Form window
+    setTimeout(function () {
+      addRecipeView.toggleWindow();
+    }, MODAL_CLOSE_SEC * 1000);
+  } catch (err) {
+    console.log('💥', err);
+    addRecipeView.renderError(err.message);
+  }
 };
 //
 const init = function () {

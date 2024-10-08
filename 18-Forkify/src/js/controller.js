@@ -110,8 +110,8 @@ const controlBookmarks = function () {
   bookmarksView.render(model.state.bookmarks);
 };
 
-const controlAddRecipe = function (newRecipe) {
-  console.log(newRecipe);
+const controlAddRecipe = async function (newRecipe) {
+  await model.uploadRecipe(newRecipe);
 };
 //
 const init = function () {

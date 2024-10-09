@@ -9,29 +9,18 @@ const timeout = function (s) {
   });
 };
 //
-export const getJSON = async function (url) {
+export const AJAX = async function (url, uploadData = undefined) {
   try {
-    const resp = await Promise.race([fetch(url), timeout(TIMEOUT_SEC)]);
-    const data = await resp.json();
+    const fetchPro = uploadData
+      ? fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(uploadData),
+        })
+      : fetch(url);
 
-    if (!resp.ok)
-      throw new Error(`(${resp.status})-${resp.statusText} 💥💥💥
-    (${data.message})`);
-    return data;
-  } catch (err) {
-    throw err;
-  }
-};
-//
-export const sendJSON = async function (url, uploadData) {
-  try {
-    const fetchPro = fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(uploadData),
-    });
     const resp = await Promise.race([fetchPro, timeout(TIMEOUT_SEC)]);
     const data = await resp.json();
 
@@ -43,3 +32,39 @@ export const sendJSON = async function (url, uploadData) {
     throw err;
   }
 };
+// //------------------------------------------------------------------------------
+// export const getJSON = async function (url) {
+//   try {
+//     const resp = await Promise.race([fetch(url), timeout(TIMEOUT_SEC)]);
+//     const data = await resp.json();
+
+//     if (!resp.ok)
+//       throw new Error(`(${resp.status})-${resp.statusText} 💥💥💥
+//     (${data.message})`);
+//     return data;
+//   } catch (err) {
+//     throw err;
+//   }
+// };
+// //
+// export const sendJSON = async function (url, uploadData) {
+//   try {
+//     const fetchPro = fetch(url, {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify(uploadData),
+//     });
+//     const resp = await Promise.race([fetchPro, timeout(TIMEOUT_SEC)]);
+//     const data = await resp.json();
+
+//     if (!resp.ok)
+//       throw new Error(`(${resp.status})-${resp.statusText} 💥💥💥
+//     (${data.message})`);
+//     return data;
+//   } catch (err) {
+//     throw err;
+//   }
+// };
+// //-------------------------------------------------------------------------------

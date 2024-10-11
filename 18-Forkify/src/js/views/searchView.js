@@ -7,6 +7,7 @@ class SearchView {
 
   getQuery() {
     const queryResult = this._parentEl.querySelector('.search__field').value;
+
     this._clearInput();
     return queryResult;
   }

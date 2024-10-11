@@ -54,11 +54,15 @@ const controlRecipes = async function () {
 
 const controlSearchResults = async function () {
   try {
-    resultsView.renderSpinner();
-
     // 1. Get search result as a query
     const query = searchView.getQuery();
-    if (!query) return;
+    // if (!query) return;
+    if (!query) {
+      resultsView.renderError('Enter text to search !');
+      return;
+    }
+
+    resultsView.renderSpinner();
 
     // 2. Load of search results
     await model.loadSearchResults(query);

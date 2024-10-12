@@ -642,10 +642,14 @@ const controlRecipes = async function() {
 };
 const controlSearchResults = async function() {
     try {
-        (0, _resultsViewJsDefault.default).renderSpinner();
         // 1. Get search result as a query
         const query = (0, _searchViewJsDefault.default).getQuery();
-        if (!query) return;
+        // if (!query) return;
+        if (!query) {
+            (0, _resultsViewJsDefault.default).renderError("Enter text to search !");
+            return;
+        }
+        (0, _resultsViewJsDefault.default).renderSpinner();
         // 2. Load of search results
         await _modelJs.loadSearchResults(query);
         // 3. Render search results
@@ -3235,7 +3239,16 @@ var _iconsSvg = require("url:../../img/icons.svg");
 var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 class View {
     _data;
-    render(data, render = true) {
+    //=============== Example of JS Documentation ======================
+    /**
+   * Render the received object to the DOM
+   * @param {Object | Object[]} data The data to be rendered (e.g. recipe)
+   * @param {boolean} [render = true] ) Optional - If false, creates markup string insted of rendering to the DOOM
+   * @returns {undefined | string} A markup string is returned if render=False
+   * @this {Object} View instance
+   * @author Mironov
+   * @todo Finish imlementation
+   */ render(data, render = true) {
         if (!data || Array.isArray(data) && data.length === 0) return this.renderError();
         this._data = data;
         const markup = this._generateMarkup();

@@ -1,8 +1,7 @@
 import View from './View.js';
 // Inform "parcel" where icons come from ------------------
 import icons from 'url:../../img/icons.svg';
-import Fraction from 'fractional';
-
+// import { Fraction } from 'url:../../../node_modules/fractional';
 //---------------------------------------------------------
 
 class RecipeView extends View {
@@ -134,9 +133,7 @@ class RecipeView extends View {
           <use href="${icons}#icon-check"></use>
         </svg>
         <div class="recipe__quantity">
-          ${
-            ingr.quantity ? new Fraction.Fraction(ingr.quantity).toString() : ''
-          }
+          ${ingr.quantity ? ingr.quantity : ''}
         </div>
         <div class="recipe__description">
           <span class="recipe__unit">${ingr.unit}</span> ${ingr.description}
